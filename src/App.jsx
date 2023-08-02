@@ -8,6 +8,8 @@ import { fetchCurrentUser } from 'store/auth/operations';
 import { PublicRoute } from "services/PublicRoute";
 import { PrivateRoute } from "services/PrivateRoute";
 
+import { Container } from "components/Container";
+
 const Home = lazy(() => import("pages/Home"));
 const Register = lazy(() => import("pages/RegisterPage"));
 const Login = lazy(() => import("pages/LoginPage"));
@@ -27,14 +29,15 @@ export const App = () => {
   return (
     !isRefreshing && 
     <Routes>
-    <Route path='/' element={<Home/>}/>
-    <Route path='/auth' element={<PublicRoute><AuthPage/></PublicRoute>}>
-    <Route path='register' element={<Register/>}/>
-    <Route path='login' element={<Login/>}/>
-    </Route>
-    <Route path='/tasks' element={<PrivateRoute><TasksPage/></PrivateRoute>}/>
-    
-    <Route path="*" element={<Navigate to="/"/>}/>
+      <Route path='/' element={<Container/>}>
+      <Route index element={<Home/>}/>
+      <Route path='/auth' element={<PublicRoute><AuthPage/></PublicRoute>}>
+      <Route path='register' element={<Register/>}/>
+      <Route path='login' element={<Login/>}/></Route>
+      <Route path='/tasks' element={<PrivateRoute><TasksPage/></PrivateRoute>}/>
+      <Route path="*" element={<Navigate to="/"/>}/>
+      </Route>
+
   </Routes>
   );
 };
