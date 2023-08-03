@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[21],{8021:function(e,n,t){t.r(n);var r=t(9434),a=t(3101),c=t(5570),s=t(3329);n.default=function(){var e=(0,r.v9)(a.dy).name,n=(0,r.I0)();return(0,s.jsxs)(s.Fragment,{children:[(0,s.jsx)("h1",{children:"TasksPage"}),(0,s.jsx)("h2",{children:e}),(0,s.jsx)("button",{onClick:function(){return n((0,c.kS)())},children:"Log out"})]})}}}]);
-//# sourceMappingURL=21.99df8289.chunk.js.map
