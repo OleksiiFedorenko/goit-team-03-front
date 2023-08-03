@@ -1,7 +1,7 @@
-import { TasksLayout } from "components/TasksLayout";
+import { TasksLayout } from 'components/TasksLayout';
 
 const TasksPage = () => {
-    return <TasksLayout/>
-}
+  return <TasksLayout />;
+};
 
 export default TasksPage;

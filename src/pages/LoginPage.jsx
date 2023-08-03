@@ -1,11 +1,7 @@
-import { AuthFormLogin } from "components/AuthFormLogin";
+import { AuthFormLogin } from 'components/AuthFormLogin';
 
-const LoginPage =() => {
-    return (
-        <>
-        <AuthFormLogin />
-        </>
-    )
-}
+const LoginPage = () => {
+  return <AuthFormLogin />;
+};
 
 export default LoginPage;
