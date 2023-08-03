@@ -1,40 +1,52 @@
 import { useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
+import { Formik, Field, Form } from 'formik';
+
+import styles from './AuthFormLogin.module.css'
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(7).max(10).required(),
+  password: yup.string().min(8).required(),
 });
+
+const initialValues={ 
+  email: '', 
+  password: '' 
+}
 
 export const AuthFormLogin = () => {
   const dispatch = useDispatch();
 
-  const { register, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = data => {
-    dispatch(getLogin(data));
-  };
+  const onSubmit = (values) => {
+    console.log(values);
+    dispatch(getLogin(values))
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        type="email"
-        id="email"
-        {...register('email')}
-        placeholder="email"
-      />
-      <input
-        type="password"
-        id="password"
-        {...register('password')}
-        placeholder="password"
-      />
-      <button type="submit">Log in Now</button>
-    </form>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={schema}
+      onSubmit={onSubmit}
+    >
+      <Form className={styles.form}>
+        <Field
+          className={styles.input} 
+          id="email"
+          name="email" 
+          type="email"
+          placeholder="Enter your email"
+        />
+        <Field
+          className={styles.input}
+          id="password"
+          name="password" 
+          type="password"
+          placeholder="Confirm a password"
+        />
+
+        <button className={styles.button} type="submit">Log In Now</button>
+      </Form>
+    </Formik>
   );
 };
