@@ -17,38 +17,6 @@ const schema = yup.object().shape({
   password: yup.string().min(7).required(),
 });
 
-// export const AuthFormRegister = () => {
-//   const dispatch = useDispatch();
-
-//   const { register, handleSubmit } = useForm({
-//     resolver: yupResolver(schema),
-//   });
-
-//   const onSubmit = data => {
-//     dispatch(getRegistration(data));
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input type="text" id="name" {...register('name')} placeholder="name" />
-//       <input
-//         type="email"
-//         id="email"
-//         {...register('email')}
-//         placeholder="email"
-//       />
-//       <input
-//         type="password"
-//         id="password"
-//         {...register('password')}
-//         placeholder="password"
-//       />
-//       <button type="submit">Register Now</button>
-//     </form>
-//   );
-// };
-
-
 export const AuthFormRegister = () => {
   const dispatch = useDispatch();
 
