@@ -1,35 +1,35 @@
  :root {
-    color: #161616;
-        color: #16161680;
-        color: #FFFFFF;
-        color: #5255BC;
-        color: #FFFFFF80;
-       color: #161616CC;
-       color: #ECEDFD;
-        color: #FCFCFC;
-        color: #8FA1D0;
-       color: #161616B2;
-        color: #1616161A;
-        color: #B8BCFD;
-        color: #FFFFFF1A;
-        color: #1616164D;
-        color: #BEDBB0;
-        color: #E09CB5;
-        color: #16161633;
-       color: #ECEDFD66;
-    background: #161616;
-        background: #5255BC;
-        background: #1515154D;
-        background: #F6F6F7;
-        background: #121212;
-        background: #E8E8E8;
-        background: #1F1F1F;
-            background: #BEDBB0;
-            background: #FFFFFFCC;
-            background: #151515;
-            background: #BEDBB080;
-            background: #FFFFFF4D;
-            background: #FFFFFF33;
-                background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #BEDBB0 92.19%);
+    --primary-background-dark: #161616;
+    --color-modal-black: #000000;
+    --color-modal-black20: #00000033;
+    --color-black-dark: #151515;
+    --color-black-dark30: #1515154D;
+    --color-black10: #1616161A;
+    --color-black20: #16161633;
+    --color-black30: #1616164D;
+    --color-black50: #16161680;
+    --color-black70: #161616B2;
+    --color-black80: #161616CC;
+    --background-fon-dark: #1F1F1F;
+    --background-color-black: #121212;
+    --background-light: #FCFCFC;
+    --primary-background-violet: #5255BC;
+    --primary-background-light: #F6F6F7;
+    --background-text-light40: #ECEDFD66;
+    --background-color-light: #ECEDFD;
+    --color-violet-light: #B8BCFD;
+    --color-capitan: #FFFFFF;
+    --color-white10: #FFFFFF1A;
+    --color-white20: #FFFFFF33;
+    --color-white30: #FFFFFF4D;
+    --color-white50: #ffffff80;
+    --color-white80: #FFFFFFCC;
+    --color-btn-medium: #E09CB5;
+    --color-btn-low: #8FA1D0;
+    --color-green: #BEDBB0;
+    --color-green-light50: #BEDBB080;
+    
+    --background-registration: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #BEDBB0 92.19%);
+            
             
  }
