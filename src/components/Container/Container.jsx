@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import Column from 'components/Column/Column';
 
 export const Container = () => {
   return (
@@ -7,6 +8,7 @@ export const Container = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
+      <Column />
     </div>
   );
 };

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "The Watch Spot Design",
+    "description": "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence",
+    "id": 1812,
+    "priority": "low",
+    "deadline": "15/09/2023"
+  },
+  {
+    "name": "Research and Analysis",
+    "description": "Brainstorm and develop creative concepts and ideas that align with the project's objectives",
+    "id": 1813,
+    "priority": "high",
+    "deadline": "13/09/2023"
+  },
+  {
+    "name": "Concept Development",
+    "description": "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence",
+    "id": 1818,
+    "priority": "low",
+    "deadline": "15/09/2023"
+  }
+]
