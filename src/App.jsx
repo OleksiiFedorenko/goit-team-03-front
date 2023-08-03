@@ -15,6 +15,7 @@ const Register = lazy(() => import("pages/RegisterPage"));
 const Login = lazy(() => import("pages/LoginPage"));
 const AuthPage = lazy(() => import("pages/AuthPage"));
 const TasksPage = lazy(() => import("pages/TasksPage"));
+const BoardPage = lazy(() => import("pages/BoardPage"));
 
 
 
@@ -30,12 +31,15 @@ export const App = () => {
     !isRefreshing && 
     <Routes>
       <Route path='/' element={<Container/>}>
-      <Route index element={<Home/>}/>
-      <Route path='/auth' element={<PublicRoute><AuthPage/></PublicRoute>}>
-      <Route path='register' element={<Register/>}/>
-      <Route path='login' element={<Login/>}/></Route>
-      <Route path='/tasks' element={<PrivateRoute><TasksPage/></PrivateRoute>}/>
-      <Route path="*" element={<Navigate to="/"/>}/>
+        <Route index element={<Home/>}/>
+        <Route path='/auth' element={<PublicRoute><AuthPage/></PublicRoute>}>
+          <Route path='register' element={<Register/>}/>
+          <Route path='login' element={<Login/>}/>
+          </Route>
+        <Route path='/tasks' element={<PrivateRoute><TasksPage/></PrivateRoute>}>
+          <Route path=':boardId' element={<BoardPage/>}/>
+        </Route>
+        <Route path="*" element={<Navigate to="/"/>}/>
       </Route>
 
   </Routes>
