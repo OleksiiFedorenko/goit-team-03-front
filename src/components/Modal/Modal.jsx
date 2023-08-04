@@ -1,44 +1,34 @@
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import { useEffect } from 'react';
-import { Overlay, ModalEl, BtnClose } from './Modal.styled';
+import { Box, Modal } from '@mui/material';
+import { BtnClose } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
-const Modal = ({ onCloseModal, children }) => {
-  useEffect(() => {
-    const keyDownEvent = e => {
-      if (e.code === 'Escape') {
-        onCloseModal();
-      }
-    };
-    window.addEventListener('keydown', keyDownEvent);
-
-    return () => {
-      window.removeEventListener('keydown', keyDownEvent);
-    };
-  }, [onCloseModal]);
-
-  const handleBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      onCloseModal();
-    }
-  };
-
-  return createPortal(
-    <Overlay onClick={handleBackdropClick}>
-      <ModalEl>
+const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
+  return (
+    <Modal open={isOpenModal} onClose={onCloseModal}>
+      <Box sx={style}>
         <BtnClose onClick={onCloseModal}>X</BtnClose>
         {children}
-      </ModalEl>
-    </Overlay>,
-    modalRoot
+      </Box>
+    </Modal>
   );
 };
 
-Modal.propTypes = {
+ModalWindow.propTypes = {
+  isOpenModal: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default Modal;
+export default ModalWindow;
