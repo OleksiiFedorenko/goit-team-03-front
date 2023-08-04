@@ -29,7 +29,14 @@ export const App = () => {
     !isRefreshing && (
       <Routes>
         <Route path="/" element={<Container />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          />
           <Route
             path="/auth"
             element={
