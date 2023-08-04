@@ -29,7 +29,9 @@ export const UserProfile = ({ name, avatar }) => {
           />
         )}
       </UserOptions>
-      {showModal && <Modal onCloseModal={handleCloseModal} />}
+      {showModal && (
+        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
+      )}
     </UserWrapper>
   );
 };
