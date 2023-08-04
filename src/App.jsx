@@ -19,6 +19,12 @@ const Login = lazy(() => import('pages/LoginPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
 const TasksPage = lazy(() => import('pages/TasksPage'));
 const BoardPage = lazy(() => import('pages/BoardPage'));
+const EmptyHomePage = lazy(() => import('components/EmptyHomePage').then(module => {
+  return {
+    ...module,
+    default: module.EmptyHomePage
+  }
+}));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -58,6 +64,7 @@ export const App = () => {
                 </PrivateRoute>
               }
             >
+              <Route index element={<EmptyHomePage/>}/>
               <Route path=":boardId" element={<BoardPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/" />} />
