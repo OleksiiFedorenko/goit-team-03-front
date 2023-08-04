@@ -15,7 +15,7 @@ import {
 
 export const BoardList = () => {
   const [showModal, setShowModal] = useState(false);
-  const [activeLink, setActiveLink] = useState(null);
+  const [activeLink, setActiveLink] = useState(false);
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -35,14 +35,16 @@ export const BoardList = () => {
           type="button"
           onClick={handleOpenModal}
         ></CreateBoardButton>
-        {showModal && <Modal onCloseModal={handleCloseModal} />}
+        {showModal && (
+          <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
+        )}
       </CreateBoardWrapper>
       <BoardsWrapper>
         <BoardsList>
           <BoardsItem>
             <StyledLink
               to={'1'}
-              active={activeLink === '1'}
+              active={activeLink === '1' ? 'true' : undefined}
               onClick={() => setActiveLink('1')}
             >
               <BoardInfo>Project office</BoardInfo>
@@ -51,7 +53,7 @@ export const BoardList = () => {
           <BoardsItem>
             <StyledLink
               to={'2'}
-              active={activeLink === '2'}
+              active={activeLink === '2' ? 'true' : undefined}
               onClick={() => setActiveLink('2')}
             >
               <BoardInfo>Neon Light Project</BoardInfo>

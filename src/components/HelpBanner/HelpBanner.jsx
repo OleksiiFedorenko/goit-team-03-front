@@ -35,7 +35,9 @@ export const HelpBanner = () => {
       <TaskProHelperButton type="button" onClick={handleOpenModal}>
         <TaskProHelperButtonText>Need help?</TaskProHelperButtonText>
       </TaskProHelperButton>
-      {showModal && <Modal onCloseModal={handleCloseModal} />}
+      {showModal && (
+        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
+      )}
     </TaskProHelperWrapper>
   );
 };
