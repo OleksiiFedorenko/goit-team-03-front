@@ -1,0 +1,23 @@
+[
+  {
+    "name": "The Watch Spot Design",
+    "description": "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
+    "id": 1812,
+    "priority": "Low",
+    "deadline": "15/09/2023"
+  },
+  {
+    "name": "Research and Analysis",
+    "description": "Conduct in-depth research and analysis on the project's topic, gather relevant data, and identify key insights to inform decision-making and project planning.",
+    "id": 1813,
+    "priority": "High",
+    "deadline": "13/09/2023"
+  },
+  {
+    "name": "Concept Development",
+    "description": "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation.",
+    "id": 1818,
+    "priority": "Medium",
+    "deadline": "15/09/2023"
+  }
+]
