@@ -1,14 +1,17 @@
 import cards from '../../test-data/cards.json';
 import Button from '@mui/material/Button';
 import ColumnHeader from './ColumnHeader';
-import CardList from './CardList';
+import TaskList from './TaskList';
+import Box from '@mui/material/Box';
 
 const Column = () => {
   return (
     <>
-      <ColumnHeader title={'Todo'}></ColumnHeader>
-      <CardList cards={cards}></CardList>
-      <Button variant="contained">Add another card</Button>
+      <Box sx={{ width: '100%', maxWidth: 360 }}>
+        <ColumnHeader title={'Todo'}></ColumnHeader>
+        <TaskList cards={cards}></TaskList>
+        <Button variant="contained">Add another card</Button>
+      </Box>
     </>
   );
 };
