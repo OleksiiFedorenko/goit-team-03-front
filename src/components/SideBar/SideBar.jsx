@@ -1,7 +1,7 @@
 import React from 'react';
 import { Logo } from 'components/Logo';
-import { Boards } from 'components/Boards';
-import { TaskProHelper } from 'components/TaskProHelper';
+import { BoardList } from 'components/BoardList';
+import { HelpBanner } from 'components/HelpBanner';
 import { LogOut } from 'components/LogOut';
 import { SideBarWrapper } from './SideBar.styled';
 
@@ -9,8 +9,8 @@ export const SideBar = ({ dispatch }) => {
   return (
     <SideBarWrapper>
       <Logo />
-      <Boards />
-      <TaskProHelper />
+      <BoardList />
+      <HelpBanner />
       <LogOut dispatch={dispatch} />
     </SideBarWrapper>
   );

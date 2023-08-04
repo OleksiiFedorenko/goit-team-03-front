@@ -8,9 +8,9 @@ import {
   TaskProHelperTextLink,
   TaskProHelperButton,
   TaskProHelperButtonText,
-} from './TaskProHelper.styled';
+} from './HelpBanner.styled';
 
-export const TaskProHelper = () => {
+export const HelpBanner = () => {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     setShowModal(true);

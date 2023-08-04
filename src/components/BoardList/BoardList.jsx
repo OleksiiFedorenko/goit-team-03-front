@@ -11,9 +11,9 @@ import {
   BoardsItem,
   StyledLink,
   BoardInfo,
-} from './Boards.styled';
+} from './BoardList.styled';
 
-export const Boards = () => {
+export const BoardList = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
   const handleOpenModal = () => {
