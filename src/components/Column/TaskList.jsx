@@ -1,9 +1,9 @@
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Task from './Task';
 
 const TaskList = ({ cards }) => {
   return (
-    <Stack
+    <Box
       sx={{
         overflowY: 'auto',
         overflowX: 'hidden',
@@ -21,7 +21,7 @@ const TaskList = ({ cards }) => {
           />
         );
       })}
-    </Stack>
+    </Box>
   );
 };
 export default TaskList;

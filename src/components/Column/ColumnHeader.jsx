@@ -1,8 +1,7 @@
 import { IconButton } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import { Icon } from 'components/Icons';
 const ColumnHeader = ({ title }) => {
   return (
     <div>
@@ -11,10 +10,10 @@ const ColumnHeader = ({ title }) => {
           action={
             <div>
               <IconButton>
-                <EditOutlinedIcon />
+                <Icon id={'edit'} />
               </IconButton>
               <IconButton>
-                <DeleteOutlinedIcon />
+                <Icon id={'delete'} />
               </IconButton>
             </div>
           }

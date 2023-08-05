@@ -8,10 +8,9 @@ import Divider from '@mui/material/Divider';
 import CircleIcon from '@mui/icons-material/Circle';
 
 import Stack from '@mui/material/Stack';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import { Icon } from 'components/Icons';
 import { IconButton } from '@mui/material';
-import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+
 import css from './Task.module.css';
 
 const TruncatedText = ({ text }) => (
@@ -52,14 +51,18 @@ const Task = ({ name, description, priority, deadline }) => {
             justifyContent="flex-end"
           >
             <IconButton>
-              <ExitToAppOutlinedIcon />
+              <Icon id={'deadline'} />
             </IconButton>
 
             <IconButton>
-              <EditOutlinedIcon />
+              <Icon id={'move'} />
+            </IconButton>
+
+            <IconButton>
+              <Icon id={'edit'} />
             </IconButton>
             <IconButton>
-              <DeleteOutlinedIcon />
+              <Icon id={'delete'} />
             </IconButton>
           </Stack>
         </Stack>
