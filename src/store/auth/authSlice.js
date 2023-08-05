@@ -9,7 +9,7 @@ import {
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null, theme: 'violet' },
+    user: { name: null, email: null, avatar: "", theme: 'violet'},
     token: '',
     isLoggedIn: false,
     isRefreshing: false,
@@ -17,17 +17,17 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = {...state.user, ...action.payload.user};
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = {...state.user, ...action.payload.user};
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
-        state.user = { name: null, email: null, theme: 'violet' };
+        state.user = { name: null, email: null, theme: 'violet', avatar: "" };
         state.token = '';
         state.isLoggedIn = false;
       })
