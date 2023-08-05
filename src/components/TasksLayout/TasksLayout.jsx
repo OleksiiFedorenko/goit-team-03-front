@@ -10,9 +10,9 @@ export const TasksLayout = () => {
   const dispatch = useDispatch();
   const { name, avatar } = useSelector(selectUser);
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: 'flex' }}>
       <SideBar dispatch={dispatch} />
-      <div style={{ display: "flex", flexDirection: "column", flexGrow: "1"}}>
+      <div style={{ display: 'flex', flexDirection: 'column', flexGrow: '1' }}>
         <TopBar name={name} avatar={avatar} />
         <main style={{ outline: '1px solid black' }}>
           <Suspense fallback={<div>Loading...</div>}>
