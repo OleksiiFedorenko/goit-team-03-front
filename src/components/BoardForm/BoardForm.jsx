@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Typography } from '@mui/material';
 import {
   BgLabel,
   BoardBg,
@@ -8,7 +9,7 @@ import {
   Btn,
   Error,
   FormEl,
-  Icon,
+  IconEl,
   IconLabel,
   Icontainer,
   IconWrap,
@@ -45,7 +46,7 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
+const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -65,6 +66,9 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
     >
       {({ isSubmitting, dirty, values }) => (
         <FormEl>
+          <Typography variant="h5" mb={2}>
+            {title}
+          </Typography>
           <Label>
             <Input type="text" name="title" placeholder="Title" autoFocus />
             <Error name="title" component="div" />
@@ -83,11 +87,11 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <Icon>
-                      <svg width={'18px'} height={'18px'} stroke="currentColor">
-                        {/* <use href={sprite + `#${icon}`} /> */}
+                    <IconEl id={icon} />
+                    {/* <svg width={'18px'} height={'18px'} stroke="currentColor">
+                        <use href={sprite + `#${icon}`} />
                       </svg>
-                    </Icon>
+                    </IconEl> */}
                   </IconLabel>
                 </BoardIcon>
               ))}

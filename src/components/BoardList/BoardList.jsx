@@ -12,6 +12,7 @@ import {
   StyledLink,
   BoardInfo,
 } from './BoardList.styled';
+import BoardForm from 'components/BoardForm/BoardForm';
 
 export const BoardList = () => {
   const [showModal, setShowModal] = useState(false);
@@ -35,9 +36,13 @@ export const BoardList = () => {
           type="button"
           onClick={handleOpenModal}
         ></CreateBoardButton>
-        {showModal && (
-          <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
-        )}
+        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+          <BoardForm
+            onCloseModal={handleCloseModal}
+            title="New bord"
+            type="Create"
+          />
+        </Modal>
       </CreateBoardWrapper>
       <BoardsWrapper>
         <BoardsList>
