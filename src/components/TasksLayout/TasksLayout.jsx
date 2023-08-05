@@ -11,17 +11,15 @@ export const TasksLayout = () => {
   const { name, avatar } = useSelector(selectUser);
   return (
     <div>
-      <div>
-        <header>
-          <TopBar name={name} avatar={avatar} />
-          <SideBar dispatch={dispatch} />
-        </header>
-        <main style={{ outline: '1px solid black' }}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Outlet />
-          </Suspense>
-        </main>
-      </div>
+      <header>
+        <TopBar name={name} avatar={avatar} />
+        <SideBar dispatch={dispatch} />
+      </header>
+      <main style={{ outline: '1px solid black' }}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </main>
     </div>
   );
 };
