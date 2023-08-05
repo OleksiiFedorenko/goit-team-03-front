@@ -12,7 +12,7 @@ import { PublicRoute } from 'services/PublicRoute';
 import { PrivateRoute } from 'services/PrivateRoute';
 
 import { Container } from 'components/Container';
-
+import Column from 'components/Column/Column';
 const Home = lazy(() => import('pages/Home'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LoginPage'));
@@ -62,7 +62,7 @@ export const App = () => {
                 </PublicRoute>
               }
             >
-              <Route path="register" element={<Register />} />
+              <Route path="register" element={<Column />} />
               <Route path="login" element={<Login />} />
             </Route>
             <Route

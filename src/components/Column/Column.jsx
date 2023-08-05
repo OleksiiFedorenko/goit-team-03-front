@@ -6,13 +6,18 @@ import Box from '@mui/material/Box';
 
 const Column = () => {
   return (
-    <>
-      <Box sx={{ width: '100%', maxWidth: 360 }}>
-        <ColumnHeader title={'Todo'}></ColumnHeader>
-        <TaskList cards={cards}></TaskList>
-        <Button variant="contained">Add another card</Button>
-      </Box>
-    </>
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <ColumnHeader title={'Todo'}></ColumnHeader>
+      <TaskList cards={cards}></TaskList>
+      <Button variant="contained">Add another card</Button>
+    </Box>
   );
 };
 

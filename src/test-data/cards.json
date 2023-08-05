@@ -19,5 +19,26 @@
     "id": 1818,
     "priority": "Medium",
     "deadline": "15/09/2023"
+  },
+  {
+    "name": "Students' projects",
+    "description": "Review the project materials: Familiarize yourself with the project's content, including text, images, and any supplementary materials.",
+    "id": 1818432,
+    "priority": "Without",
+    "deadline": "03/05/2048"
+  },
+  {
+    "name": "Quiz Creation",
+    "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+    "id": 10008786,
+    "priority": "Medium",
+    "deadline": "15/09/1917"
+  },
+  {
+    "name": "Publication of the project",
+    "description": "Review the project materials: Familiarize yourself with the project's content, including text, images, and any supplementary materials.",
+    "id": 985646,
+    "priority": "Medium",
+    "deadline": "15/09/1917"
   }
 ]

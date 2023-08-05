@@ -1,11 +1,18 @@
-import TodoCard from './Task';
-const CardList = ({ cards }) => {
+import { Stack } from '@mui/material';
+import Task from './Task';
+
+const TaskList = ({ cards }) => {
   return (
-    <div>
+    <Stack
+      sx={{
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }}
+    >
       {cards.map(card => {
         const { name, description, priority, deadline } = card;
         return (
-          <TodoCard
+          <Task
             key={card.id}
             name={name}
             description={description}
@@ -14,7 +21,7 @@ const CardList = ({ cards }) => {
           />
         );
       })}
-    </div>
+    </Stack>
   );
 };
-export default CardList;
+export default TaskList;
