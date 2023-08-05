@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api'
 
 const token = {
   set(token) {
@@ -17,11 +17,13 @@ export const getRegistration = createAsyncThunk(
   'auth/register',
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/signup', {
+      await axios.post('/auth/register', {
         name,
         email,
         password,
       });
+      const { data } = await axios.post('/auth/login', { email, password });
+     
       token.set(data.token);
       return data;
     } catch (error) {
@@ -40,7 +42,7 @@ export const getLogin = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/login', { email, password });
+      const { data } = await axios.post('/auth/login', { email, password });
       token.set(data.token);
       return data;
     } catch (error) {
@@ -59,7 +61,7 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/users/logout');
+      const response = await axios.post('/auth/logout');
       token.unset();
       return response;
     } catch (error) {
@@ -78,7 +80,7 @@ export const fetchCurrentUser = createAsyncThunk(
     }
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get('/auth/current');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
