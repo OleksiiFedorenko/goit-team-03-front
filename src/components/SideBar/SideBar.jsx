@@ -5,13 +5,13 @@ import { HelpBanner } from 'components/HelpBanner';
 import { LogOut } from 'components/LogOut';
 import { SideBarWrapper } from './SideBar.styled';
 
-export const SideBar = ({ dispatch }) => {
+export const SideBar = () => {
   return (
     <SideBarWrapper>
       <Logo />
       <BoardList />
       <HelpBanner />
-      <LogOut dispatch={dispatch} />
+      <LogOut />
     </SideBarWrapper>
   );
 };

@@ -18,6 +18,6 @@ export const InfoText = styled.p`
 
 export const MarkedText = styled.span`
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 18px;
 `;

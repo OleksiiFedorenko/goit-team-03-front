@@ -9,14 +9,14 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { background, container, image, logo, text, button } from 'styles';
+import { container, image, logo, text, button } from 'styles';
 
 import { TiFlash } from 'react-icons/ti';
 import user from 'images/start-img.png';
 
 const Home = () => {
   return (
-    <Container sx={background.gradient}>
+    <Container sx={container.gradient}>
       <Box sx={container.welcome}>
         <Box
           component="img"
