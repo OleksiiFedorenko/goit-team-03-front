@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Typography } from '@mui/material';
 import {
   BgLabel,
   BoardBg,
@@ -8,7 +10,7 @@ import {
   Btn,
   Error,
   FormEl,
-  Icon,
+  IconEl,
   IconLabel,
   Icontainer,
   IconWrap,
@@ -17,6 +19,7 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
+import { Icon } from 'components/Icons';
 
 const iconNames = [
   'project',
@@ -45,7 +48,7 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
+const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
@@ -65,6 +68,9 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
     >
       {({ isSubmitting, dirty, values }) => (
         <FormEl>
+          <Typography variant="h6" mb={2}>
+            {title}
+          </Typography>
           <Label>
             <Input type="text" name="title" placeholder="Title" autoFocus />
             <Error name="title" component="div" />
@@ -83,11 +89,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <Icon>
-                      <svg width={'18px'} height={'18px'} stroke="currentColor">
-                        {/* <use href={sprite + `#${icon}`} /> */}
-                      </svg>
-                    </Icon>
+                    <IconEl id={icon} />
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -123,9 +125,10 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <svg width="18px" height="18px" stroke="currentColor">
-                {/* <use href={sprite + '#icon-name?'} /> */}
-              </svg>
+              <Icon />
+              {/* <svg width="18px" height="18px" stroke="currentColor">
+                <use href={sprite + '#icon-name?'} />
+              </svg> */}
             </IconWrap>
             <span>{type}</span>
           </Btn>
@@ -133,6 +136,12 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
       )}
     </Formik>
   );
+};
+
+BoardForm.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default BoardForm;
