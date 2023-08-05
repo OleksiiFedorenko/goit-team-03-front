@@ -1,19 +1,30 @@
 import { Link } from 'react-router-dom';
+
+import { Container, Box, SvgIcon } from '@mui/material';
+import { background, container, image, logo } from 'styles';
+
 import css from './Home.module.css';
 import { TiFlash } from 'react-icons/ti';
+import { Icon } from 'components/Icons';
 import user from 'images/start-img.png';
 
 const Home = () => {
   return (
-    <div className={css.container}>
-      <div className={css.inner}>
-        <img className={css.image} src={user} alt="User greeting avatar" />
-        <div className={css.heading}>
+    <Container sx={background.gradient}>
+      <Box sx={container.welcome}>
+        <Box
+          component="img"
+          sx={image.welcome}
+          src={user}
+          alt="User greeting avatar"
+        />
+        <Box sx={logo.welcomeContainer}>
+          {/* <SvgIcon>{Icon('lightning')}</SvgIcon> */}
           <div className={css['app-icon']}>
             <TiFlash color="#fff" size={25} />
           </div>
           <h1 className={css.title}>Task Pro</h1>
-        </div>
+        </Box>
         <p className={css.descr}>
           Supercharge your productivity and take control of your tasks with Task
           Pro - Don't wait, start achieving your goals now!
@@ -27,8 +38,8 @@ const Home = () => {
             <Link to="/auth/login">Log in</Link>
           </li>
         </ul>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 };
 

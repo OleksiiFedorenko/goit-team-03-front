@@ -1,5 +1,23 @@
 import { createTheme } from '@mui/material/styles';
 
+const standardParams = {
+  breakpoints: {
+    values: {
+      zeroUp: 0,
+      mobile: 320,
+      mobileFixed: 375,
+      tablet: 768,
+      desktop: 1440,
+    },
+  },
+  typography: {
+    fontFamily: 'Poppins',
+  },
+  shape: {
+    borderRadius: 8,
+  },
+};
+
 export const violetTheme = createTheme({
   palette: {
     mode: 'light',
@@ -21,9 +39,7 @@ export const violetTheme = createTheme({
       sideSecond: 'rgba(255, 255, 255, 0.5)',
     },
   },
-  shape: {
-    borderRadius: 8,
-  },
+  ...standardParams,
 });
 
 export const lightTheme = createTheme({
@@ -47,9 +63,7 @@ export const lightTheme = createTheme({
       sideSecond: 'rgba(22, 22, 22, 0.5)',
     },
   },
-  shape: {
-    borderRadius: 8,
-  },
+  ...standardParams,
 });
 
 export const darkTheme = createTheme({
@@ -73,7 +87,5 @@ export const darkTheme = createTheme({
       sideSecond: 'rgba(255, 255, 255, 0.5)',
     },
   },
-  shape: {
-    borderRadius: 8,
-  },
+  ...standardParams,
 });
