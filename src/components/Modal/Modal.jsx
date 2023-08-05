@@ -10,6 +10,7 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
+  borderRadius: '8px',
   boxShadow: 24,
   p: 4,
 };
@@ -26,7 +27,7 @@ const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
 };
 
 ModalWindow.propTypes = {
-  isOpenModal: PropTypes.func.isRequired,
+  isOpenModal: PropTypes.bool.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
