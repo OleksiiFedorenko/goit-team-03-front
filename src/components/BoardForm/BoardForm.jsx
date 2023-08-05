@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -18,6 +19,7 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
+import { Icon } from 'components/Icons';
 
 const iconNames = [
   'project',
@@ -66,7 +68,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
     >
       {({ isSubmitting, dirty, values }) => (
         <FormEl>
-          <Typography variant="h5" mb={2}>
+          <Typography variant="h6" mb={2}>
             {title}
           </Typography>
           <Label>
@@ -88,10 +90,6 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
                   />
                   <IconLabel htmlFor={index}>
                     <IconEl id={icon} />
-                    {/* <svg width={'18px'} height={'18px'} stroke="currentColor">
-                        <use href={sprite + `#${icon}`} />
-                      </svg>
-                    </IconEl> */}
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -127,9 +125,10 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <svg width="18px" height="18px" stroke="currentColor">
-                {/* <use href={sprite + '#icon-name?'} /> */}
-              </svg>
+              <Icon />
+              {/* <svg width="18px" height="18px" stroke="currentColor">
+                <use href={sprite + '#icon-name?'} />
+              </svg> */}
             </IconWrap>
             <span>{type}</span>
           </Btn>
@@ -137,6 +136,12 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
       )}
     </Formik>
   );
+};
+
+BoardForm.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default BoardForm;

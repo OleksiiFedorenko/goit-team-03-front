@@ -85,6 +85,7 @@ export const IconEl = styled(Icon)`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  stroke: currentColor;
 
   &:hover {
     /* color:  */
