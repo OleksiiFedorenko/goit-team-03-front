@@ -6,5 +6,5 @@ export const SideBarWrapper = styled.div`
 
   background-color: #121212;
   color: #ffffff;
-  position: fixed;
+  // position: fixed;
 `;
