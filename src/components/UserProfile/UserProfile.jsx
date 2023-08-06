@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'store/auth/selectors';
 import Modal from 'components/Modal/Modal';
 import { UserWrapper, UserOptions, UserName, UserAvatar } from './User.styled';
 import defaultAvatar from '../../images/user-default-avatar.png';
 
-export const UserProfile = ({ name, avatar }) => {
+export const UserProfile = () => {
   const [showModal, setShowModal] = useState(false);
+  const { name, avatar } = useSelector(selectUser);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -13,6 +16,7 @@ export const UserProfile = ({ name, avatar }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
     <UserWrapper>
       <UserOptions type="button" onClick={handleOpenModal}>
