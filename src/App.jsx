@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ThemeProvider } from '@mui/system';
+import { CssBaseline } from '@mui/material';
 import { violetTheme, lightTheme, darkTheme } from './themes/themes';
 
 import { selectIsRefreshing, selectTheme } from 'store/auth/selectors';
@@ -44,6 +45,7 @@ export const App = () => {
   return (
     !isRefreshing && (
       <ThemeProvider theme={currentTheme}>
+        <CssBaseline />
         <Routes>
           <Route path="/" element={<Container />}>
             <Route

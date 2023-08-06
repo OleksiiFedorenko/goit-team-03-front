@@ -1,34 +1,66 @@
 import { Link } from 'react-router-dom';
-import css from './Home.module.css';
+
+import {
+  Container,
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
+import { background, container, image, logo, text, button } from 'styles';
+
 import { TiFlash } from 'react-icons/ti';
 import user from 'images/start-img.png';
 
 const Home = () => {
   return (
-    <div className={css.container}>
-      <div className={css.inner}>
-        <img className={css.image} src={user} alt="User greeting avatar" />
-        <div className={css.heading}>
-          <div className={css['app-icon']}>
-            <TiFlash color="#fff" size={25} />
-          </div>
-          <h1 className={css.title}>Task Pro</h1>
-        </div>
-        <p className={css.descr}>
+    <Container sx={background.gradient}>
+      <Box sx={container.welcome}>
+        <Box
+          component="img"
+          sx={image.welcome}
+          src={user}
+          alt="User greeting avatar"
+        />
+        <Box sx={logo.welcomeContainer}>
+          <Box sx={logo.welcomeIconWrapper}>
+            <Box sx={logo.welcomeIconSize}>
+              <TiFlash color="#fff" size={'100%'} />
+            </Box>
+          </Box>
+          <Typography component="h1" sx={logo.welcomeText}>
+            Task Pro
+          </Typography>
+        </Box>
+        <Typography component="p" sx={text.welcome}>
           Supercharge your productivity and take control of your tasks with Task
           Pro - Don't wait, start achieving your goals now!
-        </p>
+        </Typography>
 
-        <ul className={css['home-nav']}>
-          <li className={css.link}>
-            <Link to="/auth/register">Registration</Link>
-          </li>
-          <li className={css.link}>
-            <Link to="/auth/login">Log in</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <List sx={button.authGroup}>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/auth/register"
+              sx={button.authItem}
+            >
+              <ListItemText primary="Registration" disableTypography />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              to="/auth/login"
+              sx={button.authItem}
+            >
+              <ListItemText primary="Log in" disableTypography />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+    </Container>
   );
 };
 
