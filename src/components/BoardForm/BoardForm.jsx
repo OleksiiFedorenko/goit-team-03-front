@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+// import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { Typography } from '@mui/material';
 import {
   BgLabel,
   BoardBg,
@@ -8,7 +10,7 @@ import {
   Btn,
   Error,
   FormEl,
-  Icon,
+  IconEl,
   IconLabel,
   Icontainer,
   IconWrap,
@@ -17,6 +19,8 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
+import sprite from 'components/Icons/sprite.svg';
+import { previews } from 'helpers/getBgPreviews';
 
 const iconNames = [
   'project',
@@ -45,8 +49,8 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
-  const dispatch = useDispatch();
+const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
@@ -65,6 +69,9 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
     >
       {({ isSubmitting, dirty, values }) => (
         <FormEl>
+          <Typography variant="h6" mb={2}>
+            {title}
+          </Typography>
           <Label>
             <Input type="text" name="title" placeholder="Title" autoFocus />
             <Error name="title" component="div" />
@@ -83,11 +90,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <Icon>
-                      <svg width={'18px'} height={'18px'} stroke="currentColor">
-                        {/* <use href={sprite + `#${icon}`} /> */}
-                      </svg>
-                    </Icon>
+                    <IconEl id={icon} />
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -98,21 +101,21 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
           <Label>
             <Text>Background</Text>
             <ImageWrap>
-              {/* {previews.map((preview, index) => (
-              <BoardBg key={index}>
-                <Input
-                  type="radio"
-                  id={`back${index}`}
-                  name="background"
-                  value={index}
-                  // checked={Number(values.background) === index}
-                />
-                <BgLabel
-                  htmlFor={`back${index}`}
-                  style={{ backgroundImage: `url(${preview})` }}
-                />
-              </BoardBg>
-            ))} */}
+              {previews.map((preview, index) => (
+                <BoardBg key={index}>
+                  <Input
+                    type="radio"
+                    id={`back${index}`}
+                    name="background"
+                    value={index}
+                    checked={Number(values.background) === index}
+                  />
+                  <BgLabel
+                    htmlFor={`back${index}`}
+                    style={{ backgroundImage: `url(${preview})` }}
+                  />
+                </BoardBg>
+              ))}
             </ImageWrap>
 
             <Error name="background" component="div" />
@@ -124,7 +127,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
           >
             <IconWrap>
               <svg width="18px" height="18px" stroke="currentColor">
-                {/* <use href={sprite + '#icon-name?'} /> */}
+                <use href={sprite + '#icon-plus'} />
               </svg>
             </IconWrap>
             <span>{type}</span>
@@ -133,6 +136,12 @@ const BoardForm = ({ onSubmitForm, onCloseModal, type = 'Create' }) => {
       )}
     </Formik>
   );
+};
+
+BoardForm.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default BoardForm;

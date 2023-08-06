@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Box, Button, Typography } from '@mui/material';
+import { Icon } from 'components/Icons';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormEl = styled(Form)`
@@ -78,12 +79,13 @@ export const IconLabel = styled.label`
   }
 `;
 
-export const Icon = styled.div`
+export const IconEl = styled(Icon)`
   /*     color: */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  stroke: currentColor;
 
   &:hover {
     /* color:  */

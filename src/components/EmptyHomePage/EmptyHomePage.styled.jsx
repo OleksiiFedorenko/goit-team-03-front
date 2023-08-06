@@ -6,6 +6,8 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
+  height: calc(100vh - 68px);
+  background-color: #1f1f1f;
 `;
 
 export const InfoText = styled.p`
@@ -14,10 +16,12 @@ export const InfoText = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  color: rgba(255, 255, 255, 0.5);
 `;
 
 export const MarkedText = styled.span`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
+  color: #bedbb0;
 `;
