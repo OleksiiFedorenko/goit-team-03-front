@@ -6,6 +6,7 @@ import TaskList from './TaskList';
 import { Stack } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import Modal from 'components/Modal/Modal';
+import AddCardForm from 'components/AddCardForm';
 
 const Column = () => {
   const [showModal, setShowModal] = useState(false);
@@ -33,12 +34,9 @@ const Column = () => {
       >
         Add another card
       </Button>
-      <Modal
-        isOpenModal={showModal}
-        onCloseModal={closeModalHandler}
-        title="Add card"
-        type="Create"
-      ></Modal>
+      <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
+        <AddCardForm />
+      </Modal>
     </Stack>
   );
 };
