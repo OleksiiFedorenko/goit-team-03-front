@@ -5,3 +5,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* .priority-text::before {
+  content: '';
+  height: 12px;
+  width: 12px;
+  background-color: blue;
+  border-radius: 50%;
+  display: inline-block;
+} */
