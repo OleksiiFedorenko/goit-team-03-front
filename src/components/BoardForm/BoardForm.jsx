@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Typography } from '@mui/material';
@@ -19,7 +19,8 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
-import { Icon } from 'components/Icons';
+import sprite from 'components/Icons/sprite.svg';
+import { previews } from 'helpers/getBgPreviews';
 
 const iconNames = [
   'project',
@@ -48,8 +49,8 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
-  const dispatch = useDispatch();
+const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
@@ -100,21 +101,21 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
           <Label>
             <Text>Background</Text>
             <ImageWrap>
-              {/* {previews.map((preview, index) => (
-              <BoardBg key={index}>
-                <Input
-                  type="radio"
-                  id={`back${index}`}
-                  name="background"
-                  value={index}
-                  // checked={Number(values.background) === index}
-                />
-                <BgLabel
-                  htmlFor={`back${index}`}
-                  style={{ backgroundImage: `url(${preview})` }}
-                />
-              </BoardBg>
-            ))} */}
+              {previews.map((preview, index) => (
+                <BoardBg key={index}>
+                  <Input
+                    type="radio"
+                    id={`back${index}`}
+                    name="background"
+                    value={index}
+                    checked={Number(values.background) === index}
+                  />
+                  <BgLabel
+                    htmlFor={`back${index}`}
+                    style={{ backgroundImage: `url(${preview})` }}
+                  />
+                </BoardBg>
+              ))}
             </ImageWrap>
 
             <Error name="background" component="div" />
@@ -125,10 +126,9 @@ const BoardForm = ({ onSubmitForm, onCloseModal, title, type }) => {
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <Icon />
-              {/* <svg width="18px" height="18px" stroke="currentColor">
-                <use href={sprite + '#icon-name?'} />
-              </svg> */}
+              <svg width="18px" height="18px" stroke="currentColor">
+                <use href={sprite + '#icon-plus'} />
+              </svg>
             </IconWrap>
             <span>{type}</span>
           </Btn>
