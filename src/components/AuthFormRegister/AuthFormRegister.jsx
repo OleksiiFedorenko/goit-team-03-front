@@ -21,7 +21,7 @@ export const AuthFormRegister = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, {setSubmitting}) => {
-    console.log(JSON.stringify(values, null, 2));
+    alert(JSON.stringify(values, null, 2));
     dispatch(getLogin(values))
     setSubmitting(false);
   }
