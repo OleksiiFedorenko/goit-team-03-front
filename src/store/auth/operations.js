@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api'
+axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api';
 
 const token = {
   set(token) {
@@ -23,7 +23,7 @@ export const getRegistration = createAsyncThunk(
         password,
       });
       const { data } = await axios.post('/auth/login', { email, password });
-     
+
       token.set(data.token);
       return data;
     } catch (error) {
@@ -61,9 +61,8 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/auth/logout');
+      await axios.post('/auth/logout');
       token.unset();
-      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -83,6 +82,39 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/auth/current');
       return data;
     } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateTheme = createAsyncThunk(
+  'auth/updateTheme',
+  async ({ theme }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch('/auth', { theme });
+      return data;
+    } catch (error) {
+      toast.error('Something went wrong! Please, try again.', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateProfile = createAsyncThunk(
+  'auth/updateProfile',
+  async ({ credentials, id }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`auth/${id}`, credentials);
+      return data;
+    } catch (error) {
+      toast.error(
+        'Something went wrong! Please check the correctness of the entered data',
+        {
+          position: toast.POSITION.TOP_RIGHT,
+        }
+      );
       return rejectWithValue(error.message);
     }
   }
