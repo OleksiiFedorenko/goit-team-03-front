@@ -45,3 +45,16 @@ export const Textarea = styled(FormicField)`
       opacity: 1;
     }
 `;
+
+export const Button = styled.button`
+  max-width: 100%;
+  height: 49px;
+  background-color: #BEDBB0;
+
+  color: #161616;
+  border: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 24px;
+  cursor: pointer;
+`;
