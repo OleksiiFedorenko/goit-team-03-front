@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { TopBar } from 'components/TopBar';
 import { SideBar } from 'components/SideBar';
 
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import { container } from 'styles';
 
 export const TasksLayout = () => {
@@ -12,12 +12,14 @@ export const TasksLayout = () => {
       <header>
         <TopBar />
       </header>
-      <main>
+      {/* <main> */}
+      <Box component="main" sx={container.main}>
         <SideBar />
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
-      </main>
+      </Box>
+      {/* </main> */}
     </Container>
   );
 };

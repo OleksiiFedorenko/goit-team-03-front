@@ -30,3 +30,32 @@ export const welcomeText = {
   },
   fontWeight: 600,
 };
+
+export const container = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+};
+
+export const iconWrapper = {
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: 32,
+  height: 32,
+  borderRadius: '8px',
+  backgroundColor: 'background.default',
+};
+
+export const iconSize = {
+  width: 22,
+  height: 22,
+};
+
+export const text = {
+  fontSize: 16,
+  fontWeight: 600,
+  lineHeight: 1.5,
+  letterSpacing: '-0.04em',
+  color: 'text.sideMain',
+};

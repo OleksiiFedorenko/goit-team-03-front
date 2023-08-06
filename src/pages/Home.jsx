@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import { TiFlash } from 'react-icons/ti';
+import user from 'images/start-img.png';
+
 import {
   Container,
   Box,
@@ -10,9 +13,6 @@ import {
   ListItemText,
 } from '@mui/material';
 import { container, image, logo, text, button } from 'styles';
-
-import { TiFlash } from 'react-icons/ti';
-import user from 'images/start-img.png';
 
 const Home = () => {
   return (
