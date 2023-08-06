@@ -1,16 +1,17 @@
 const priorityColorSwitcher = priority => {
   let priorityColor = '';
+
   switch (priority) {
-    case 'low':
+    case 'Low':
       priorityColor = '#8FA1D0';
       break;
-    case 'medium':
+    case 'Medium':
       priorityColor = '#E09CB5';
       break;
-    case 'high':
+    case 'High':
       priorityColor = '#BEDBB0';
       break;
-    case 'without':
+    case 'Without':
       priorityColor = '#595959';
       break;
     default:

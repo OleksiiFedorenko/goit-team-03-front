@@ -31,7 +31,7 @@
     "name": "Quiz Creation",
     "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
     "id": 10008786,
-    "priority": "Medium",
+    "priority": "High",
     "deadline": "15/09/1917"
   },
   {

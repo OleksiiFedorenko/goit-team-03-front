@@ -4,9 +4,6 @@ import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
 import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
-
-import CircleIcon from '@mui/icons-material/Circle';
-
 import Stack from '@mui/material/Stack';
 import { Icon } from 'components/Icons';
 import { IconButton } from '@mui/material';
@@ -19,7 +16,17 @@ const TruncatedText = ({ text }) => (
 
 const Task = ({ name, description, priority, deadline }) => {
   const priorityColor = priorityColorSwitcher(priority);
-  console.log(priorityColor);
+  const priorityStyle = {
+    '&::before': {
+      content: '""',
+      height: '12px',
+      width: '12px',
+      backgroundColor: `${priorityColor}`,
+      borderRadius: '50%',
+      display: 'inline-block',
+    },
+  };
+
   return (
     <Card
       elevation={2}
@@ -38,10 +45,7 @@ const Task = ({ name, description, priority, deadline }) => {
             <Typography variant="body2" color="textSecondary">
               Priority
             </Typography>
-            <Stack direction="row" alignItems="center">
-              <CircleIcon color="primary" />
-              {priority}
-            </Stack>
+            <Typography sx={priorityStyle}>{priority}</Typography>
           </Stack>
 
           <Stack>
@@ -58,7 +62,7 @@ const Task = ({ name, description, priority, deadline }) => {
             justifyContent="flex-end"
           >
             <IconButton>
-              <Icon id={'deadline'} />
+              <Icon id={'alert'} />
             </IconButton>
 
             <IconButton>
@@ -66,10 +70,10 @@ const Task = ({ name, description, priority, deadline }) => {
             </IconButton>
 
             <IconButton>
-              <Icon id={'edit'} />
+              <Icon id={'pencil'} />
             </IconButton>
             <IconButton>
-              <Icon id={'delete'} />
+              <Icon id={'trash'} />
             </IconButton>
           </Stack>
         </Stack>

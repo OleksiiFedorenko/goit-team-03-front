@@ -10,10 +10,10 @@ const ColumnHeader = ({ title }) => {
           action={
             <div>
               <IconButton>
-                <Icon id={'edit'} />
+                <Icon id={'pencil'} />
               </IconButton>
               <IconButton>
-                <Icon id={'delete'} />
+                <Icon id={'trash'} />
               </IconButton>
             </div>
           }

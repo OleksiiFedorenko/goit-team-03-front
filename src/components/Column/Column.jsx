@@ -12,6 +12,7 @@ const Column = () => {
         width: '100%',
         maxWidth: 360,
         height: '100vh',
+        marginLeft: '15px',
       }}
     >
       <ColumnHeader title={'Todo'}></ColumnHeader>
