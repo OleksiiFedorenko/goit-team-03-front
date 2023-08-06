@@ -1,6 +1,6 @@
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-
+import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
 import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
@@ -18,8 +18,15 @@ const TruncatedText = ({ text }) => (
 );
 
 const Task = ({ name, description, priority, deadline }) => {
+  const priorityColor = priorityColorSwitcher(priority);
+  console.log(priorityColor);
   return (
-    <Card elevation={2}>
+    <Card
+      elevation={2}
+      sx={{
+        borderLeft: `4px solid ${priorityColor}`,
+      }}
+    >
       <CardHeader title={name} />
       <CardContent>
         <TruncatedText text={description} />

@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import Task from './Task';
 
 const TaskList = ({ cards }) => {
@@ -11,6 +11,7 @@ const TaskList = ({ cards }) => {
     >
       {cards.map(card => {
         const { name, description, priority, deadline } = card;
+
         return (
           <Task
             key={card.id}
