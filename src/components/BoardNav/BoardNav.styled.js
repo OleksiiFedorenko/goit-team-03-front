@@ -1,18 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const BoardsContainer = styled.div`
-  margin-bottom: 40px;
-`;
-
-export const BoardsTitle = styled.p`
-  font-size: 12px;
-  padding-left: 24px;
-  margin-bottom: 8px;
-  color: #ffffff;
-  opacity: 50%;
-`;
-
 export const CreateBoardWrapper = styled.div`
   margin-bottom: 40px;
   width: 210px;

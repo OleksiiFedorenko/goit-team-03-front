@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 
+import { TiFlash } from 'react-icons/ti';
+import user from 'images/start-img.png';
+
 import {
   Container,
   Box,
@@ -9,14 +12,11 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { background, container, image, logo, text, button } from 'styles';
-
-import { TiFlash } from 'react-icons/ti';
-import user from 'images/start-img.png';
+import { container, image, logo, text, button } from 'styles';
 
 const Home = () => {
   return (
-    <Container sx={background.gradient}>
+    <Container sx={container.gradient}>
       <Box sx={container.welcome}>
         <Box
           component="img"

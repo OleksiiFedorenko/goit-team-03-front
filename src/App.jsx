@@ -20,11 +20,11 @@ const Login = lazy(() => import('pages/LoginPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
 const TasksPage = lazy(() => import('pages/TasksPage'));
 const BoardPage = lazy(() => import('pages/BoardPage'));
-const EmptyHomePage = lazy(() =>
-  import('components/EmptyHomePage').then(module => {
+const NoBoardPage = lazy(() =>
+  import('pages/NoBoardPage').then(module => {
     return {
       ...module,
-      default: module.EmptyHomePage,
+      default: module.NoBoardPage,
     };
   })
 );
@@ -75,7 +75,7 @@ export const App = () => {
                 </PrivateRoute>
               }
             >
-              <Route index element={<EmptyHomePage />} />
+              <Route index element={<NoBoardPage />} />
               <Route path=":boardId" element={<BoardPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/" />} />

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
+import BoardForm from 'components/BoardForm/BoardForm';
+
+import { Box, Typography } from '@mui/material';
+import { container, text } from 'styles';
+
 import {
-  BoardsContainer,
-  BoardsTitle,
   CreateBoardWrapper,
   CreateBoardTitle,
   CreateBoardButton,
@@ -11,10 +14,9 @@ import {
   BoardsItem,
   StyledLink,
   BoardInfo,
-} from './BoardList.styled';
-import BoardForm from 'components/BoardForm/BoardForm';
+} from './BoardNav.styled';
 
-export const BoardList = () => {
+export const BoardNav = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeLink, setActiveLink] = useState(false);
   const handleOpenModal = () => {
@@ -24,9 +26,12 @@ export const BoardList = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
-    <BoardsContainer>
-      <BoardsTitle>My boards</BoardsTitle>
+    <Box sx={container.boardNav}>
+      <Typography component="h2" variant="h4" sx={text.boardNavTitle}>
+        My boards
+      </Typography>
       <CreateBoardWrapper>
         <CreateBoardTitle>
           Create a <br />
@@ -66,6 +71,6 @@ export const BoardList = () => {
           </BoardsItem>
         </BoardsList>
       </BoardsWrapper>
-    </BoardsContainer>
+    </Box>
   );
 };
