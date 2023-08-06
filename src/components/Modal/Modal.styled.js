@@ -25,7 +25,7 @@ import styled from '@emotion/styled';
 //   }
 // `;
 
-export const BtnClose = styled.button`
+export const BtnClose = styled.div`
   position: absolute;
   top: 14px;
   right: 14px;
