@@ -1,11 +1,20 @@
+import { useState } from 'react';
 import cards from '../../test-data/cards.json';
 import Button from '@mui/material/Button';
 import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
 import { Stack } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import Modal from 'components/Modal/Modal';
 
 const Column = () => {
+  const [showModal, setShowModal] = useState(false);
+  const openModalHandler = () => {
+    setShowModal(true);
+  };
+  const closeModalHandler = () => {
+    setShowModal(false);
+  };
   return (
     <Stack
       sx={{
@@ -17,9 +26,19 @@ const Column = () => {
     >
       <ColumnHeader title={'Todo'}></ColumnHeader>
       <TaskList cards={cards}></TaskList>
-      <Button variant="contained" startIcon={<AddBoxIcon />}>
+      <Button
+        variant="contained"
+        startIcon={<AddBoxIcon />}
+        onClick={openModalHandler}
+      >
         Add another card
       </Button>
+      <Modal
+        isOpenModal={showModal}
+        onCloseModal={closeModalHandler}
+        title="Add card"
+        type="Create"
+      ></Modal>
     </Stack>
   );
 };
