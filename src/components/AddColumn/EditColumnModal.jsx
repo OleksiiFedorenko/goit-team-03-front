@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import sprite from 'components/Icons/sprite.svg';
+import { Icon } from 'components/Icons';
 
 import {
   FormWrapper,
@@ -12,7 +12,7 @@ import {
   ModalForm,
   ErrorSection,
   ButtonPlus,
-} from '../AddColumn/AddColumnModal.styled';
+} from './AddColumnModal.styled';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -52,7 +52,7 @@ const EditColumnModal = ({ title, columnId, closeModal }) => {
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
               <PlusIcon>
-                <use href={sprite + '#icon-plus'} />
+                 <Icon id={"plus"} />
               </PlusIcon>
             </ButtonPlus>
             Edit

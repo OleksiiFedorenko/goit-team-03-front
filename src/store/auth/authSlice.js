@@ -4,6 +4,8 @@ import {
   getLogin,
   logout,
   fetchCurrentUser,
+  updateTheme,
+  updateProfile
 } from './operations';
 
 const authSlice = createSlice({
@@ -17,12 +19,12 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload.user};
+        state.user = {...state.user, ...action.payload};
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload.user};
+        state.user = {...state.user, ...action.payload};
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -42,7 +44,15 @@ const authSlice = createSlice({
       })
       .addCase(fetchCurrentUser.rejected, state => {
         state.isRefreshing = false;
-      });
+      })
+
+      .addCase(updateTheme.fulfilled, (state, action) => {
+        state.user = {...state.user, ...action.payload}
+      })
+
+      .addCase(updateProfile.fulfilled, (state, action) => {
+        state.user = {...state.user, ...action.payload}
+      })
   },
 });
 

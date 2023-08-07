@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { needHelp } from 'store/boards/operations';
 import { Formik, ErrorMessage } from 'formik';
-import { Title, Field, Form, Textarea } from './NeedHelpForm.styled';
+import { Title, Field, Form, Textarea, Button } from './NeedHelpForm.styled';
 import * as Yup from 'yup';
 import Notiflix from "notiflix";
 
@@ -19,15 +19,15 @@ const helpSchema = Yup.object().shape({
       .required('Please, enter your comment'),
   });
 
-export const NeedHelpForm = ({onClose}) => {
+export const NeedHelpForm = ({onCloseModal}) => {
     const dispatch = useDispatch();
 
     function handleSubmit(value) {
        const { email, text } = value;
       dispatch(needHelp({ email, text }))
       Notiflix.Notify.info('Thank you for your request, we will answer you as soon as possible.')
-        onClose()
-      }
+        onCloseModal()
+    }
     return (
         <>
         <Title>Need Help</Title>
@@ -57,6 +57,7 @@ export const NeedHelpForm = ({onClose}) => {
                   fontSize: 14,
                 }}
               />
+              <Button type="submit">Send</Button>
             </Form>
         </Formik>
         </>
