@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
-import Button from '@mui/material/Button';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { Stack } from '@mui/material';
+import { Button, IconStyle, IconWrapper, Text } from './AddColumnButton.styled';
 import AddColumnModal from './AddColumnModal';
-// import { Icon } from 'components/Icons';
+import { Icon } from 'components/Icons';
 
 const AddColumnButton = () => {
     const [showModal, setShowModal] = useState(false);
@@ -15,22 +13,23 @@ const AddColumnButton = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-    return (
-        <Stack
-      sx={{
-          width: '100%',
-        maxHeight: 56,
-        maxWidth: 360,
-        marginLeft: '15px',
-      }}
-    >
-        <Button type='button' onClick={handleOpenModal} variant="contained" startIcon={<AddBoxIcon />}>
-            Add another column
-            </Button>
+  return (
+      <>
+      <Button type="button" onClick={handleOpenModal}>
+        <IconWrapper>
+          <IconStyle>
+            <Icon id={"plus"} />
+          </IconStyle>
+        </IconWrapper>
+          <Text>Add another column</Text>
+        </Button>
+        {showModal && (
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <AddColumnModal  onCloseModal={handleCloseModal}/>
-            </Modal>
-       </Stack>
+          <AddColumnModal  onCloseModal={handleCloseModal} title="New board"
+            type="Submit"/>
+          </Modal>
+           )}
+      </>
     )
 }
 export default AddColumnButton;
