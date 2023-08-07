@@ -93,3 +93,15 @@ export const boardNav = {
   width: '100%',
   mt: '60px',
 };
+
+export const modal = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.header',
+  border: '1px solid rgba(190, 219, 176, 0.5)',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: '24px',
+};
