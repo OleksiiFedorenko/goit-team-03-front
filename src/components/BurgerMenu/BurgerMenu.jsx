@@ -28,13 +28,13 @@ export const BurgerMenu = () => {
   }, []);
 
   useEffect(() => {
-    if (windowWidth >= 768) {
+    if (windowWidth >= 1440) {
       setMenuVisible(false);
     }
   }, [windowWidth]);
 
   return (
-    windowWidth <= 768 && (
+    windowWidth <= 1440 && (
       <Box sx={{ mr: 'auto' }}>
         <Button onClick={toggleMenu} sx={button.burgerMenu}>
           <Icon id={'burger-menu'}></Icon>

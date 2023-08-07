@@ -33,6 +33,7 @@ export const topBar = {
 };
 
 export const sideBar = {
+  display: { zeroUp: 'none', desktop: 'block' },
   position: 'relative',
   zIndex: '20',
   width: {
@@ -45,9 +46,6 @@ export const sideBar = {
     tablet: '24px',
   },
   backgroundColor: 'background.side',
-  '@media (max-width: 768px)': {
-    display: 'none',
-  },
 };
 
 export const BurgerMenu = {
