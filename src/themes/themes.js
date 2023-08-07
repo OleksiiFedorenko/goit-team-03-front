@@ -34,9 +34,15 @@ const standardParams = {
       lineHeight: 1.5,
       letterSpacing: '-0.02em',
     },
+    h4: {
+      fontSize: 12,
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
     body1: {
       fontSize: 14,
-      lineHeight: 1.5,
+      lineHeight: 1.29,
       letterSpacing: '-0.02em',
     },
     body2: {
@@ -66,9 +72,9 @@ export const violetTheme = createTheme({
     },
     text: {
       primary: '#161616',
-      secondary: 'rgba(22, 22, 22, 0.7)',
+      secondary: '#161616B2',
       sideMain: '#FFF',
-      sideSecond: 'rgba(255, 255, 255, 0.5)',
+      sideSecond: '#FFFFFF80',
       ...standardColors,
     },
   },
@@ -91,9 +97,9 @@ export const lightTheme = createTheme({
     },
     text: {
       primary: '#161616',
-      secondary: 'rgba(22, 22, 22, 0.7)',
+      secondary: '#161616B2',
       sideMain: '#161616',
-      sideSecond: 'rgba(22, 22, 22, 0.5)',
+      sideSecond: '#16161680',
       ...standardColors,
     },
   },
@@ -116,9 +122,9 @@ export const darkTheme = createTheme({
     },
     text: {
       primary: '#FFF',
-      secondary: 'rgba(255, 255, 255, 0.5)',
+      secondary: '#FFFFFF80',
       sideMain: '#FFF',
-      sideSecond: 'rgba(255, 255, 255, 0.5)',
+      sideSecond: '#FFFFFF80',
       ...standardColors,
     },
   },

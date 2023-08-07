@@ -9,13 +9,14 @@ import {
   TaskProHelperButton,
   TaskProHelperButtonText,
 } from './HelpBanner.styled';
+import { NeedHelpForm } from './NeedHelpForm';
 
 export const HelpBanner = () => {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     setShowModal(true);
   };
-
+  
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -36,7 +37,12 @@ export const HelpBanner = () => {
         <TaskProHelperButtonText>Need help?</TaskProHelperButtonText>
       </TaskProHelperButton>
       {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
+        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+          <NeedHelpForm 
+            onCloseModal={handleCloseModal}
+            title="New bord"
+            type="Submit"/>
+        </Modal>  
       )}
     </TaskProHelperWrapper>
   );

@@ -1,13 +1,18 @@
-import React from 'react';
 import { ThemePanel } from 'components/ThemePanel';
 import { UserProfile } from 'components/UserProfile';
+
+import { Box } from '@mui/material';
+import { container } from 'styles';
+
 import { TopBarWrapper } from './TopBar.styled';
 
-export const TopBar = ({ name, avatar }) => {
+export const TopBar = () => {
   return (
-    <TopBarWrapper>
-      <ThemePanel />
-      <UserProfile name={name} avatar={avatar} />
-    </TopBarWrapper>
+    <Box sx={container.topBar}>
+      <TopBarWrapper>
+        <ThemePanel />
+        <UserProfile />
+      </TopBarWrapper>
+    </Box>
   );
 };
