@@ -14,6 +14,12 @@ export const authItem = {
   },
 };
 
+export const burgerMenu = {
+  p: '0',
+  minWidth: '32px',
+  height: '32px',
+};
+
 export const createBoard = {
   display: 'flex',
   justifyContent: 'space-between',

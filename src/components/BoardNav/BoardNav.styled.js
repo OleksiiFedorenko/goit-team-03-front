@@ -8,6 +8,7 @@ export const BoardsList = styled.ul`
   align-items: flex-start;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 40px;
 `;
 
 export const BoardsItem = styled.li`
