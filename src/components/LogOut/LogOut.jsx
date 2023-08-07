@@ -1,13 +1,19 @@
 import { logout } from 'store/auth/operations';
 import { useDispatch } from 'react-redux';
-import { LogOutWrapper, LogOutButton } from './LogOut.styled';
+
+import { Button } from '@mui/material';
+import { button } from 'styles';
 
 export const LogOut = () => {
   const dispatch = useDispatch();
 
   return (
-    <LogOutWrapper>
-      <LogOutButton onClick={() => dispatch(logout())}>Log out</LogOutButton>
-    </LogOutWrapper>
+    <Button
+      onClick={() => dispatch(logout())}
+      variant="text"
+      sx={button.logOut}
+    >
+      Log out
+    </Button>
   );
 };

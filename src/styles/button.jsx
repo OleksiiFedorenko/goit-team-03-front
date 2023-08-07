@@ -25,7 +25,7 @@ export const createBoard = {
   justifyContent: 'space-between',
   width: '100%',
   height: 70,
-  px: 0,
+  px: { zeroUp: '14px', tablet: '24px' },
   my: '8px',
   color: 'text.sideMain',
   textAlign: 'start',
@@ -35,8 +35,7 @@ export const createBoard = {
   borderLeft: 'none',
   borderRight: 'none',
   '&:hover, &:focus': {
-    color: 'text.sideSecond',
-    backgroundColor: 'side.divider',
+    backgroundColor: 'side.activeBtn',
     borderLeft: 'none',
     borderRight: 'none',
     '& .createBoardBox': {
@@ -49,6 +48,7 @@ export const createBoardInner = {
   display: 'flex',
   justifyContent: 'space-between',
   width: '100%',
+  fontWeight: 500,
 };
 
 export const createBoardBox = {
@@ -58,12 +58,52 @@ export const createBoardBox = {
   borderRadius: '6px',
 };
 
-export const createBoardIcon = {
+export const createBoardIcon = {};
+
+export const boardListGroup = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  gap: '4px',
+  mt: '40px',
   width: '100%',
-  height: 70,
-  color: '#FFF',
-  borderColor: '#FFF',
-  borderRadius: '0',
-  borderLeft: 'none',
-  borderRight: 'none',
+};
+
+export const boardListItem = {
+  display: 'flex',
+  height: '61px',
+  p: 0,
+  pl: { zeroUp: '14px', tablet: '24px' },
+  color: 'text.sideSecond',
+  fontWeight: 500,
+  '&:hover, &:focus, &.active': {
+    color: 'text.sideMain',
+    backgroundColor: 'side.activeBtn',
+    '& .activeBoardBtn': {
+      backgroundColor: 'side.activeBoardBox',
+    },
+  },
+};
+
+export const boardListBox = {
+  width: '4px',
+  height: '100%',
+  borderRadius: '4px 0px 0px 4px',
+};
+
+export const logOut = {
+  display: 'flex',
+  justifyContent: 'start',
+  width: '100%',
+  height: '60px',
+  pl: { zeroUp: '14px', tablet: '24px' },
+  mt: '10px',
+  mb: { zeroUp: 0, tablet: '10px' },
+  color: 'text.sideMain',
+  textAlign: 'start',
+  textTransform: 'none',
+  borderRadius: 0,
+  '&:hover, &:focus': {
+    backgroundColor: 'side.activeBtn',
+  },
 };
