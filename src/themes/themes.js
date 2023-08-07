@@ -77,6 +77,16 @@ export const violetTheme = createTheme({
       sideSecond: '#FFFFFF80',
       ...standardColors,
     },
+    divider: {
+      side: '#FFFFFF1A',
+    },
+    side: {
+      divider: '#FFFFFF1A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#979CEA',
+      activeBtn: 'rgba(255, 255, 255, 0.2)',
+      activeBoardBox: '#FFF',
+    },
   },
   ...standardParams,
 });
@@ -102,6 +112,13 @@ export const lightTheme = createTheme({
       sideSecond: '#16161680',
       ...standardColors,
     },
+    side: {
+      divider: '#1616161A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#9DC888',
+      activeBoard: 'rgba(246, 246, 247, 0.4)',
+      activeBoardBox: '#BEDBB0',
+    },
   },
   ...standardParams,
 });
@@ -126,6 +143,13 @@ export const darkTheme = createTheme({
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
       ...standardColors,
+    },
+    side: {
+      divider: '#FFFFFF1A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#9DC888',
+      activeBoard: 'rgba(31, 31, 31, 0.4)',
+      activeBoardBox: '#BEDBB0',
     },
   },
   ...standardParams,

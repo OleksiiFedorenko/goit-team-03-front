@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Logo } from 'components/Logo';
-import { BoardNav } from 'components/BoardNav';
-import { HelpBanner } from 'components/HelpBanner';
-import { LogOut } from 'components/LogOut';
+import { SideBar } from 'components/SideBar';
 import { Icon } from 'components/Icons';
 
 import { Box, Button, Drawer } from '@mui/material';
@@ -40,18 +37,7 @@ export const BurgerMenu = () => {
           <Icon id={'burger-menu'}></Icon>
         </Button>
         <Drawer anchor="left" open={menuVisible} onClose={toggleMenu}>
-          <Box sx={container.BurgerMenu}>
-            <Box>
-              <Box>
-                <Logo />
-                <BoardNav />
-              </Box>
-            </Box>
-            <Box sx={{ width: 212 }}>
-              <HelpBanner />
-              <LogOut />
-            </Box>
-          </Box>
+          <SideBar contStyles={container.sideBar} />
         </Drawer>
       </Box>
     )
