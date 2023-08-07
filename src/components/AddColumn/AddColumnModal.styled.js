@@ -12,7 +12,7 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  color: ${props => props.theme.modal.textMain};
+  color: #161616;
   font-size: 18px;
   font-family: 'Poppins';
   font-weight: 500;
@@ -43,18 +43,18 @@ export const TitleInput = styled(Field)`
   font-family: 'Poppins';
   letter-spacing: -0.28px;
 
-  background-color: ${props => props.theme.modal.backgroundMain};
-  border: 1px solid ${props => props.theme.modal.buttonBackground};
+  background-color:#fff;
+  border: 1px solid #5255BC;
   box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
   outline: none;
   border-radius: 8px;
 
-  color: ${props => props.theme.modal.textMain};
+  color:#161616;
   transition: all 250ms ease;
   opacity: 0.4;
 
   &::placeholder {
-    color: ${props => props.theme.modal.textMain};
+    color: #161616;
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
@@ -72,7 +72,7 @@ export const AuthFormSubmitButton = styled.button`
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: ${props => props.theme.modal.buttonBackground};
+  background: #5255BC;
   border-radius: 8px;
 
   font-family: 'Poppins';
@@ -80,7 +80,7 @@ export const AuthFormSubmitButton = styled.button`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
-  color: ${props => props.theme.modal.buttonText};
+  color: #fff;
 
   transition: all 150ms linear;
   cursor: pointer;
@@ -98,7 +98,7 @@ export const ButtonPlus = styled.div`
 
   width: 28px;
   height: 28px;
-  background-color: ${props => props.theme.modal.plusBackground};
+  background-color: #fff;
   margin-right: 8px;
   padding: 7px;
 `;
@@ -106,7 +106,7 @@ export const ButtonPlus = styled.div`
 export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: ${props => props.theme.modal.plusColor};
+  stroke: #161616;
 `;
 
 export const ErrorSection = styled(ErrorMessage)`

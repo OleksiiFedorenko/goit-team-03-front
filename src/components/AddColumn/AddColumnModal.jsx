@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useDispatch } from "react-redux";
 
 import {
   FormWrapper,
@@ -10,10 +11,10 @@ import {
   ModalForm,
   ErrorSection,
   ButtonPlus,
-} from '../AddColumn/AddColumnModal.styled';
+} from './AddColumnModal.styled';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import sprite from 'components/Icons/sprite.svg';
+import { Icon } from 'components/Icons';
 
 
 const validationSchema = Yup.object().shape({
@@ -24,7 +25,8 @@ const initialValues = {
 };
 
 const AddColumnModal = ({ onCloseModal}) => {
-
+    // const dispatch = useDispatch();
+    
     const handleSubmit = (values, { resetForm }) => {
         // const { title } = values;
         resetForm();
@@ -54,7 +56,7 @@ const AddColumnModal = ({ onCloseModal}) => {
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
               <PlusIcon>
-                <use href={sprite + '#icon-plus'} />
+                 <Icon id={"plus"} />
               </PlusIcon>
             </ButtonPlus>
             Add
