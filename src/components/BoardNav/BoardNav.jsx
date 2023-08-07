@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 
-import { Box, Typography } from '@mui/material';
-import { container, text } from 'styles';
+import { Box, Typography, Button } from '@mui/material';
+import { container, text, button } from 'styles';
 
 import {
-  CreateBoardWrapper,
-  CreateBoardTitle,
-  CreateBoardButton,
   BoardsWrapper,
   BoardsList,
   BoardsItem,
@@ -32,23 +29,24 @@ export const BoardNav = () => {
       <Typography component="h2" variant="h4" sx={text.boardNavTitle}>
         My boards
       </Typography>
-      <CreateBoardWrapper>
-        <CreateBoardTitle>
-          Create a <br />
+      <Button
+        onClick={handleOpenModal}
+        variant="outlined"
+        sx={button.createBoard}
+      >
+        <Typography component="span">
+          Create a<br />
           new board
-        </CreateBoardTitle>
-        <CreateBoardButton
-          type="button"
-          onClick={handleOpenModal}
-        ></CreateBoardButton>
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <BoardForm
-            onCloseModal={handleCloseModal}
-            title="New bord"
-            type="Create"
-          />
-        </Modal>
-      </CreateBoardWrapper>
+        </Typography>
+        <Box className="createBoardBox" sx={button.createBoardBox}></Box>
+      </Button>
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <BoardForm
+          onCloseModal={handleCloseModal}
+          title="New bord"
+          type="Create"
+        />
+      </Modal>
       <BoardsWrapper>
         <BoardsList>
           <BoardsItem>
