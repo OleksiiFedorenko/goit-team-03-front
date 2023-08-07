@@ -13,3 +13,9 @@ export const authItem = {
     backgroundColor: 'text.primary',
   },
 };
+
+export const burgerMenu = {
+  p: '0',
+  minWidth: '32px',
+  height: '32px',
+};

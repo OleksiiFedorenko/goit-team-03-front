@@ -45,6 +45,24 @@ export const sideBar = {
     tablet: '24px',
   },
   backgroundColor: 'background.side',
+  '@media (max-width: 768px)': {
+    display: 'none',
+  },
+};
+
+export const BurgerMenu = {
+  position: 'relative',
+  zIndex: '20',
+  width: {
+    zeroUp: 225,
+    tablet: 260,
+  },
+  height: '100%',
+  p: {
+    zeroUp: '14px',
+    tablet: '24px',
+  },
+  backgroundColor: 'background.side',
 };
 
 export const board = {
