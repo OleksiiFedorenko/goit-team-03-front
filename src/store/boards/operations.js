@@ -2,18 +2,82 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api'
+axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api';
 
-export const needHelp = createAsyncThunk('help', async (user, thunkAPI) => {
+export const needHelp = createAsyncThunk(
+  'help',
+  async ({ email, text }, thunkAPI) => {
     try {
-      const response = await axios.post('/help/email', {
-        replyEmail: user.email,
-        comment: user.text,
+      await axios.post('/help', {
+        email,
+        message: text,
       });
       Notiflix.Notify.success('Your Email Send, we will contact you!');
-      return response.data;
     } catch (e) {
       Notiflix.Notify.failure('Something going wrong!');
+      console.log(e.message)
       return thunkAPI.rejectWithValue(e.message);
     }
-});
+  }
+);
+
+export const getAllBoards = createAsyncThunk(
+  'boards/getAllBoards',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/boards');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getBoardById = createAsyncThunk(
+  'boards/getBoardById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`boatds/${id}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addBoard = createAsyncThunk(
+  'boards/addBoard',
+  async ({ title, icon, background }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('boards', { title, icon, background });
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateBoard = createAsyncThunk(
+  'board/updateBoard',
+  async ({_id, title, icon, background}, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`boards/${_id}`,{title, icon, background});
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteBoard = createAsyncThunk(
+  'boards/deleteBoard',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`boards/${id}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
