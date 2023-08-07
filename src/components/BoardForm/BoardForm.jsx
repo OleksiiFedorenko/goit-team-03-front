@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Typography } from '@mui/material';
@@ -21,6 +21,7 @@ import {
 } from './BoardForm.styled';
 import sprite from 'components/Icons/sprite.svg';
 import { previews } from 'helpers/getBgPreviews';
+import { addBoard } from 'store/boards/operations';
 
 const iconNames = [
   'project',
@@ -50,11 +51,12 @@ const initialValues = {
 };
 
 const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
-    // dispatch(addBoard(values));
+    console.log(values)
+    dispatch(addBoard(values));
     setSubmitting(false);
     resetForm();
     onCloseModal();
