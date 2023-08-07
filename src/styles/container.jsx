@@ -33,6 +33,22 @@ export const topBar = {
 };
 
 export const sideBar = {
+  display: { zeroUp: 'none', desktop: 'block' },
+  position: 'relative',
+  zIndex: '20',
+  width: {
+    zeroUp: 225,
+    tablet: 260,
+  },
+  height: '100%',
+  p: {
+    zeroUp: '14px',
+    tablet: '24px',
+  },
+  backgroundColor: 'background.side',
+};
+
+export const BurgerMenu = {
   position: 'relative',
   zIndex: '20',
   width: {
