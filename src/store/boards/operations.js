@@ -37,7 +37,7 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`boatds/${id}`);
+      const { data } = await axios.get(`boards/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

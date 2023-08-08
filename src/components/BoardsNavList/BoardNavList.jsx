@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {
   Box,
@@ -9,11 +10,15 @@ import {
 } from '@mui/material';
 import { Icon } from 'components/Icons';
 
+import { getBoardById } from 'store/boards/operations';
+
 export const BoardNavList = ({ boards }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const dispatch = useDispatch();
 
-  const handleListItemClick = (event, index) => {
+  const handleListItemClick = (event, index, boardId) => {
     setSelectedIndex(index);
+    dispatch(getBoardById(boardId));
   };
   return (
     <Box sx={{ width: '100%', m: '0', p: '0' }}>
@@ -36,7 +41,7 @@ export const BoardNavList = ({ boards }) => {
                 },
               ]}
               selected={selectedIndex === index}
-              onClick={event => handleListItemClick(event, index)}
+              onClick={event => handleListItemClick(event, index, board._id)}
             >
               <Icon id={board.icon} />
 
@@ -66,5 +71,3 @@ export const BoardNavList = ({ boards }) => {
     </Box>
   );
 };
-
-

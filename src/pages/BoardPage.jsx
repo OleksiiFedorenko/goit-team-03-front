@@ -1,25 +1,16 @@
-import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Column from 'components/Column/Column';
 import AddColumnButton from 'components/AddColumn/AddColumnButton';
 import EditColumnButton from 'components/AddColumn/EditColumnButton';
-import { getBoardById } from 'store/boards/operations';
-
+import { selectBoard } from 'store/boards/selectors';
 
 const BoardPage = () => {
-  const { boardId } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getBoardById(boardId));
-  }, [dispatch, boardId]);
-
+  const board = useSelector(selectBoard);
   return (
     <div>
-      <h1>BoardPage: {boardId}</h1>
+      <h1>BoardPage: {board.title}</h1>
       <AddColumnButton />
-      <EditColumnButton/>
+      <EditColumnButton />
       <Column />
     </div>
   );

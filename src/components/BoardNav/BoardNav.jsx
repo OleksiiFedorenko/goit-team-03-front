@@ -50,7 +50,7 @@ export const BoardNav = () => {
         </Modal>
       </CreateBoardWrapper>
 
-      <BoardNavList boards={boards}/>
+      <BoardNavList boards={boards} />
       {/* <BoardsWrapper>
         <BoardsList>
           <BoardsItem>
