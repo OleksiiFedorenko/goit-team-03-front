@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import { needHelp } from 'store/boards/operations';
 import { Formik, ErrorMessage } from 'formik';
-import { Title, Field, Form, Textarea, Button } from './NeedHelpForm.styled';
+
 import * as Yup from 'yup';
 import Notiflix from "notiflix";
+import { ThemeProvider, Typography, TextField, Button, FormControl } from "@mui/material";
+import { violetTheme } from "../../themes/themes";
 
 const helpSchema = Yup.object().shape({
     email: Yup.string()
@@ -29,8 +31,9 @@ export const NeedHelpForm = ({onCloseModal}) => {
         onCloseModal()
     }
     return (
+      <ThemeProvider theme={violetTheme}>
         <>
-        <Title>Need Help</Title>
+        <Typography variant="h2" mb={2}>Need help</Typography>
         <Formik
           initialValues={{ email: '', text: '' }}
           validationSchema={helpSchema}
@@ -38,9 +41,15 @@ export const NeedHelpForm = ({onCloseModal}) => {
             handleSubmit(value);
             resetForm();
           }}>
-            <Form>
-            <Field type="email" name="email" placeholder="Email address" />
-            <ErrorMessage
+            <FormControl fullWidth>
+            <TextField 
+              type="email" 
+              name="email" 
+              variant="outlined"
+              style={{marginBottom: 14}}
+              placeholder="Email address" 
+              />
+              <ErrorMessage
                 name="email"
                 component="div"
                 style={{
@@ -48,7 +57,15 @@ export const NeedHelpForm = ({onCloseModal}) => {
                   fontSize: 14,
                 }}
               />
-              <Textarea type="text" name="text" placeholder="Comment" component="textarea" />
+            <TextField
+              type="text" 
+              name="text"
+              variant="outlined"
+              placeholder="Comment"
+              multiline
+              rows={6}
+              style={{marginBottom: 24}}
+               />
               <ErrorMessage
                 name="text"
                 component="div"
@@ -57,10 +74,19 @@ export const NeedHelpForm = ({onCloseModal}) => {
                   fontSize: 14,
                 }}
               />
-              <Button type="submit">Send</Button>
-            </Form>
+            <Button 
+              color="primary" 
+              variant="contained" 
+              fullWidth 
+              style={{ textTransform: 'none' }}
+              type="submit">
+                Send
+            </Button>
+            </FormControl>
         </Formik>
         </>
+      </ThemeProvider>
     )
 
 }
+
