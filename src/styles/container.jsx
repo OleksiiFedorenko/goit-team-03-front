@@ -102,3 +102,9 @@ export const modal = {
   boxShadow: 24,
   p: '24px',
 };
+
+export const modalContent = {
+  width: {
+    mobileFixed: '95%',
+  },
+};
