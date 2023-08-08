@@ -4,8 +4,7 @@ import { Formik, ErrorMessage } from 'formik';
 
 import * as Yup from 'yup';
 import Notiflix from "notiflix";
-import { ThemeProvider, Typography, TextField, Button, FormControl } from "@mui/material";
-import { violetTheme } from "../../themes/themes";
+import { Typography, TextField, Button, FormControl } from "@mui/material";
 
 const helpSchema = Yup.object().shape({
     email: Yup.string()
@@ -30,8 +29,7 @@ export const NeedHelpForm = ({onCloseModal}) => {
       Notiflix.Notify.info('Thank you for your request, we will answer you as soon as possible.')
         onCloseModal()
     }
-    return (
-      <ThemeProvider theme={violetTheme}>
+    return (   
         <>
         <Typography variant="h2" mb={2}>Need help</Typography>
         <Formik
@@ -84,9 +82,7 @@ export const NeedHelpForm = ({onCloseModal}) => {
             </Button>
             </FormControl>
         </Formik>
-        </>
-      </ThemeProvider>
+        </>    
     )
-
 }
 
