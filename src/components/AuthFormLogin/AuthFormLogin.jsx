@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
-import { Button, ThemeProvider, TextField, OutlinedInput, InputAdornment, IconButton } from '@mui/material';
-import { lightTheme } from '../../themes/themes'
+import { Button, TextField, OutlinedInput, InputAdornment, IconButton, FormControl, Box } from '@mui/material';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from 'formik';
-import style from './AuthFormLogin.module.css'
+import { form } from '../../styles'
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
+  password: yup.string().required(),
 });
 
 export const AuthFormLogin = () => {
@@ -37,70 +36,70 @@ export const AuthFormLogin = () => {
   });
 
   return (
-    <ThemeProvider theme={lightTheme}>
-      <form onSubmit={formik.handleSubmit} className={style.form}>
-        {formik.touched.email && formik.errors.email ? (
-          <div className={style.error}>{formik.errors.email.toWellFormed()}</div>
-        ) : null}
-        <TextField
-          name="email"
-          type="email"
-          variant="outlined"
-          placeholder="Enter your email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          fullWidth
-          inputProps={{
-            style: { color: 'white' },
-          }}
-          sx={{
-            marginBottom: '14px',
-            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#BEDBB0",
-            },
-            "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#BEDBB0",
-            },
+    <FormControl 
+      onSubmit={formik.handleSubmit} 
+      sx={form.form} 
+      component='form'
+    >
+
+      {formik.touched.email && formik.errors.email ? (
+        <Box component='div' sx={form.error}>{formik.errors.email.toWellFormed()}</Box>
+      ) : null}
+
+      <TextField
+        name="email"
+        type="email"
+        variant="outlined"
+        placeholder="Enter your email"
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        fullWidth
+        color='inputForm'
+        inputProps={{
+          style: { color: '#FFF' },
         }}
+        sx={form.input}
       />
-        {formik.touched.password && formik.errors.password ? (
-          <div className={style.error}>{formik.errors.password}</div>
-        ) : null}
-        <OutlinedInput
-          name="password"
-          type={showPassword ? "text" : "password"}
-          placeholder="Create a password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          fullWidth
-          inputProps={{
-            style: { color: 'white' },
-          }}
-          sx={{
-            marginBottom: '24px',
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#BEDBB0",
-            },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#BEDBB0",
-            },
-          }}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#FFF'}}>
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-        <Button color="primary" variant="contained" fullWidth type="submit">
-          Log In Now
-        </Button>
-      </form>
-    </ThemeProvider>
+
+      {formik.touched.password && formik.errors.password ? (
+        <Box component='div' sx={form.error}>{formik.errors.password}</Box>
+      ) : null}
+
+      <OutlinedInput
+        name="password"
+        type={showPassword ? "text" : "password"}
+        placeholder="Create a password"
+        value={formik.values.password}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.password && Boolean(formik.errors.password)}
+        fullWidth
+        color='inputForm'
+        inputProps={{
+          style: { color: '#FFF' },
+        }}
+        sx={form.input}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#FFF'}}>
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+
+      <Button 
+        color="buttonForm" 
+        variant="contained" 
+        fullWidth 
+        type="submit" 
+        sx={form.button}
+      >
+        Log In Now
+      </Button>
+
+    </FormControl>
   );
 }

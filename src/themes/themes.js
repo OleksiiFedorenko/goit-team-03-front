@@ -4,6 +4,17 @@ const standardColors = {
   white: '#FFF',
 };
 
+const form = {
+  inputForm:{
+    main:'#BEDBB0',
+    contrastText: '#FFF',
+  },
+  buttonForm: {
+    main:'#BEDBB0',
+    contrastText: '#161616',
+  }
+}
+
 const standardParams = {
   breakpoints: {
     values: {
@@ -77,6 +88,7 @@ export const violetTheme = createTheme({
       sideSecond: '#FFFFFF80',
       ...standardColors,
     },
+    ...form,
   },
   ...standardParams,
 });
@@ -102,6 +114,7 @@ export const lightTheme = createTheme({
       sideSecond: '#16161680',
       ...standardColors,
     },
+    ...form,
   },
   ...standardParams,
 });
@@ -127,6 +140,7 @@ export const darkTheme = createTheme({
       sideSecond: '#FFFFFF80',
       ...standardColors,
     },
+    ...form,
   },
   ...standardParams,
 });
