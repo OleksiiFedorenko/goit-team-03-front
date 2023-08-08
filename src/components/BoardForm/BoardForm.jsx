@@ -50,12 +50,10 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
+const BoardForm = ({ onCloseModal, initData, title, type }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    // onSubmitForm(values);
-    console.log(values)
     dispatch(addBoard(values));
     setSubmitting(false);
     resetForm();
@@ -64,7 +62,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initData ? initData : initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
       validationOnBlur={true}
