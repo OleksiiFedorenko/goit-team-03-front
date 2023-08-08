@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 
@@ -9,16 +10,13 @@ import {
   CreateBoardWrapper,
   CreateBoardTitle,
   CreateBoardButton,
-  BoardsWrapper,
-  BoardsList,
-  BoardsItem,
-  StyledLink,
-  BoardInfo,
 } from './BoardNav.styled';
+import { BoardNavList } from 'components/BoardsNavList';
+
+import { selectBoards } from 'store/boards/selectors';
 
 export const BoardNav = () => {
   const [showModal, setShowModal] = useState(false);
-  const [activeLink, setActiveLink] = useState(false);
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -26,6 +24,8 @@ export const BoardNav = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  const boards = useSelector(selectBoards);
 
   return (
     <Box sx={container.boardNav}>
@@ -49,7 +49,9 @@ export const BoardNav = () => {
           />
         </Modal>
       </CreateBoardWrapper>
-      <BoardsWrapper>
+
+      <BoardNavList boards={boards}/>
+      {/* <BoardsWrapper>
         <BoardsList>
           <BoardsItem>
             <StyledLink
@@ -70,7 +72,7 @@ export const BoardNav = () => {
             </StyledLink>
           </BoardsItem>
         </BoardsList>
-      </BoardsWrapper>
+      </BoardsWrapper> */}
     </Box>
   );
 };

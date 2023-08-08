@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const CreateBoardWrapper = styled.div`
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
   width: 210px;
   margin-right: auto;
   margin-left: auto;
