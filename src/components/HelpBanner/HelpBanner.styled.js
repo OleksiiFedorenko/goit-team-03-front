@@ -2,11 +2,10 @@ import styled from '@emotion/styled';
 
 export const TaskProHelperWrapper = styled.div`
   background-color: #1f1f1f;
-  width: 192px;
-  margin-right: auto;
-  margin-left: auto;
+  width: 212px;
   padding: 20px;
-  margin-bottom: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
 `;
 
 export const TaskProHelperImg = styled.img`

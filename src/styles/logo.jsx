@@ -35,6 +35,8 @@ export const container = {
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
+  mt: { zeroUp: '14px', tablet: '24px' },
+  ml: { zeroUp: '14px', tablet: '24px' },
 };
 
 export const iconWrapper = {
