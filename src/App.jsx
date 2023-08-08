@@ -14,7 +14,7 @@ import { PrivateRoute } from 'services/PrivateRoute';
 
 import { Container } from 'components/Container';
 
-const Home = lazy(() => import('pages/Home'));
+const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
 const Login = lazy(() => import('pages/LoginPage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
@@ -52,7 +52,7 @@ export const App = () => {
               index
               element={
                 <PublicRoute>
-                  <Home />
+                  <WelcomePage />
                 </PublicRoute>
               }
             />

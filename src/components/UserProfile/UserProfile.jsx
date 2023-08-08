@@ -1,13 +1,33 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
+
 import Modal from 'components/Modal/Modal';
-import { UserWrapper, UserOptions, UserName, UserAvatar } from './User.styled';
-import defaultAvatar from '../../images/user-default-avatar.png';
+import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+import defaultAvatarLight from '../../images/default-avatar-light.png';
+import defaultAvatarDark from '../../images/default-avatar-dark.png';
+
+import { Button, Box } from '@mui/material';
+import { button } from 'styles';
 
 export const UserProfile = () => {
   const [showModal, setShowModal] = useState(false);
-  const { name, avatar } = useSelector(selectUser);
+  const { name, avatarURL, theme } = useSelector(selectUser);
+
+  let avatar = avatarURL;
+  if (!avatar) {
+    switch (theme) {
+      case 'light':
+        avatar = defaultAvatarLight;
+        break;
+      case 'dark':
+        avatar = defaultAvatarDark;
+        break;
+      default:
+        avatar = defaultAvatarViolet;
+        break;
+    }
+  }
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -18,24 +38,19 @@ export const UserProfile = () => {
   };
 
   return (
-    <UserWrapper>
-      <UserOptions type="button" onClick={handleOpenModal}>
-        <UserName>{name}</UserName>
-        {avatar ? (
-          <UserAvatar src={avatar} alt={name} />
-        ) : (
-          <UserAvatar
-            src={defaultAvatar}
-            alt="Default Avatar"
-            onClick={handleOpenModal}
-            height={32}
-            width={32}
-          />
-        )}
-      </UserOptions>
-      {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
-      )}
-    </UserWrapper>
+    <>
+      <Button variant="text" sx={button.profile} onClick={handleOpenModal}>
+        {name}
+        <Box
+          component="img"
+          sx={button.profileImg}
+          src={avatar}
+          alt="User avatar"
+        />
+      </Button>
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <div></div>
+      </Modal>
+    </>
   );
 };
