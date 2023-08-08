@@ -10,7 +10,7 @@ import { form } from '../../styles'
 
 const validationSchema = yup.object().shape({
   name: yup.string().trim().required(),
-  email: yup.string().email().required(),
+  email: yup.string().email().matches(/^[^@]+@[^@]+\..+$/, 'email must be a valid email').required(),
   password: yup.string().min(8).required(),
 });
 

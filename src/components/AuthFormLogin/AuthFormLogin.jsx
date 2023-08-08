@@ -9,7 +9,7 @@ import { useFormik } from 'formik';
 import { form } from '../../styles'
 
 const validationSchema = yup.object().shape({
-  email: yup.string().email().required(),
+  email: yup.string().email().matches(/^[^@]+@[^@]+\..+$/, 'email must be a valid email').required(),
   password: yup.string().required(),
 });
 
