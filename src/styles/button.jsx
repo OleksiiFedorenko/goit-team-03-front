@@ -14,6 +14,22 @@ export const authItem = {
   },
 };
 
+export const closeBtn = {
+  position: 'absolute',
+  top: '14px',
+  right: '14px',
+  width: '24px',
+  height: '24px',
+  borderRadius: '50%',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  '&:hover, &:focus': {
+    backgroundColor: 'primary.main',
+  },
+};
+
 export const burgerMenu = {
   p: '0',
   minWidth: '32px',
