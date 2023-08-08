@@ -45,7 +45,7 @@ export const BoardNav = () => {
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
           <BoardForm
             onCloseModal={handleCloseModal}
-            title="New bord"
+            title="New board"
             type="Create"
             boardOperation={addBoard}
           />

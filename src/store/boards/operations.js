@@ -59,9 +59,9 @@ export const addBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'board/updateBoard',
-  async ({_id, title, icon, background}, { rejectWithValue }) => {
+  async ({id, title, icon, background}, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`boards/${_id}`,{title, icon, background});
+      const { data } = await axios.put(`boards/${id}`,{title, icon, background});
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

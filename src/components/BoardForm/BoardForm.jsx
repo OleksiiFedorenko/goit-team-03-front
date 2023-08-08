@@ -49,12 +49,12 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type, boardOperation, id='' }) => {
+const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type, boardOperation, id }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
-    const submitvalues = id='' ? values : {...values, id};
+    const submitvalues = !id ? values : {...values, id};
     dispatch(boardOperation(submitvalues));
     setSubmitting(false);
     resetForm();
