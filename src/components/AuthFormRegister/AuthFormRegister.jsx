@@ -41,6 +41,7 @@ export const AuthFormRegister = () => {
       {formik.touched.name && formik.errors.name ? (
         <Box sx={form.error}>{formik.errors.name}</Box>
       ) : null}
+
       <TextField
         name="name"
         type="text"
@@ -48,6 +49,7 @@ export const AuthFormRegister = () => {
         placeholder="Enter your name"
         value={formik.values.name}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         error={formik.touched.name && Boolean(formik.errors.name)}
         color='inputForm'
         fullWidth
@@ -56,9 +58,11 @@ export const AuthFormRegister = () => {
           style: { color: 'white' },
         }}
     />
+
       {formik.touched.email && formik.errors.email ? (
-        <Box sx={form.error}>{formik.errors.email.toWellFormed()}</Box>
+        <Box component='div' sx={form.error}>{formik.errors.email.toWellFormed()}</Box>
       ) : null}
+
       <TextField
         name="email"
         type="email"
@@ -66,14 +70,20 @@ export const AuthFormRegister = () => {
         placeholder="Enter your email"
         value={formik.values.email}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         error={formik.touched.email && Boolean(formik.errors.email)}
         fullWidth
+        inputProps={{
+          style: { color: 'white' },
+        }}
         color='inputForm'
         sx={form.input}
     />
+
       {formik.touched.password && formik.errors.password ? (
-        <Box sx={form.error}>{formik.errors.password}</Box>
+        <Box component='div' sx={form.error}>{formik.errors.password}</Box>
       ) : null}
+
       <OutlinedInput
         name="password"
         type={showPassword ? "text" : "password"}
@@ -81,6 +91,7 @@ export const AuthFormRegister = () => {
         value={formik.values.password}
         onChange={formik.handleChange}
         error={formik.touched.password && Boolean(formik.errors.password)}
+        onBlur={formik.handleBlur}
         fullWidth
         color='inputForm'
         sx={form.input}

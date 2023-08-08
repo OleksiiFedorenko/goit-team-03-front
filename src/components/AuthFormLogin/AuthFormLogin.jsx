@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
 import { Button, TextField, OutlinedInput, InputAdornment, IconButton, FormControl, Box } from '@mui/material';
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from 'formik';
 import { form } from '../../styles'
 

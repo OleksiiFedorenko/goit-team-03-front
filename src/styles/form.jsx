@@ -29,8 +29,12 @@ export const error = {
 export const form = {
     display: 'flex',
     flexDirection: 'column',
-    width: "287px",
     backgroundColor: '#1F1F1F',
+
+    width:{
+        zeroUp: "287px",
+        tablet: "344px",
+    }
 }
 export const button = {
     height: '49px',
