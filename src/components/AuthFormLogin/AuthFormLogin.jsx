@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
 import { Button, TextField, OutlinedInput, InputAdornment, IconButton, FormControl, Box } from '@mui/material';
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { useFormik } from 'formik';
 import { form } from '../../styles'
 
@@ -18,7 +19,7 @@ export const AuthFormLogin = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, {setSubmitting}) => {
-    alert(JSON.stringify(values, null, 2));
+    console.log(JSON.stringify(values, null, 2));
     dispatch(getLogin(values))
     setSubmitting(false);
   }
@@ -47,7 +48,6 @@ export const AuthFormLogin = () => {
 
       <TextField
         name="email"
-        type="email"
         variant="outlined"
         placeholder="Enter your email"
         value={formik.values.email}
@@ -55,7 +55,7 @@ export const AuthFormLogin = () => {
         onBlur={formik.handleBlur}
         error={formik.touched.email && Boolean(formik.errors.email)}
         fullWidth
-        color='inputForm'
+        color='input'
         inputProps={{
           style: { color: '#FFF' },
         }}
@@ -72,25 +72,22 @@ export const AuthFormLogin = () => {
         placeholder="Create a password"
         value={formik.values.password}
         onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
         error={formik.touched.password && Boolean(formik.errors.password)}
+        onBlur={formik.handleBlur}
         fullWidth
-        color='inputForm'
-        inputProps={{
-          style: { color: '#FFF' },
-        }}
+        color='input'
         sx={form.input}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#FFF'}}>
-              {showPassword ? <VisibilityOff /> : <Visibility />}
+            <IconButton onClick={handleClickShowPassword} edge="end" sx={form.icon}>
+              {showPassword ? <RemoveRedEyeOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
             </IconButton>
           </InputAdornment>
         }
       />
 
       <Button 
-        color="buttonForm" 
+        color="button" 
         variant="contained" 
         fullWidth 
         type="submit" 

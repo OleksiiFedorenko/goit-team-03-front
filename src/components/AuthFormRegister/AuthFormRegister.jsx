@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
 import { Button, TextField, OutlinedInput, InputAdornment, IconButton, Box, FormControl } from '@mui/material';
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { useFormik } from 'formik';
 import { form } from '../../styles'
 
@@ -19,7 +20,7 @@ export const AuthFormRegister = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values, {setSubmitting}) => {
-    alert(JSON.stringify(values, null, 2));
+    console.log(JSON.stringify(values, null, 2));
     dispatch(getLogin(values))
     setSubmitting(false);
   }
@@ -51,7 +52,7 @@ export const AuthFormRegister = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         error={formik.touched.name && Boolean(formik.errors.name)}
-        color='inputForm'
+        color='input'
         fullWidth
         sx={form.input}
         inputProps={{
@@ -60,12 +61,11 @@ export const AuthFormRegister = () => {
     />
 
       {formik.touched.email && formik.errors.email ? (
-        <Box component='div' sx={form.error}>{formik.errors.email.toWellFormed()}</Box>
+        <Box component='div' sx={form.error}>{formik.errors.email}</Box>
       ) : null}
 
       <TextField
         name="email"
-        type="email"
         variant="outlined"
         placeholder="Enter your email"
         value={formik.values.email}
@@ -76,7 +76,7 @@ export const AuthFormRegister = () => {
         inputProps={{
           style: { color: 'white' },
         }}
-        color='inputForm'
+        color='input'
         sx={form.input}
     />
 
@@ -93,18 +93,18 @@ export const AuthFormRegister = () => {
         error={formik.touched.password && Boolean(formik.errors.password)}
         onBlur={formik.handleBlur}
         fullWidth
-        color='inputForm'
+        color='input'
         sx={form.input}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#FFF'}}>
-              {showPassword ? <VisibilityOff /> : <Visibility />}
+            <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#737373'}}>
+              {showPassword ? <RemoveRedEyeOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
             </IconButton>
           </InputAdornment>
         }
       />
       <Button 
-        color="buttonForm" 
+        color="button" 
         variant="contained"
         fullWidth type="submit"
         sx={form.button}

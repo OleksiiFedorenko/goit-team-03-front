@@ -5,11 +5,13 @@ const standardColors = {
 };
 
 const form = {
-  inputForm:{
+  input:{
     main:'#BEDBB0',
+    light: '#42a5f5',
+    dark: '#9FAF90',
     contrastText: '#FFF',
   },
-  buttonForm: {
+  button: {
     main:'#BEDBB0',
     contrastText: '#161616',
   }
