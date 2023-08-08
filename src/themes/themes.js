@@ -4,6 +4,19 @@ const standardColors = {
   white: '#FFF',
 };
 
+const form = {
+  input:{
+    main:'#BEDBB0',
+    light: '#42a5f5',
+    dark: '#9FAF90',
+    contrastText: '#FFF',
+  },
+  button: {
+    main:'#BEDBB0',
+    contrastText: '#161616',
+  }
+}
+
 const standardParams = {
   breakpoints: {
     values: {
@@ -50,6 +63,11 @@ const standardParams = {
       lineHeight: 1.33,
       letterSpacing: '-0.02em',
     },
+    caption: {
+      fontSize: 12,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
   },
   shape: {
     borderRadius: 8,
@@ -87,6 +105,7 @@ export const violetTheme = createTheme({
       activeBtn: 'rgba(255, 255, 255, 0.2)',
       activeBoardBox: '#FFF',
     },
+    ...form,
   },
   ...standardParams,
 });
@@ -119,6 +138,7 @@ export const lightTheme = createTheme({
       activeBoard: 'rgba(246, 246, 247, 0.4)',
       activeBoardBox: '#BEDBB0',
     },
+    ...form,
   },
   ...standardParams,
 });
@@ -151,6 +171,7 @@ export const darkTheme = createTheme({
       activeBoard: 'rgba(31, 31, 31, 0.4)',
       activeBoardBox: '#BEDBB0',
     },
+    ...form,
   },
   ...standardParams,
 });
