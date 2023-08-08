@@ -33,6 +33,9 @@ export const topBar = {
 };
 
 export const sideBar = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
   position: 'relative',
   zIndex: '20',
   width: {
@@ -40,11 +43,12 @@ export const sideBar = {
     tablet: 260,
   },
   height: '100%',
-  p: {
-    zeroUp: '14px',
-    tablet: '24px',
-  },
   backgroundColor: 'background.side',
+};
+
+export const sideBarDesktop = {
+  ...sideBar,
+  display: { zeroUp: 'none', desktop: 'flex' },
 };
 
 export const board = {
@@ -72,13 +76,6 @@ export const welcome = {
     mobileFixed: 335,
     tablet: 473,
   },
-};
-
-export const sideBarInner = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  height: '100%',
 };
 
 export const noBoardInner = {
