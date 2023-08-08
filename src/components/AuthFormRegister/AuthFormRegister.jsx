@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-import { getLogin } from 'store/auth/operations';
+import { getRegistration } from 'store/auth/operations';
 import { Button, TextField, OutlinedInput, InputAdornment, IconButton, Box, FormControl } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
@@ -21,7 +21,7 @@ export const AuthFormRegister = () => {
 
   const onSubmit = (values, {setSubmitting}) => {
     console.log(JSON.stringify(values, null, 2));
-    dispatch(getLogin(values))
+    dispatch(getRegistration(values))
     setSubmitting(false);
   }
 
@@ -97,7 +97,7 @@ export const AuthFormRegister = () => {
         sx={form.input}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword} edge="end" style={{color: '#737373'}}>
+            <IconButton onClick={handleClickShowPassword} edge="end" sx={form.icon} >
               {showPassword ? <RemoveRedEyeOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
             </IconButton>
           </InputAdornment>
