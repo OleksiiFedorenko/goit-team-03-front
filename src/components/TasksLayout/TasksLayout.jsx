@@ -12,14 +12,12 @@ export const TasksLayout = () => {
       <header>
         <TopBar />
       </header>
-      {/* <main> */}
       <Box component="main" sx={container.main}>
-        <SideBar />
+        <SideBar contStyles={container.sideBarDesktop} />
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
       </Box>
-      {/* </main> */}
     </Container>
   );
 };

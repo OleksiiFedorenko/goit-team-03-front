@@ -5,7 +5,7 @@ export const IconStyled = styled.svg`
   height: 18px;
   display: inline-block;
   stroke-width: 0;
-  stroke: grey;
+  stroke: currentColor;
   fill: transparent;
   :hover {
     stroke: currentColor;
