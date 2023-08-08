@@ -4,6 +4,7 @@ import { selectUser } from 'store/auth/selectors';
 import Modal from 'components/Modal/Modal';
 import { UserWrapper, UserOptions, UserName, UserAvatar } from './User.styled';
 import defaultAvatar from '../../images/user-default-avatar.png';
+import EditProfile from '../EditProfile/EditProfile';
 
 export const UserProfile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +35,9 @@ export const UserProfile = () => {
         )}
       </UserOptions>
       {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal} />
+        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+          <EditProfile onCloseModal={handleCloseModal}  type="Submit"/>
+        </Modal>
       )}
     </UserWrapper>
   );

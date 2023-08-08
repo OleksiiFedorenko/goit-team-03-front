@@ -1,7 +1,4 @@
-
-
 import styled from 'styled-components';
-
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const Section = styled.div`
