@@ -21,7 +21,6 @@ import {
 } from './BoardForm.styled';
 import sprite from 'components/Icons/sprite.svg';
 import { previews } from 'helpers/getBgPreviews';
-import { addBoard } from 'store/boards/operations';
 
 const iconNames = [
   'project',
@@ -50,13 +49,13 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
+const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type, boardOperation, id='' }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
-    console.log(values)
-    dispatch(addBoard(values));
+    const submitvalues = id='' ? values : {...values, id};
+    dispatch(boardOperation(submitvalues));
     setSubmitting(false);
     resetForm();
     onCloseModal();

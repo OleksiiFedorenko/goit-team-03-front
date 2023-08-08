@@ -12,6 +12,7 @@ import {
   CreateBoardButton,
 } from './BoardNav.styled';
 import { BoardNavList } from 'components/BoardsNavList';
+import { addBoard } from 'store/boards/operations';
 
 import { selectBoards } from 'store/boards/selectors';
 
@@ -46,6 +47,7 @@ export const BoardNav = () => {
             onCloseModal={handleCloseModal}
             title="New bord"
             type="Create"
+            boardOperation={addBoard}
           />
         </Modal>
       </CreateBoardWrapper>

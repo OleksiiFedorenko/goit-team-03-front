@@ -50,7 +50,6 @@ export const addBoard = createAsyncThunk(
   async ({ title, icon, background }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('boards', { title, icon, background });
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
