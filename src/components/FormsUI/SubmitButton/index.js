@@ -21,9 +21,8 @@ const SubmitButton = ({ children, ...otherProps }) => {
     },
   };
   const iconStyle = {
-    fill: 'black',
+    fill: 'white',
     fontSize: '28px',
-    color: 'white',
   };
   return (
     <Button startIcon={<AddBoxIcon style={iconStyle} />} {...configButton}>

@@ -50,6 +50,11 @@ const standardParams = {
       lineHeight: 1.33,
       letterSpacing: '-0.02em',
     },
+    caption: {
+      fontSize: 12,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
   },
   shape: {
     borderRadius: 8,
