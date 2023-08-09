@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import {
@@ -18,7 +18,7 @@ export const BoardNavList = ({ boards }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  
+  const { boardId } = useParams();
 
   const handleListItemClick = (event, index, boardId) => {
     setSelectedIndex(index);
@@ -38,9 +38,9 @@ export const BoardNavList = ({ boards }) => {
         sx={{ width: '100%', m: '0', p: '0', color: 'text.sideSecond' }}
       >
         {boards.map((board, index) => {
-          return (<div key={board._id}>
+          return (
             <ListItemButton
-              
+              key={board._id}
               component={NavLink}
               to={board._id}
               sx={[
@@ -75,18 +75,18 @@ export const BoardNavList = ({ boards }) => {
                 <Icon id={'trash'} />
               </IconButton>
             </ListItemButton>
-            <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-            <BoardForm
-              onCloseModal={handleCloseModal}
-              title="Edit board"
-              type="Edit"
-              boardOperation={updateBoard}
-              id={board._id}
-            />
-          </Modal></div>
           );
         })}
       </List>
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <BoardForm
+          onCloseModal={handleCloseModal}
+          title="Edit board"
+          type="Edit"
+          boardOperation={updateBoard}
+          id={boardId}
+        />
+      </Modal>
     </Box>
   );
 };

@@ -28,7 +28,7 @@ const boardSlice = createSlice({
         owner: '',
         columnOrder: [],
       },
-      column: [],
+      columns: [],
     },
     isLoading: false,
     error: null,
@@ -63,7 +63,7 @@ const boardSlice = createSlice({
       .addCase(updateBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.board.board = {...state.board.board, ...action.payload};
+        state.board.board = action.payload;
         const index = state.boards.findIndex(board => board._id === action.payload._id);
         state.boards.splice(index, 1, action.payload);
       })
