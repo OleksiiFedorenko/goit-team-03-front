@@ -23,7 +23,7 @@ export const Calendar = ({ parentState, initial }) => {
             parentState(newValue);
           }}
           slots={{
-            openPickerIcon: () => <Icon />,
+            openPickerIcon: () => <Icon id="move" />,
           }}
           dayOfWeekFormatter={day => day.slice(0, 2)}
           slotProps={{
