@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
@@ -12,10 +12,10 @@ import {
   Box,
   Typography,
   Button,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  // List,
+  // ListItem,
+  // ListItemButton,
+  // ListItemText,
 } from '@mui/material';
 import { container, text, button } from 'styles';
 
