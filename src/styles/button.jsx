@@ -66,6 +66,7 @@ export const themeItem = {
 };
 
 export const profile = {
+  mr: '-8px',
   color: 'text.primary',
   fontWeight: 500,
   lineHeight: 1.5,
