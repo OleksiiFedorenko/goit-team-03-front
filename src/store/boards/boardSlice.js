@@ -5,6 +5,7 @@ import {
   addBoard,
   updateBoard,
   deleteBoard,
+  addColumn
 } from './operations';
 
 const handlePending = state => {
@@ -78,7 +79,16 @@ const boardSlice = createSlice({
         );
         state.board = {};
       })
-      .addCase(deleteBoard.rejected, handleRejected);
+      .addCase(deleteBoard.rejected, handleRejected)
+
+      .addCase(addColumn.pending, handlePending)
+      .addCase(addColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.board.columns.push(action.payload)
+      })
+      .addCase(addColumn.rejected, handleRejected)  
+      
   },
 });
 

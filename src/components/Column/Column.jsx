@@ -1,11 +1,11 @@
-import cards from '../../test-data/cards.json';
+// import cards from '../../test-data/cards.json';
 import Button from '@mui/material/Button';
 import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
 import { Stack } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
-const Column = () => {
+const Column = ({column}) => {
   return (
     <Stack
       sx={{
@@ -15,8 +15,8 @@ const Column = () => {
         marginLeft: '15px',
       }}
     >
-      <ColumnHeader title={'Todo'}></ColumnHeader>
-      <TaskList cards={cards}></TaskList>
+      <ColumnHeader title={column.title}></ColumnHeader>
+      <TaskList cards={column.taskOrder}></TaskList>
       <Button variant="contained" startIcon={<AddBoxIcon />}>
         Add another card
       </Button>

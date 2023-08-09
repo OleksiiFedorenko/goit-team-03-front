@@ -17,7 +17,7 @@ const EditColumnButton = () => {
      return (
        <Column>
          <IconWrapper>
-           <Text>In progress</Text>
+          {/* <Text>In progress</Text> */}
           <IconStyle onClick={handleOpenModal}>
                <Icon id={"pencil"} />
              </IconStyle>
