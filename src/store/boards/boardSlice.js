@@ -7,6 +7,8 @@ import {
   deleteBoard,
   addColumn,
   needHelp,
+  updateColumn,
+  deleteColumn,
 } from './operations';
 
 const handlePending = state => {
@@ -102,7 +104,27 @@ const boardSlice = createSlice({
       })
       .addCase(needHelp.rejected, (state, action) => {
         state.error = action.payload;
-      });
+      })
+
+      .addCase(updateColumn.pending, handlePending)
+      .addCase(updateColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.board.columns.findIndex(
+          column => column._id === action.payload._id
+        );
+        state.board.columns.splice(index, 1, action.payload);
+      })
+      .addCase(updateColumn.rejected, handleRejected)
+
+      .addCase(deleteColumn.pending, handlePending)
+      .addCase(deleteColumn.fulfilled, (state, action) => {
+        const index = state.board.columns.findIndex(
+          column => column._id === action.payload._id
+        );
+        state.board.columns.splice(index, 1);
+      })
+      .addCase(deleteColumn.rejected, handleRejected)
   },
 });
 
