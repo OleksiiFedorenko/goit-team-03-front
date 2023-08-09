@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  position: absolute;
+  /* position: absolute;
   top: 80px;
-  left: 650px;
+  left: 650px; */
   width: 334px;
   height: 56px;
   padding: 14px 79px;
- 
 
   display: flex;
   justify-content: center;
@@ -34,7 +33,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: #5255BC;
+  background-color: #5255bc;
   transition: all 250ms linear;
 
   cursor: pointer;
