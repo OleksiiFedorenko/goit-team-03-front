@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/goit-team-03-front/static/css/main.1e0cf174.css",
-    "main.js": "/goit-team-03-front/static/js/main.b21ae2f6.js",
-    "static/js/777.1965afbc.chunk.js": "/goit-team-03-front/static/js/777.1965afbc.chunk.js",
+    "main.js": "/goit-team-03-front/static/js/main.142e3f65.js",
+    "static/js/777.bd5d848d.chunk.js": "/goit-team-03-front/static/js/777.bd5d848d.chunk.js",
     "static/js/630.8964e447.chunk.js": "/goit-team-03-front/static/js/630.8964e447.chunk.js",
     "static/js/871.5df813c9.chunk.js": "/goit-team-03-front/static/js/871.5df813c9.chunk.js",
     "static/css/851.7016f0f9.chunk.css": "/goit-team-03-front/static/css/851.7016f0f9.chunk.css",
@@ -10,15 +10,15 @@
     "static/js/708.08a84527.chunk.js": "/goit-team-03-front/static/js/708.08a84527.chunk.js",
     "static/css/870.fac8623b.chunk.css": "/goit-team-03-front/static/css/870.fac8623b.chunk.css",
     "static/js/870.b15537fb.chunk.js": "/goit-team-03-front/static/js/870.b15537fb.chunk.js",
-    "static/js/269.ed029723.chunk.js": "/goit-team-03-front/static/js/269.ed029723.chunk.js",
+    "static/js/269.6c53507a.chunk.js": "/goit-team-03-front/static/js/269.6c53507a.chunk.js",
     "static/js/890.0f79e099.chunk.js": "/goit-team-03-front/static/js/890.0f79e099.chunk.js",
     "static/js/806.7404c405.chunk.js": "/goit-team-03-front/static/js/806.7404c405.chunk.js",
     "static/js/664.19b04553.chunk.js": "/goit-team-03-front/static/js/664.19b04553.chunk.js",
     "static/js/912.e17f0709.chunk.js": "/goit-team-03-front/static/js/912.e17f0709.chunk.js",
     "static/js/681.e2850993.chunk.js": "/goit-team-03-front/static/js/681.e2850993.chunk.js",
     "static/js/941.bf2e4aa8.chunk.js": "/goit-team-03-front/static/js/941.bf2e4aa8.chunk.js",
-    "static/js/513.e3f4f778.chunk.js": "/goit-team-03-front/static/js/513.e3f4f778.chunk.js",
-    "static/js/893.531a0d35.chunk.js": "/goit-team-03-front/static/js/893.531a0d35.chunk.js",
+    "static/js/513.cab1b391.chunk.js": "/goit-team-03-front/static/js/513.cab1b391.chunk.js",
+    "static/js/893.711bd69c.chunk.js": "/goit-team-03-front/static/js/893.711bd69c.chunk.js",
     "static/media/Poppins-Regular.svg": "/goit-team-03-front/static/media/Poppins-Regular.fa23aa2eb1d90093aeae.svg",
     "static/media/Poppins-Medium.svg": "/goit-team-03-front/static/media/Poppins-Medium.69157b139c87eee7131a.svg",
     "static/media/Poppins-SemiBold.svg": "/goit-team-03-front/static/media/Poppins-SemiBold.d6875986f2522147f46f.svg",
@@ -38,11 +38,11 @@
     "static/media/Poppins-SemiBold.woff2": "/goit-team-03-front/static/media/Poppins-SemiBold.b2be0bf638eacbb24415.woff2",
     "static/media/Poppins-Medium.woff2": "/goit-team-03-front/static/media/Poppins-Medium.13c404f85f4b8532e4e9.woff2",
     "static/media/start-img.png": "/goit-team-03-front/static/media/start-img.cd7869830c5eb40da38d.png",
-    "static/media/sprite.svg": "/goit-team-03-front/static/media/sprite.37e687367c7afa5faf18b3a25e9438a1.svg",
+    "static/media/sprite.svg": "/goit-team-03-front/static/media/sprite.072a9076cd564b15f812272b84c028b2.svg",
     "index.html": "/goit-team-03-front/index.html",
     "main.1e0cf174.css.map": "/goit-team-03-front/static/css/main.1e0cf174.css.map",
-    "main.b21ae2f6.js.map": "/goit-team-03-front/static/js/main.b21ae2f6.js.map",
-    "777.1965afbc.chunk.js.map": "/goit-team-03-front/static/js/777.1965afbc.chunk.js.map",
+    "main.142e3f65.js.map": "/goit-team-03-front/static/js/main.142e3f65.js.map",
+    "777.bd5d848d.chunk.js.map": "/goit-team-03-front/static/js/777.bd5d848d.chunk.js.map",
     "630.8964e447.chunk.js.map": "/goit-team-03-front/static/js/630.8964e447.chunk.js.map",
     "871.5df813c9.chunk.js.map": "/goit-team-03-front/static/js/871.5df813c9.chunk.js.map",
     "851.7016f0f9.chunk.css.map": "/goit-team-03-front/static/css/851.7016f0f9.chunk.css.map",
@@ -50,18 +50,18 @@
     "708.08a84527.chunk.js.map": "/goit-team-03-front/static/js/708.08a84527.chunk.js.map",
     "870.fac8623b.chunk.css.map": "/goit-team-03-front/static/css/870.fac8623b.chunk.css.map",
     "870.b15537fb.chunk.js.map": "/goit-team-03-front/static/js/870.b15537fb.chunk.js.map",
-    "269.ed029723.chunk.js.map": "/goit-team-03-front/static/js/269.ed029723.chunk.js.map",
+    "269.6c53507a.chunk.js.map": "/goit-team-03-front/static/js/269.6c53507a.chunk.js.map",
     "890.0f79e099.chunk.js.map": "/goit-team-03-front/static/js/890.0f79e099.chunk.js.map",
     "806.7404c405.chunk.js.map": "/goit-team-03-front/static/js/806.7404c405.chunk.js.map",
     "664.19b04553.chunk.js.map": "/goit-team-03-front/static/js/664.19b04553.chunk.js.map",
     "912.e17f0709.chunk.js.map": "/goit-team-03-front/static/js/912.e17f0709.chunk.js.map",
     "681.e2850993.chunk.js.map": "/goit-team-03-front/static/js/681.e2850993.chunk.js.map",
     "941.bf2e4aa8.chunk.js.map": "/goit-team-03-front/static/js/941.bf2e4aa8.chunk.js.map",
-    "513.e3f4f778.chunk.js.map": "/goit-team-03-front/static/js/513.e3f4f778.chunk.js.map",
-    "893.531a0d35.chunk.js.map": "/goit-team-03-front/static/js/893.531a0d35.chunk.js.map"
+    "513.cab1b391.chunk.js.map": "/goit-team-03-front/static/js/513.cab1b391.chunk.js.map",
+    "893.711bd69c.chunk.js.map": "/goit-team-03-front/static/js/893.711bd69c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1e0cf174.css",
-    "static/js/main.b21ae2f6.js"
+    "static/js/main.142e3f65.js"
   ]
 }
