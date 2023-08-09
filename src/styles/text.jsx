@@ -22,3 +22,8 @@ export const boardNavTitle = {
   ml: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideSecond',
 };
+
+export const formTitle = {
+  marginBottom: '24px',
+  color: 'text.primary',
+};
