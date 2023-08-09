@@ -76,6 +76,7 @@ const boardSlice = createSlice({
         state.boards = state.boards.filter(
           board => board._id !== action.payload._id
         );
+        state.board = {};
       })
       .addCase(deleteBoard.rejected, handleRejected);
   },
