@@ -96,6 +96,7 @@ export const violetTheme = createTheme({
       topTheme: '#161616CC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
+      filterRadio: 'rgba(22, 22, 22, 0.50)',
       ...standardColors,
     },
     divider: {
@@ -135,6 +136,8 @@ export const lightTheme = createTheme({
       topTheme: '#161616CC',
       sideMain: '#161616',
       sideSecond: '#16161680',
+      filterRadio: 'rgba(22, 22, 22, 0.50)',
+
       ...standardColors,
     },
     side: {
@@ -171,6 +174,7 @@ export const darkTheme = createTheme({
       topTheme: '#FFFFFFCC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
+      filterRadio: 'rgba(255, 255, 255, 0.50)',
       ...standardColors,
     },
     side: {
