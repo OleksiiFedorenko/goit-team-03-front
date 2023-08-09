@@ -5,6 +5,7 @@ import { selectBoard, selectColumns } from 'store/boards/selectors';
 
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
+import { FilterBtn } from 'components/Filter';
 
 const BoardPage = () => {
   const board = useSelector(selectBoard);
@@ -13,9 +14,13 @@ const BoardPage = () => {
   return (
     <Box sx={container.board}>
       <Box sx={container.boardInner}>
-        <Typography component="h2" variant="h3" sx={text.boardTitle}>
-          {board.title}
-        </Typography>
+        <Box sx={container.boardTopBar}>
+          <Typography component="h2" variant="h3" sx={text.boardTitle}>
+            {board.title}
+          </Typography>
+
+          <FilterBtn />
+        </Box>
 
         <Box sx={container.columns}>
           <Box sx={container.columnsInner}>

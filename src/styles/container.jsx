@@ -134,6 +134,12 @@ export const boardInner = {
   },
 };
 
+export const boardTopBar = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
+
 export const columns = {
   display: 'flex',
   gap: '34px',
