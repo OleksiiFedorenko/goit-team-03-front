@@ -9,6 +9,7 @@ import {
   needHelp,
   updateColumn,
   deleteColumn,
+  addTask
 } from './operations';
 
 const handlePending = state => {
@@ -39,6 +40,7 @@ const boardSlice = createSlice({
     error: null,
     email: '',
     text: '',
+    tasks: []
   },
   extraReducers: builder => {
     builder
@@ -82,10 +84,12 @@ const boardSlice = createSlice({
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards = state.boards.filter(
-          board => board._id !== action.payload._id
+        const index = state.boards.findIndex(
+          board => board._id === action.payload._id
         );
-        state.board = {};
+        state.boards.splice(index, 1);
+        state.board.board = {};
+        state.board.columns = [];
       })
       .addCase(deleteBoard.rejected, handleRejected)
       .addCase(addColumn.pending, handlePending)
@@ -119,12 +123,28 @@ const boardSlice = createSlice({
 
       .addCase(deleteColumn.pending, handlePending)
       .addCase(deleteColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
         const index = state.board.columns.findIndex(
           column => column._id === action.payload._id
         );
         state.board.columns.splice(index, 1);
       })
       .addCase(deleteColumn.rejected, handleRejected)
+
+      .addCase(addTask.pending, handlePending)
+      .addCase(addTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.tasks.push(action.payload);
+        const index = state.board.columns.findIndex(
+         column => column._id === action.payload.parentColumn
+        );
+        state.board.columns[index].taskOrder.push(action.payload);
+
+
+      })
+      .addCase(addTask.rejected, handleRejected)
   },
 });
 

@@ -132,3 +132,17 @@ export const deleteColumn = createAsyncThunk(
     }
   }
 );
+
+export const addTask = createAsyncThunk(
+  'boards/addTask',
+  async (values, {rejectWithValue}) => {
+    try {
+      console.log(values);
+      const {data} = await axios.post('tasks', values);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

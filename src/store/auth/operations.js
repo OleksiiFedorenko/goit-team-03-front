@@ -104,9 +104,9 @@ export const updateTheme = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
   'auth/updateProfile',
-  async ({ credentials, id }, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`auth/${id}`, credentials);
+      const { data } = await axios.put('auth', credentials);
       return data;
     } catch (error) {
       toast.error(
