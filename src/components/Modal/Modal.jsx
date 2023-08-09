@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Box, Modal } from '@mui/material';
-// import { BtnClose } from './Modal.styled';
 import { Icon } from 'components/Icons';
 import { button, container } from 'styles';
 
@@ -11,7 +10,7 @@ const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
         <Box onClick={onCloseModal} sx={button.closeBtn}>
           <Icon id="x-close" />
         </Box>
-        {children}
+        <Box sx={container.modalContent}>{children}</Box>
       </Box>
     </Modal>
   );

@@ -169,6 +169,10 @@ export const modal = {
   p: '24px',
 };
 
+export const modalContent = {
+  width: {
+    mobileFixed: '95%',
+
 export const helpBannerContainer = {
   m: 'auto',
   bgcolor: 'background.helpBanner',

@@ -9,6 +9,11 @@ export const boardNavTitle = {
   color: 'text.sideSecond',
 };
 
+export const formTitle = {
+  marginBottom: '24px',
+  color: 'text.primary',
+};
+
 export const helpBannerText = {
   ml: 2.5,
   mr: 2.5,
