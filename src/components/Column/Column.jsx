@@ -20,7 +20,7 @@ const Column = ({ column }) => {
     <Stack
       sx={{
         width: '100%',
-        maxWidth: 360,
+        maxWidth: '334px',
         height: '100vh',
       }}
     >
