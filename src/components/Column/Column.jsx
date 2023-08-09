@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import cards from '../../test-data/cards.json';
 import Button from '@mui/material/Button';
 import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
@@ -26,7 +25,7 @@ const Column = ({ column }) => {
         marginLeft: '15px',
       }}
     >
-      <ColumnHeader title={column.title} />
+      <ColumnHeader title={column.title} columnId={column._id} />
       <TaskList cards={column.taskOrder} />
       <Button
         variant="contained"

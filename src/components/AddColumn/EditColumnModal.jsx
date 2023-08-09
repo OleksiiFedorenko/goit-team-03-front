@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Icon } from 'components/Icons';
@@ -14,19 +15,19 @@ import {
   ButtonPlus,
 } from './AddColumnModal.styled';
 
+import { updateColumn } from 'store/boards/operations';
+
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
 
-const EditColumnModal = ({ title, columnId, closeModal }) => {
-
-  const initialValues = {
-    title,
-  };
+const EditColumnModal = ({ title, columnId, onCloseModal }) => { 
+ const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
+    dispatch(updateColumn({...values, columnId}));
     resetForm();
-    closeModal();
+    onCloseModal();
   };
 
   return (
@@ -34,7 +35,7 @@ const EditColumnModal = ({ title, columnId, closeModal }) => {
       <SectionTitle>Edit column</SectionTitle>
 
       <Formik
-        initialValues={initialValues}
+        initialValues={{title}}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
