@@ -22,6 +22,24 @@ export const UserAvatar = styled.img`
   object-fit: cover;
   border-radius: 8px;
 `;
+export const ImgWrapper = styled.div`
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 550ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: 0px 0px 11px 0px rgba(82, 85, 188, 1);
+    transform: scale(1.1);
+  }
+
+  &:hover svg {
+    top: 50%;
+    box-shadow: 0px 0px 11px 0px rgba(82, 85, 188, 1);
+  }
+`;
 export const Title = styled.h2`
   font-family: Poppins;
   font-size: 18px;
@@ -30,7 +48,12 @@ export const Title = styled.h2`
   letter-spacing: -0.36px;
   color: #161616;
 `;
-
+export const Label = styled.label`
+  width: 68px;
+  height: 79px;
+  margin: 25px auto 0 auto;
+  cursor: pointer;
+`;
 export const IconStyle = styled.svg`
   width: 18px;
   height: 18px;
@@ -44,9 +67,7 @@ export const IconPlus = styled.svg`
   transition: all 550ms cubic-bezier(0.4, 0, 0.2, 1);
   width: 24px;
   height: 24px;
-
-  color1: var(--fill-icon-plus);
-  color2: rgba(22, 22, 22, 1);
+  color: rgba(22, 22, 22, 1);
 `;
   export const FormWrapper = styled.div`
   position: relative;
@@ -60,6 +81,21 @@ export const ErrorSection = styled(ErrorMessage)`
   font-weight: 500;
   letter-spacing: -0.36px;
 `;
+export const FormSection = styled.div`
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FormFields = styled.div`
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export const FieldAvatar = styled.input`
   display: none;
 `;

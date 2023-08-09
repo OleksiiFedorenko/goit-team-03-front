@@ -9,7 +9,7 @@ import { Icon } from 'components/Icons';
 import defaultAvatar from '../../images/user-default-avatar.png';
 import {
     EditWrapper, IconStyle, Title, FormUser, FormWrapper, ErrorSection,
-    FormSubmit, FormField, UserAvatar, Img, FieldAvatar
+    FormSubmit, FormField, UserAvatar, Img, FieldAvatar, FormSection, FormFields, ImgWrapper, IconPlus, Label
 } from './EditProfile.styled';
 
 const UserSchema = Yup.object().shape({
@@ -88,15 +88,16 @@ function handleClick() {
     reader.readAsDataURL(file);
   }
     return (
-    <EditWrapper>
-            <Title>Edit profile</Title>
+        <EditWrapper>
+        <FormUser>
+        <Title>Edit profile</Title>
         <Formik
           initialValues={initialValues}
           validationSchema={UserSchema}
                 onSubmit={handleSubmit}
-            >
-            {({ setFieldValue, isValid }) => (
-            <Form>
+                >
+                    {({ setFieldValue}) => (
+            <FormSection>
               <FormFields>
                 <Label htmlFor="avatar">
                   <ImgWrapper>
@@ -123,7 +124,6 @@ function handleClick() {
                 />
                 <ErrorSection name="name" component="div" />
         
-        <FormUser>
             <FormWrapper>
                 <ErrorSection name="name" component="div" />
                 <FormField type="text" id="name" name="name" placeholder={user.name} />
@@ -134,17 +134,19 @@ function handleClick() {
             </FormWrapper>
             <FormWrapper>
                 <ErrorSection name="password" component="div" />
-                <FormField type={type ? 'text' : 'password'}
+                <FormField type={type}
               id="password"
               name="password"
               placeholder="Enter your password"/>
-            </FormWrapper>
-                                <FormSubmit type="submit">Send</FormSubmit>
-            </Form>
-          )}
-            </FormUser>
-        </Formik>
-    </EditWrapper>  
+        </FormWrapper>
+            </FormFields>
+             <FormSubmit type="submit">Send</FormSubmit>
+                    </FormSection>
+                    )}
+          </Formik>
+        </FormUser>
+            </EditWrapper> 
+      
    ) 
 }
 
