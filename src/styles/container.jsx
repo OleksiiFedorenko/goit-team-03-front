@@ -190,3 +190,10 @@ export const helpBannerContainer = {
     tablet: 212,
   },
 };
+
+export const helpFormContainer = {
+  width: {
+    zeroUp: 335,
+    tablet: 400,
+  },
+};
