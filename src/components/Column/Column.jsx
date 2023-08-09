@@ -34,7 +34,7 @@ const Column = ({ column }) => {
         Add another card
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
-        <AddCardForm />
+        <AddCardForm onCloseModal={closeModalHandler} parentColumn={column._id}/>
       </Modal>
     </Stack>
   );
