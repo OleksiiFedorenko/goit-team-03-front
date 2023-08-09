@@ -11,6 +11,7 @@ import {
 const handlePending = state => {
   state.isLoading = true;
 };
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -26,7 +27,7 @@ const boardSlice = createSlice({
       icon: '',
       background: '',
       owner: '',
-      columnOrder: []
+      columnOrder: [],
     },
     isLoading: false,
     error: null,
@@ -76,15 +77,15 @@ const boardSlice = createSlice({
         );
       })
       .addCase(deleteBoard.rejected, handleRejected)
-      .addCase(needHelp.pending, (state) => {
-        state.error = false;
+      .addCase(needHelp.pending, state => {
+        state.error = null;
       })
       .addCase(needHelp.fulfilled, (state, action) => {
         state.email = action.payload.email;
         state.text = action.payload.text;
       })
-      .addCase(needHelp.rejected, (state) => {
-        state.error = true;
+      .addCase(needHelp.rejected, (state, action) => {
+        state.error = action.payload;
       });
   },
 });
