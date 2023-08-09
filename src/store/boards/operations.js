@@ -8,11 +8,12 @@ export const needHelp = createAsyncThunk(
   'help',
   async ({ email, text }, thunkAPI) => {
     try {
-      await axios.post('/help', {
+      const {data} = await axios.post('/help', {
         email,
         message: text,
       });
-      Notiflix.Notify.success('Your Email Send, we will contact you!');
+      Notiflix.Notify.success(data.message);
+      return data;
     } catch (e) {
       Notiflix.Notify.failure('Something going wrong!');
       console.log(e.message);
