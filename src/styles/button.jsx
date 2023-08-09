@@ -34,6 +34,7 @@ export const burgerMenu = {
   p: '0',
   minWidth: '32px',
   height: '32px',
+  color: 'text.topTheme',
 };
 
 export const theme = {
