@@ -41,4 +41,4 @@ export const helpBannerIcon = {
   ml: 1.5,
   mb: 2.5,
   color: 'text.sideMain',
-}
+};

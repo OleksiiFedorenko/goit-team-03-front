@@ -46,7 +46,8 @@ export const HelpBanner = () => {
           <NeedHelpForm 
             onCloseModal={handleCloseModal}
             title="Need help"
-            type="Submit"/>
+            type="submit"   
+          />
         </Modal>  
       )}
     </Box>
