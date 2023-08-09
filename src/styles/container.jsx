@@ -172,6 +172,8 @@ export const modal = {
 export const modalContent = {
   width: {
     mobileFixed: '95%',
+  },
+};
 
 export const helpBannerContainer = {
   m: 'auto',
