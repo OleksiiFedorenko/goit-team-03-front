@@ -86,11 +86,69 @@ export const welcome = {
   },
 };
 
+export const auth = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: {
+    zeroUp: '90%',
+    mobileFixed: 335,
+    tablet: 424,
+  },
+  bgcolor: '#151515',
+  border: '1px solid rgba(190, 219, 176, 0.5)',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: {
+    zeroUp: '24px',
+    tablet: '40px',
+  },
+};
+
 export const noBoardInner = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
+  height: '100%',
+};
+
+export const boardInner = {
+  width: '100%',
+  height: '100%',
+  pt: {
+    zeroUp: '14px',
+    tablet: '20px',
+    desktop: '10px',
+  },
+  pb: {
+    zeroUp: '24px',
+    tablet: '32px',
+    desktop: '8px',
+  },
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
+  },
+};
+
+export const columns = {
+  display: 'flex',
+  gap: '34px',
+  width: '100%',
+  height: '100%',
+  mt: {
+    zeroUp: '40px',
+    tablet: '26px',
+    desktop: '10px',
+  },
+};
+
+export const columnsInner = {
+  display: 'flex',
+  gap: '34px',
   height: '100%',
 };
 
@@ -109,4 +167,20 @@ export const modal = {
   borderRadius: '8px',
   boxShadow: 24,
   p: '24px',
+};
+
+export const modalContent = {
+  width: {
+    mobileFixed: '95%',
+  },
+};
+
+export const helpBannerContainer = {
+  m: 'auto',
+  bgcolor: 'background.helpBanner',
+  borderRadius: '8px',
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
 };

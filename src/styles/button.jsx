@@ -14,6 +14,26 @@ export const authItem = {
   },
 };
 
+export const authTabList = {
+  width: '100%',
+  display: 'flex',
+  gap: '14px',
+  mb: '40px',
+};
+
+export const authTabItem = {
+  p: 0,
+  display: 'inline-flex',
+  width: 106,
+};
+
+export const authTabBtn = {
+  display: 'inline-flex',
+  color: 'rgba(255, 255, 255, 0.30)',
+  fontWeight: 500,
+  p: 0,
+};
+
 export const closeBtn = {
   position: 'absolute',
   top: '14px',
@@ -34,6 +54,7 @@ export const burgerMenu = {
   p: '0',
   minWidth: '32px',
   height: '32px',
+  color: 'text.topTheme',
 };
 
 export const theme = {
