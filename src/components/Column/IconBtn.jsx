@@ -6,20 +6,23 @@ import { Icon } from 'components/Icons';
 const IconBtnRoot = styled(ButtonBase)(({ theme }) => ({
   padding: 0,
   margin: 0,
-  transition: 'color 0.3s',
+  '& svg': {
+    stroke: `${theme.palette.text.secondary}`,
+    transition: 'stroke 0.3s, fill 0.3s',
+  },
+
   '&:hover': {
     color: `${theme.palette.text.secondary}`,
+    '& svg': {
+      stroke: `${theme.palette.text.primary}`,
+    },
   },
-}));
-
-const CustomIcon = styled(Icon)(({ theme }) => ({
-  stroke: `${theme.palette.text.primary}`,
 }));
 
 const IconBtn = ({ onClick, iconId }) => {
   return (
     <IconBtnRoot onClick={onClick}>
-      <CustomIcon id={iconId} />
+      <Icon id={iconId} />
     </IconBtnRoot>
   );
 };
