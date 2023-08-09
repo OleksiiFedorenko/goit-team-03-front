@@ -14,6 +14,14 @@ export const FormUser = styled(Form)`
   display: flex;
   flex-direction: column;
 `;
+export const UserAvatar = styled.img`
+  `;
+  export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+`;
 export const Title = styled.h2`
   font-family: Poppins;
   font-size: 18px;
@@ -24,11 +32,22 @@ export const Title = styled.h2`
 `;
 
 export const IconStyle = styled.svg`
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   color: #161616;
   `;
+export const IconPlus = styled.svg`
+  position: absolute;
+  top: 98%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 24px;
+  height: 24px;
 
+  color1: var(--fill-icon-plus);
+  color2: rgba(22, 22, 22, 1);
+`;
   export const FormWrapper = styled.div`
   position: relative;
   margin-bottom: 14px;
@@ -40,6 +59,9 @@ export const ErrorSection = styled(ErrorMessage)`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.36px;
+`;
+export const FieldAvatar = styled.input`
+  display: none;
 `;
 export const FormField = styled(Field)`
   width: 100%;
