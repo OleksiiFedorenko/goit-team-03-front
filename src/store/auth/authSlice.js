@@ -5,13 +5,13 @@ import {
   logout,
   fetchCurrentUser,
   updateTheme,
-  updateProfile
+  updateProfile,
 } from './operations';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null, avatar: "", theme: 'violet'},
+    user: { name: null, email: null, avatarURL: '', theme: 'violet' },
     token: '',
     isLoggedIn: false,
     isRefreshing: false,
@@ -19,17 +19,22 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
-        state.user = { name: null, email: null, theme: 'violet', avatar: "" };
+        state.user = {
+          name: null,
+          email: null,
+          theme: 'violet',
+          avatarURL: '',
+        };
         state.token = '';
         state.isLoggedIn = false;
       })
@@ -47,12 +52,12 @@ const authSlice = createSlice({
       })
 
       .addCase(updateTheme.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload}
+        state.user = { ...state.user, ...action.payload };
       })
 
       .addCase(updateProfile.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload}
-      })
+        state.user = { ...state.user, ...action.payload };
+      });
   },
 });
 

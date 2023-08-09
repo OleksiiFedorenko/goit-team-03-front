@@ -24,10 +24,18 @@ export const main = {
 export const topBar = {
   position: 'fixed',
   zIndex: '10',
+  display: 'flex',
+  justifyContent: 'end',
+  alignItems: 'center',
   width: '100%',
   height: {
     zeroUp: 60,
     tablet: 68,
+  },
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
   },
   backgroundColor: 'background.header',
 };

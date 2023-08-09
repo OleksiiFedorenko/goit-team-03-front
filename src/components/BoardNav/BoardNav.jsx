@@ -31,13 +31,19 @@ export const BoardNav = () => {
         My boards
       </Typography>
 
-      <Button onClick={handleOpenModal} variant="text" sx={button.createBoard}>
-        <Typography component="span">
-          Create a<br />
-          new board
-        </Typography>
-        <Box className="createBoardBox" sx={button.createBoardBox}></Box>
-      </Button>
+      <Box sx={button.createBoardWrapper}>
+        <Button
+          onClick={handleOpenModal}
+          variant="text"
+          sx={button.createBoard}
+        >
+          <Typography component="span">
+            Create a<br />
+            new board
+          </Typography>
+          <Box className="createBoardBox" sx={button.createBoardBox}></Box>
+        </Button>
+      </Box>
 
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <BoardForm
@@ -46,7 +52,6 @@ export const BoardNav = () => {
           type="Create"
         />
       </Modal>
-
       <List sx={button.boardListGroup}>
         <ListItem disablePadding>
           <ListItemButton component={NavLink} to="1" sx={button.boardListItem}>

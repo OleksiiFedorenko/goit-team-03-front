@@ -36,24 +36,73 @@ export const burgerMenu = {
   height: '32px',
 };
 
+export const theme = {
+  height: '44px',
+  color: 'text.topTheme',
+  fontWeight: 500,
+  lineHeight: 1.5,
+  textTransform: 'none',
+};
+
+export const themeMenu = {
+  minWidth: '200px',
+  maxWidth: '200px',
+  borderColor: 'primary.main',
+  '& .MuiPopover-paper': {
+    minWidth: '100px',
+    maxWidth: '100px',
+    py: '6px',
+  },
+};
+
+export const themeItem = {
+  height: '25px',
+  minHeight: '20px',
+  py: '2px',
+  '&.Mui-selected': {
+    color: 'primary.main',
+    backgroundColor: 'transparent',
+  },
+};
+
+export const profile = {
+  mr: '-8px',
+  color: 'text.primary',
+  fontWeight: 500,
+  lineHeight: 1.5,
+  textTransform: 'none',
+};
+
+export const profileImg = { width: '32px', height: '32px', ml: '8px' };
+
+export const createBoardWrapper = {
+  my: '8px',
+  '&::before, &::after': {
+    content: '""',
+    display: 'block',
+    width: {
+      zeroUp: '197px',
+      tablet: '212px',
+    },
+    height: '1px',
+    mx: { zeroUp: '14px', tablet: '24px' },
+    backgroundColor: 'side.divider',
+  },
+};
+
 export const createBoard = {
   display: 'flex',
   justifyContent: 'space-between',
   width: '100%',
   height: 70,
+  my: '-1px',
   px: { zeroUp: '14px', tablet: '24px' },
-  my: '8px',
   color: 'text.sideMain',
   textAlign: 'start',
   textTransform: 'none',
-  borderColor: 'side.divider',
   borderRadius: '0',
-  borderLeft: 'none',
-  borderRight: 'none',
   '&:hover, &:focus': {
     backgroundColor: 'side.activeBtn',
-    borderLeft: 'none',
-    borderRight: 'none',
     '& .createBoardBox': {
       backgroundColor: 'side.plusBackgroundHov',
     },
@@ -82,6 +131,7 @@ export const boardListGroup = {
   flexDirection: 'column',
   gap: '4px',
   mt: '40px',
+  p: 0,
   width: '100%',
 };
 
