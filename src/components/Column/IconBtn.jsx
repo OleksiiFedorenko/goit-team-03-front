@@ -7,15 +7,18 @@ const IconBtnRoot = styled(ButtonBase)(({ theme }) => ({
   padding: 0,
   margin: 0,
   '& svg': {
-    stroke: `${theme.palette.text.secondary}`,
-    transition: 'stroke 0.3s, fill 0.3s',
+    stroke: theme.palette.text.sideSecond,
+    transition: 'stroke 0.3s',
   },
 
   '&:hover': {
-    color: `${theme.palette.text.secondary}`,
+    color: theme.palette.text.sideSecond,
     '& svg': {
-      stroke: `${theme.palette.text.primary}`,
+      stroke: theme.palette.text.primary,
     },
+  },
+  '& .MuiTouchRipple-root': {
+    display: 'none',
   },
 }));
 
