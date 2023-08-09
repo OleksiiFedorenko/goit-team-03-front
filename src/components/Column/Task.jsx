@@ -1,15 +1,8 @@
 import Card from '@mui/material/Card';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
-import {
-  Typography,
-  Stack,
-  IconButton,
-  Box,
-  useTheme,
-  Grid,
-} from '@mui/material';
-import { Icon } from 'components/Icons';
+import { Typography, Stack, Box, useTheme } from '@mui/material';
 import TruncatedText from './TruncatedText';
+import IconBtn from './IconBtn';
 
 const Task = ({ name, description, priority, deadline }) => {
   const theme = useTheme();
@@ -18,13 +11,16 @@ const Task = ({ name, description, priority, deadline }) => {
   const priorityStyle = {
     '&::before': {
       content: '""',
+      transform: 'translateY(20%)',
       height: '12px',
       width: '12px',
       backgroundColor: `${priorityColor}`,
       borderRadius: '50%',
       display: 'inline-block',
+      marginRight: '4px',
     },
   };
+  const handleIconClick = () => {};
 
   return (
     <Card
@@ -34,6 +30,7 @@ const Task = ({ name, description, priority, deadline }) => {
         pl: '24px',
         pr: '20px',
         borderLeft: `4px solid ${priorityColor}`,
+        mb: '14px',
       }}
     >
       <Box>
@@ -50,30 +47,73 @@ const Task = ({ name, description, priority, deadline }) => {
           <TruncatedText text={description} />
         </Box>
 
-        <Grid container>
-          <Grid item xs={4}>
-            <Typography variant="caption" color="text.sideSecond">
-              Priority
-            </Typography>
-            <Typography variant="h6" sx={priorityStyle}>
-              {priority}
-            </Typography>
-          </Grid>
-          {/* <Grid item xs={4}>
-            <Typography variant="body2" color="textSecondary">
-              Deadline
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              {deadline}
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Icon id={'alert'} />
-            <Icon id={'move'} />
-            <Icon id={'pencil'} />
-            <Icon id={'trash'} />
-          </Grid>*/}
-        </Grid>
+        {/* components below devider       */}
+
+        <Box>
+          <Stack direction="row">
+            {/* priority container      */}
+            <Stack
+              justifyContent="flex-end"
+              alignItems="flex-start"
+              spacing={0}
+              sx={{ marginRight: '14px' }}
+            >
+              <Box>
+                <Typography variant="caption" color="text.sideSecond">
+                  Priority
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" sx={priorityStyle}>
+                  {priority}
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* deadline container     */}
+            <Stack
+              flexGrow={1}
+              justifyContent="flex-end"
+              alignItems="flex-start"
+              spacing={0}
+            >
+              <Box>
+                <Typography variant="caption" color="text.sideSecond">
+                  Deadline
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" color="text.primary">
+                  {deadline}
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* icons container     */}
+
+            <Stack
+              direction="row"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+              spacing={1}
+            >
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="alert" />
+              </Box>
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="move" />
+              </Box>
+
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="pencil" />
+              </Box>
+
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="trash" />
+              </Box>
+            </Stack>
+          </Stack>
+        </Box>
       </Box>
     </Card>
   );
