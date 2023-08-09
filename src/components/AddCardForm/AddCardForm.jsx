@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Container } from '@mui/material';
@@ -7,6 +9,7 @@ import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Typography, RadioGroup, FormLabel, FormControl } from '@mui/material';
 import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
+import { addTask } from 'store/boards/operations';
 
 const initialValues = {
   title: '',
@@ -17,17 +20,26 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  deadline: Yup.date().required('Required'),
+  deadline: Yup.date(),
 });
 
-const handleSubmit = values => {
-  console.log(values);
-  //setSubmitting(false);
-  // resetForm();
-  //onCloseModal();
-};
+const AddCardForm = ({ parentColumn, onCloseModal }) => {
+  const dispatch = useDispatch();
+  const [priority, setPriority] = useState("without");
 
-const AddCardForm = () => {
+  const handleChangePriority = (event) => {
+    setPriority(event.target.value);
+  };
+
+  const handleSubmit = values => {
+    console.log(values);
+    dispatch(
+      addTask({ ...values, parentColumn, deadline: null, priority })
+    );
+    //setSubmitting(false);
+    // resetForm();
+    onCloseModal();
+  };
   return (
     <Container>
       <Formik
@@ -75,7 +87,9 @@ const AddCardForm = () => {
               row
               defaultValue="low"
               aria-labelledby="priority-radios"
-              name="priorityBtn"
+              name="priority"
+              value={priority}
+              onChange={handleChangePriority}
             >
               <FormControlLabel
                 value="low"
@@ -88,13 +102,13 @@ const AddCardForm = () => {
                 }
               />
               <FormControlLabel
-                value="High"
+                value="high"
                 control={
                   <PriorityRadioBtn priority="High" sx={{ ml: '-14px' }} />
                 }
               />
               <FormControlLabel
-                value="Without"
+                value="without"
                 control={
                   <PriorityRadioBtn priority="Without" sx={{ ml: '-14px' }} />
                 }
