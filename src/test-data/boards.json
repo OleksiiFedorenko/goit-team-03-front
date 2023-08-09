@@ -1,0 +1,14 @@
+[
+    {
+      "_id": "111a1ea1113bc1ba1a1c896c",
+      "title": "New Board",
+      "icon": "star",
+      "background": ""
+    },
+    {
+      "_id": "222a0ea22b2bc2ba2c2d899c",
+      "title": "Work Board",
+      "icon": "project",
+      "background": "imageURL"
+    }
+  ]

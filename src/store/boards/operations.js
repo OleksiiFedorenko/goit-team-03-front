@@ -37,7 +37,7 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`boatds/${id}`);
+      const { data } = await axios.get(`boards/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -50,7 +50,6 @@ export const addBoard = createAsyncThunk(
   async ({ title, icon, background }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('boards', { title, icon, background });
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -60,9 +59,9 @@ export const addBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'board/updateBoard',
-  async ({_id, title, icon, background}, { rejectWithValue }) => {
+  async ({id, title, icon, background}, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`boards/${_id}`,{title, icon, background});
+      const { data } = await axios.put(`boards/${id}`,{title, icon, background});
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -75,6 +74,56 @@ export const deleteBoard = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await axios.delete(`boards/${id}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addColumn = createAsyncThunk(
+  'boards/addColumn',
+  async ({ title, parentBoard }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('columns', { title, parentBoard });
+      console.log(data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getColumnById = createAsyncThunk(
+  'boards/getColumnById',
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`columns/${id}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateColumn = createAsyncThunk(
+  'boards/updateColumn',
+  async ({ id, title }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`columns/${id}`, { title });
+      console.log(data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteColumn = createAsyncThunk(
+  'boards/deleteColumn',
+  async ({id}, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.delete(`columns/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
