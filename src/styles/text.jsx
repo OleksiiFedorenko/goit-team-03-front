@@ -22,3 +22,23 @@ export const boardNavTitle = {
   ml: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideSecond',
 };
+
+export const helpBannerText = {
+  ml: 2.5,
+  mr: 2.5,
+  mb: 2,
+  color: 'text.sideMain',
+};
+
+export const helpBannerButton = {
+  ml: 1,
+  mb: 2.5,
+  color: 'text.sideMain',
+  textTransform: 'none',
+};
+
+export const helpBannerIcon = {
+  ml: 1.5,
+  mb: 2.5,
+  color: 'text.sideMain',
+}

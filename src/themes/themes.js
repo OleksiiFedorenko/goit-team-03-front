@@ -88,6 +88,7 @@ export const violetTheme = createTheme({
       header: '#FFF',
       side: '#5255BC',
       logoIcon: '#ECEDFD',
+      helpBanner: 'rgba(236, 237, 253, 0.4)',
     },
     text: {
       primary: '#161616',
@@ -126,6 +127,7 @@ export const lightTheme = createTheme({
       header: '#FCFCFC',
       side: '#FFF',
       logoIcon: '#1F1F1F',
+      helpBanner: '#F6F6F7',
     },
     text: {
       primary: '#161616',
@@ -161,6 +163,7 @@ export const darkTheme = createTheme({
       header: '#161616',
       side: '#121212',
       logoIcon: '#1F1F1F',
+      helpBanner: '#1F1F1F',
     },
     text: {
       primary: '#FFF',

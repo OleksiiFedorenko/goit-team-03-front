@@ -110,3 +110,13 @@ export const modal = {
   boxShadow: 24,
   p: '24px',
 };
+
+export const helpBannerContainer = {
+  m: 'auto',
+  bgcolor: 'background.helpBanner',
+  borderRadius: '8px',
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
+}
