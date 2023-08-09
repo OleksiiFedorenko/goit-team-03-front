@@ -119,6 +119,7 @@ export const createBoard = {
   my: '-1px',
   px: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideMain',
+  fontWeight: 500,
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: '0',
@@ -128,13 +129,6 @@ export const createBoard = {
       backgroundColor: 'side.plusBackgroundHov',
     },
   },
-};
-
-export const createBoardInner = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '100%',
-  fontWeight: 500,
 };
 
 export const createBoardBox = {

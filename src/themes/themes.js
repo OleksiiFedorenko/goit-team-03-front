@@ -155,9 +155,9 @@ export const lightTheme = createTheme({
     },
     side: {
       divider: '#1616161A',
-      plusBackground: '#B8BCFD',
+      plusBackground: '#BEDBB0',
       plusBackgroundHov: '#9DC888',
-      activeBoard: 'rgba(246, 246, 247, 0.4)',
+      activeBtn: 'rgba(246, 246, 247, 0.4)',
       activeBoardBox: '#BEDBB0',
     },
     ...form,
@@ -193,9 +193,9 @@ export const darkTheme = createTheme({
     },
     side: {
       divider: '#FFFFFF1A',
-      plusBackground: '#B8BCFD',
+      plusBackground: '#BEDBB0',
       plusBackgroundHov: '#9DC888',
-      activeBoard: 'rgba(31, 31, 31, 0.4)',
+      activeBtn: 'rgba(31, 31, 31, 0.4)',
       activeBoardBox: '#BEDBB0',
     },
     ...form,

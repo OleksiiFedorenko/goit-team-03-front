@@ -19,9 +19,9 @@ const Column = ({ column }) => {
   return (
     <Stack
       sx={{
-        width: '100%',
+        width: '334px',
         maxWidth: '334px',
-        height: '100vh',
+        height: '100%',
       }}
     >
       <ColumnHeader title={column.title} columnId={column._id} />
@@ -34,7 +34,10 @@ const Column = ({ column }) => {
         Add another card
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
-        <AddCardForm onCloseModal={closeModalHandler} parentColumn={column._id}/>
+        <AddCardForm
+          onCloseModal={closeModalHandler}
+          parentColumn={column._id}
+        />
       </Modal>
     </Stack>
   );

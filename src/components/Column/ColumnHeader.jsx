@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IconButton } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
+import { deleteColumn } from 'store/boards/operations';
+
 import { Icon } from 'components/Icons';
 import Modal from 'components/Modal/Modal';
 import EditColumnModal from 'components/AddColumn/EditColumnModal';
-import { deleteColumn } from 'store/boards/operations';
+import { Card, CardHeader, IconButton } from '@mui/material';
 
 const ColumnHeader = ({ title, columnId }) => {
   const [showModal, setShowModal] = useState(false);
@@ -25,6 +24,7 @@ const ColumnHeader = ({ title, columnId }) => {
       dispatch(deleteColumn(columnId));
     }
   };
+
   return (
     <div>
       <Card>
