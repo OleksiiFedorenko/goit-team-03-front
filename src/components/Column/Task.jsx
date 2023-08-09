@@ -1,20 +1,19 @@
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
-import CardContent from '@mui/material/CardContent';
-import { Typography } from '@mui/material';
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
+import {
+  Typography,
+  Stack,
+  IconButton,
+  Box,
+  useTheme,
+  Grid,
+} from '@mui/material';
 import { Icon } from 'components/Icons';
-import { IconButton } from '@mui/material';
-
-import css from './Task.module.css';
-
-const TruncatedText = ({ text }) => (
-  <Typography className={css['truncate-lines']}>{text}</Typography>
-);
+import TruncatedText from './TruncatedText';
 
 const Task = ({ name, description, priority, deadline }) => {
+  const theme = useTheme();
+
   const priorityColor = priorityColorSwitcher(priority);
   const priorityStyle = {
     '&::before': {
@@ -31,53 +30,51 @@ const Task = ({ name, description, priority, deadline }) => {
     <Card
       elevation={2}
       sx={{
+        py: '14px',
+        pl: '24px',
+        pr: '20px',
         borderLeft: `4px solid ${priorityColor}`,
       }}
     >
-      <CardHeader title={name} />
-      <CardContent>
-        <TruncatedText text={description} />
+      <Box>
+        <Box
+          sx={{
+            pb: '14px',
+            mb: '14px',
+            borderBottom: `1px solid ${theme.palette.side.divider}`,
+          }}
+        >
+          <Typography variant="h5" component="h2" color="text.primary" mb={1}>
+            {name}
+          </Typography>
+          <TruncatedText text={description} />
+        </Box>
 
-        <Divider variant="middle" />
-
-        <Stack spacing={2} direction="row">
-          <Stack>
-            <Typography variant="body2" color="textSecondary">
+        <Grid container>
+          <Grid item xs={4}>
+            <Typography variant="caption" color="text.sideSecond">
               Priority
             </Typography>
-            <Typography sx={priorityStyle}>{priority}</Typography>
-          </Stack>
-
-          <Stack>
+            <Typography variant="h6" sx={priorityStyle}>
+              {priority}
+            </Typography>
+          </Grid>
+          {/* <Grid item xs={4}>
             <Typography variant="body2" color="textSecondary">
               Deadline
             </Typography>
             <Typography variant="body2" color="textSecondary">
               {deadline}
             </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="flex-end"
-            justifyContent="flex-end"
-          >
-            <IconButton>
-              <Icon id={'alert'} />
-            </IconButton>
-
-            <IconButton>
-              <Icon id={'move'} />
-            </IconButton>
-
-            <IconButton>
-              <Icon id={'pencil'} />
-            </IconButton>
-            <IconButton>
-              <Icon id={'trash'} />
-            </IconButton>
-          </Stack>
-        </Stack>
-      </CardContent>
+          </Grid>
+          <Grid item xs={4}>
+            <Icon id={'alert'} />
+            <Icon id={'move'} />
+            <Icon id={'pencil'} />
+            <Icon id={'trash'} />
+          </Grid>*/}
+        </Grid>
+      </Box>
     </Card>
   );
 };

@@ -5,7 +5,7 @@ import { Icon } from 'components/Icons';
 const ColumnHeader = ({ title }) => {
   return (
     <div>
-      <Card>
+      <Card sx={{ marginBottom: '14px' }}>
         <CardHeader
           action={
             <div>
