@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 export const needHelp = createAsyncThunk(
   'help',

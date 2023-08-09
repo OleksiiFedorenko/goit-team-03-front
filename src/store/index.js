@@ -12,6 +12,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { boardReducer } from './boards/boardSlice';
+// import { refreshMiddleware } from '../store/auth/operations';
+
 
 const persistConfig = {
   key: 'auth',

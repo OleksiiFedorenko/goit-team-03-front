@@ -2,11 +2,11 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  set(accessToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -43,7 +43,10 @@ export const getLogin = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/login', { email, password });
-      token.set(data.token);
+      console.log(data);
+      token.set(data.tokens.accessToken);
+      // const { refreshToken } = data.tokens;
+      // localStorage.setItem('refreshToken', refreshToken);
       return data;
     } catch (error) {
       toast.error(
@@ -73,7 +76,7 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.token.accessToken;
     if (!persistedToken) {
       return rejectWithValue('No valid token');
     }

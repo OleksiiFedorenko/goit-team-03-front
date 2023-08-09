@@ -12,7 +12,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: { name: null, email: null, avatar: "", theme: 'violet'},
-    token: '',
+    token:  { accessToken: '', refreshToken: '' },
     isLoggedIn: false,
     isRefreshing: false,
   },
@@ -20,12 +20,14 @@ const authSlice = createSlice({
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
         state.user = {...state.user, ...action.payload};
-        state.token = action.payload.token;
+        state.token.accessToken = action.payload.tokens.accessToken;
+  state.token.refreshToken = action.payload.tokens.refreshToken;
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
         state.user = {...state.user, ...action.payload};
-        state.token = action.payload.token;
+        state.token.accessToken = action.payload.tokens.accessToken;
+        state.token.refreshToken = action.payload.tokens.refreshToken;
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
