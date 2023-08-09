@@ -5,8 +5,8 @@ import AddColumnModal from './AddColumnModal';
 import { Icon } from 'components/Icons';
 
 const AddColumnButton = () => {
-    const [showModal, setShowModal] = useState(false);
-    const handleOpenModal = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => {
     setShowModal(true);
   };
 
@@ -14,22 +14,25 @@ const AddColumnButton = () => {
     setShowModal(false);
   };
   return (
-      <>
+    <>
       <Button type="button" onClick={handleOpenModal}>
         <IconWrapper>
           <IconStyle>
-            <Icon id={"plus"} />
+            <Icon id={'plus'} />
           </IconStyle>
         </IconWrapper>
-          <Text>Add another column</Text>
-        </Button>
-        {showModal && (
+        <Text>Add another column</Text>
+      </Button>
+      {showModal && (
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <AddColumnModal  onCloseModal={handleCloseModal} title="New board"
-            type="Submit"/>
-          </Modal>
-           )}
-      </>
-    )
-}
+          <AddColumnModal
+            onCloseModal={handleCloseModal}
+            title="New board"
+            type="Submit"
+          />
+        </Modal>
+      )}
+    </>
+  );
+};
 export default AddColumnButton;

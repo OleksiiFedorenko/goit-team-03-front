@@ -3,8 +3,8 @@ import Column from 'components/Column/Column';
 import AddColumnButton from 'components/AddColumn/AddColumnButton';
 import { selectBoard, selectColumns } from 'store/boards/selectors';
 
-import { Box } from '@mui/material';
-import { container } from 'styles';
+import { Box, Typography } from '@mui/material';
+import { container, text } from 'styles';
 
 const BoardPage = () => {
   const board = useSelector(selectBoard);
@@ -12,11 +12,20 @@ const BoardPage = () => {
 
   return (
     <Box sx={container.board}>
-      <h1>{board.title}</h1>
-      <AddColumnButton />
-      {columns.map(column => {
-        return <Column key={column._id} column={column} />;
-      })}
+      <Box sx={container.boardInner}>
+        <Typography component="h2" variant="h3" sx={text.boardTitle}>
+          {board.title}
+        </Typography>
+
+        <Box sx={container.columns}>
+          <Box sx={container.columnsInner}>
+            {columns.map(column => {
+              return <Column key={column._id} column={column} />;
+            })}
+          </Box>
+          <AddColumnButton />
+        </Box>
+      </Box>
     </Box>
   );
 };

@@ -114,6 +114,44 @@ export const noBoardInner = {
   height: '100%',
 };
 
+export const boardInner = {
+  width: '100%',
+  height: '100%',
+  pt: {
+    zeroUp: '14px',
+    tablet: '20px',
+    desktop: '10px',
+  },
+  pb: {
+    zeroUp: '24px',
+    tablet: '32px',
+    desktop: '8px',
+  },
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
+  },
+};
+
+export const columns = {
+  display: 'flex',
+  gap: '34px',
+  width: '100%',
+  height: '100%',
+  mt: {
+    zeroUp: '40px',
+    tablet: '26px',
+    desktop: '10px',
+  },
+};
+
+export const columnsInner = {
+  display: 'flex',
+  gap: '34px',
+  height: '100%',
+};
+
 export const boardNav = {
   width: '100%',
   mt: '60px',

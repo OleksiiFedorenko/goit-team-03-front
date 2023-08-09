@@ -22,7 +22,6 @@ const Column = ({ column }) => {
         width: '100%',
         maxWidth: 360,
         height: '100vh',
-        marginLeft: '15px',
       }}
     >
       <ColumnHeader title={column.title} columnId={column._id} />
