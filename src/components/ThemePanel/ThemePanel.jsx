@@ -1,44 +1,78 @@
-import React, { useState } from 'react';
-import {
-  ThemesPanelWrapper,
-  ThemeOptions,
-  ThemeOption,
-  ButtonThemes,
-} from './Theme.styled';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme } from 'store/auth/selectors';
+import { updateTheme } from 'store/auth/operations';
+
+import { Box, Button, Menu, MenuItem } from '@mui/material';
+import { button } from 'styles';
 
 export const ThemePanel = () => {
-  const [isPanelOpen, setPanelOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState('Dark');
+  const dispatch = useDispatch();
+  const userTheme = useSelector(selectTheme);
 
-  const themes = ['Dark', 'White', 'Violet'];
-
-  const handleTogglePanel = () => {
-    setPanelOpen(prev => !prev);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleOpen = event => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleThemeSelection = theme => {
-    setActiveTheme(theme);
-    setPanelOpen(false);
+  const handleClick = theme => {
+    dispatch(updateTheme(theme));
+    setAnchorEl(null);
   };
 
   return (
-    <div>
-      <ButtonThemes onClick={handleTogglePanel}>Theme</ButtonThemes>
-      {isPanelOpen && (
-        <ThemesPanelWrapper>
-          <ThemeOptions>
-            {themes.map(theme => (
-              <ThemeOption
-                key={theme}
-                onClick={() => handleThemeSelection(theme)}
-                active={theme === activeTheme}
-              >
-                {theme}
-              </ThemeOption>
-            ))}
-          </ThemeOptions>
-        </ThemesPanelWrapper>
-      )}
-    </div>
+    <Box>
+      <Button
+        variant="text"
+        sx={button.theme}
+        id="theme-button"
+        aria-controls={open ? 'theme-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleOpen}
+        // endIcon={<put icon component here />}
+      >
+        Theme
+      </Button>
+      <Menu
+        sx={button.themeMenu}
+        id="theme-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClick}
+        MenuListProps={{
+          'aria-labelledby': 'theme-button',
+        }}
+      >
+        <MenuItem
+          sx={button.themeItem}
+          selected={userTheme === 'light'}
+          onClick={() => {
+            handleClick('light');
+          }}
+        >
+          Light
+        </MenuItem>
+        <MenuItem
+          sx={button.themeItem}
+          selected={userTheme === 'dark'}
+          onClick={() => {
+            handleClick('dark');
+          }}
+        >
+          Dark
+        </MenuItem>
+        <MenuItem
+          sx={button.themeItem}
+          selected={userTheme === 'violet'}
+          onClick={() => {
+            handleClick('violet');
+          }}
+        >
+          Violet
+        </MenuItem>
+      </Menu>
+    </Box>
   );
 };

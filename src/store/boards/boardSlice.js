@@ -5,11 +5,14 @@ import {
   addBoard,
   updateBoard,
   deleteBoard,
+  addColumn,
+  needHelp,
 } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
 };
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -20,15 +23,20 @@ const boardSlice = createSlice({
   initialState: {
     boards: [],
     board: {
-      _id: '',
-      title: '',
-      icon: '',
-      background: '',
-      owner: '',
-      columnOrder: []
+      board: {
+        _id: '',
+        title: '',
+        icon: '',
+        background: '',
+        owner: '',
+        columnOrder: [],
+      },
+      columns: [],
     },
     isLoading: false,
     error: null,
+    email: '',
+    text: '',
   },
   extraReducers: builder => {
     builder
@@ -60,7 +68,11 @@ const boardSlice = createSlice({
       .addCase(updateBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.board = action.payload;
+        state.board.board = action.payload;
+        const index = state.boards.findIndex(
+          board => board._id === action.payload._id
+        );
+        state.boards.splice(index, 1, action.payload);
       })
       .addCase(updateBoard.rejected, handleRejected)
 
@@ -71,8 +83,26 @@ const boardSlice = createSlice({
         state.boards = state.boards.filter(
           board => board._id !== action.payload._id
         );
+        state.board = {};
       })
-      .addCase(deleteBoard.rejected, handleRejected);
+      .addCase(deleteBoard.rejected, handleRejected)
+      .addCase(addColumn.pending, handlePending)
+      .addCase(addColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.board.columns.push(action.payload);
+      })
+      .addCase(addColumn.rejected, handleRejected)
+      .addCase(needHelp.pending, state => {
+        state.error = null;
+      })
+      .addCase(needHelp.fulfilled, (state, action) => {
+        state.email = action.payload.email;
+        state.text = action.payload.text;
+      })
+      .addCase(needHelp.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 

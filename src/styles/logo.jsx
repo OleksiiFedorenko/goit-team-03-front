@@ -46,7 +46,7 @@ export const iconWrapper = {
   width: 32,
   height: 32,
   borderRadius: '8px',
-  backgroundColor: 'background.default',
+  backgroundColor: 'background.logoIcon',
 };
 
 export const iconSize = {
