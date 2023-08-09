@@ -1,3 +1,4 @@
+import React from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { TopBar } from 'components/TopBar';
@@ -5,6 +6,7 @@ import { SideBar } from 'components/SideBar';
 
 import { Container, Box } from '@mui/material';
 import { container } from 'styles';
+import { Loader } from 'components/Loader/Loader';
 
 export const TasksLayout = () => {
   return (
@@ -12,14 +14,12 @@ export const TasksLayout = () => {
       <header>
         <TopBar />
       </header>
-      {/* <main> */}
       <Box component="main" sx={container.main}>
-        <SideBar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <SideBar contStyles={container.sideBarDesktop} />
+        <Suspense fallback={<Loader/>}>
           <Outlet />
         </Suspense>
       </Box>
-      {/* </main> */}
     </Container>
   );
 };

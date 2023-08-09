@@ -35,6 +35,8 @@ export const container = {
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
+  mt: { zeroUp: '14px', tablet: '24px' },
+  ml: { zeroUp: '14px', tablet: '24px' },
 };
 
 export const iconWrapper = {
@@ -44,7 +46,7 @@ export const iconWrapper = {
   width: 32,
   height: 32,
   borderRadius: '8px',
-  backgroundColor: 'background.default',
+  backgroundColor: 'background.logoIcon',
 };
 
 export const iconSize = {

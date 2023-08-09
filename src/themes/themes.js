@@ -4,6 +4,19 @@ const standardColors = {
   white: '#FFF',
 };
 
+const form = {
+  input: {
+    main: '#BEDBB0',
+    light: '#42a5f5',
+    dark: '#9FAF90',
+    contrastText: '#FFF',
+  },
+  button: {
+    main: '#BEDBB0',
+    contrastText: '#161616',
+  },
+};
+
 const standardParams = {
   breakpoints: {
     values: {
@@ -50,6 +63,11 @@ const standardParams = {
       lineHeight: 1.33,
       letterSpacing: '-0.02em',
     },
+    caption: {
+      fontSize: 12,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
   },
   shape: {
     borderRadius: 8,
@@ -69,14 +87,27 @@ export const violetTheme = createTheme({
       default: '#ECEDFD',
       header: '#FFF',
       side: '#5255BC',
+      logoIcon: '#ECEDFD',
     },
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      topTheme: '#161616CC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
       ...standardColors,
     },
+    divider: {
+      side: '#FFFFFF1A',
+    },
+    side: {
+      divider: '#FFFFFF1A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#979CEA',
+      activeBtn: 'rgba(255, 255, 255, 0.2)',
+      activeBoardBox: '#FFF',
+    },
+    ...form,
   },
   ...standardParams,
 });
@@ -94,14 +125,24 @@ export const lightTheme = createTheme({
       default: '#F6F6F7',
       header: '#FCFCFC',
       side: '#FFF',
+      logoIcon: '#1F1F1F',
     },
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      topTheme: '#161616CC',
       sideMain: '#161616',
       sideSecond: '#16161680',
       ...standardColors,
     },
+    side: {
+      divider: '#1616161A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#9DC888',
+      activeBoard: 'rgba(246, 246, 247, 0.4)',
+      activeBoardBox: '#BEDBB0',
+    },
+    ...form,
   },
   ...standardParams,
 });
@@ -119,14 +160,24 @@ export const darkTheme = createTheme({
       default: '#1F1F1F',
       header: '#161616',
       side: '#121212',
+      logoIcon: '#1F1F1F',
     },
     text: {
       primary: '#FFF',
       secondary: '#FFFFFF80',
+      topTheme: '#FFFFFFCC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
       ...standardColors,
     },
+    side: {
+      divider: '#FFFFFF1A',
+      plusBackground: '#B8BCFD',
+      plusBackgroundHov: '#9DC888',
+      activeBoard: 'rgba(31, 31, 31, 0.4)',
+      activeBoardBox: '#BEDBB0',
+    },
+    ...form,
   },
   ...standardParams,
 });
