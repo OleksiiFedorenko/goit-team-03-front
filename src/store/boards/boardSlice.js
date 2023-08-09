@@ -5,6 +5,7 @@ import {
   addBoard,
   updateBoard,
   deleteBoard,
+  needHelp,
 } from './operations';
 
 const handlePending = state => {
@@ -29,6 +30,8 @@ const boardSlice = createSlice({
     },
     isLoading: false,
     error: null,
+    email: '',
+    text: '',
   },
   extraReducers: builder => {
     builder
@@ -72,7 +75,17 @@ const boardSlice = createSlice({
           board => board._id !== action.payload._id
         );
       })
-      .addCase(deleteBoard.rejected, handleRejected);
+      .addCase(deleteBoard.rejected, handleRejected)
+      .addCase(needHelp.pending, (state) => {
+        state.error = false;
+      })
+      .addCase(needHelp.fulfilled, (state, action) => {
+        state.email = action.payload.email;
+        state.text = action.payload.text;
+      })
+      .addCase(needHelp.rejected, (state) => {
+        state.error = true;
+      });
   },
 });
 
