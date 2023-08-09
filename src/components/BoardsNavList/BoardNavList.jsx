@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { Icon } from 'components/Icons';
 
-import { getBoardById, updateBoard } from 'store/boards/operations';
+import { getBoardById, updateBoard, deleteBoard } from 'store/boards/operations';
 
 export const BoardNavList = ({ boards }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -31,6 +31,12 @@ export const BoardNavList = ({ boards }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  const handleDeleteBoard = ()=> {
+    if (window.confirm("Do you really want to delete board?")) {
+       dispatch(deleteBoard(boardId))
+      }
+  };
+
   return (
     <Box sx={{ width: '100%', m: '0', p: '0' }}>
       <List
@@ -71,7 +77,8 @@ export const BoardNavList = ({ boards }) => {
               >
                 <Icon id={'pencil'} />
               </IconButton>
-              <IconButton size="small" color="inherit">
+              <IconButton size="small" color="inherit" 
+              onClick={handleDeleteBoard}>
                 <Icon id={'trash'} />
               </IconButton>
             </ListItemButton>
