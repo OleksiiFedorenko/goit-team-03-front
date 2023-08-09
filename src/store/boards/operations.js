@@ -15,7 +15,7 @@ export const needHelp = createAsyncThunk(
       Notiflix.Notify.success('Your Email Send, we will contact you!');
     } catch (e) {
       Notiflix.Notify.failure('Something going wrong!');
-      console.log(e.message)
+      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -59,9 +59,13 @@ export const addBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'board/updateBoard',
-  async ({id, title, icon, background}, { rejectWithValue }) => {
+  async ({ id, title, icon, background }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`boards/${id}`,{title, icon, background});
+      const { data } = await axios.put(`boards/${id}`, {
+        title,
+        icon,
+        background,
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -86,7 +90,6 @@ export const addColumn = createAsyncThunk(
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('columns', { title, parentBoard });
-      console.log(data)
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -96,7 +99,7 @@ export const addColumn = createAsyncThunk(
 
 export const getColumnById = createAsyncThunk(
   'boards/getColumnById',
-  async ({ columnId }, { rejectWithValue }) => {
+  async (columnId, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`columns/${columnId}`);
       return data;
@@ -111,7 +114,6 @@ export const updateColumn = createAsyncThunk(
   async ({ columnId, title }, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(`columns/${columnId}`, { title });
-      console.log(data)
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -121,9 +123,9 @@ export const updateColumn = createAsyncThunk(
 
 export const deleteColumn = createAsyncThunk(
   'boards/deleteColumn',
-  async ({columnId}, {rejectWithValue}) => {
+  async (columnId, { rejectWithValue }) => {
     try {
-      const {data} = await axios.delete(`columns/${columnId}`);
+      const { data } = await axios.delete(`columns/${columnId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
