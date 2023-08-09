@@ -1,15 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemText,
-  IconButton,
-} from '@mui/material';
 import { Icon } from 'components/Icons';
 
 import {
@@ -18,16 +11,25 @@ import {
   deleteBoard,
 } from 'store/boards/operations';
 
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  IconButton,
+} from '@mui/material';
+import { button } from 'styles';
+
 export const BoardNavList = ({ boards }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { boardId } = useParams();
 
-  const handleListItemClick = (event, index, boardId) => {
-    setSelectedIndex(index);
-    dispatch(getBoardById(boardId));
-  };
+  useEffect(() => {
+    if (boardId) dispatch(getBoardById(boardId));
+  }, [dispatch, boardId]);
+
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -43,56 +45,47 @@ export const BoardNavList = ({ boards }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', m: '0', p: '0' }}>
-      <List
-        component="nav"
-        sx={{ width: '100%', m: '0', p: '0', color: 'text.sideSecond' }}
-      >
-        {boards.map((board, index) => {
+    <>
+      <List sx={button.boardListGroup}>
+        {boards.map(board => {
           return (
-            <ListItemButton
-              key={board._id}
-              component={NavLink}
-              to={board._id}
-              sx={[
-                {
-                  '&:focus': {
-                    color: 'text.sideMain',
-                    backgroundColor: 'background.sideSecond',
-                  },
-                },
-              ]}
-              selected={selectedIndex === index}
-              onClick={event => handleListItemClick(event, index, board._id)}
-            >
-              <Icon id={board.icon} />
-              <ListItemText primary={board.title} />
-              <IconButton
-                onClick={handleOpenModal}
-                color="inherit"
-                size="small"
-                sx={[
-                  {
-                    '&:focus': {
-                      color: 'secondary',
-                      backgroundColor: 'background.sideSecond',
+            <ListItem key={board._id} disablePadding>
+              <ListItemButton
+                component={NavLink}
+                to={board._id}
+                sx={button.boardListItem}
+              >
+                <Icon id={board.icon} />
+                <ListItemText primary={board.title} disableTypography />
+                <IconButton
+                  onClick={handleOpenModal}
+                  color="inherit"
+                  size="small"
+                  sx={[
+                    {
+                      '&:focus': {
+                        color: 'secondary',
+                        backgroundColor: 'background.sideSecond',
+                      },
                     },
-                  },
-                ]}
-              >
-                <Icon id={'pencil'} />
-              </IconButton>
-              <IconButton
-                onClick={handleDeleteBoard}
-                size="small"
-                color="inherit"
-              >
-                <Icon id={'trash'} />
-              </IconButton>
-            </ListItemButton>
+                  ]}
+                >
+                  <Icon id={'pencil'} />
+                </IconButton>
+                <IconButton
+                  onClick={handleDeleteBoard}
+                  size="small"
+                  color="inherit"
+                >
+                  <Icon id={'trash'} />
+                </IconButton>
+                <Box className="activeBoardBtn" sx={button.boardListBox} />
+              </ListItemButton>
+            </ListItem>
           );
         })}
       </List>
+
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <BoardForm
           onCloseModal={handleCloseModal}
@@ -102,6 +95,6 @@ export const BoardNavList = ({ boards }) => {
           id={boardId}
         />
       </Modal>
-    </Box>
+    </>
   );
 };

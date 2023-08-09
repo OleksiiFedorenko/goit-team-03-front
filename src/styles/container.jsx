@@ -144,7 +144,7 @@ export const columns = {
   display: 'flex',
   gap: '34px',
   width: '100%',
-  height: '100%',
+  maxHeight: '100%',
   mt: {
     zeroUp: '40px',
     tablet: '26px',
