@@ -1,5 +1,7 @@
 import React from 'react';
-// import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addColumn } from 'store/boards/operations';
 
 import {
   FormWrapper,
@@ -16,7 +18,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Icon } from 'components/Icons';
 
-
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
@@ -24,15 +25,18 @@ const initialValues = {
   title: '',
 };
 
-const AddColumnModal = ({ onCloseModal}) => {
-    // const dispatch = useDispatch();
-    
-    const handleSubmit = (values, { resetForm }) => {
-        // const { title } = values;
-        resetForm();
-        onCloseModal();
+const AddColumnModal = ({ onCloseModal }) => {
+  const { boardId } = useParams();
+  const dispatch = useDispatch();
 
-    }
+  const parentBoard = boardId;
+
+  const handleSubmit = (values, { resetForm }) => {
+    console.log({...values, parentBoard})
+    dispatch(addColumn({ ...values, parentBoard }));
+    resetForm();
+    onCloseModal();
+  };
   return (
     <Section>
       <SectionTitle>Add column</SectionTitle>
@@ -56,7 +60,7 @@ const AddColumnModal = ({ onCloseModal}) => {
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
               <PlusIcon>
-                 <Icon id={"plus"} />
+                <Icon id={'plus'} />
               </PlusIcon>
             </ButtonPlus>
             Add

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import cards from '../../test-data/cards.json';
 import Button from '@mui/material/Button';
 import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
@@ -7,9 +6,8 @@ import { Stack } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
-// import SubmitButton from 'components/FormsUI/SubmitButton';
 
-const Column = () => {
+const Column = ({ column }) => {
   const [showModal, setShowModal] = useState(false);
   const openModalHandler = () => {
     setShowModal(true);
@@ -17,6 +15,7 @@ const Column = () => {
   const closeModalHandler = () => {
     setShowModal(false);
   };
+
   return (
     <Stack
       sx={{
@@ -26,9 +25,8 @@ const Column = () => {
         marginLeft: '15px',
       }}
     >
-      <ColumnHeader title={'Todo'}></ColumnHeader>
-      <TaskList cards={cards}></TaskList>
-
+      <ColumnHeader title={column.title} columnId={column._id} />
+      <TaskList cards={column.taskOrder} />
       <Button
         variant="contained"
         startIcon={<AddBoxIcon />}

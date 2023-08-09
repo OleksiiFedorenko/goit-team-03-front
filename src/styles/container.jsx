@@ -24,10 +24,18 @@ export const main = {
 export const topBar = {
   position: 'fixed',
   zIndex: '10',
+  display: 'flex',
+  justifyContent: 'end',
+  alignItems: 'center',
   width: '100%',
   height: {
     zeroUp: 60,
     tablet: 68,
+  },
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
   },
   backgroundColor: 'background.header',
 };
@@ -78,6 +86,26 @@ export const welcome = {
   },
 };
 
+export const auth = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: {
+    zeroUp: '90%',
+    mobileFixed: 335,
+    tablet: 424,
+  },
+  bgcolor: '#151515',
+  border: '1px solid rgba(190, 219, 176, 0.5)',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: {
+    zeroUp: '24px',
+    tablet: '40px',
+  },
+};
+
 export const noBoardInner = {
   display: 'flex',
   justifyContent: 'center',
@@ -106,5 +134,13 @@ export const modal = {
 export const modalContent = {
   width: {
     mobileFixed: '95%',
+
+export const helpBannerContainer = {
+  m: 'auto',
+  bgcolor: 'background.helpBanner',
+  borderRadius: '8px',
+  width: {
+    zeroUp: 197,
+    tablet: 212,
   },
 };

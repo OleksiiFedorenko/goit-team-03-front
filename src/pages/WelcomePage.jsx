@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { container, image, logo, text, button } from 'styles';
 
-const Home = () => {
+const WelcomePage = () => {
   return (
     <Container sx={container.gradient}>
       <Box sx={container.welcome}>
@@ -64,4 +64,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default WelcomePage;

@@ -89,7 +89,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const updateTheme = createAsyncThunk(
   'auth/updateTheme',
-  async ({ theme }, { rejectWithValue }) => {
+  async (theme, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch('/auth', { theme });
       return data;

@@ -5,17 +5,17 @@ const standardColors = {
 };
 
 const form = {
-  input:{
-    main:'#BEDBB0',
+  input: {
+    main: '#BEDBB0',
     light: '#42a5f5',
     dark: '#9FAF90',
     contrastText: '#FFF',
   },
   button: {
-    main:'#BEDBB0',
+    main: '#BEDBB0',
     contrastText: '#161616',
-  }
-}
+  },
+};
 
 const standardParams = {
   breakpoints: {
@@ -87,10 +87,13 @@ export const violetTheme = createTheme({
       default: '#ECEDFD',
       header: '#FFF',
       side: '#5255BC',
+      logoIcon: '#ECEDFD',
+      helpBanner: 'rgba(236, 237, 253, 0.4)',
     },
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      topTheme: '#161616CC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
       ...standardColors,
@@ -123,10 +126,13 @@ export const lightTheme = createTheme({
       default: '#F6F6F7',
       header: '#FCFCFC',
       side: '#FFF',
+      logoIcon: '#1F1F1F',
+      helpBanner: '#F6F6F7',
     },
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      topTheme: '#161616CC',
       sideMain: '#161616',
       sideSecond: '#16161680',
       ...standardColors,
@@ -156,10 +162,13 @@ export const darkTheme = createTheme({
       default: '#1F1F1F',
       header: '#161616',
       side: '#121212',
+      logoIcon: '#1F1F1F',
+      helpBanner: '#1F1F1F',
     },
     text: {
       primary: '#FFF',
       secondary: '#FFFFFF80',
+      topTheme: '#FFFFFFCC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
       ...standardColors,
