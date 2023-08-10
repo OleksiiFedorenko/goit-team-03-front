@@ -188,3 +188,19 @@ export const logOut = {
     backgroundColor: 'side.activeBtn',
   },
 };
+
+export const svgIconPlus = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlus'
+};
+
+export const boxIconPlus = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlus',
+  mr: 1,
+  borderRadius: 0.75,
+}
