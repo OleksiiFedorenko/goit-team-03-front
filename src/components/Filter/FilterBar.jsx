@@ -9,6 +9,9 @@ import {
 } from '@mui/material';
 import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import { CustomControlLabel } from './CustomControlLabel';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPrioFilter } from 'store/filters/filtersSlice';
+import { selectPrioFilter } from 'store/filters/selectors';
 
 const ctrlLabelStyles = {
   color: 'text.filterRadio',
@@ -21,16 +24,18 @@ const ctrlLabelStyles = {
 };
 
 export const FilterBar = () => {
-  const [filter, setFilter] = useState('all');
+  const currentPrio = useSelector(selectPrioFilter);
+  const [filter, setFilter] = useState(currentPrio);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('filter: ', filter);
-  }, [filter]);
+    dispatch(setPrioFilter(filter));
+  }, [dispatch, filter]);
 
   return (
     <Container
       sx={{
-        // outline: '1px dashed tomato',
         width: 300,
         height: 234,
         p: 0,
@@ -79,25 +84,25 @@ export const FilterBar = () => {
               label="Without priority"
               value="without"
               sx={ctrlLabelStyles}
-              control={<PriorityRadioBtn priority="Without" />}
+              control={<PriorityRadioBtn priority="without" />}
             />
             <CustomControlLabel
               label="Low"
               value="low"
               sx={{ ...ctrlLabelStyles }}
-              control={<PriorityRadioBtn priority="Low" />}
+              control={<PriorityRadioBtn priority="low" />}
             />
             <CustomControlLabel
               label="Medium"
               value="medium"
               sx={ctrlLabelStyles}
-              control={<PriorityRadioBtn priority="Medium" />}
+              control={<PriorityRadioBtn priority="medium" />}
             />
             <CustomControlLabel
               label="High"
               value="high"
               sx={ctrlLabelStyles}
-              control={<PriorityRadioBtn priority="High" />}
+              control={<PriorityRadioBtn priority="high" />}
             />
           </RadioGroup>
         </FormControl>
@@ -107,16 +112,19 @@ export const FilterBar = () => {
             ...ctrlLabelStyles,
             textDecorationLine: 'underline',
             textTransform: 'none',
-            width: 48,
             height: 18,
-            // outline: '1px dashed teal',
           }}
+          style={
+            filter === 'all'
+              ? { pointerEvents: 'none', textDecoration: 'none' }
+              : null
+          }
           onClick={() => {
             setFilter('all');
           }}
           type="button"
         >
-          Show all
+          <Typography>{filter === 'all' ? 'Shown all' : 'Show all'}</Typography>
         </Button>
       </div>
     </Container>
