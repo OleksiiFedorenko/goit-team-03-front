@@ -14,13 +14,17 @@ export const FormUser = styled(Form)`
   display: flex;
   flex-direction: column;
 `;
-export const UserAvatar = styled.img`
-  `;
+// export const UserAvatar = styled.img`
+//   `;
   export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
+`;
+export const FormIcon = styled.span`
+  position: relative;
+  display: block;
 `;
 export const ImgWrapper = styled.div`
   position: relative;
@@ -89,13 +93,6 @@ export const FormSection = styled.div`
   align-items: center;
 `;
 
-export const FormFields = styled.div`
-  display: flex;
-  gap: 14px;
-  flex-direction: column;
-  width: 100%;
-`;
-
 export const FieldAvatar = styled.input`
   display: none;
 `;
@@ -128,7 +125,16 @@ export const FormField = styled(Field)`
     opacity: 1;
   }
 `;
+export const Eye = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
 
+  background-color: transparent;
+  border: none;
+  opacity: 0.4000000059604645;
+`;
 export const FormSubmit = styled.button`
   margin-top: 10px;
   padding: 14px;

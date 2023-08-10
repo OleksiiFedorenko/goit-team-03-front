@@ -10,6 +10,7 @@ import { Column, IconStyle, IconWrapper } from './EditColumnButton.styled';
 // } from './EditColumnButton.styled';
 import { Icon } from 'components/Icons';
 
+
 const EditColumnButton = () => {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {

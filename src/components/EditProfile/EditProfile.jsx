@@ -1,15 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
 import { Icon } from 'components/Icons';
-import defaultAvatar from '../../images/user-default-avatar.png';
+
 import {
     EditWrapper, IconStyle, Title, FormUser, FormWrapper, ErrorSection,
-    FormSubmit, FormField, UserAvatar, Img, FieldAvatar, FormSection, FormFields, ImgWrapper, IconPlus, Label
+    FormSubmit, FormField,  Img, FieldAvatar, FormSection, ImgWrapper, IconPlus, Label, FormIcon, Eye 
 } from './EditProfile.styled';
 
 const UserSchema = Yup.object().shape({
@@ -33,18 +33,12 @@ const initialValues = {
     email: '',
     password: '',
 };
-const EditProfile = ({avatarURL, onCloseModal, isLoading}) => {
+const EditProfile = ({avatarURL, onCloseModal}) => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
-    const [type, setType] = useState('password');
+    const [password, setPassword] = useState('password');
     const [currentImage, setCurrentImage] = useState(avatarURL);
-    const [isSubmit, setIsSubmit] = useState(false);
 
-     useEffect(() => {
-    if (isSubmit && !isLoading) {
-      onCloseModal();
-    }
-   }, [onCloseModal, isLoading, isSubmit]);
     
     const handleSubmit = (values, { resetForm }) => {
         const { avatar, name, email, password } = values;
@@ -57,19 +51,15 @@ const EditProfile = ({avatarURL, onCloseModal, isLoading}) => {
     formData.append('password', password);
 
     dispatch(updateProfile(formData));
-        setIsSubmit(true);
          resetForm();
         onCloseModal();
   }
-//     resetForm();
-//     onCloseModal();
-// }
 function handleClick() {
-    switch (type) {
+    switch (password) {
       case 'text':
-        return setType('password');
+        return setPassword('password');
       case 'password':
-        return setType('text');
+        return setPassword('text');
 
       default:
         break;
@@ -96,20 +86,19 @@ function handleClick() {
           validationSchema={UserSchema}
                 onSubmit={handleSubmit}
                 >
-                    {({ setFieldValue}) => (
+                    {/* {({ setFieldValue}) => ( */}
             <FormSection>
-              <FormFields>
                 <Label htmlFor="avatar">
                   <ImgWrapper>
                     {currentImage ? (
                       <Img src={currentImage} alt="User picture" />
                     ) : (
-                        <UserAvatar src={defaultAvatar} alt="Default Avatar" height="68px" width="68px" />
+                        <IconStyle>
+                         <Icon id={"user"} />
+                       </IconStyle>
                     )}
                     <IconPlus aria-label="add">
-                      <IconStyle>
                          <Icon id={"plus"} />
-                       </IconStyle>
                     </IconPlus>
                   </ImgWrapper>
                 </Label>
@@ -118,31 +107,39 @@ function handleClick() {
                   type="file"
                   name="avatar"
                   onChange={event => {
-                    setFieldValue('avatar', event.currentTarget.files[0]);
+                    // setFieldValue('avatar', event.currentTarget.files[0]);
                     handleFileChange(event.currentTarget.files[0]);
                   }}
                 />
                 <ErrorSection name="name" component="div" />
-        
+
             <FormWrapper>
                 <ErrorSection name="name" component="div" />
                 <FormField type="text" id="name" name="name" placeholder={user.name} />
             </FormWrapper>
             <FormWrapper>
                 <ErrorSection name="email" component="div" />
-                <FormField type="email" id="email" name="email" placeholder={user.email} />
-            </FormWrapper>
-            <FormWrapper>
+                <FormField type="email" id="email" name="email" placeholder="Enter your email" />
+                </FormWrapper>
+                
+                <FormWrapper>
+                  <FormIcon>
                 <ErrorSection name="password" component="div" />
-                <FormField type={type}
+                <FormField type={password}
               id="password"
               name="password"
-              placeholder="Enter your password"/>
-        </FormWrapper>
-            </FormFields>
+                      placeholder="Enter your password" />
+                   <Eye type="button" onClick={handleClick}>
+                    <IconPlus aria-label="add">
+                        <Icon id={"eye"} />
+                      </IconPlus>
+                       </Eye>
+                </FormIcon>
+                </FormWrapper>
+                
              <FormSubmit type="submit">Send</FormSubmit>
-                    </FormSection>
-                    )}
+              </FormSection>
+                    {/* )} */}
           </Formik>
         </FormUser>
             </EditWrapper> 
