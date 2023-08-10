@@ -12,11 +12,10 @@ import {
   FormLabel,
   FormControl,
   FormControlLabel,
-  Container,
   Box,
 } from '@mui/material';
 import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
-//import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
+
 import { addTask } from 'store/boards/operations';
 
 const initialValues = {
@@ -134,15 +133,6 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
               Today, March 8
             </DatePickerBtn>
           </Box>
-
-          {/* <Button endIcon={<Icon id="dropdown" />}>Today, March 8</Button> */}
-          {/* <DatePicker
-            name="deadline"
-            sx={{
-              marginBottom: '40px',
-            }}
-          /> */}
-
           <SubmitButton>Add</SubmitButton>
         </Form>
       </Formik>
