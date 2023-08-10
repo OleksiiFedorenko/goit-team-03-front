@@ -57,11 +57,9 @@ export const FilterBtn = () => {
           Filters
         </Typography>
       </Button>
-      {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <FilterBar />
-        </Modal>
-      )}
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <FilterBar />
+      </Modal>
     </>
   );
 };
