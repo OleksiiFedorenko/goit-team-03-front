@@ -197,10 +197,39 @@ export const svgIconPlus = {
   color: 'background.btnPlus'
 };
 
+export const svgIconPlusAnother = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlusAnother',
+};
+
 export const boxIconPlus = {
   width: 28,
   height: 28,
   bgcolor: 'background.boxPlus',
   mr: 1,
   borderRadius: 0.75,
+};
+
+export const boxIconPlusAnother = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusAnother',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const addColumnBtn = {
+  height: 56,
+  width: {
+    zeroUp: 335,
+    tablet: 334,
+  },
+  bgcolor: 'background.header',
+  textTransform: 'none',
+  color: 'text.primary'
 }
+
+
