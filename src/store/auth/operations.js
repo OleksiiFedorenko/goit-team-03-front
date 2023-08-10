@@ -19,10 +19,18 @@ const token = {
 const refresh = async () => {
   try {
     const state = store.getState();
+
     const refreshToken = state.auth.token.refreshToken;
-    const { data } = await axios.post('/auth/refresh', { refreshToken });
-    token.set(data.tokens.accessToken);
-    store.dispatch(updateToken(data.tokens));
+    console.log("до обновления: ", state.auth.token.accessToken);
+    console.log(refreshToken);
+    const { data } = await axios.post('/auth/refreshToken', { refreshToken });
+console.log(data);
+    token.set(data);
+console.log("после обновления: ", state.auth.token);
+    store.dispatch(updateToken(data));
+    axios.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`;
+    console.log("после  обновления redux: ", state.auth.token.accessToken);
+
   } catch (error) {
     console.log(error);
   }
@@ -32,6 +40,7 @@ axios.interceptors.response.use(
   response => response,
   async error => {
     const originalRequest = error.config;
+    console.log("originalRequest: ",originalRequest);
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       await refresh();
