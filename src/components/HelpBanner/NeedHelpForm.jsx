@@ -33,61 +33,6 @@ export const NeedHelpForm = ({onCloseModal}) => {
     }
 
     return (   
-      // <>
-      //   <Box sx={container.helpFormContainer}>
-      //   <Typography variant="h2" mb={3}>Need help</Typography>
-      //   <Formik
-      //     initialValues={{ email: '', text: '' }}
-      //     validationSchema={helpSchema}
-      //     onSubmit={(value, { resetForm }) => {
-      //       handleSubmit(value);
-      //       resetForm();
-      //     }}>
-      //       <FormControl fullWidth component="form">
-      //       <TextField  
-      //         name="email" 
-      //         label="Email address"
-      //         variant="outlined"
-      //         style={{marginBottom: 14}}
-      //         />
-      //         <ErrorMessage
-      //           name="email"
-      //           component="div"
-      //           style={{
-      //             color: 'red',
-      //             fontSize: 14,
-      //           }}
-      //         />
-      //       <TextField
-      //         name="text"
-      //         label="Comment"
-      //         variant="outlined"
-      //         multiline
-      //         rows={6}
-      //         style={{marginBottom: 24}}
-      //          />
-      //         <ErrorMessage
-      //           name="text"
-      //           component="div"
-      //           style={{
-      //             color: 'red',
-      //             fontSize: 14,
-      //           }}
-      //         />
-      //       <Button 
-      //         color="primary" 
-      //         variant="contained" 
-      //         fullWidth
-      //         sx={{height: 49}} 
-      //         style={{ textTransform: 'none' }}
-      //         type="submit">
-      //           <Typography variant="h3">Send</Typography>
-      //       </Button>
-      //       </FormControl>
-      //   </Formik>
-      //   </Box>   
-      //  </> 
-     <>
       <Box sx={container.helpFormContainer}>
       <Typography variant="h2" mb={3}>
         Need help
@@ -155,8 +100,7 @@ export const NeedHelpForm = ({onCloseModal}) => {
           </form>
         )}
       </Formik>
-    </Box>
-   </>     
+    </Box>     
     )
 }
 

@@ -197,3 +197,10 @@ export const helpFormContainer = {
     tablet: 400,
   },
 };
+
+export const addColumnContainer = {
+  width: {
+    zeroUp: 335,
+    tablet: 350,
+  },
+}
