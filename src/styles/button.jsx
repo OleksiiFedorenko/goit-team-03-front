@@ -107,7 +107,7 @@ export const createBoardWrapper = {
     },
     height: '1px',
     mx: { zeroUp: '14px', tablet: '24px' },
-    backgroundColor: 'side.divider',
+    backgroundColor: 'divider.side',
   },
 };
 
@@ -194,7 +194,7 @@ export const svgIconPlus = {
   height: 14,
   ml: 0.05,
   mt: 0.9,
-  color: 'background.btnPlus'
+  color: 'background.btnPlus',
 };
 
 export const boxIconPlus = {
@@ -203,4 +203,15 @@ export const boxIconPlus = {
   bgcolor: 'background.boxPlus',
   mr: 1,
   borderRadius: 0.75,
-}
+};
+
+export const addCard = {
+  width: '100%',
+  height: '56px',
+  lineHeight: 1.5,
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover, &:focus': {
+    boxShadow: 'none',
+  },
+};
