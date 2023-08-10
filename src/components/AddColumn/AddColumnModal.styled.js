@@ -1,5 +1,3 @@
-
-
 import styled from 'styled-components';
 
 import { Form, Field, ErrorMessage } from 'formik';
@@ -43,13 +41,13 @@ export const TitleInput = styled(Field)`
   font-family: 'Poppins';
   letter-spacing: -0.28px;
 
-  background-color:#fff;
-  border: 1px solid #5255BC;
+  background-color: #fff;
+  border: 1px solid #5255bc;
   box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
   outline: none;
   border-radius: 8px;
 
-  color:#161616;
+  color: #161616;
   transition: all 250ms ease;
   opacity: 0.4;
 
@@ -72,7 +70,7 @@ export const AuthFormSubmitButton = styled.button`
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #5255BC;
+  background: #5255bc;
   border-radius: 8px;
 
   font-family: 'Poppins';
@@ -120,7 +118,8 @@ export const ErrorSection = styled(ErrorMessage)`
 
 export const ModalForm = styled(Form)`
   margin: 0;
-  width: 100%;
+  min-width: 287px;
+  max-width: 302px;
   display: flex;
   flex-direction: column;
 `;
