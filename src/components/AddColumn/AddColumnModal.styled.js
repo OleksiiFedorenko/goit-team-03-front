@@ -117,7 +117,8 @@
 
 // export const ModalForm = styled(Form)`
 //   margin: 0;
-//   width: 100%;
+//   min-width: 287px;
+// max-width: 302px;
 //   display: flex;
 //   flex-direction: column;
 // `;

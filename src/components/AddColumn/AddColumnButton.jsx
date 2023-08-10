@@ -23,7 +23,6 @@ const AddColumnButton = () => {
         </IconWrapper>
         <Text>Add another column</Text>
       </Button>
-      {showModal && (
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
           <AddColumnModal
             onCloseModal={handleCloseModal}
@@ -32,7 +31,6 @@ const AddColumnButton = () => {
             
           />
         </Modal>
-      )}
     </>
   );
 };
