@@ -32,7 +32,7 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
     textTransform: 'capitalize',
     '&::before': {
       ...card.priorityCircle,
-      backgroundColor: priorityColor,
+      bgcolor: priorityColor,
     },
   };
   const handleIconClick = () => {};

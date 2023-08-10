@@ -12,6 +12,7 @@ export const header = {
   width: '100%',
   height: '56px',
   boxShadow: 'none',
+  bgcolor: 'secondary.main',
 };
 
 export const headerText = {

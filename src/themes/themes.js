@@ -96,6 +96,7 @@ export const violetTheme = createTheme({
     },
     secondary: {
       main: '#FFF',
+      dark: '#FFFFFF80',
     },
     background: {
       default: '#ECEDFD',
@@ -105,6 +106,8 @@ export const violetTheme = createTheme({
       helpBanner: 'rgba(236, 237, 253, 0.4)',
       boxPlus: '#FFFFFF',
       btnPlus: '#161616',
+      boxPlusAnother: '#5255BC',
+      btnPlusAnother: '#FFF',
     },
     text: {
       primary: '#161616',
@@ -139,6 +142,7 @@ export const lightTheme = createTheme({
     },
     secondary: {
       main: '#FFF',
+      dark: '#F6F6F7',
     },
     background: {
       default: '#F6F6F7',
@@ -148,6 +152,8 @@ export const lightTheme = createTheme({
       helpBanner: '#F6F6F7',
       boxPlus: '#161616',
       btnPlus: '#FFF',
+      boxPlusAnother: '#161616',
+      btnPlusAnother: '#FFF',
     },
     text: {
       primary: '#161616',
@@ -182,6 +188,7 @@ export const darkTheme = createTheme({
     },
     secondary: {
       main: '#121212',
+      dark: '#161616',
     },
     background: {
       default: '#1F1F1F',
@@ -191,6 +198,8 @@ export const darkTheme = createTheme({
       helpBanner: '#1F1F1F',
       boxPlus: '#161616',
       btnPlus: '#FFF',
+      boxPlusAnother: '#FFF',
+      btnPlusAnother: '#161616',
     },
     text: {
       primary: '#FFF',

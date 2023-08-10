@@ -2,14 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addColumn } from 'store/boards/operations';
-
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import { Icon } from 'components/Icons';
 import { Box, FormControl, Typography, Button, SvgIcon, TextField } from '@mui/material';
 import {container, button, form} from 'styles';
 import sprite from 'components/Icons/sprite.svg';
-
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),

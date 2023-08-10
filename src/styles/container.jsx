@@ -37,7 +37,7 @@ export const topBar = {
     tablet: '32px',
     desktop: '24px',
   },
-  backgroundColor: 'background.header',
+  bgcolor: 'background.header',
 };
 
 export const sideBar = {
@@ -51,7 +51,7 @@ export const sideBar = {
     tablet: 260,
   },
   height: '100%',
-  backgroundColor: 'background.side',
+  bgcolor: 'background.side',
 };
 
 export const sideBarDesktop = {
@@ -203,4 +203,4 @@ export const addColumnContainer = {
     zeroUp: 335,
     tablet: 350,
   },
-}
+};

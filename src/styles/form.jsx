@@ -28,7 +28,7 @@ export const error = {
 export const form = {
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: '#1F1F1F',
+  bgcolor: '#1F1F1F',
 
   width: {
     zeroUp: '100%',
