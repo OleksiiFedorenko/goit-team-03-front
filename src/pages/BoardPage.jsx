@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import Column from 'components/Column/Column';
 import AddColumnButton from 'components/AddColumn/AddColumnButton';
 import { selectBoard, selectColumns } from 'store/boards/selectors';
-
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 import { FilterBtn } from 'components/Filter';

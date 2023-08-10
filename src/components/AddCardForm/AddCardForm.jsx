@@ -2,13 +2,20 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import { Container } from '@mui/material';
 import Textfield from '../FormsUI/TextField';
 import SubmitButton from 'components/FormsUI/SubmitButton';
+import { Icon } from 'components/Icons';
 import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { Typography, RadioGroup, FormLabel, FormControl } from '@mui/material';
-import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
+import {
+  Typography,
+  RadioGroup,
+  FormLabel,
+  FormControl,
+  FormControlLabel,
+  Container,
+  Button,
+} from '@mui/material';
+//import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
 import { addTask } from 'store/boards/operations';
 
 const initialValues = {
@@ -25,17 +32,15 @@ const validationSchema = Yup.object().shape({
 
 const AddCardForm = ({ parentColumn, onCloseModal }) => {
   const dispatch = useDispatch();
-  const [priority, setPriority] = useState("without");
+  const [priority, setPriority] = useState('without');
 
-  const handleChangePriority = (event) => {
+  const handleChangePriority = event => {
     setPriority(event.target.value);
   };
 
   const handleSubmit = values => {
     console.log(values);
-    dispatch(
-      addTask({ ...values, parentColumn, deadline: null, priority })
-    );
+    dispatch(addTask({ ...values, parentColumn, deadline: null, priority }));
     //setSubmitting(false);
     // resetForm();
     onCloseModal();
@@ -118,12 +123,14 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
           <Typography variant="body2" component="h4" mb={0.5}>
             Deadline
           </Typography>
-          <DatePicker
+
+          <Button endIcon={<Icon id="dropdown" />}>Today, March 8</Button>
+          {/* <DatePicker
             name="deadline"
             sx={{
               marginBottom: '40px',
             }}
-          />
+          /> */}
 
           <SubmitButton>Add</SubmitButton>
         </Form>

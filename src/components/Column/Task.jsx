@@ -2,7 +2,7 @@ import Card from '@mui/material/Card';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
 import { Typography, Stack, Box, useTheme } from '@mui/material';
 import TruncatedText from './TruncatedText';
-import IconBtn from './IconBtn';
+import IconBtn from 'components/FormsUI/IconBtn/IconBtn';
 
 const Task = ({ name, description, priority, deadline }) => {
   const theme = useTheme();
