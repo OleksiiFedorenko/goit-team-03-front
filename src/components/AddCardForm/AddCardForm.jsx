@@ -47,7 +47,7 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
     onCloseModal();
   };
   return (
-    <Container>
+    <Box sx={{ maxWidth: '302px', p: 0 }}>
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={validationSchema}
@@ -146,7 +146,7 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
           <SubmitButton>Add</SubmitButton>
         </Form>
       </Formik>
-    </Container>
+    </Box>
   );
 };
 export default AddCardForm;
