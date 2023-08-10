@@ -22,18 +22,34 @@ const validationSchema = Yup.object().shape({
   deadline: Yup.date().required(),
 });
 
-const AddCardForm = ({ parentColumn, onCloseModal, formTitle, buttonTitle, taskOperation, taskId, initData }) => {
+const AddCardForm = ({
+  parentColumn,
+  onCloseModal,
+  formTitle,
+  buttonTitle,
+  taskOperation,
+  taskId,
+  initData,
+}) => {
   const dispatch = useDispatch();
-  const [priority, setPriority] = useState("without");
+  const [priority, setPriority] = useState('without');
 
-  const handleChangePriority = (event) => {
+  const handleChangePriority = event => {
     setPriority(event.target.value);
   };
 
   const handleSubmit = values => {
-    console.log(values);
+    // changing the deadline to the needed format
+    const formattedDate = values.deadline.split('-').reverse().join('-');
+
     dispatch(
-      taskOperation({ ...values, parentColumn, priority, taskId, deadline: "10-09-2023" })
+      taskOperation({
+        ...values,
+        parentColumn,
+        priority,
+        taskId,
+        deadline: formattedDate,
+      })
     );
     //setSubmitting(false);
     // resetForm();
