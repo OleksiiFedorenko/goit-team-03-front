@@ -30,11 +30,9 @@ const EditColumnButton = () => {
           <Icon id={'trash'} />
         </IconStyle>
       </IconWrapper>
-      {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <EditColumnModal onCloseModal={handleCloseModal} type="Submit" />
-        </Modal>
-      )}
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <EditColumnModal onCloseModal={handleCloseModal} type="Submit" />
+      </Modal>
     </Column>
   );
 };
