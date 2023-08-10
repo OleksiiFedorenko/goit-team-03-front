@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import Textfield from '../FormsUI/TextField';
 import SubmitButton from 'components/FormsUI/SubmitButton';
-import { Icon } from 'components/Icons';
+//import { Icon } from 'components/Icons';
 import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import {
   Typography,
@@ -13,8 +13,9 @@ import {
   FormControl,
   FormControlLabel,
   Container,
-  Button,
+  Box,
 } from '@mui/material';
+import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
 //import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
 import { addTask } from 'store/boards/operations';
 
@@ -120,11 +121,21 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
               />
             </RadioGroup>
           </FormControl>
-          <Typography variant="body2" component="h4" mb={0.5}>
-            Deadline
-          </Typography>
+          <Box mb={5}>
+            <Typography variant="body2" component="h4" mb={0.5}>
+              Deadline
+            </Typography>
+            <DatePickerBtn
+              name="deadline"
+              sx={{
+                marginBottom: '40px',
+              }}
+            >
+              Today, March 8
+            </DatePickerBtn>
+          </Box>
 
-          <Button endIcon={<Icon id="dropdown" />}>Today, March 8</Button>
+          {/* <Button endIcon={<Icon id="dropdown" />}>Today, March 8</Button> */}
           {/* <DatePicker
             name="deadline"
             sx={{
