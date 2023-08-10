@@ -6,6 +6,7 @@ import { Stack } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
+import { addTask } from 'store/boards/operations';
 
 const Column = ({ column }) => {
   const [showModal, setShowModal] = useState(false);
@@ -25,7 +26,7 @@ const Column = ({ column }) => {
       }}
     >
       <ColumnHeader title={column.title} columnId={column._id} />
-      <TaskList cards={column.taskOrder} />
+      <TaskList cards={column.tasks} />
       <Button
         variant="contained"
         startIcon={<AddBoxIcon />}
@@ -37,6 +38,9 @@ const Column = ({ column }) => {
         <AddCardForm
           onCloseModal={closeModalHandler}
           parentColumn={column._id}
+          formTitle={"Add card"}
+          buttonTitle={"Add"}
+          taskOperation={addTask}
         />
       </Modal>
     </Stack>

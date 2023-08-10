@@ -9,7 +9,6 @@ import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Typography, RadioGroup, FormLabel, FormControl } from '@mui/material';
 import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
-import { addTask } from 'store/boards/operations';
 
 const initialValues = {
   title: '',
@@ -20,10 +19,10 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  deadline: Yup.date(),
+  deadline: Yup.date().required(),
 });
 
-const AddCardForm = ({ parentColumn, onCloseModal }) => {
+const AddCardForm = ({ parentColumn, onCloseModal, formTitle, buttonTitle, taskOperation, taskId, initData }) => {
   const dispatch = useDispatch();
   const [priority, setPriority] = useState("without");
 
@@ -34,7 +33,7 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
   const handleSubmit = values => {
     console.log(values);
     dispatch(
-      addTask({ ...values, parentColumn, deadline: null, priority })
+      taskOperation({ ...values, parentColumn, priority, taskId, deadline: "10-09-2023" })
     );
     //setSubmitting(false);
     // resetForm();
@@ -43,13 +42,13 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
   return (
     <Container>
       <Formik
-        initialValues={{ ...initialValues }}
+        initialValues={initData ? initData : initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form>
           <Typography variant="h2" component="h2" mb={3}>
-            Add card
+            {formTitle}
           </Typography>
           <Textfield
             name="title"
@@ -93,24 +92,24 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
             >
               <FormControlLabel
                 value="low"
-                control={<PriorityRadioBtn priority="Low" />}
+                control={<PriorityRadioBtn priority="low" />}
               />
               <FormControlLabel
                 value="medium"
                 control={
-                  <PriorityRadioBtn priority="Medium" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="medium" sx={{ ml: '-14px' }} />
                 }
               />
               <FormControlLabel
                 value="high"
                 control={
-                  <PriorityRadioBtn priority="High" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="high" sx={{ ml: '-14px' }} />
                 }
               />
               <FormControlLabel
                 value="without"
                 control={
-                  <PriorityRadioBtn priority="Without" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="without" sx={{ ml: '-14px' }} />
                 }
               />
             </RadioGroup>
@@ -125,7 +124,7 @@ const AddCardForm = ({ parentColumn, onCloseModal }) => {
             }}
           />
 
-          <SubmitButton>Add</SubmitButton>
+          <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>
     </Container>

@@ -29,6 +29,7 @@ const AddColumnButton = () => {
             onCloseModal={handleCloseModal}
             title="New board"
             type="Submit"
+            
           />
         </Modal>
       )}
