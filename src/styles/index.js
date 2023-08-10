@@ -1,4 +1,5 @@
 export * as button from './button';
+export * as card from './card';
 export * as container from './container';
 export * as image from './image';
 export * as logo from './logo';
