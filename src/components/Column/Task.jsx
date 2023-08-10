@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Card from '@mui/material/Card';
+import { updateTask, deleteTask } from 'store/boards/operations';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
-import { Typography, Stack, Box, useTheme } from '@mui/material';
-import TruncatedText from './TruncatedText';
 import IconBtn from './IconBtn';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
-import { updateTask, deleteTask } from 'store/boards/operations';
+
+import { Card, Typography, Stack, Box } from '@mui/material';
+import { card } from 'styles';
 
 const Task = ({ name, description, priority, deadline, taskId }) => {
-  const theme = useTheme();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
   const openModalHandler = () => {
     setShowModal(true);
   };
+
   const closeModalHandler = () => {
     setShowModal(false);
   };
@@ -25,47 +25,33 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
     if (window.confirm(`Do you really want to delete task ${name}?`)) {
       dispatch(deleteTask(taskId));
     }
-
-  }
+  };
 
   const priorityColor = priorityColorSwitcher(priority);
-  const priorityStyle = {
+  const priorityStyles = {
+    textTransform: 'capitalize',
     '&::before': {
-      content: '""',
-      transform: 'translateY(20%)',
-      height: '12px',
-      width: '12px',
-      backgroundColor: `${priorityColor}`,
-      borderRadius: '50%',
-      display: 'inline-block',
-      marginRight: '4px',
+      ...card.priorityCircle,
+      bgcolor: priorityColor,
     },
   };
   const handleIconClick = () => {};
 
   return (
     <Card
-      elevation={2}
       sx={{
-        py: '14px',
-        pl: '24px',
-        pr: '20px',
+        ...card.task,
         borderLeft: `4px solid ${priorityColor}`,
-        mb: '14px',
       }}
     >
       <Box>
-        <Box
-          sx={{
-            pb: '14px',
-            mb: '14px',
-            borderBottom: `1px solid ${theme.palette.side.divider}`,
-          }}
-        >
-          <Typography variant="h5" component="h2" color="text.primary" mb={1}>
+        <Box sx={card.taskMainBox}>
+          <Typography variant="h5" component="h3" mb={1}>
             {name}
           </Typography>
-          <TruncatedText text={description} />
+          <Typography variant="body2" sx={card.taskDescription}>
+            {description}
+          </Typography>
         </Box>
 
         {/* components below devider       */}
@@ -85,7 +71,7 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
                 </Typography>
               </Box>
               <Box>
-                <Typography variant="h6" sx={priorityStyle}>
+                <Typography variant="h6" sx={priorityStyles}>
                   {priority}
                 </Typography>
               </Box>
@@ -140,10 +126,10 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
         <AddCardForm
           onCloseModal={closeModalHandler}
           taskId={taskId}
-          formTitle={"Edit card"}
-          buttonTitle={"Edit"}
+          formTitle={'Edit card'}
+          buttonTitle={'Edit'}
           taskOperation={updateTask}
-          initData={{ title: name, description, priority, deadline}}
+          initData={{ title: name, description, priority, deadline }}
         />
       </Modal>
     </Card>

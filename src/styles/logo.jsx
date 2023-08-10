@@ -15,7 +15,7 @@ export const welcomeIconWrapper = {
   width: { zeroUp: '40px', tablet: '48px' },
   height: { zeroUp: '40px', tablet: '48px' },
   borderRadius: '4px',
-  backgroundColor: 'text.primary',
+  bgcolor: 'text.primary',
 };
 
 export const welcomeIconSize = {
@@ -46,7 +46,7 @@ export const iconWrapper = {
   width: 32,
   height: 32,
   borderRadius: '8px',
-  backgroundColor: 'background.logoIcon',
+  bgcolor: 'background.logoIcon',
 };
 
 export const iconSize = {

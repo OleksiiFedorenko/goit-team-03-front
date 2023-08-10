@@ -10,7 +10,7 @@ export const authItem = {
   borderRadius: '8px',
   '&:hover, &:focus': {
     color: 'text.white',
-    backgroundColor: 'text.primary',
+    bgcolor: 'text.primary',
   },
 };
 
@@ -46,7 +46,7 @@ export const closeBtn = {
   justifyContent: 'center',
   alignItems: 'center',
   '&:hover, &:focus': {
-    backgroundColor: 'primary.main',
+    bgcolor: 'primary.main',
   },
 };
 
@@ -82,7 +82,7 @@ export const themeItem = {
   py: '2px',
   '&.Mui-selected': {
     color: 'primary.main',
-    backgroundColor: 'transparent',
+    bgcolor: 'transparent',
   },
 };
 
@@ -107,7 +107,7 @@ export const createBoardWrapper = {
     },
     height: '1px',
     mx: { zeroUp: '14px', tablet: '24px' },
-    backgroundColor: 'side.divider',
+    bgcolor: 'divider.side',
   },
 };
 
@@ -124,9 +124,9 @@ export const createBoard = {
   textTransform: 'none',
   borderRadius: '0',
   '&:hover, &:focus': {
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
     '& .createBoardBox': {
-      backgroundColor: 'side.plusBackgroundHov',
+      bgcolor: 'side.plusBackgroundHov',
     },
   },
 };
@@ -134,7 +134,7 @@ export const createBoard = {
 export const createBoardBox = {
   width: 40,
   height: 36,
-  backgroundColor: 'side.plusBackground',
+  bgcolor: 'side.plusBackground',
   borderRadius: '6px',
 };
 
@@ -159,9 +159,9 @@ export const boardListItem = {
   fontWeight: 500,
   '&:hover, &:focus, &.active': {
     color: 'text.sideMain',
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
     '& .activeBoardBtn': {
-      backgroundColor: 'side.activeBoardBox',
+      bgcolor: 'side.activeBoardBox',
     },
   },
 };
@@ -185,7 +185,7 @@ export const logOut = {
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
   },
 };
 
@@ -194,7 +194,7 @@ export const svgIconPlus = {
   height: 14,
   ml: 0.05,
   mt: 0.9,
-  color: 'background.btnPlus'
+  color: 'background.btnPlus',
 };
 
 export const svgIconPlusAnother = {
@@ -223,13 +223,26 @@ export const boxIconPlusAnother = {
 
 export const addColumnBtn = {
   height: 56,
-  width: {
-    zeroUp: 335,
-    tablet: 334,
+  minWidth: {
+    zeroUp: '90vw',
+    mobileFixed: '335px',
+    tablet: '334px',
   },
-  bgcolor: 'background.header',
+  bgcolor: 'secondary.main',
   textTransform: 'none',
-  color: 'text.primary'
-}
+  color: 'text.primary',
+  '&:hover, &:focus': {
+    bgcolor: 'secondary.dark',
+  },
+};
 
-
+export const addCard = {
+  width: '100%',
+  height: '56px',
+  lineHeight: 1.5,
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover, &:focus': {
+    boxShadow: 'none',
+  },
+};

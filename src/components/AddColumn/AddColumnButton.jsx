@@ -3,7 +3,7 @@ import Modal from 'components/Modal/Modal';
 import AddColumnModal from './AddColumnModal';
 import { Button, Typography, Box, SvgIcon } from '@mui/material';
 import { button } from 'styles';
-import sprite from 'components/Icons/sprite.svg'; 
+import sprite from 'components/Icons/sprite.svg';
 
 const AddColumnButton = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,25 +16,27 @@ const AddColumnButton = () => {
   };
   return (
     <>
-      <Button sx={button.addColumnBtn} type="button" onClick={handleOpenModal}>
+      <Button
+        sx={button.addColumnBtn}
+        color="secondary"
+        onClick={handleOpenModal}
+      >
         <Box sx={button.boxIconPlusAnother}>
-            <SvgIcon sx={button.svgIconPlusAnother}>
-                <svg stroke="currentColor">
-                    <use href={sprite + '#icon-plus'} />
-                </svg>             
-            </SvgIcon>
-        </Box>  
-        <Typography variant='h3'>Add another column</Typography>
+          <SvgIcon sx={button.svgIconPlusAnother}>
+            <svg stroke="currentColor">
+              <use href={sprite + '#icon-plus'} />
+            </svg>
+          </SvgIcon>
+        </Box>
+        <Typography variant="h3">Add another column</Typography>
       </Button>
-      {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <AddColumnModal
-            onCloseModal={handleCloseModal}
-            title="New board"
-            type="Submit"           
-          />
-        </Modal>
-      )}
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <AddColumnModal
+          onCloseModal={handleCloseModal}
+          title="New board"
+          type="Submit"
+        />
+      </Modal>
     </>
   );
 };
