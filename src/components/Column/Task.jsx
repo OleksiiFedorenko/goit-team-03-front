@@ -1,11 +1,32 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Card from '@mui/material/Card';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
 import { Typography, Stack, Box, useTheme } from '@mui/material';
 import TruncatedText from './TruncatedText';
 import IconBtn from './IconBtn';
+import Modal from 'components/Modal/Modal';
+import AddCardForm from 'components/AddCardForm';
+import { updateTask, deleteTask } from 'store/boards/operations';
 
-const Task = ({ name, description, priority, deadline }) => {
+const Task = ({ name, description, priority, deadline, taskId }) => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+
+  const openModalHandler = () => {
+    setShowModal(true);
+  };
+  const closeModalHandler = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteTask = () => {
+    if (window.confirm(`Do you really want to delete task ${name}?`)) {
+      dispatch(deleteTask(taskId));
+    }
+
+  }
 
   const priorityColor = priorityColorSwitcher(priority);
   const priorityStyle = {
@@ -105,16 +126,26 @@ const Task = ({ name, description, priority, deadline }) => {
               </Box>
 
               <Box>
-                <IconBtn onClick={handleIconClick} iconId="pencil" />
+                <IconBtn onClick={openModalHandler} iconId="pencil" />
               </Box>
 
               <Box>
-                <IconBtn onClick={handleIconClick} iconId="trash" />
+                <IconBtn onClick={handleDeleteTask} iconId="trash" />
               </Box>
             </Stack>
           </Stack>
         </Box>
       </Box>
+      <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
+        <AddCardForm
+          onCloseModal={closeModalHandler}
+          taskId={taskId}
+          formTitle={"Edit card"}
+          buttonTitle={"Edit"}
+          taskOperation={updateTask}
+          initData={{ title: name, description, priority, deadline}}
+        />
+      </Modal>
     </Card>
   );
 };

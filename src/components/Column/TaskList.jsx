@@ -9,16 +9,15 @@ const TaskList = ({ cards }) => {
         overflowX: 'hidden',
       }}
     >
-      {cards.map(card => {
-        const { name, description, priority, deadline } = card;
-
+      {cards && cards.map(card => {
         return (
           <Task
-            key={card.id}
-            name={name}
-            description={description}
-            priority={priority}
-            deadline={deadline}
+            key={card._id}
+            taskId={card._id}
+            name={card.title}
+            description={card.description}
+            priority={card.priority}
+            deadline={card.deadline}
           />
         );
       })}
