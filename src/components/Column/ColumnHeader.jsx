@@ -28,13 +28,19 @@ const ColumnHeader = ({ title, columnId }) => {
   return (
     <div>
       <Card>
-        <CardHeader title={title} />
-        <IconButton onClick={handleOpenModal}>
-          <Icon id={'pencil'} />
-        </IconButton>
-        <IconButton onClick={handleDeleteColumn}>
-          <Icon id={'trash'} />
-        </IconButton>
+        <CardHeader
+          title={title}
+          action={
+            <div>
+              <IconButton onClick={handleOpenModal}>
+                <Icon id={'pencil'} />
+              </IconButton>
+              <IconButton onClick={handleDeleteColumn}>
+                <Icon id={'trash'} />
+              </IconButton>
+            </div>
+          }
+        />
 
         {showModal && (
           <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
