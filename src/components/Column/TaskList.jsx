@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Stack } from '@mui/material';
 import Task from './Task';
 import { useSelector } from 'react-redux';
 import { selectPrioFilter } from 'store/filters/selectors';
@@ -9,10 +9,11 @@ const TaskList = ({ cards }) => {
     prio === 'all' ? cards : cards.filter(card => card.priority === prio);
 
   return (
-    <Box
+    <Stack
       sx={{
-        overflowY: 'auto',
-        overflowX: 'hidden',
+        // overflowY: 'auto',
+        // overflowX: 'hidden',
+        gap: '8px',
       }}
     >
       {filteredCards &&
@@ -28,7 +29,7 @@ const TaskList = ({ cards }) => {
             />
           );
         })}
-    </Box>
+    </Stack>
   );
 };
 export default TaskList;
