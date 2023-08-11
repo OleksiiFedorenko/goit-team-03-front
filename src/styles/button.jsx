@@ -95,6 +95,7 @@ export const profile = {
 };
 
 export const profileImg = { width: '32px', height: '32px', ml: '8px' };
+
 export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
 
 export const createBoardWrapper = {

@@ -9,7 +9,7 @@ export const EditWrapper = styled.div`
   width: 350px;
 `;
 
-  export const Img = styled.img`
+export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -55,7 +55,7 @@ export const IconStyle = styled.svg`
   width: 18px;
   height: 18px;
   color: #161616;
-  `;
+`;
 export const IconPlus = styled.svg`
   position: absolute;
   top: 98%;
@@ -66,7 +66,7 @@ export const IconPlus = styled.svg`
   height: 24px;
   color: rgba(22, 22, 22, 1);
 `;
-  export const FormWrapper = styled.div`
+export const FormWrapper = styled.div`
   position: relative;
   margin-bottom: 14px;
 `;
@@ -98,17 +98,17 @@ export const FormField = styled(Field)`
   font-family: 'Poppins';
   letter-spacing: -0.28px;
 
-  background-color:#ffffff;
-  border: 1px solid #5255BC;
+  background-color: #ffffff;
+  border: 1px solid #5255bc;
   outline: none;
   border-radius: 8px;
 
-  color:#161616;
+  color: #161616;
   transition: all 250ms ease;
   opacity: 0.4;
 
   &::placeholder {
-    color:#161616;
+    color: #161616;
     font-size: 14px;
     font-family: 'Poppins';
     letter-spacing: -0.28px;
@@ -129,12 +129,12 @@ export const Eye = styled.button`
   opacity: 0.4000000059604645;
 `;
 export const FormSubmit = styled.button`
-width: 352px;
+  width: 352px;
   height: 49px;
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #5255BC;
+  background: #5255bc;
   border-radius: 8px;
 
   font-family: 'Poppins';
@@ -142,7 +142,7 @@ width: 352px;
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
-  color:#ffffff;
+  color: #ffffff;
 
   transition: all 150ms linear;
   cursor: pointer;

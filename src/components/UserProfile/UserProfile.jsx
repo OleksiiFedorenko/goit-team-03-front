@@ -9,7 +9,6 @@ import defaultAvatarDark from '../../images/default-avatar-dark.png';
 import EditProfile from 'components/EditProfile/EditProfile';
 // import EditProfileTest from 'components/EditProfile/EditProfileTest';
 
-
 import { Button, Box } from '@mui/material';
 import { button } from 'styles';
 
@@ -52,7 +51,7 @@ export const UserProfile = () => {
         />
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-        <EditProfile onCloseModal={handleCloseModal} type="Submit"/>
+        <EditProfile onCloseModal={handleCloseModal} type="Submit" />
         {/* <EditProfileTest onCloseModal={handleCloseModal} type="Submit"/> */}
       </Modal>
     </>
