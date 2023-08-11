@@ -10,8 +10,28 @@ export const authItem = {
   borderRadius: '8px',
   '&:hover, &:focus': {
     color: 'text.white',
-    backgroundColor: 'text.primary',
+    bgcolor: 'text.primary',
   },
+};
+
+export const authTabList = {
+  width: '100%',
+  display: 'flex',
+  gap: '14px',
+  mb: '40px',
+};
+
+export const authTabItem = {
+  p: 0,
+  display: 'inline-flex',
+  width: 106,
+};
+
+export const authTabBtn = {
+  display: 'inline-flex',
+  color: 'rgba(255, 255, 255, 0.30)',
+  fontWeight: 500,
+  p: 0,
 };
 
 export const closeBtn = {
@@ -26,7 +46,7 @@ export const closeBtn = {
   justifyContent: 'center',
   alignItems: 'center',
   '&:hover, &:focus': {
-    backgroundColor: 'primary.main',
+    bgcolor: 'primary.main',
   },
 };
 
@@ -34,6 +54,7 @@ export const burgerMenu = {
   p: '0',
   minWidth: '32px',
   height: '32px',
+  color: 'text.topTheme',
 };
 
 export const theme = {
@@ -61,7 +82,7 @@ export const themeItem = {
   py: '2px',
   '&.Mui-selected': {
     color: 'primary.main',
-    backgroundColor: 'transparent',
+    bgcolor: 'transparent',
   },
 };
 
@@ -86,7 +107,7 @@ export const createBoardWrapper = {
     },
     height: '1px',
     mx: { zeroUp: '14px', tablet: '24px' },
-    backgroundColor: 'side.divider',
+    bgcolor: 'divider.side',
   },
 };
 
@@ -98,28 +119,22 @@ export const createBoard = {
   my: '-1px',
   px: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideMain',
+  fontWeight: 500,
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: '0',
   '&:hover, &:focus': {
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
     '& .createBoardBox': {
-      backgroundColor: 'side.plusBackgroundHov',
+      bgcolor: 'side.plusBackgroundHov',
     },
   },
-};
-
-export const createBoardInner = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '100%',
-  fontWeight: 500,
 };
 
 export const createBoardBox = {
   width: 40,
   height: 36,
-  backgroundColor: 'side.plusBackground',
+  bgcolor: 'side.plusBackground',
   borderRadius: '6px',
 };
 
@@ -144,9 +159,9 @@ export const boardListItem = {
   fontWeight: 500,
   '&:hover, &:focus, &.active': {
     color: 'text.sideMain',
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
     '& .activeBoardBtn': {
-      backgroundColor: 'side.activeBoardBox',
+      bgcolor: 'side.activeBoardBox',
     },
   },
 };
@@ -170,6 +185,64 @@ export const logOut = {
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
-    backgroundColor: 'side.activeBtn',
+    bgcolor: 'side.activeBtn',
+  },
+};
+
+export const svgIconPlus = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlus',
+};
+
+export const svgIconPlusAnother = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlusAnother',
+};
+
+export const boxIconPlus = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlus',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const boxIconPlusAnother = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusAnother',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const addColumnBtn = {
+  height: 56,
+  minWidth: {
+    zeroUp: '90vw',
+    mobileFixed: '335px',
+    tablet: '334px',
+  },
+  bgcolor: 'secondary.main',
+  textTransform: 'none',
+  color: 'text.primary',
+  '&:hover, &:focus': {
+    bgcolor: 'secondary.dark',
+  },
+};
+
+export const addCard = {
+  width: '100%',
+  height: '56px',
+  lineHeight: 1.5,
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover, &:focus': {
+    boxShadow: 'none',
   },
 };

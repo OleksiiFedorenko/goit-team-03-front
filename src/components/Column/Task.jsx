@@ -1,83 +1,137 @@
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateTask, deleteTask } from 'store/boards/operations';
 import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
-import CardContent from '@mui/material/CardContent';
-import { Typography } from '@mui/material';
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
-import { Icon } from 'components/Icons';
-import { IconButton } from '@mui/material';
+import IconBtn from './IconBtn';
+import Modal from 'components/Modal/Modal';
+import AddCardForm from 'components/AddCardForm';
 
-import css from './Task.module.css';
+import { Card, Typography, Stack, Box } from '@mui/material';
+import { card } from 'styles';
 
-const TruncatedText = ({ text }) => (
-  <Typography className={css['truncate-lines']}>{text}</Typography>
-);
+const Task = ({ name, description, priority, deadline, taskId }) => {
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
-const Task = ({ name, description, priority, deadline }) => {
+  const openModalHandler = () => {
+    setShowModal(true);
+  };
+
+  const closeModalHandler = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteTask = () => {
+    if (window.confirm(`Do you really want to delete task ${name}?`)) {
+      dispatch(deleteTask(taskId));
+    }
+  };
+
   const priorityColor = priorityColorSwitcher(priority);
-  const priorityStyle = {
+  const priorityStyles = {
+    textTransform: 'capitalize',
     '&::before': {
-      content: '""',
-      height: '12px',
-      width: '12px',
-      backgroundColor: `${priorityColor}`,
-      borderRadius: '50%',
-      display: 'inline-block',
+      ...card.priorityCircle,
+      bgcolor: priorityColor,
     },
   };
+  const handleIconClick = () => {};
 
   return (
     <Card
-      elevation={2}
       sx={{
+        ...card.task,
         borderLeft: `4px solid ${priorityColor}`,
       }}
     >
-      <CardHeader title={name} />
-      <CardContent>
-        <TruncatedText text={description} />
+      <Box>
+        <Box sx={card.taskMainBox}>
+          <Typography variant="h5" component="h3" mb={1}>
+            {name}
+          </Typography>
+          <Typography variant="body2" sx={card.taskDescription}>
+            {description}
+          </Typography>
+        </Box>
 
-        <Divider variant="middle" />
+        {/* components below devider       */}
 
-        <Stack spacing={2} direction="row">
-          <Stack>
-            <Typography variant="body2" color="textSecondary">
-              Priority
-            </Typography>
-            <Typography sx={priorityStyle}>{priority}</Typography>
+        <Box>
+          <Stack direction="row">
+            {/* priority container      */}
+            <Stack
+              justifyContent="flex-end"
+              alignItems="flex-start"
+              spacing={0}
+              sx={{ marginRight: '14px' }}
+            >
+              <Box>
+                <Typography variant="caption" color="text.sideSecond">
+                  Priority
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" sx={priorityStyles}>
+                  {priority}
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* deadline container     */}
+            <Stack
+              flexGrow={1}
+              justifyContent="flex-end"
+              alignItems="flex-start"
+              spacing={0}
+            >
+              <Box>
+                <Typography variant="caption" color="text.sideSecond">
+                  Deadline
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" color="text.primary">
+                  {deadline}
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* icons container     */}
+
+            <Stack
+              direction="row"
+              justifyContent="flex-end"
+              alignItems="flex-end"
+              spacing={1}
+            >
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="alert" />
+              </Box>
+              <Box>
+                <IconBtn onClick={handleIconClick} iconId="move" />
+              </Box>
+
+              <Box>
+                <IconBtn onClick={openModalHandler} iconId="pencil" />
+              </Box>
+
+              <Box>
+                <IconBtn onClick={handleDeleteTask} iconId="trash" />
+              </Box>
+            </Stack>
           </Stack>
-
-          <Stack>
-            <Typography variant="body2" color="textSecondary">
-              Deadline
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              {deadline}
-            </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="flex-end"
-            justifyContent="flex-end"
-          >
-            <IconButton>
-              <Icon id={'alert'} />
-            </IconButton>
-
-            <IconButton>
-              <Icon id={'move'} />
-            </IconButton>
-
-            <IconButton>
-              <Icon id={'pencil'} />
-            </IconButton>
-            <IconButton>
-              <Icon id={'trash'} />
-            </IconButton>
-          </Stack>
-        </Stack>
-      </CardContent>
+        </Box>
+      </Box>
+      <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
+        <AddCardForm
+          onCloseModal={closeModalHandler}
+          taskId={taskId}
+          formTitle={'Edit card'}
+          buttonTitle={'Edit'}
+          taskOperation={updateTask}
+          initData={{ title: name, description, priority, deadline }}
+        />
+      </Modal>
     </Card>
   );
 };

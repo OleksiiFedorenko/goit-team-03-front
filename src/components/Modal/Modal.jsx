@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Box, Modal } from '@mui/material';
-// import { BtnClose } from './Modal.styled';
 import { Icon } from 'components/Icons';
 import { button, container } from 'styles';
 

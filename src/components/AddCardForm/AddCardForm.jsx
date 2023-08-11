@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Container } from '@mui/material';
@@ -17,27 +19,52 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  deadline: Yup.date().required('Required'),
+  deadline: Yup.date().required(),
 });
 
-const handleSubmit = values => {
-  console.log(values);
-  //setSubmitting(false);
-  // resetForm();
-  //onCloseModal();
-};
+const AddCardForm = ({
+  parentColumn,
+  onCloseModal,
+  formTitle,
+  buttonTitle,
+  taskOperation,
+  taskId,
+  initData,
+}) => {
+  const dispatch = useDispatch();
+  const [priority, setPriority] = useState('without');
 
-const AddCardForm = () => {
+  const handleChangePriority = event => {
+    setPriority(event.target.value);
+  };
+
+  const handleSubmit = values => {
+    // changing the deadline to the needed format
+    const formattedDate = values.deadline.split('-').reverse().join('-');
+
+    dispatch(
+      taskOperation({
+        ...values,
+        parentColumn,
+        priority,
+        taskId,
+        deadline: formattedDate,
+      })
+    );
+    //setSubmitting(false);
+    // resetForm();
+    onCloseModal();
+  };
   return (
     <Container>
       <Formik
-        initialValues={{ ...initialValues }}
+        initialValues={initData ? initData : initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form>
           <Typography variant="h2" component="h2" mb={3}>
-            Add card
+            {formTitle}
           </Typography>
           <Textfield
             name="title"
@@ -75,28 +102,30 @@ const AddCardForm = () => {
               row
               defaultValue="low"
               aria-labelledby="priority-radios"
-              name="priorityBtn"
+              name="priority"
+              value={priority}
+              onChange={handleChangePriority}
             >
               <FormControlLabel
                 value="low"
-                control={<PriorityRadioBtn priority="Low" />}
+                control={<PriorityRadioBtn priority="low" />}
               />
               <FormControlLabel
                 value="medium"
                 control={
-                  <PriorityRadioBtn priority="Medium" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="medium" sx={{ ml: '-14px' }} />
                 }
               />
               <FormControlLabel
-                value="High"
+                value="high"
                 control={
-                  <PriorityRadioBtn priority="High" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="high" sx={{ ml: '-14px' }} />
                 }
               />
               <FormControlLabel
-                value="Without"
+                value="without"
                 control={
-                  <PriorityRadioBtn priority="Without" sx={{ ml: '-14px' }} />
+                  <PriorityRadioBtn priority="without" sx={{ ml: '-14px' }} />
                 }
               />
             </RadioGroup>
@@ -111,7 +140,7 @@ const AddCardForm = () => {
             }}
           />
 
-          <SubmitButton>Add</SubmitButton>
+          <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>
     </Container>

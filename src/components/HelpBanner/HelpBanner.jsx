@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import TaskProImg from '../../images/taskPro-img.png';
-import {
-  TaskProHelperWrapper,
-  TaskProHelperImg,
-  TaskProHelperText,
-  TaskProHelperTextLink,
-  TaskProHelperButton,
-  TaskProHelperButtonText,
-} from './HelpBanner.styled';
 import { NeedHelpForm } from './NeedHelpForm';
+import { Box, Typography, Button, SvgIcon } from '@mui/material';
+import { text, container } from 'styles';
+import sprite from 'components/Icons/sprite.svg';
 
 export const HelpBanner = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,29 +16,40 @@ export const HelpBanner = () => {
     setShowModal(false);
   };
   return (
-    <TaskProHelperWrapper>
-      <TaskProHelperImg
+    <Box sx={container.helpBannerContainer}>
+      <Box
+        component="img"
         src={TaskProImg}
         alt="TaskProHelperImg"
-        width={54}
-        height={78}
-      ></TaskProHelperImg>
-      <TaskProHelperText>
-        If you need help with
-        <TaskProHelperTextLink>TaskPro</TaskProHelperTextLink>, check out our
+        sx={{
+          width: 54,
+          height: 78,
+          marginTop: '14px', 
+          marginLeft: '14px', 
+          marginBottom: '14px'}}
+      />
+      <Typography component="p" variant='h4' sx={text.helpBannerText}>
+        If you need help with&nbsp;<br/>
+        <Typography component="span" sx={text.accent}>TaskPro</Typography>, check out our
         support resources or reach out to our customer support team.
-      </TaskProHelperText>
-      <TaskProHelperButton type="button" onClick={handleOpenModal}>
-        <TaskProHelperButtonText>Need help?</TaskProHelperButtonText>
-      </TaskProHelperButton>
+      </Typography>
+      <Button variant="text" onClick={handleOpenModal}>
+        <SvgIcon sx={text.helpBannerIcon}>
+              <svg width="20px" height="20px" stroke="currentColor" fill="none">
+                <use href={sprite + '#icon-help-circle'} />
+              </svg>
+        </SvgIcon>
+        <Typography component="span" sx={text.helpBannerButton}>Need help?</Typography>
+      </Button>
       {showModal && (
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
           <NeedHelpForm 
             onCloseModal={handleCloseModal}
-            title="New bord"
-            type="Submit"/>
+            title="Need help"
+            type="submit"   
+          />
         </Modal>  
       )}
-    </TaskProHelperWrapper>
+    </Box>
   );
 };

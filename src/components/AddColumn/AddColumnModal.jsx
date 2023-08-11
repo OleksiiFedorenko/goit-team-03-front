@@ -2,21 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addColumn } from 'store/boards/operations';
-
-import {
-  FormWrapper,
-  Section,
-  AuthFormSubmitButton,
-  PlusIcon,
-  TitleInput,
-  SectionTitle,
-  ModalForm,
-  ErrorSection,
-  ButtonPlus,
-} from './AddColumnModal.styled';
-import { Formik } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Icon } from 'components/Icons';
+import { Box, FormControl, Typography, Button, SvgIcon, TextField } from '@mui/material';
+import {container, button, form} from 'styles';
+import sprite from 'components/Icons/sprite.svg';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -38,37 +28,54 @@ const AddColumnModal = ({ onCloseModal }) => {
     onCloseModal();
   };
   return (
-    <Section>
-      <SectionTitle>Add column</SectionTitle>
-
+    <Box sx={container.addColumnContainer}>
+      <Typography variant='h2' mb={3}>Add column</Typography>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <ModalForm>
-          <FormWrapper>
-            <ErrorSection name="title" component="div" />
-            <TitleInput
-              type="text "
+      {({ values, handleChange, handleSubmit }) => (
+        <Form onSubmit={handleSubmit}>
+          <FormControl fullWidth>          
+            <TextField
+              label="Title"
+              variant="outlined"
+              type="text"
               id="text"
               name="title"
-              placeholder="Title "
+              sx={{mb: 3}}
+              value={values.title}
+              onChange={handleChange}
             />
-          </FormWrapper>
-
-          <AuthFormSubmitButton type="submit">
-            <ButtonPlus>
-              <PlusIcon>
-                <Icon id={'plus'} />
-              </PlusIcon>
-            </ButtonPlus>
-            Add
-          </AuthFormSubmitButton>
-        </ModalForm>
+            <ErrorMessage
+                name="Title"
+                component="div"
+                style={{ color: 'red',fontSize: 12 }}
+              />                  
+          </FormControl>
+            <Button
+              color="primary"
+              variant="contained"
+              fullWidth
+              sx={form.button}
+              type="submit"             
+            >
+              <Box sx={button.boxIconPlus}>
+                  <SvgIcon sx={button.svgIconPlus}>
+                    <svg stroke="currentColor">
+                            <use href={sprite + '#icon-plus'} />
+                    </svg>             
+                  </SvgIcon>
+              </Box>                 
+              Add
+            </Button>
+        </Form>
+      )}
       </Formik>
-    </Section>
+    </Box>     
   );
 };
 
 export default AddColumnModal;
+

@@ -1,12 +1,13 @@
 import { useState } from 'react';
-// import cards from '../../test-data/cards.json';
-import Button from '@mui/material/Button';
+import { addTask } from 'store/boards/operations';
 import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
-import { Stack } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
+
+import { Stack, Button } from '@mui/material';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import { card, button } from 'styles';
 
 const Column = ({ column }) => {
   const [showModal, setShowModal] = useState(false);
@@ -18,25 +19,25 @@ const Column = ({ column }) => {
   };
 
   return (
-    <Stack
-      sx={{
-        width: '100%',
-        maxWidth: 360,
-        height: '100vh',
-        marginLeft: '15px',
-      }}
-    >
-      <ColumnHeader title={column.title} />
-      <TaskList cards={column.taskOrder} />
+    <Stack sx={card.column}>
+      <ColumnHeader title={column.title} columnId={column._id} />
+      <TaskList cards={column.tasks} />
       <Button
         variant="contained"
+        sx={button.addCard}
         startIcon={<AddBoxIcon />}
         onClick={openModalHandler}
       >
         Add another card
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
-        <AddCardForm />
+        <AddCardForm
+          onCloseModal={closeModalHandler}
+          parentColumn={column._id}
+          formTitle={'Add card'}
+          buttonTitle={'Add'}
+          taskOperation={addTask}
+        />
       </Modal>
     </Stack>
   );
