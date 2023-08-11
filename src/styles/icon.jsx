@@ -16,6 +16,27 @@ export const svgPlus = {
   stroke: 'currentColor',
 };
 
+export const svgEditColumnAdd = {
+  width: '14px',
+  height: '14px',
+  color: 'icon.svgPlusCard',
+  stroke: 'currentColor',
+};
+
+export const svgAddColumn = {
+  width: '24px',
+  height: '24px',
+  color: 'icon.svgAddColumn',
+  stroke: 'currentColor',
+};
+
+export const svgAddCard = {
+  width: '14px',
+  height: '14px',
+  color: 'icon.svgPlusCard',
+  stroke: 'currentColor',
+};
+
 export const svgLogOut = {
   display: 'inline-block',
   strokeWidth: '0',
@@ -31,12 +52,28 @@ export const svgLogOut = {
   },
 };
 
+export const svgCardBtnList = {
+  width: '16px',
+  height: '16px',
+  fill: 'transparent',
+  color: 'icon.svgCardBtnList',
+  stroke: 'currentColor',
+  '&:hover, &:focus': {
+    color: 'icon.activeSvgLogout',
+    stroke: 'currentColor',
+  },
+};
+
 export const svgBoardNavList = {
   width: '16px',
   height: '16px',
   fill: 'transparent',
-  color: 'svgBoardList',
+  color: 'icon.svgBoardBtnEdit',
   stroke: 'currentColor',
+  '&:hover, &:focus': {
+    color: 'icon.activeSvgLogout',
+    stroke: 'currentColor',
+  },
 };
 
 export const svgClose = {
@@ -47,6 +84,19 @@ export const svgClose = {
   stroke: 'currentColor',
   '&:hover, &:focus': {
     color: 'icon.svgPlus',
+    stroke: 'currentColor',
+  },
+};
+
+export const svgBoard = {
+  mr: '8px',
+  width: '18px',
+  height: '18px',
+  fill: 'transparent',
+  color: 'board.title',
+  stroke: 'currentColor',
+  '&hover, &:focus, &:active': {
+    color: 'text.primary',
     stroke: 'currentColor',
   },
 };

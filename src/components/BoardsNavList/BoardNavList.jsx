@@ -55,17 +55,17 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} />
+                <Icon id={board.icon} sx={icon.svgBoard} />
                 <ListItemText primary={board.title} disableTypography />
                 <IconButton
                   onClick={handleOpenModal}
-                  color="inherit"
+                  color="black"
                   size="small"
                   sx={[
                     {
                       '&:focus': {
                         color: 'secondary',
-                        bgcolor: 'background.sideSecond',
+                        bgcolor: 'background.boxPlus',
                       },
                     },
                   ]}
