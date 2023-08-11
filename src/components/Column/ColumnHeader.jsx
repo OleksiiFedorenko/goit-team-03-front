@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteColumn } from 'store/boards/operations';
 
-import { Icon } from 'components/Icons';
 import Modal from 'components/Modal/Modal';
 import EditColumnModal from 'components/AddColumn/EditColumnModal';
-
-import { Card, CardHeader, IconButton } from '@mui/material';
+import IconBtn from './IconBtn';
+import { Card, CardHeader, Box } from '@mui/material';
 import { card } from 'styles';
 
 const ColumnHeader = ({ title, columnId }) => {
@@ -35,12 +34,12 @@ const ColumnHeader = ({ title, columnId }) => {
         disableTypography
         action={
           <div>
-            <IconButton onClick={handleOpenModal}>
-              <Icon id={'pencil'} />
-            </IconButton>
-            <IconButton onClick={handleDeleteColumn}>
-              <Icon id={'trash'} />
-            </IconButton>
+            <Box>
+              <IconBtn onClick={handleOpenModal} iconId="pencil" />
+            </Box>
+            <Box>
+              <IconBtn onClick={handleDeleteColumn} iconId="trash" />
+            </Box>
           </div>
         }
       />
