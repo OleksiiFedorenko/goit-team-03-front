@@ -21,14 +21,16 @@ const AddColumnButton = () => {
         color="secondary"
         onClick={handleOpenModal}
       >
-        <Box sx={button.boxIconPlusAnother}>
-          <SvgIcon sx={button.svgIconPlusAnother}>
+        <Box sx={button.addColumnIconBox}>
+          <SvgIcon sx={button.addColumnIcon}>
             <svg stroke="currentColor">
               <use href={sprite + '#icon-plus'} />
             </svg>
           </SvgIcon>
         </Box>
-        <Typography variant="h3">Add another column</Typography>
+        <Typography variant="h3" component="span">
+          Add another column
+        </Typography>
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <AddColumnModal

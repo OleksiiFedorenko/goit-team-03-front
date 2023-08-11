@@ -6,6 +6,7 @@ import Modal from 'components/Modal/Modal';
 import EditColumnModal from 'components/AddColumn/EditColumnModal';
 import IconBtn from './IconBtn';
 import { Card, Stack, Typography } from '@mui/material';
+import { card } from 'styles';
 
 const ColumnHeader = ({ title, columnId }) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,9 +27,9 @@ const ColumnHeader = ({ title, columnId }) => {
   };
 
   return (
-    <Card sx={{ paddingY: '18px', paddingX: '20px' }}>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Typography component="h2" variant="h3" color="text.primary">
+    <Card sx={card.header}>
+      <Stack sx={card.headerContainer}>
+        <Typography component="h2" variant="h3">
           {title}
         </Typography>
         <Stack direction="row" spacing={1}>
@@ -36,16 +37,15 @@ const ColumnHeader = ({ title, columnId }) => {
           <IconBtn onClick={handleDeleteColumn} iconId="trash" />
         </Stack>
       </Stack>
-      {showModal && (
-        <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-          <EditColumnModal
-            onCloseModal={handleCloseModal}
-            columnId={columnId}
-            title={title}
-            type="Submit"
-          />
-        </Modal>
-      )}
+
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <EditColumnModal
+          onCloseModal={handleCloseModal}
+          columnId={columnId}
+          title={title}
+          type="Submit"
+        />
+      </Modal>
     </Card>
   );
 };
