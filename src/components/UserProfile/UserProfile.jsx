@@ -50,8 +50,7 @@ export const UserProfile = () => {
         />
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
-        <EditProfile onCloseModal={handleCloseModal} title="New board"
-            type="Submit"/>
+        <EditProfile onCloseModal={handleCloseModal} type="Submit"/>
       </Modal>
     </>
   );
