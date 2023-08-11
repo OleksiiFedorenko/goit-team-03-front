@@ -145,9 +145,7 @@ const boardSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const id = action.payload.message.split('');
-        const index = state.columns.findIndex(
-          column => column._id === id[1]
-        );
+        const index = state.columns.findIndex(column => column._id === id[1]);
         state.columns.splice(index, 1);
       })
       .addCase(deleteColumn.rejected, handleRejected)
@@ -156,10 +154,11 @@ const boardSlice = createSlice({
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.columns.findIndex(
-          column => column._id === action.payload.parentColumn
-        );
-        state.columns[index].tasks.push(action.payload);
+        state.columns.forEach(column => {
+          if (column._id === action.payload.parentColumn) {
+            column.tasks.push(action.payload);
+          }
+        });
       })
       .addCase(addTask.rejected, handleRejected)
 
