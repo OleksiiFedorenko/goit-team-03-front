@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from "@mui/material";
-import { ProgressBar } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
 import { selectTheme } from 'store/auth/selectors';
 
 import { useState, useEffect } from 'react'; 
@@ -26,14 +26,13 @@ export const Loader = () => {
             justifyContent: 'center', 
             alignItems: 'center', 
             height: '100vh' }}>
-          <ProgressBar
+          <RotatingLines
               height="80"
               width="80"
-              ariaLabel="progress-bar-loading"
-              wrapperStyle={{}}
-              wrapperClass="progress-bar-wrapper"
-              borderColor = '#F4442E'
-              barColor = {theme.palette.loader}
+              strokeWidth="5"
+              animationDuration="0.75"
+              strokeColor = {theme.palette.loader}
+              visible={true}
           />
         </Box>
       );
