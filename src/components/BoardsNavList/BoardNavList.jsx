@@ -19,7 +19,7 @@ import {
   ListItemText,
   IconButton,
 } from '@mui/material';
-import { button } from 'styles';
+import { button, icon } from 'styles';
 
 export const BoardNavList = ({ boards }) => {
   const [showModal, setShowModal] = useState(false);
@@ -70,14 +70,14 @@ export const BoardNavList = ({ boards }) => {
                     },
                   ]}
                 >
-                  <Icon id={'pencil'} />
+                  <Icon id={'pencil'} sx={icon.svgBoardNavList} />
                 </IconButton>
                 <IconButton
                   onClick={handleDeleteBoard}
                   size="small"
                   color="inherit"
                 >
-                  <Icon id={'trash'} />
+                  <Icon id={'trash'} sx={icon.svgBoardNavList} />
                 </IconButton>
                 <Box className="activeBoardBtn" sx={button.boardListBox} />
               </ListItemButton>

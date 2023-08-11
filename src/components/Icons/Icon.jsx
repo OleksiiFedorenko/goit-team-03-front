@@ -1,10 +1,11 @@
+import React from 'react';
 import Icons from './sprite.svg';
-import { IconStyled } from './Icon.styled';
+import { SvgIcon } from '@mui/material';
 
-export const Icon = ({ id }) => {
+export const Icon = ({ id, sx }) => {
   return (
-    <IconStyled>
+    <SvgIcon component="svg" sx={sx}>
       <use href={Icons + '#icon-' + id}></use>
-    </IconStyled>
+    </SvgIcon>
   );
 };
