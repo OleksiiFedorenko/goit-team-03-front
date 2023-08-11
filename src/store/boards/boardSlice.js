@@ -104,9 +104,8 @@ const boardSlice = createSlice({
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.boards.findIndex(
-          board => board._id === action.payload._id
-        );
+        const id = action.payload.message.split('');
+        const index = state.boards.findIndex(board => board._id === id[1]);
         state.boards.splice(index, 1);
         state.board = {};
       })
@@ -145,9 +144,8 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.board.columns.findIndex(
-          column => column._id === action.payload._id
-        );
+        const id = action.payload.message.split('');
+        const index = state.columns.findIndex(column => column._id === id[1]);
         state.columns.splice(index, 1);
       })
       .addCase(deleteColumn.rejected, handleRejected)
@@ -156,10 +154,11 @@ const boardSlice = createSlice({
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.columns.findIndex(
-          column => column._id === action.payload.parentColumn
-        );
-        state.columns[index].tasks.push(action.payload);
+        state.columns.forEach(column => {
+          if (column._id === action.payload.parentColumn) {
+            column.tasks.push(action.payload);
+          }
+        });
       })
       .addCase(addTask.rejected, handleRejected)
 
@@ -185,17 +184,25 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.columns.findIndex(
-          column => column._id === action.payload.parentColumn
-        );
-        const indexTask = state.columns[index].tasks.findIndex(
-          task => task._id === action.payload._id
-        );
-        state.columns[index].tasks.splice(indexTask, 1);
+        const id = action.payload.message.split('');
+        let columnId;
+        let spliceIndex;
+        state.columns.forEach(column => {
+          column.tasks.forEach((task, index)=> {
+            if(task._id !== id[1]) {
+              columnId = task.parentColumn;
+              spliceIndex = index;
+            }
+          })
+          });
+          state.columns.forEach(column => {
+            if (column._id === columnId) {
+              column.tasks.splice(spliceIndex,1);
+            }
+          })
+
+        })
      
-        
- 
-      })
       .addCase(deleteTask.rejected, handleRejected);
   },
 });
