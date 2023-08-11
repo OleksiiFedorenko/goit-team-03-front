@@ -7,8 +7,15 @@ import Textfield from '../FormsUI/TextField';
 import SubmitButton from 'components/FormsUI/SubmitButton';
 import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Typography, RadioGroup, FormLabel, FormControl } from '@mui/material';
-import DatePicker from 'components/FormsUI/DatePicker/DatePicker';
+import {
+  Typography,
+  RadioGroup,
+  FormLabel,
+  FormControl,
+  Box,
+} from '@mui/material';
+
+import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
 
 const initialValues = {
   title: '',
@@ -130,16 +137,19 @@ const AddCardForm = ({
               />
             </RadioGroup>
           </FormControl>
-          <Typography variant="body2" component="h4" mb={0.5}>
-            Deadline
-          </Typography>
-          <DatePicker
-            name="deadline"
-            sx={{
-              marginBottom: '40px',
-            }}
-          />
-
+          <Box mb={5}>
+            <Typography variant="body2" component="h4" mb={0.5}>
+              Deadline
+            </Typography>
+            <DatePickerBtn
+              name="deadline"
+              sx={{
+                marginBottom: '40px',
+              }}
+            >
+              Today, March 8
+            </DatePickerBtn>
+          </Box>
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>

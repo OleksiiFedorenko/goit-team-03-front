@@ -24,7 +24,9 @@ const AddColumnButton = () => {
         <Box sx={button.boxIconPlusAnother}>
           <Icon id={'plus'} sx={icon.svgAddColumn} />
         </Box>
-        <Typography variant="h3">Add another column</Typography>
+        <Typography variant="h3" component="span">
+          Add another column
+        </Typography>
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <AddColumnModal

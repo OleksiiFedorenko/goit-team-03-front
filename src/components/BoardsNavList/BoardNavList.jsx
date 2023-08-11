@@ -12,7 +12,6 @@ import {
 } from 'store/boards/operations';
 
 import {
-  Box,
   List,
   ListItem,
   ListItemButton,
@@ -55,17 +54,17 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} sx={icon.svgBoard} />
+                <Icon id={board.icon} />
                 <ListItemText primary={board.title} disableTypography />
                 <IconButton
                   onClick={handleOpenModal}
-                  color="black"
+                  color="inherit"
                   size="small"
                   sx={[
                     {
                       '&:focus': {
                         color: 'secondary',
-                        bgcolor: 'background.boxPlus',
+                        bgcolor: 'background.sideSecond',
                       },
                     },
                   ]}
