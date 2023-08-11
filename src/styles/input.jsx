@@ -2,7 +2,7 @@ export const boardForm = {
   display: 'block',
   width: '302px',
   boxSizing: 'border-box',
-  backgroundColor: 'background.default',
+  bgcolor: 'background.default',
   border: '1px solid primary.main',
   borderRadius: '8px',
   padding: '14px 18px',

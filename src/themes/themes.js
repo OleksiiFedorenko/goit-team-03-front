@@ -61,6 +61,7 @@ const standardParams = {
     },
     h6: {
       fontSize: 10,
+      fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '-0.02em',
     },
@@ -91,9 +92,11 @@ export const violetTheme = createTheme({
     mode: 'light',
     primary: {
       main: '#5255BC',
+      dark: '#7B7EDE',
     },
     secondary: {
       main: '#FFF',
+      dark: '#FFFFFF80',
     },
     background: {
       default: '#ECEDFD',
@@ -101,6 +104,10 @@ export const violetTheme = createTheme({
       side: '#5255BC',
       logoIcon: '#ECEDFD',
       helpBanner: 'rgba(236, 237, 253, 0.4)',
+      boxPlus: '#FFFFFF',
+      btnPlus: '#161616',
+      boxPlusAnother: '#5255BC',
+      btnPlusAnother: '#FFF',
     },
     text: {
       primary: '#161616',
@@ -108,19 +115,18 @@ export const violetTheme = createTheme({
       topTheme: '#161616CC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
-      cardSecond: '#161616B3',
       filterRadio: 'rgba(22, 22, 22, 0.50)',
       ...standardColors,
     },
-    divider: {
-      side: '#FFFFFF1A',
-    },
     side: {
-      divider: '#FFFFFF1A',
       plusBackground: '#B8BCFD',
       plusBackgroundHov: '#979CEA',
       activeBtn: 'rgba(255, 255, 255, 0.2)',
       activeBoardBox: '#FFF',
+    },
+    divider: {
+      side: '#FFFFFF1A',
+      card: '#1616161A',
     },
     ...form,
   },
@@ -132,9 +138,11 @@ export const lightTheme = createTheme({
     mode: 'light',
     primary: {
       main: '#BEDBB0',
+      dark: '#9DC888',
     },
     secondary: {
       main: '#FFF',
+      dark: '#F6F6F7',
     },
     background: {
       default: '#F6F6F7',
@@ -142,6 +150,10 @@ export const lightTheme = createTheme({
       side: '#FFF',
       logoIcon: '#1F1F1F',
       helpBanner: '#F6F6F7',
+      boxPlus: '#161616',
+      btnPlus: '#FFF',
+      boxPlusAnother: '#161616',
+      btnPlusAnother: '#FFF',
     },
     text: {
       primary: '#161616',
@@ -149,16 +161,18 @@ export const lightTheme = createTheme({
       topTheme: '#161616CC',
       sideMain: '#161616',
       sideSecond: '#16161680',
-      cardSecond: '#161616B3',
       filterRadio: 'rgba(22, 22, 22, 0.50)',
       ...standardColors,
     },
     side: {
-      divider: '#1616161A',
       plusBackground: '#BEDBB0',
       plusBackgroundHov: '#9DC888',
       activeBtn: 'rgba(246, 246, 247, 0.4)',
       activeBoardBox: '#BEDBB0',
+    },
+    divider: {
+      side: '#1616161A',
+      card: '#1616161A',
     },
     ...form,
   },
@@ -170,9 +184,11 @@ export const darkTheme = createTheme({
     mode: 'dark',
     primary: {
       main: '#BEDBB0',
+      dark: '#9DC888',
     },
     secondary: {
       main: '#121212',
+      dark: '#161616',
     },
     background: {
       default: '#1F1F1F',
@@ -180,6 +196,10 @@ export const darkTheme = createTheme({
       side: '#121212',
       logoIcon: '#1F1F1F',
       helpBanner: '#1F1F1F',
+      boxPlus: '#161616',
+      btnPlus: '#FFF',
+      boxPlusAnother: '#FFF',
+      btnPlusAnother: '#161616',
     },
     text: {
       primary: '#FFF',
@@ -187,16 +207,18 @@ export const darkTheme = createTheme({
       topTheme: '#FFFFFFCC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
-      cardSecond: '#161616B3',
       filterRadio: 'rgba(255, 255, 255, 0.50)',
       ...standardColors,
     },
     side: {
-      divider: '#FFFFFF1A',
       plusBackground: '#BEDBB0',
       plusBackgroundHov: '#9DC888',
       activeBtn: 'rgba(31, 31, 31, 0.4)',
       activeBoardBox: '#BEDBB0',
+    },
+    divider: {
+      side: '#FFFFFF1A',
+      card: '#FFFFFF1A',
     },
     ...form,
   },

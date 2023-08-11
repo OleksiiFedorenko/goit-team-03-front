@@ -65,7 +65,7 @@ export const BoardNavList = ({ boards }) => {
                     {
                       '&:focus': {
                         color: 'secondary',
-                        backgroundColor: 'background.sideSecond',
+                        bgcolor: 'background.sideSecond',
                       },
                     },
                   ]}

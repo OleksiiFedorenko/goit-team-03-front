@@ -10,7 +10,7 @@ const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
         <Box onClick={onCloseModal} sx={button.closeBtn}>
           <Icon id="x-close" />
         </Box>
-        <Box sx={container.modalContent}>{children}</Box>
+        {children}
       </Box>
     </Modal>
   );
