@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { BoardNavList } from 'components/BoardsNavList';
+import { Icon } from 'components/Icons';
 import { addBoard } from 'store/boards/operations';
 import { selectBoards } from 'store/boards/selectors';
 
 import { Box, Typography, Button } from '@mui/material';
-import { container, text, button } from 'styles';
+import { container, text, button, icon } from 'styles';
 
 export const BoardNav = () => {
   const [showModal, setShowModal] = useState(false);
@@ -37,7 +38,9 @@ export const BoardNav = () => {
         >
           Create a<br />
           new board
-          <Box className="createBoardBox" sx={button.createBoardBox}></Box>
+          <Box className="createBoardBox" sx={button.createBoardBox}>
+            <Icon id={'plus'} sx={icon.svgPlus} />
+          </Box>
         </Button>
       </Box>
 

@@ -52,8 +52,8 @@ export const closeBtn = {
 
 export const burgerMenu = {
   p: '0',
-  minWidth: '32px',
-  height: '32px',
+  minWidth: { zeroUp: '24px', tablet: '32px' },
+  height: { zeroUp: '24px', tablet: '32px' },
   color: 'text.topTheme',
 };
 
@@ -132,6 +132,9 @@ export const createBoard = {
 };
 
 export const createBoardBox = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: 40,
   height: 36,
   bgcolor: 'side.plusBackground',
