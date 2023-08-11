@@ -12,28 +12,21 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: { name: null, email: null, avatar: "", theme: 'violet'},
-    token:  { accessToken: '', refreshToken: '' },
+    token: '',
     isLoggedIn: false,
     isRefreshing: false,
   },
-  reducers: {
-    updateToken(state, action) {
-      state.token.accessToken = action.payload.accessToken;
-      state.token.refreshToken = action.payload.refreshToken;
-    },
-  },
-  extraReducers: builder => {
+   extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
         state.user = {...state.user, ...action.payload};
-        state.token.accessToken = action.payload.tokens.accessToken;
-  state.token.refreshToken = action.payload.tokens.refreshToken;
+        state.token = action.payload.accessToken;
+        
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
         state.user = {...state.user, ...action.payload};
-        state.token.accessToken = action.payload.tokens.accessToken;
-        state.token.refreshToken = action.payload.tokens.refreshToken;
+        state.token = action.payload.accessToken;       
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
@@ -47,11 +40,13 @@ const authSlice = createSlice({
 
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(fetchCurrentUser.rejected, state => {
         state.isRefreshing = false;
+        // state.token = '';
       })
 
       .addCase(updateTheme.fulfilled, (state, action) => {
@@ -63,5 +58,5 @@ const authSlice = createSlice({
       })
   },
 });
-export const { updateToken } = authSlice.actions;
+
 export const authReducer = authSlice.reducer;
