@@ -12,7 +12,6 @@ import {
 } from 'store/boards/operations';
 
 import {
-  Box,
   List,
   ListItem,
   ListItemButton,
@@ -57,29 +56,33 @@ export const BoardNavList = ({ boards }) => {
               >
                 <Icon id={board.icon} />
                 <ListItemText primary={board.title} disableTypography />
-                <IconButton
-                  onClick={handleOpenModal}
-                  color="inherit"
-                  size="small"
-                  sx={[
-                    {
-                      '&:focus': {
-                        color: 'secondary',
-                        bgcolor: 'background.sideSecond',
-                      },
-                    },
-                  ]}
-                >
-                  <Icon id={'pencil'} sx={icon.svgBoardNavList} />
-                </IconButton>
-                <IconButton
-                  onClick={handleDeleteBoard}
-                  size="small"
-                  color="inherit"
-                >
-                  <Icon id={'trash'} sx={icon.svgBoardNavList} />
-                </IconButton>
-                <Box className="activeBoardBtn" sx={button.boardListBox} />
+
+                {board._id === boardId && (
+                  <>
+                    <IconButton
+                      onClick={handleOpenModal}
+                      color="inherit"
+                      size="small"
+                      sx={[
+                        {
+                          '&:focus': {
+                            color: 'secondary',
+                            bgcolor: 'background.sideSecond',
+                          },
+                        },
+                      ]}
+                    >
+                      <Icon id={'pencil'} sx={icon.svgBoardNavList} />
+                    </IconButton>
+                    <IconButton
+                      onClick={handleDeleteBoard}
+                      size="small"
+                      color="inherit"
+                    >
+                      <Icon id={'trash'} sx={icon.svgBoardNavList} />
+                    </IconButton>
+                  </>
+                )}
               </ListItemButton>
             </ListItem>
           );

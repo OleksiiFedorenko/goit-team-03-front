@@ -108,6 +108,8 @@ export const violetTheme = createTheme({
       btnPlus: '#161616',
       boxPlusAnother: '#5255BC',
       btnPlusAnother: '#FFF',
+      boxPlusCard: '#FFF',
+      btnPlusCard: '#161616',
     },
     text: {
       primary: '#161616',
@@ -160,6 +162,8 @@ export const lightTheme = createTheme({
       btnPlus: '#FFF',
       boxPlusAnother: '#161616',
       btnPlusAnother: '#FFF',
+      boxPlusCard: '#161616',
+      btnPlusCard: '#FFF',
     },
     text: {
       primary: '#161616',
@@ -212,6 +216,8 @@ export const darkTheme = createTheme({
       btnPlus: '#FFF',
       boxPlusAnother: '#FFF',
       btnPlusAnother: '#161616',
+      boxPlusCard: '#161616',
+      btnPlusCard: '#FFF',
     },
     text: {
       primary: '#FFF',
