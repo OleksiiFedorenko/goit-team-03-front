@@ -139,7 +139,6 @@ const AddCardForm = ({
               marginBottom: '40px',
             }}
           />
-
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>

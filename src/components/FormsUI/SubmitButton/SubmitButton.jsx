@@ -1,10 +1,9 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import { useFormikContext } from 'formik';
-// import { Icon } from 'components/Icons';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import PlusIcon from './PlusIcon';
 
-const SubmitButton = ({ children, ...otherProps }) => {
+const Testbutton = ({ children, ...otherProps }) => {
   const { submitForm } = useFormikContext();
   const handleSubmit = () => {
     submitForm();
@@ -20,14 +19,11 @@ const SubmitButton = ({ children, ...otherProps }) => {
       textTransform: 'none',
     },
   };
-  const iconStyle = {
-    fill: 'white',
-    fontSize: '28px',
-  };
+
   return (
-    <Button startIcon={<AddBoxIcon style={iconStyle} />} {...configButton}>
+    <Button startIcon={<PlusIcon />} {...configButton}>
       <span {...typographyProps}>{children}</span>
     </Button>
   );
 };
-export default SubmitButton;
+export default Testbutton;
