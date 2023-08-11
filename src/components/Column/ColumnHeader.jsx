@@ -5,8 +5,7 @@ import { deleteColumn } from 'store/boards/operations';
 import Modal from 'components/Modal/Modal';
 import EditColumnModal from 'components/AddColumn/EditColumnModal';
 import IconBtn from './IconBtn';
-import { Card, CardHeader, Box } from '@mui/material';
-import { card } from 'styles';
+import { Card, Stack, Typography } from '@mui/material';
 
 const ColumnHeader = ({ title, columnId }) => {
   const [showModal, setShowModal] = useState(false);
@@ -27,23 +26,16 @@ const ColumnHeader = ({ title, columnId }) => {
   };
 
   return (
-    <Card sx={card.header}>
-      <CardHeader
-        title={title}
-        sx={card.headerText}
-        disableTypography
-        action={
-          <div>
-            <Box>
-              <IconBtn onClick={handleOpenModal} iconId="pencil" />
-            </Box>
-            <Box>
-              <IconBtn onClick={handleDeleteColumn} iconId="trash" />
-            </Box>
-          </div>
-        }
-      />
-
+    <Card sx={{ paddingY: '18px', paddingX: '20px' }}>
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Typography component="h2" variant="h3" color="text.primary">
+          {title}
+        </Typography>
+        <Stack direction="row" spacing={1}>
+          <IconBtn onClick={handleOpenModal} iconId="pencil" />
+          <IconBtn onClick={handleDeleteColumn} iconId="trash" />
+        </Stack>
+      </Stack>
       {showModal && (
         <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
           <EditColumnModal
