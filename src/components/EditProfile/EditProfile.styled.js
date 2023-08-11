@@ -1,21 +1,14 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 
 export const EditWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: baseline;
+  width: 350px;
 `;
 
-export const FormUser = styled(Form)`
-  margin: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-// export const UserAvatar = styled.img`
-//   `;
   export const Img = styled.img`
   width: 100%;
   height: 100%;
@@ -80,10 +73,10 @@ export const IconPlus = styled.svg`
 export const ErrorSection = styled(ErrorMessage)`
   padding-left: 14px;
   color: #c04d4d;
-  font-size: 18px;
+  font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
-  letter-spacing: -0.36px;
+  letter-spacing: -0.28px;
 `;
 export const FormSection = styled.div`
   display: flex;
@@ -97,7 +90,7 @@ export const FieldAvatar = styled.input`
   display: none;
 `;
 export const FormField = styled(Field)`
-  width: 100%;
+  width: 352px;
   height: 49px;
   padding: 14px 18px;
 
@@ -128,7 +121,7 @@ export const FormField = styled(Field)`
 export const Eye = styled.button`
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 15px;
   transform: translateY(-50%);
 
   background-color: transparent;
@@ -136,6 +129,8 @@ export const Eye = styled.button`
   opacity: 0.4000000059604645;
 `;
 export const FormSubmit = styled.button`
+width: 352px;
+  height: 49px;
   margin-top: 10px;
   padding: 14px;
   border: none;

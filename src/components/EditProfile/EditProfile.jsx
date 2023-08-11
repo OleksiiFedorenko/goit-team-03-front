@@ -8,24 +8,23 @@ import { updateProfile } from 'store/auth/operations';
 import { Icon } from 'components/Icons';
 
 import {
-    EditWrapper, IconStyle, Title, FormUser, FormWrapper, ErrorSection,
+    EditWrapper, IconStyle, Title, FormWrapper, ErrorSection,
     FormSubmit, FormField,  Img, FieldAvatar, FormSection, ImgWrapper, IconPlus, Label, FormIcon, Eye 
 } from './EditProfile.styled';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
+    .required('Name is required')
     .min(2, 'Name must be at least 2 characters')
-    .max(32, 'Name must be at most 32 characters')
-    .required('Name is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
+    .max(32, 'Name must be at most 32 characters'),
+  email: Yup.string().email('Invalid email'),
   password: Yup.string()
     .trim()
-    .required('Password is required')
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-      'Password must contain at least one uppercase letter, and one lowercase letter'
+      'Invalid password format'
     ),
 });
 const initialValues = {
@@ -54,17 +53,7 @@ const EditProfile = ({avatarURL, onCloseModal}) => {
          resetForm();
         onCloseModal();
   }
-function handleClick() {
-    switch (password) {
-      case 'text':
-        return setPassword('password');
-      case 'password':
-        return setPassword('text');
-
-      default:
-        break;
-    }
-  }
+const handleClickShowPassword = () => setPassword((show) => !show);
     function handleFileChange(event) {
     const file = event;
     if (!file) {
@@ -79,14 +68,12 @@ function handleClick() {
   }
     return (
         <EditWrapper>
-        <FormUser>
         <Title>Edit profile</Title>
         <Formik
           initialValues={initialValues}
           validationSchema={UserSchema}
                 onSubmit={handleSubmit}
                 >
-                    {/* {({ setFieldValue}) => ( */}
             <FormSection>
                 <Label htmlFor="avatar">
                   <ImgWrapper>
@@ -107,7 +94,6 @@ function handleClick() {
                   type="file"
                   name="avatar"
                   onChange={event => {
-                    // setFieldValue('avatar', event.currentTarget.files[0]);
                     handleFileChange(event.currentTarget.files[0]);
                   }}
                 />
@@ -115,33 +101,34 @@ function handleClick() {
 
             <FormWrapper>
                 <ErrorSection name="name" component="div" />
-                <FormField type="text" id="name" name="name" placeholder={user.name} />
+                <FormField type="text" id="name" name="name"  placeholder={user.name} />
             </FormWrapper>
             <FormWrapper>
                 <ErrorSection name="email" component="div" />
-                <FormField type="email" id="email" name="email" placeholder={user.email} />
+                <FormField type="email" id="email" name="email"  placeholder={user.email} />
                 </FormWrapper>
                 
                 <FormWrapper>
                   <FormIcon>
                 <ErrorSection name="password" component="div" />
-                <FormField type={password}
+                <FormField type={password} 
               id="password"
               name="password"
                       placeholder="Enter your password" />
-                   <Eye type="button" onClick={handleClick}>
-                    <IconPlus aria-label="add">
+                  <Eye type="button" onClick={handleClickShowPassword}>
+                    {password ? <IconPlus>
                         <Icon id={"eye"} />
-                      </IconPlus>
+                      </IconPlus> : <IconPlus >
+                        <Icon id={"eye-off"} />
+                      </IconPlus>}
+                    
                        </Eye>
                 </FormIcon>
                 </FormWrapper>
                 
              <FormSubmit type="submit">Send</FormSubmit>
               </FormSection>
-                    {/* )} */}
           </Formik>
-        </FormUser>
             </EditWrapper> 
       
    ) 
