@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-
 import { TiFlash } from 'react-icons/ti';
 import user from 'images/start-img.png';
-
 import {
   Container,
   Box,
