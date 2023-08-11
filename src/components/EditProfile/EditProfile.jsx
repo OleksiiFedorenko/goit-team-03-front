@@ -119,7 +119,7 @@ function handleClick() {
             </FormWrapper>
             <FormWrapper>
                 <ErrorSection name="email" component="div" />
-                <FormField type="email" id="email" name="email" placeholder="Enter your email" />
+                <FormField type="email" id="email" name="email" placeholder={user.email} />
                 </FormWrapper>
                 
                 <FormWrapper>
