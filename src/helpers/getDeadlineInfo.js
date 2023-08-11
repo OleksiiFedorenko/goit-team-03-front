@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { determineRemainDays } from './determineRemainDays';
 
 export const getDeadlineInfo = date => {

@@ -32,7 +32,7 @@ export const Calendar = ({ parentState, initial }) => {
           renderInput={params => <TextField {...params} />}
           shouldDisableDate={isPastDate}
           slots={{
-            openPickerIcon: () => <Icon id="move" />,
+            openPickerIcon: () => <Icon id="dropdown" />,
           }}
           dayOfWeekFormatter={day => day.slice(0, 2)}
           slotProps={{
