@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
+import { Icon } from 'components/Icons';
 import AddColumnModal from './AddColumnModal';
-import { Button, Typography, Box, SvgIcon } from '@mui/material';
-import { button } from 'styles';
-import sprite from 'components/Icons/sprite.svg';
+import { Button, Typography, Box } from '@mui/material';
+import { button, icon } from 'styles';
 
 const AddColumnButton = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,15 +18,12 @@ const AddColumnButton = () => {
     <>
       <Button
         sx={button.addColumnBtn}
+        variant="contained"
         color="secondary"
         onClick={handleOpenModal}
       >
-        <Box sx={button.addColumnIconBox}>
-          <SvgIcon sx={button.addColumnIcon}>
-            <svg stroke="currentColor">
-              <use href={sprite + '#icon-plus'} />
-            </svg>
-          </SvgIcon>
+        <Box sx={button.boxIconPlusAnother}>
+          <Icon id={'plus'} sx={icon.svgAddColumn} />
         </Box>
         <Typography variant="h3" component="span">
           Add another column

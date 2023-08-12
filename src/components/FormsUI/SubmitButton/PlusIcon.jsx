@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Icon } from 'components/Icons';
+import { icon } from 'styles';
 
 const StyledPlusIconContainer = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -10,19 +11,12 @@ const StyledPlusIconContainer = styled('div')(({ theme }) => ({
   width: '28px',
   height: '28px',
   borderRadius: '4px',
-
-  '& svg': {
-    stroke: theme.palette.secondary.main,
-    '&:hover': {
-      stroke: theme.palette.secondary.main,
-    },
-  },
 }));
 
 const PlusIcon = () => {
   return (
     <StyledPlusIconContainer>
-      <Icon id="plus" />
+      <Icon id="plus" sx={icon.svgEditColumnAdd} />
     </StyledPlusIconContainer>
   );
 };
