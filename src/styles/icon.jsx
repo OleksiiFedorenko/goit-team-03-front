@@ -99,3 +99,10 @@ export const svgBoard = {
     stroke: 'currentColor',
   },
 };
+export const svgAlert = {
+  width: '16px',
+  height: '16px',
+  fill: 'transparent',
+  color: 'icon.svgAlert',
+  stroke: 'currentColor',
+};

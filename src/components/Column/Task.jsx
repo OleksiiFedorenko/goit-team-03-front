@@ -8,7 +8,9 @@ import AddCardForm from 'components/AddCardForm';
 import { Icon } from 'components/Icons';
 import { Card, Typography, Stack, Box } from '@mui/material';
 import { card } from 'styles';
-
+import { icon } from 'styles';
+import Alerticon from './AlertIcon';
+import { formatDate } from 'helpers/formatDate';
 const Task = ({ name, description, priority, deadline, taskId }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
@@ -36,6 +38,10 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
     },
   };
   const handleIconClick = () => {};
+
+  const isDeadline = () => {
+    return deadline === formatDate(new Date());
+  };
 
   return (
     <Card
@@ -104,9 +110,14 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
               alignItems="flex-end"
               spacing={1}
             >
-              <Box>
-                <Icon id="alert" />
-              </Box>
+              {/* {isDeadline() && (
+                <Box>
+                  <Icon id="alert" sx={icon.svgAlert} />
+                </Box>
+              )} */}
+
+              <Alerticon />
+
               <Box>
                 <IconBtn onClick={handleIconClick} iconId="move" />
               </Box>
