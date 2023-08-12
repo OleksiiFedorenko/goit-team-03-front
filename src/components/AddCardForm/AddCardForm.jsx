@@ -29,7 +29,8 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
-  deadline: Yup.date().required(),
+  deadline: Yup.mixed(),
+  // deadline: Yup.date().required(), - ця перевірка блокувала відправку форми
 });
 
 const AddCardForm = ({
@@ -42,7 +43,7 @@ const AddCardForm = ({
   initData,
 }) => {
   const dispatch = useDispatch();
-  const [deadline, setDeadline] = useState();
+  const [deadline, setDeadline] = useState(Date.now());
   const [priority, setPriority] = useState('without');
 
   const setDateValue = value => {
@@ -56,7 +57,7 @@ const AddCardForm = ({
   const handleSubmit = values => {
     // changing the deadline to the needed format
     // const formattedDate = values.deadline.split('-').reverse().join('-');
-
+    console.log('deadline: ', typeof deadline, deadline, Date.now().$d);
     dispatch(
       taskOperation({
         ...values,
@@ -71,6 +72,7 @@ const AddCardForm = ({
     // resetForm();
     onCloseModal();
   };
+
   return (
     <Container sx={{ maxWidth: '302px', p: 0 }}>
       <Formik
@@ -163,6 +165,18 @@ const AddCardForm = ({
               <Calendar parentState={setDateValue} />
             </Box>
           </Box>
+          {/* <Button
+            color="primary"
+            variant="contained"
+            fullWidth
+            sx={form.button}
+            type="submit"
+          >
+            <Box sx={button.boxIconPlus}>
+              <Icon id={'plus'} sx={icon.plusAdd} />
+            </Box>
+            Add
+          </Button> */}
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>
