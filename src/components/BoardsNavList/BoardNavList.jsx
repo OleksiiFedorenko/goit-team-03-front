@@ -12,14 +12,13 @@ import {
 } from 'store/boards/operations';
 
 import {
-  Box,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   IconButton,
 } from '@mui/material';
-import { button } from 'styles';
+import { button, icon } from 'styles';
 
 export const BoardNavList = ({ boards }) => {
   const [showModal, setShowModal] = useState(false);
@@ -55,31 +54,34 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} />
+                <Icon id={board.icon} sx={icon.svgBoard} />
                 <ListItemText primary={board.title} disableTypography />
-                <IconButton
-                  onClick={handleOpenModal}
-                  color="inherit"
-                  size="small"
-                  sx={[
-                    {
-                      '&:focus': {
-                        color: 'secondary',
-                        bgcolor: 'background.sideSecond',
-                      },
-                    },
-                  ]}
-                >
-                  <Icon id={'pencil'} />
-                </IconButton>
-                <IconButton
-                  onClick={handleDeleteBoard}
-                  size="small"
-                  color="inherit"
-                >
-                  <Icon id={'trash'} />
-                </IconButton>
-                <Box className="activeBoardBtn" sx={button.boardListBox} />
+                {board._id === boardId && (
+                  <>
+                    <IconButton
+                      onClick={handleOpenModal}
+                      color="inherit"
+                      size="small"
+                      sx={[
+                        {
+                          '&:focus': {
+                            color: 'secondary',
+                            bgcolor: 'background.sideSecond',
+                          },
+                        },
+                      ]}
+                    >
+                      <Icon id={'pencil'} sx={icon.svgBoardNavList} />
+                    </IconButton>
+                    <IconButton
+                      onClick={handleDeleteBoard}
+                      size="small"
+                      color="inherit"
+                    >
+                      <Icon id={'trash'} sx={icon.svgBoardNavList} />
+                    </IconButton>
+                  </>
+                )}
               </ListItemButton>
             </ListItem>
           );

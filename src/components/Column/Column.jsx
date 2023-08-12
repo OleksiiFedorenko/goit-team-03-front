@@ -4,10 +4,10 @@ import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
+import { Icon } from 'components/Icons';
 
-import { Stack, Button } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import { card, button } from 'styles';
+import { Stack, Button, Box } from '@mui/material';
+import { card, button, icon } from 'styles';
 import Scrollbar from 'components/Scroll/Scroll';
 
 const Column = ({ column }) => {
@@ -23,14 +23,16 @@ const Column = ({ column }) => {
     <Stack sx={card.column}>
       <ColumnHeader title={column.title} columnId={column._id} />
       <Scrollbar>
-      <TaskList cards={column.tasks} />
+        <TaskList cards={column.tasks} />
       </Scrollbar>
       <Button
         variant="contained"
         sx={button.addCard}
-        startIcon={<AddBoxIcon />}
         onClick={openModalHandler}
       >
+        <Box sx={button.addAnotherCard}>
+          <Icon id={'plus'} sx={icon.svgAddCard} />
+        </Box>
         Add another card
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>

@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Typography } from '@mui/material';
+import { Icon } from 'components/Icons';
+import { button, icon } from 'styles';
 import {
   BgLabel,
   BoardBg,
@@ -10,7 +12,6 @@ import {
   Btn,
   Error,
   FormEl,
-  IconEl,
   IconLabel,
   Icontainer,
   IconWrap,
@@ -19,7 +20,6 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
-import sprite from 'components/Icons/sprite.svg';
 import { previews } from 'helpers/getBgPreviews';
 
 const iconNames = [
@@ -100,7 +100,7 @@ const BoardForm = ({
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <IconEl id={icon} />
+                    <Icon id={icon} sx={button.iconEl}></Icon>
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -136,9 +136,7 @@ const BoardForm = ({
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <svg width="18px" height="18px" stroke="currentColor">
-                <use href={sprite + '#icon-plus'} />
-              </svg>
+              <Icon id={'plus'} sx={icon.svgAddCard} />
             </IconWrap>
             <span>{type}</span>
           </Btn>
