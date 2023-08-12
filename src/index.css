@@ -39,6 +39,16 @@
     url('./fonts/Poppins-SemiBold.otf') format('opentype');
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: inset 0 0 0 50px #1F1F1F;
+  -webkit-text-fill-color: white;
+  -webkit-font-family: Poppins;
+  -webkit-font-weight: 400,
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', 'Roboto', sans-serif;

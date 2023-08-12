@@ -1,26 +1,52 @@
-import { IconButton } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import { Icon } from 'components/Icons';
-const ColumnHeader = ({ title }) => {
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteColumn } from 'store/boards/operations';
+
+import Modal from 'components/Modal/Modal';
+import EditColumnModal from 'components/AddColumn/EditColumnModal';
+import IconBtn from './IconBtn';
+import { Card, Stack, Typography } from '@mui/material';
+import { card } from 'styles';
+
+const ColumnHeader = ({ title, columnId }) => {
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleDeleteColumn = () => {
+    if (window.confirm(`Do you really want to delete column ${title}?`)) {
+      dispatch(deleteColumn(columnId));
+    }
+  };
+
   return (
-    <div>
-      <Card>
-        <CardHeader
-          action={
-            <div>
-              <IconButton>
-                <Icon id={'pencil'} />
-              </IconButton>
-              <IconButton>
-                <Icon id={'trash'} />
-              </IconButton>
-            </div>
-          }
+    <Card sx={card.header}>
+      <Stack sx={card.headerContainer}>
+        <Typography component="h2" variant="h3">
+          {title}
+        </Typography>
+        <Stack direction="row" spacing={1}>
+          <IconBtn onClick={handleOpenModal} iconId="pencil" />
+          <IconBtn onClick={handleDeleteColumn} iconId="trash" />
+        </Stack>
+      </Stack>
+
+      <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
+        <EditColumnModal
+          onCloseModal={handleCloseModal}
+          columnId={columnId}
           title={title}
+          type="Submit"
         />
-      </Card>
-    </div>
+      </Modal>
+    </Card>
   );
 };
 export default ColumnHeader;

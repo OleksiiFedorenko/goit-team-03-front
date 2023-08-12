@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Typography } from '@mui/material';
+import { Icon } from 'components/Icons';
+import { button, icon } from 'styles';
 import {
   BgLabel,
   BoardBg,
@@ -10,7 +12,6 @@ import {
   Btn,
   Error,
   FormEl,
-  IconEl,
   IconLabel,
   Icontainer,
   IconWrap,
@@ -19,9 +20,7 @@ import {
   Label,
   Text,
 } from './BoardForm.styled';
-import sprite from 'components/Icons/sprite.svg';
 import { previews } from 'helpers/getBgPreviews';
-import { addBoard } from 'store/boards/operations';
 
 const iconNames = [
   'project',
@@ -50,13 +49,22 @@ const initialValues = {
   background: '0',
 };
 
-const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
+const BoardForm = ({
+  onSubmitForm,
+  onCloseModal,
+  initData,
+  title,
+  type,
+  boardOperation,
+  id,
+}) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // onSubmitForm(values);
-    console.log(values)
-    dispatch(addBoard(values));
+    const submitvalues = !id ? values : { ...values, id };
+    dispatch(boardOperation(submitvalues));
+
     setSubmitting(false);
     resetForm();
     onCloseModal();
@@ -64,14 +72,14 @@ const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initData ? initData : initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
       validationOnBlur={true}
     >
       {({ isSubmitting, dirty, values }) => (
         <FormEl>
-          <Typography variant="h6" mb={2}>
+          <Typography variant="h2" mb={2}>
             {title}
           </Typography>
           <Label>
@@ -92,7 +100,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <IconEl id={icon} />
+                    <Icon id={icon} sx={button.iconEl}></Icon>
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -128,9 +136,7 @@ const BoardForm = ({ onSubmitForm, onCloseModal, initData, title, type }) => {
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <svg width="18px" height="18px" stroke="currentColor">
-                <use href={sprite + '#icon-plus'} />
-              </svg>
+              <Icon id={'plus'} sx={icon.svgAddCard} />
             </IconWrap>
             <span>{type}</span>
           </Btn>

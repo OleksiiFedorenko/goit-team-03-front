@@ -24,12 +24,20 @@ export const main = {
 export const topBar = {
   position: 'fixed',
   zIndex: '10',
+  display: 'flex',
+  justifyContent: 'end',
+  alignItems: 'center',
   width: '100%',
   height: {
     zeroUp: 60,
     tablet: 68,
   },
-  backgroundColor: 'background.header',
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
+  },
+  bgcolor: 'background.header',
 };
 
 export const sideBar = {
@@ -43,7 +51,7 @@ export const sideBar = {
     tablet: 260,
   },
   height: '100%',
-  backgroundColor: 'background.side',
+  bgcolor: 'background.side',
 };
 
 export const sideBarDesktop = {
@@ -78,6 +86,26 @@ export const welcome = {
   },
 };
 
+export const auth = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: {
+    zeroUp: '90%',
+    mobileFixed: 335,
+    tablet: 424,
+  },
+  bgcolor: '#151515',
+  border: '1px solid rgba(190, 219, 176, 0.5)',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: {
+    zeroUp: '24px',
+    tablet: '40px',
+  },
+};
+
 export const noBoardInner = {
   display: 'flex',
   justifyContent: 'center',
@@ -86,7 +114,93 @@ export const noBoardInner = {
   height: '100%',
 };
 
+export const boardInner = {
+  width: '100%',
+  height: '100%',
+  pt: {
+    zeroUp: '14px',
+    tablet: '20px',
+    desktop: '10px',
+  },
+  pb: {
+    zeroUp: '24px',
+    tablet: '32px',
+    desktop: '8px',
+  },
+  px: {
+    zeroUp: '20px',
+    tablet: '32px',
+    desktop: '24px',
+  },
+};
+
+export const boardTopBar = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
+
+export const columns = {
+  display: 'flex',
+  gap: '34px',
+  width: '100%',
+  maxHeight: '100%',
+  mt: {
+    zeroUp: '40px',
+    tablet: '26px',
+    desktop: '10px',
+  },
+};
+
+export const columnsInner = {
+  display: 'flex',
+  gap: '34px',
+  height: '100%',
+};
+
 export const boardNav = {
   width: '100%',
   mt: '60px',
+};
+
+export const modal = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.header',
+  border: '1px solid rgba(190, 219, 176, 0.5)',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: '24px',
+};
+
+// export const modalContent = {
+//   width: {
+//     mobileFixed: '95%',
+//   },
+// };
+
+export const helpBannerContainer = {
+  m: 'auto',
+  bgcolor: 'background.helpBanner',
+  borderRadius: '8px',
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
+};
+
+export const helpFormContainer = {
+  width: {
+    zeroUp: 335,
+    tablet: 400,
+  },
+};
+
+export const addColumnContainer = {
+  width: {
+    zeroUp: 335,
+    tablet: 350,
+  },
 };

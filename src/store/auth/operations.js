@@ -135,7 +135,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const updateTheme = createAsyncThunk(
   'auth/updateTheme',
-  async ({ theme }, { rejectWithValue }) => {
+  async (theme, { rejectWithValue }) => {
     try {
       const { data } = await instance.patch('/auth', { theme });
       return data;
@@ -150,9 +150,10 @@ export const updateTheme = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
   'auth/updateProfile',
-  async ({ credentials, id }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const { data } = await instance.put(`auth`, credentials);
+
+      const { data } = await instance.put(`auth`, formData);
       return data;
     } catch (error) {
       toast.error(

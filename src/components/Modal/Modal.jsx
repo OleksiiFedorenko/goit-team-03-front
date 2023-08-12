@@ -1,28 +1,15 @@
 import PropTypes from 'prop-types';
 import { Box, Modal } from '@mui/material';
-import { BtnClose } from './Modal.styled';
 import { Icon } from 'components/Icons';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  borderRadius: '8px',
-  boxShadow: 24,
-  p: 4,
-};
+import { button, container, icon } from 'styles';
 
 const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
   return (
     <Modal open={isOpenModal} onClose={onCloseModal}>
-      <Box sx={style}>
-        <BtnClose onClick={onCloseModal}>
-          <Icon id="x-close" />
-        </BtnClose>
+      <Box sx={container.modal}>
+        <Box onClick={onCloseModal} sx={button.closeBtn}>
+          <Icon id={'x-close'} sx={icon.svgClose} />
+        </Box>
         {children}
       </Box>
     </Modal>
