@@ -18,6 +18,14 @@ export const Calendar = ({ parentState, initial }) => {
     return date < currentDate;
   };
 
+  const isToday = date => {
+    return (
+      date.$D === currentDate.getDate() &&
+      date.$M === currentDate.getMonth() &&
+      date.$y === currentDate.getFullYear()
+    );
+  };
+
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -30,7 +38,7 @@ export const Calendar = ({ parentState, initial }) => {
             parentState(newValue);
           }}
           renderInput={params => <TextField {...params} />}
-          shouldDisableDate={isPastDate}
+          shouldDisableDate={date => isPastDate(date) && !isToday(date)}
           slots={{
             openPickerIcon: () => <Icon id="dropdown" />,
           }}
