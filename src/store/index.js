@@ -17,7 +17,7 @@ import { filtersReducer } from './filters/filtersSlice';
 const persistConfig = {
   key: 'auth',
   storage,
-  // whitelist: ['token','refreshToken'],
+  whitelist: ['refreshToken'],
 };
 
 export const store = configureStore({

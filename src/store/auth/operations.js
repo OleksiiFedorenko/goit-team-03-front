@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+// import {store} from '../index';
+import {setRefreshToken} from './authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAccessToken, selectRefreshToken } from 'store/auth/selectors';
+
+
 
 export const instance =axios.create({baseURL: 'http://localhost:3001/api',});
 
@@ -13,34 +19,20 @@ const setToken =(token) => {
     instance.defaults.headers.common.Authorization = '';
   };
 
-
-// const refresh = async () => {
-//       const refreshToken = localStorage.getItem('refreshToken');       
-
-//   try {
-//     const { data } = await instance.post('/auth/refreshToken', { refreshToken });
-//     setToken(data.accessToken);
-//     localStorage.setItem('refreshToken', data.refreshToken);
-   
-   
-//   } catch (error) {
-//     return Promise.reject(error);
-//   }
-// };
-
 instance.interceptors.response.use(
   response => response,
-  async error => {
-    // const originalRequest = error.config;
- //&& !originalRequest._retry  originalRequest._retry = true;    
+  async error => { 
     if (error.response.status === 401 ) {
-      
-      const refreshToken = localStorage.getItem('refreshToken');       
+     
+      // const refreshToken = localStorage.getItem('refreshToken');
+      const refreshToken = useSelector(selectRefreshToken);       
 
       try {
+        const dispatch = useDispatch();
         const { data } = await instance.post('/auth/refreshToken', { refreshToken });
         setToken(data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
+        // localStorage.setItem('refreshToken', data.refreshToken);
+        dispatch(setRefreshToken(data.refreshToken));
          
       return instance(error.config);
       // return instance(originalRequest);
@@ -57,6 +49,7 @@ export const getRegistration = createAsyncThunk(
   'auth/register',
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
+      const dispatch = useDispatch();
       await instance.post('/auth/register', {
         name,
         email,
@@ -65,7 +58,8 @@ export const getRegistration = createAsyncThunk(
       const { data } = await instance.post('/auth/login', { email, password });
 
       setToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // localStorage.setItem('refreshToken', data.refreshToken);
+      dispatch(setRefreshToken(data.refreshToken));
       return data;
     } catch (error) {
       toast.error(
@@ -83,10 +77,12 @@ export const getLogin = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
+      const dispatch = useDispatch();
       const { data } = await instance.post('/auth/login', { email, password });
      
       setToken(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // localStorage.setItem('refreshToken', data.refreshToken);
+     dispatch(setRefreshToken(data.refreshToken));
       return data;
     } catch (error) {
       toast.error(
@@ -114,11 +110,10 @@ export const logout = createAsyncThunk(
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    const persistedToken = state.auth.token;
-    console.log('токен из persist: ',persistedToken);
+  async (_, { rejectWithValue }) => {
    
+    const persistedToken = useSelector(selectAccessToken);
+       
     if (!persistedToken) {
       return rejectWithValue('No valid token');
     }
