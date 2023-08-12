@@ -167,13 +167,16 @@ export const boardListItem = {
   p: 0,
   pl: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideSecond',
+  stroke: 'currentColor',
   fontWeight: 500,
   '&:hover, &:focus': {
     color: 'text.sideMain',
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
   },
   '&.active': {
     color: 'text.sideMain',
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
     '&::after': {
       content: '""',
@@ -191,16 +194,13 @@ export const boardListBox = {
   height: '100%',
   borderRadius: '4px 0px 0px 4px',
 };
-export const iconEl = {
+
+export const boardEdit = {
   width: '18px',
   height: '18px',
   fill: 'transparent',
-  color: 'icon.svgPlusCard',
+  color: 'icon.boardEdit',
   stroke: 'currentColor',
-  '&hover, &:focus': {
-    color: 'text.primary',
-    stroke: 'currentColor',
-  },
 };
 
 export const logOut = {
@@ -212,24 +212,14 @@ export const logOut = {
   mt: '10px',
   mb: { zeroUp: 0, tablet: '10px' },
   color: 'text.sideMain',
+  stroke: 'currentColor',
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
   },
-};
-
-export const svgIconPlus = {
-  width: 14,
-  height: 14,
-  color: 'background.btnPlus',
-};
-
-export const svgIconPlusAnother = {
-  width: 14,
-  height: 14,
-  color: 'background.btnPlusAnother',
 };
 
 export const boxIconPlus = {
@@ -328,11 +318,11 @@ export const helpBannerBtn = {
   alignItems: 'flex-start',
   color: 'text.sideMain',
   '&:hover': {
-    color: 'primary.main'
+    color: 'primary.main',
   },
   p: 0,
   width: {
     zeroUp: 197,
     tablet: 212,
   },
-}
+};
