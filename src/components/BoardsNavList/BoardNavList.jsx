@@ -54,7 +54,7 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} sx={icon.svgBoard} />
+                <Icon id={board.icon} sx={icon.board} />
                 <ListItemText primary={board.title} disableTypography />
                 {board._id === boardId && (
                   <>
@@ -71,14 +71,14 @@ export const BoardNavList = ({ boards }) => {
                         },
                       ]}
                     >
-                      <Icon id={'pencil'} sx={icon.svgBoardNavList} />
+                      <Icon id={'pencil'} sx={icon.boardItem} />
                     </IconButton>
                     <IconButton
                       onClick={handleDeleteBoard}
                       size="small"
                       color="inherit"
                     >
-                      <Icon id={'trash'} sx={icon.svgBoardNavList} />
+                      <Icon id={'trash'} sx={icon.boardItem} />
                     </IconButton>
                   </>
                 )}

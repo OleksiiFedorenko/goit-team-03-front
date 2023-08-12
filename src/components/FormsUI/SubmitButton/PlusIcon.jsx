@@ -16,7 +16,7 @@ const StyledPlusIconContainer = styled('div')(({ theme }) => ({
 const PlusIcon = () => {
   return (
     <StyledPlusIconContainer>
-      <Icon id="plus" sx={icon.svgEditColumnAdd} />
+      <Icon id="plus" sx={icon.plusAdd} />
     </StyledPlusIconContainer>
   );
 };
