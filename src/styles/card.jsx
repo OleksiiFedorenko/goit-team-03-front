@@ -11,13 +11,16 @@ export const column = {
 export const header = {
   width: '100%',
   height: '56px',
+  py: '18px',
+  px: '20px',
   boxShadow: 'none',
   bgcolor: 'secondary.main',
 };
 
-export const headerText = {
-  fontWeight: 500,
-  lineHeight: 1.5,
+export const headerContainer = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 
 export const task = {

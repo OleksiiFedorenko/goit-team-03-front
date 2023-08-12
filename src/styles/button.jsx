@@ -96,6 +96,8 @@ export const profile = {
 
 export const profileImg = { width: '32px', height: '32px', ml: '8px' };
 
+export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
+
 export const createBoardWrapper = {
   my: '8px',
   '&::before, &::after': {
@@ -160,19 +162,22 @@ export const boardListItem = {
   pl: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideSecond',
   fontWeight: 500,
-  '&:hover, &:focus, &.active': {
+  '&:hover, &:focus': {
     color: 'text.sideMain',
     bgcolor: 'side.activeBtn',
-    '& .activeBoardBtn': {
+  },
+  '&.active': {
+    color: 'text.sideMain',
+    bgcolor: 'side.activeBtn',
+    '&::after': {
+      content: '""',
+      display: 'block',
+      width: '4px',
+      height: '100%',
+      borderRadius: '4px 0px 0px 4px',
       bgcolor: 'side.activeBoardBox',
     },
   },
-};
-
-export const boardListBox = {
-  width: '4px',
-  height: '100%',
-  borderRadius: '4px 0px 0px 4px',
 };
 
 export const logOut = {
@@ -200,26 +205,10 @@ export const svgIconPlus = {
   color: 'background.btnPlus',
 };
 
-export const svgIconPlusAnother = {
-  width: 14,
-  height: 14,
-  ml: 0.05,
-  mt: 0.9,
-  color: 'background.btnPlusAnother',
-};
-
 export const boxIconPlus = {
   width: 28,
   height: 28,
   bgcolor: 'background.boxPlus',
-  mr: 1,
-  borderRadius: 0.75,
-};
-
-export const boxIconPlusAnother = {
-  width: 28,
-  height: 28,
-  bgcolor: 'background.boxPlusAnother',
   mr: 1,
   borderRadius: 0.75,
 };
@@ -239,6 +228,22 @@ export const addColumnBtn = {
   },
 };
 
+export const addColumnIconBox = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusAnother',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const addColumnIcon = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlusAnother',
+};
+
 export const addCard = {
   width: '100%',
   height: '56px',
@@ -248,4 +253,20 @@ export const addCard = {
   '&:hover, &:focus': {
     boxShadow: 'none',
   },
+};
+
+export const addCardIconBox = {
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusCard',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const addCardIcon = {
+  width: 14,
+  height: 14,
+  ml: 0.05,
+  mt: 0.9,
+  color: 'background.btnPlusCard',
 };

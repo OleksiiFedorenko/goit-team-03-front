@@ -5,8 +5,9 @@ import TaskList from './TaskList';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
 
-import { Stack, Button } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import sprite from 'components/Icons/sprite.svg';
+import { Stack, Button, Box, SvgIcon } from '@mui/material';
+// import AddBoxIcon from '@mui/icons-material/AddBox';
 import { card, button } from 'styles';
 
 const Column = ({ column }) => {
@@ -25,9 +26,16 @@ const Column = ({ column }) => {
       <Button
         variant="contained"
         sx={button.addCard}
-        startIcon={<AddBoxIcon />}
+        // startIcon={<AddBoxIcon />}
         onClick={openModalHandler}
       >
+        <Box sx={button.addCardIconBox}>
+          <SvgIcon sx={button.addCardIcon}>
+            <svg stroke="currentColor">
+              <use href={sprite + '#icon-plus'} />
+            </svg>
+          </SvgIcon>
+        </Box>
         Add another card
       </Button>
       <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
