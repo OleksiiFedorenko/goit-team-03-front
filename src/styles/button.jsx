@@ -94,7 +94,13 @@ export const profile = {
   textTransform: 'none',
 };
 
-export const profileImg = { width: '32px', height: '32px', ml: '8px' };
+export const profileImg = {
+  width: '32px',
+  height: '32px',
+  ml: '8px',
+  borderRadius: '8px',
+  objectFit: 'cover',
+};
 
 export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
 
@@ -125,7 +131,7 @@ export const createBoard = {
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: '0',
-  '&:hover, &:focus': {
+  '&:hover': {
     bgcolor: 'side.activeBtn',
     '& .createBoardBox': {
       bgcolor: 'side.plusBackgroundHov',
@@ -247,6 +253,7 @@ export const boxIconPlusAnother = {
   mr: 1,
   borderRadius: 0.75,
 };
+
 export const addColumnBtn = {
   height: 56,
   minWidth: {
@@ -254,11 +261,11 @@ export const addColumnBtn = {
     mobileFixed: '335px',
     tablet: '334px',
   },
-  bgcolor: 'secondary.main',
   textTransform: 'none',
   color: 'text.primary',
+  boxShadow: 'none',
   '&:hover, &:focus': {
-    bgcolor: 'secondary.dark',
+    boxShadow: 'none',
   },
 };
 
