@@ -158,8 +158,10 @@ const AddCardForm = ({
             >
               Today, March 8
             </DatePickerBtn> */}
-            <Box>{getDeadlineInfo(deadline)}</Box>
-            <Calendar parentState={setDateValue} />
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box>{getDeadlineInfo(deadline)}</Box>
+              <Calendar parentState={setDateValue} />
+            </Box>
           </Box>
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
