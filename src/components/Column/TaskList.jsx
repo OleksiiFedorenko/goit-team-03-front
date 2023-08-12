@@ -11,8 +11,8 @@ const TaskList = ({ cards }) => {
   return (
     <Stack
       sx={{
-        // overflowY: 'auto',
-        // overflowX: 'hidden',
+        overflowY: 'auto',
+        overflowX: 'hidden',
         gap: '8px',
       }}
     >
