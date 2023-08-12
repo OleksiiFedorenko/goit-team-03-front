@@ -112,6 +112,7 @@ export const violetTheme = createTheme({
     background: {
       default: '#ECEDFD',
       header: '#FFF',
+      calendar: '#FFFFFF',
       side: '#5255BC',
       logoIcon: '#ECEDFD',
       helpBanner: 'rgba(236, 237, 253, 0.4)',
@@ -125,6 +126,8 @@ export const violetTheme = createTheme({
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      additional: '#16161680',
+      hover: '#FCFCFC',
       topTheme: '#161616CC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
@@ -176,6 +179,7 @@ export const lightTheme = createTheme({
     background: {
       default: '#F6F6F7',
       header: '#FCFCFC',
+      calendar: '#FFFFFF',
       side: '#FFF',
       logoIcon: '#1F1F1F',
       helpBanner: '#F6F6F7',
@@ -189,6 +193,8 @@ export const lightTheme = createTheme({
     text: {
       primary: '#161616',
       secondary: '#161616B2',
+      additional: '#161616b3',
+      hover: '#161616',
       topTheme: '#161616CC',
       sideMain: '#161616',
       sideSecond: '#16161680',
@@ -240,6 +246,7 @@ export const darkTheme = createTheme({
     background: {
       default: '#1F1F1F',
       header: '#161616',
+      calendar: '#1F1F1F',
       side: '#121212',
       logoIcon: '#1F1F1F',
       helpBanner: '#1F1F1F',
@@ -253,6 +260,8 @@ export const darkTheme = createTheme({
     text: {
       primary: '#FFF',
       secondary: '#FFFFFF80',
+      additional: '#ffffff80',
+      hover: '#1F1F1F',
       topTheme: '#FFFFFFCC',
       sideMain: '#FFF',
       sideSecond: '#FFFFFF80',
