@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,28 +35,29 @@ const UserSchema = Yup.object().shape({
   password: Yup.string()
     .trim()
     .min(8, 'Password must be at least 8 characters')
-    .max(64, 'Password must be at most 64 characters')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-      'Invalid password format'
-    ),
+    .max(64, 'Password must be at most 64 characters'),
+  // .matches(
+  //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
+  //   'Invalid password format'
+  // ),
 });
 const initialValues = {
   name: '',
   email: '',
   password: '',
 };
-const EditProfile = ({ avatarURL, onCloseModal }) => {
+const EditProfile = ({ onCloseModal }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [password, setPassword] = useState('password');
-  const [currentImage, setCurrentImage] = useState(avatarURL);
+  const [currentImage, setCurrentImage] = useState(user.avatarURL);
+  const [avatarURL, setAvatarURL] = useState('');
 
   const handleSubmit = (values, { resetForm }) => {
-    const { avatar, name, email, password } = values;
+    const { name, email, password } = values;
     const formData = new FormData();
-    if (avatar) {
-      formData.append('avatar', avatar);
+    if (avatarURL) {
+      formData.append('avatarURL', avatarURL);
     }
     formData.append('name', name);
     formData.append('email', email);
@@ -72,6 +73,7 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
     if (!file) {
       return;
     }
+    setAvatarURL(file);
     const reader = new FileReader();
 
     reader.onload = function (e) {
@@ -87,6 +89,7 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
+
         <FormSection>
           <Label htmlFor="avatar">
             <ImgWrapper>
@@ -129,16 +132,15 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
               name="email"
               placeholder={user.email}
             />
-          </FormWrapper>
+            <ErrorSection name="name" component="div" />
 
-          <FormWrapper>
-            <FormIcon>
-              <ErrorSection name="password" component="div" />
+            <FormWrapper>
+              <ErrorSection name="name" component="div" />
               <FormField
-                type={password}
-                id="password"
-                name="password"
-                placeholder="Enter your password"
+                type="text"
+                id="name"
+                name="name"
+                placeholder={user.name}
               />
               <Eye type="button" onClick={handleClickShowPassword}>
                 {password ? (
@@ -154,8 +156,9 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
             </FormIcon>
           </FormWrapper>
 
-          <FormSubmit type="submit">Send</FormSubmit>
-        </FormSection>
+            <FormSubmit type="submit">Send</FormSubmit>
+          </FormSection>
+        </Form>
       </Formik>
     </EditWrapper>
   );

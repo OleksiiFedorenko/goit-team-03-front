@@ -5,11 +5,18 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { Icon } from 'components/Icons';
+import { TextField } from '@mui/material';
 
 export const Calendar = ({ parentState, initial }) => {
   dayjs().format();
 
   const [dateDeadline, setDateDeadline] = useState(initial ? initial : '');
+
+  const currentDate = new Date();
+
+  const isPastDate = date => {
+    return date < currentDate;
+  };
 
   return (
     <>
@@ -22,8 +29,10 @@ export const Calendar = ({ parentState, initial }) => {
             setDateDeadline(newValue);
             parentState(newValue);
           }}
+          renderInput={params => <TextField {...params} />}
+          shouldDisableDate={isPastDate}
           slots={{
-            openPickerIcon: () => <Icon id="move" />,
+            openPickerIcon: () => <Icon id="dropdown" />,
           }}
           dayOfWeekFormatter={day => day.slice(0, 2)}
           slotProps={{

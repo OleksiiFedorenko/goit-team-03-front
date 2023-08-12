@@ -18,6 +18,7 @@ const AddColumnButton = () => {
     <>
       <Button
         sx={button.addColumnBtn}
+        variant="contained"
         color="secondary"
         onClick={handleOpenModal}
       >
