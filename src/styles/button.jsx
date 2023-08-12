@@ -94,7 +94,13 @@ export const profile = {
   textTransform: 'none',
 };
 
-export const profileImg = { width: '32px', height: '32px', ml: '8px' };
+export const profileImg = {
+  width: '32px',
+  height: '32px',
+  ml: '8px',
+  borderRadius: '8px',
+  objectFit: 'cover',
+};
 
 export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
 
@@ -125,7 +131,7 @@ export const createBoard = {
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: '0',
-  '&:hover, &:focus': {
+  '&:hover': {
     bgcolor: 'side.activeBtn',
     '& .createBoardBox': {
       bgcolor: 'side.plusBackgroundHov',
@@ -180,6 +186,23 @@ export const boardListItem = {
   },
 };
 
+export const boardListBox = {
+  width: '4px',
+  height: '100%',
+  borderRadius: '4px 0px 0px 4px',
+};
+export const iconEl = {
+  width: '18px',
+  height: '18px',
+  fill: 'transparent',
+  color: 'icon.svgPlusCard',
+  stroke: 'currentColor',
+  '&hover, &:focus': {
+    color: 'text.primary',
+    stroke: 'currentColor',
+  },
+};
+
 export const logOut = {
   display: 'flex',
   justifyContent: 'start',
@@ -200,15 +223,33 @@ export const logOut = {
 export const svgIconPlus = {
   width: 14,
   height: 14,
-  ml: 0.05,
-  mt: 0.9,
   color: 'background.btnPlus',
 };
 
+export const svgIconPlusAnother = {
+  width: 14,
+  height: 14,
+  color: 'background.btnPlusAnother',
+};
+
 export const boxIconPlus = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: 28,
   height: 28,
   bgcolor: 'background.boxPlus',
+  mr: 1,
+  borderRadius: 0.75,
+};
+
+export const boxIconPlusAnother = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusAnother',
   mr: 1,
   borderRadius: 0.75,
 };
@@ -220,11 +261,11 @@ export const addColumnBtn = {
     mobileFixed: '335px',
     tablet: '334px',
   },
-  bgcolor: 'secondary.main',
   textTransform: 'none',
   color: 'text.primary',
+  boxShadow: 'none',
   '&:hover, &:focus': {
-    bgcolor: 'secondary.dark',
+    boxShadow: 'none',
   },
 };
 
@@ -255,6 +296,16 @@ export const addCard = {
   },
 };
 
+export const addAnotherCard = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
+};
 export const addCardIconBox = {
   width: 28,
   height: 28,
@@ -270,3 +321,18 @@ export const addCardIcon = {
   mt: 0.9,
   color: 'background.btnPlusCard',
 };
+
+export const helpBannerBtn = {
+  display: 'flex',
+  justifyСontent: 'flex-start',
+  alignItems: 'flex-start',
+  color: 'text.sideMain',
+  '&:hover': {
+    color: 'primary.main'
+  },
+  p: 0,
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
+}

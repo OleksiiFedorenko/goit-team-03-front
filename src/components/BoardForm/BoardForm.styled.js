@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Box, Button, Typography } from '@mui/material';
-import { Icon } from 'components/Icons';
+// import { Icon } from 'components/Icons';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormEl = styled(Form)`
@@ -79,18 +79,20 @@ export const IconLabel = styled.label`
   }
 `;
 
-export const IconEl = styled(Icon)`
-  /*     color: */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  stroke: currentColor;
+// export const IconEl = styled(Icon)`
+//   /*     color: */
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   stroke: currentColor;
+//   width: 18px;
+//   height: 18px;
 
-  &:hover {
-    /* color:  */
-  }
-`;
+//   &:hover {
+//     /* color:  */
+//   }
+// `;
 
 export const ImageWrap = styled(Box)`
   display: grid;
@@ -182,9 +184,9 @@ export const IconWrap = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: ;
-  color:  */
-  padding: 7px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  background-color: #161616;
+  border-radius: 6px;
   margin: 0;
 `;

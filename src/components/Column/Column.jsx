@@ -4,11 +4,11 @@ import ColumnHeader from './ColumnHeader';
 import TaskList from './TaskList';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
+import { Icon } from 'components/Icons';
 
-import sprite from 'components/Icons/sprite.svg';
-import { Stack, Button, Box, SvgIcon } from '@mui/material';
-// import AddBoxIcon from '@mui/icons-material/AddBox';
-import { card, button } from 'styles';
+import { Stack, Button, Box } from '@mui/material';
+import { card, button, icon } from 'styles';
+import Scrollbar from 'components/Scroll/Scroll';
 
 const Column = ({ column }) => {
   const [showModal, setShowModal] = useState(false);
@@ -22,19 +22,16 @@ const Column = ({ column }) => {
   return (
     <Stack sx={card.column}>
       <ColumnHeader title={column.title} columnId={column._id} />
-      <TaskList cards={column.tasks} />
+      <Scrollbar>
+        <TaskList cards={column.tasks} />
+      </Scrollbar>
       <Button
         variant="contained"
         sx={button.addCard}
-        // startIcon={<AddBoxIcon />}
         onClick={openModalHandler}
       >
-        <Box sx={button.addCardIconBox}>
-          <SvgIcon sx={button.addCardIcon}>
-            <svg stroke="currentColor">
-              <use href={sprite + '#icon-plus'} />
-            </svg>
-          </SvgIcon>
+        <Box sx={button.addAnotherCard}>
+          <Icon id={'plus'} sx={icon.svgAddCard} />
         </Box>
         Add another card
       </Button>

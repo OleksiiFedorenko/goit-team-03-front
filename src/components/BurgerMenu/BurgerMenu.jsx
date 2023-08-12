@@ -34,7 +34,7 @@ export const BurgerMenu = () => {
     windowWidth <= 1440 && (
       <Box sx={{ mr: 'auto' }}>
         <Button onClick={toggleMenu} sx={button.burgerMenu}>
-          <Icon id={'burger-menu'} sx={icon.svgBurgerMenu}></Icon>
+          <Icon id={'burger-menu'} sx={icon.svgBurgerMenu}/>
         </Button>
         <Drawer anchor="left" open={menuVisible} onClose={toggleMenu}>
           <SideBar contStyles={container.sideBar} />

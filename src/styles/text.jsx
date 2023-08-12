@@ -24,14 +24,13 @@ export const helpBannerText = {
 export const helpBannerButton = {
   ml: 1,
   mb: 2.5,
-  color: 'text.sideMain',
+  mr: 'auto',
   textTransform: 'none',
 };
 
 export const helpBannerIcon = {
-  ml: 1.5,
+  ml: 2.5,
   mb: 2.5,
-  color: 'text.sideMain',
 };
 
 export const noBoard = {

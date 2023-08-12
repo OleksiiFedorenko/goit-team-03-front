@@ -54,9 +54,8 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} />
+                <Icon id={board.icon} sx={icon.svgBoard} />
                 <ListItemText primary={board.title} disableTypography />
-
                 {board._id === boardId && (
                   <>
                     <IconButton

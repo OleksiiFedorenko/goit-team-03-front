@@ -65,6 +65,12 @@ const standardParams = {
       lineHeight: 1.5,
       letterSpacing: '-0.02em',
     },
+    h7: {
+      fontSize: 12,
+      fontWeight: 500,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
 
     body1: {
       fontSize: 14,
@@ -74,6 +80,11 @@ const standardParams = {
     body2: {
       fontSize: 12,
       lineHeight: 1.33,
+      letterSpacing: '-0.02em',
+    },
+    body3: {
+      fontSize: 14,
+      lineHeight: 1.42,
       letterSpacing: '-0.02em',
     },
     caption: {
@@ -133,10 +144,13 @@ export const violetTheme = createTheme({
     icon: {
       svgPlus: '#FFFFFF',
       svgLogout: '#FFFFFF',
-      svgBoardList: '#FFFFFF50',
+      svgCardBtnList: '#16161650',
+      svgBoardBtnEdit: '#FFFFFF50',
+      svgAddColumn: '#FFFFFF',
+      svgPlusCard: '#161616',
       activeSvgLogout: '#B8BCFD',
     },
-    loader: "#5255BC",
+    loader: '#5255BC',
     ...form,
   },
   ...standardParams,
@@ -188,10 +202,13 @@ export const lightTheme = createTheme({
     icon: {
       svgPlus: '#121212',
       svgLogout: '#BEDBB0',
-      svgBoardList: '#16161650',
+      svgCardBtnList: '#16161650',
+      svgBoardBtnEdit: '#16161650',
+      svgAddColumn: '#FFF',
+      svgPlusCard: '#FFF',
       activeSvgLogout: '#9DC888',
     },
-    loader: "#BEDBB0",
+    loader: '#BEDBB0',
     ...form,
   },
   ...standardParams,
@@ -243,10 +260,13 @@ export const darkTheme = createTheme({
     icon: {
       svgPlus: '#121212',
       svgLogout: '#BEDBB0',
-      svgBoardList: '#FFFFFF50',
+      svgCardBtnList: '#FFFFFF50',
+      svgBoardBtnEdit: '#FFFFFF50',
+      svgAddColumn: '#121212',
+      svgPlusCard: '#FFF',
       activeSvgLogout: '#9DC888',
     },
-    loader: "#FFFFFF80",
+    loader: '#FFFFFF80',
     ...form,
   },
   ...standardParams,
