@@ -6,13 +6,14 @@ import { selectBoard, selectColumns } from 'store/boards/selectors';
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 import { FilterBtn } from 'components/Filter';
-import Scrollbar from 'components/Scroll/Scroll';
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardInnerList, StrictModeDroppable } from 'components/DragAndDrop';
 import { useDispatch } from 'react-redux';
 import { handleDragEnd } from 'helpers';
 import { selectPrioFilter } from 'store/filters/selectors';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BoardPage = () => {
   const board = useSelector(selectBoard);
@@ -26,20 +27,20 @@ const BoardPage = () => {
 
   const onDragEnd = result => {
     if (filter !== 'all') {
-      // TODO: Change to toast-notification...
-      alert('Please, change skip to drag elements.');
+      toast.error(
+        'Please, skip priority filters to drag elements to another position.'
+      );
       return;
     }
 
     handleDragEnd({ result, board, columns, dispatch });
   };
 
-  if (board._id === '' || columns[0]._id === '') {
-    return <div>Loading...</div>;
-  }
+  // if (board._id === '' || columns[0]._id === '') {
+  //   return <div>Loading...</div>;
+  // } // ----- triggers bug on empty board
 
   return (
-    <Scrollbar>
     <Box sx={container.board}>
       <Box sx={container.boardInner}>
         <Box sx={container.boardTopBar}>
@@ -98,8 +99,8 @@ const BoardPage = () => {
           <AddColumnButton />
         </Box>
       </Box>
+      <ToastContainer autoClose={3000} />
     </Box>
-    </Scrollbar>
   );
 };
 
