@@ -5,20 +5,30 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
-import { Icon } from 'components/Icons';
+// import { Icon } from 'components/Icons';
 import {
   Typography,
   TextField,
   Button,
   OutlinedInput,
-  InputAdornment,
   IconButton,
   FormControl,
   Box,
+  // Stack,
+  // Avatar,
+  InputAdornment,
+//  InputLabel,
 } from '@mui/material';
+// import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+// import defaultAvatarLight from '../../images/default-avatar-light.png';
+// import defaultAvatarDark from '../../images/default-avatar-dark.png';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import { container, form } from 'styles';
+import {
+  container,
+  form,
+  // button
+} from 'styles';
 
 
 const UserSchema = Yup.object().shape({
@@ -39,9 +49,10 @@ const initialValues = {
 };
 const EditProfileTest = ({ onCloseModal }) => {
   const dispatch = useDispatch();
-  const { user, avatarURL, theme } = useSelector(selectUser);
+    const user = useSelector(selectUser);
+  // const { user, avatarURL, theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
-  // const [currentImage, setCurrentImage] = useState(avatarURL);
+  // const [currentImage, setCurrentImage] = useState(user.avatarURL);
 
   const handleClickShowPassword = () => setPassword(show => !show);
 
@@ -59,7 +70,7 @@ const EditProfileTest = ({ onCloseModal }) => {
     resetForm();
     onCloseModal();
   };
-//  let avatar = avatarURL;
+//  let avatar = user.avatarURL;
 //   if (!avatar) {
 //     switch (theme) {
 //       case 'light':
@@ -96,26 +107,33 @@ const EditProfileTest = ({ onCloseModal }) => {
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <form>
+        {({ handleChange, handleSubmit, isSubmitting }) => (
+          <form onSubmit={handleSubmit}>
             <FormControl fullWidth>
-                    {/* {currentImage ? (
-                      <Img src={currentImage} alt="User picture" />
+              {/* <Stack sx={container.ImgWrapperContainer}>
+              {currentImage ? (
+                 <Avatar
+          sx={button.profileImgForm}
+          src={currentImage}
+          alt="User picture"
+        />
+                     
                     ) : (
-                        <Box
-          component="img"
-          sx={button.profileImg}
-          src={avatar}
+                        <Avatar
+          sx={button.profileImgForm}
+          src={defaultAvatarViolet}
           alt="User avatar"
         />
                     )}
-                    <IconPlus aria-label="add">
+                    <Box sx={button.profileIconPlus}>
                          <Icon id={"plus"} />
-                    </IconPlus>
-                <FieldAvatar
+                </Box>
+                </Stack>
+                <InputLabel
                   id="avatar"
                   type="file"
-                  name="avatar"
+                name="avatar"
+                sx={{display:'none'}}
                   onChange={event => {
                     handleFileChange(event.currentTarget.files[0]);
                   }}
@@ -136,11 +154,11 @@ const EditProfileTest = ({ onCloseModal }) => {
                 variant="outlined"
                 placeholder={user.name}
                 fullWidth
-                color="input"
+                onChange={handleChange}
+                 sx={form.input}
                 inputProps={{
                   style: { color: '#FFF' },
                 }}
-                sx={form.input}
               />
               <ErrorMessage
                 name="email"
@@ -157,11 +175,11 @@ const EditProfileTest = ({ onCloseModal }) => {
                 variant="outlined"
                 placeholder={user.email}
                 fullWidth
-                color="input"
+                onChange={handleChange}
+                 sx={form.input}
                 inputProps={{
                   style: { color: '#FFF' },
                 }}
-                sx={form.input}
               />
               <ErrorMessage
                 name="text"
@@ -178,8 +196,8 @@ const EditProfileTest = ({ onCloseModal }) => {
                 type={password ? 'text' : 'password'}
                 placeholder="Create a password"
                 fullWidth
-                color="input"
-                sx={form.input}
+                 sx={form.input}
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

@@ -109,8 +109,6 @@ const EditProfile = ({ onCloseModal }) => {
                 handleFileChange(event.currentTarget.files[0]);
               }}
             />
-            <ErrorSection name="name" component="div" />
-
             <FormWrapper>
               <ErrorSection name="name" component="div" />
               <FormField
