@@ -65,6 +65,12 @@ const standardParams = {
       lineHeight: 1.5,
       letterSpacing: '-0.02em',
     },
+    h7: {
+      fontSize: 12,
+      fontWeight: 500,
+      lineHeight: 1.5,
+      letterSpacing: '-0.02em',
+    },
 
     body1: {
       fontSize: 14,
@@ -74,6 +80,11 @@ const standardParams = {
     body2: {
       fontSize: 12,
       lineHeight: 1.33,
+      letterSpacing: '-0.02em',
+    },
+    body3: {
+      fontSize: 14,
+      lineHeight: 1.42,
       letterSpacing: '-0.02em',
     },
     caption: {

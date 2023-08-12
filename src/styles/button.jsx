@@ -321,3 +321,18 @@ export const addCardIcon = {
   mt: 0.9,
   color: 'background.btnPlusCard',
 };
+
+export const helpBannerBtn = {
+  display: 'flex',
+  justifyСontent: 'flex-start',
+  alignItems: 'flex-start',
+  color: 'text.sideMain',
+  '&:hover': {
+    color: 'primary.main'
+  },
+  p: 0,
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
+}
