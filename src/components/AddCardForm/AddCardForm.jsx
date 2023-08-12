@@ -57,7 +57,6 @@ const AddCardForm = ({
   const handleSubmit = values => {
     // changing the deadline to the needed format
     // const formattedDate = values.deadline.split('-').reverse().join('-');
-    console.log('deadline: ', typeof deadline, deadline, Date.now().$d);
     dispatch(
       taskOperation({
         ...values,
