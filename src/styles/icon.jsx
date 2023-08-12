@@ -63,7 +63,7 @@ export const svgCardBtnList = {
     stroke: 'currentColor',
   },
 };
-
+export const svgBoardNavItem = {};
 export const svgBoardNavList = {
   width: '16px',
   height: '16px',
@@ -93,7 +93,6 @@ export const svgBoard = {
   width: '18px',
   height: '18px',
   fill: 'transparent',
-  color: 'board.title',
   stroke: 'currentColor',
   '&hover, &:focus, &:active': {
     color: 'text.primary',
