@@ -5,7 +5,7 @@ import priorityColorSwitcher from 'helpers/priorityColorSwitcher';
 import IconBtn from './IconBtn';
 import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
-
+import { Icon } from 'components/Icons';
 import { Card, Typography, Stack, Box } from '@mui/material';
 import { card } from 'styles';
 
@@ -105,7 +105,7 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
               spacing={1}
             >
               <Box>
-                <IconBtn onClick={handleIconClick} iconId="alert" />
+                <Icon id="alert" />
               </Box>
               <Box>
                 <IconBtn onClick={handleIconClick} iconId="move" />
