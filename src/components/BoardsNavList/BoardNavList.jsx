@@ -17,6 +17,7 @@ import {
   ListItemButton,
   ListItemText,
   IconButton,
+  Box,
 } from '@mui/material';
 import { button, icon } from 'styles';
 
@@ -54,30 +55,23 @@ export const BoardNavList = ({ boards }) => {
                 to={board._id}
                 sx={button.boardListItem}
               >
-                <Icon id={board.icon} sx={icon.svgBoard} />
+                <Icon id={board.icon} sx={icon.board} />
                 <ListItemText primary={board.title} disableTypography />
-                <IconButton
+                <Box
                   onClick={handleOpenModal}
-                  color="inherit"
-                  size="small"
-                  sx={[
-                    {
-                      '&:focus': {
-                        color: 'secondary',
-                        bgcolor: 'background.sideSecond',
-                      },
-                    },
-                  ]}
+                  sx={{
+                    display: 'flex',
+                    mr: '8px',
+                  }}
                 >
-                  <Icon id={'pencil'} sx={icon.svgBoardNavList} />
-                </IconButton>
-                <IconButton
+                  <Icon id={'pencil'} sx={icon.boardItem} />
+                </Box>
+                <Box
                   onClick={handleDeleteBoard}
-                  size="small"
-                  color="inherit"
+                  sx={{ display: 'flex', mr: '20px' }}
                 >
-                  <Icon id={'trash'} sx={icon.svgBoardNavList} />
-                </IconButton>
+                  <Icon id={'trash'} sx={icon.boardItem} />
+                </Box>
                 <Box className="activeBoardBtn" sx={button.boardListBox} />
               </ListItemButton>
             </ListItem>

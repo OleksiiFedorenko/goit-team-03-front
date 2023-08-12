@@ -39,7 +39,7 @@ export const BoardNav = () => {
           Create a<br />
           new board
           <Box className="createBoardBox" sx={button.createBoardBox}>
-            <Icon id={'plus'} sx={icon.svgPlus} />
+            <Icon id={'plus'} sx={icon.createNewBoard} />
           </Box>
         </Button>
       </Box>

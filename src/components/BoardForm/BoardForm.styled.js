@@ -186,7 +186,7 @@ export const IconWrap = styled(Box)`
   align-items: center;
   width: 28px;
   height: 28px;
-  background-color: #161616;
+  background-color: boxPlusCard;
   border-radius: 6px;
   margin: 0;
 `;

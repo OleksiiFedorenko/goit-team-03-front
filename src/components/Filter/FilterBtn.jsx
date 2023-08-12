@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FilterBar } from './FilterBar';
 import { Box, Button, SvgIcon, Typography } from '@mui/material';
 import { Icon } from 'components/Icons';
+import { icon } from 'styles';
 
 export const FilterBtn = () => {
   const [showModal, setShowModal] = useState(false);
@@ -46,7 +47,7 @@ export const FilterBtn = () => {
               color: 'text.primary',
             }}
           >
-            <Icon id={'filter'} />
+            <Icon id={'filter'} sx={icon.filter} />
           </SvgIcon>
         </Box>
         <Typography

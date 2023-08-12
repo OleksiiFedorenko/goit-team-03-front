@@ -100,7 +100,7 @@ const BoardForm = ({
                     checked={values.icon === icon}
                   />
                   <IconLabel htmlFor={index}>
-                    <Icon id={icon} sx={button.iconEl}></Icon>
+                    <Icon id={icon} sx={button.boardEdit}></Icon>
                   </IconLabel>
                 </BoardIcon>
               ))}
@@ -136,7 +136,7 @@ const BoardForm = ({
             disabled={isSubmitting || !dirty}
           >
             <IconWrap>
-              <Icon id={'plus'} sx={icon.svgAddCard} />
+              <Icon id={'plus'} sx={icon.plusAdd} />
             </IconWrap>
             <span>{type}</span>
           </Btn>

@@ -13,9 +13,10 @@ export const LogOut = () => {
       onClick={() => dispatch(logout())}
       variant="text"
       sx={button.logOut}
+      text={'Logout'}
     >
-      <Icon id={'login'} sx={icon.svgLogOut} />
-      Log out
+      <Icon id={'login'} sx={icon.LogOut } />
+      Logout
     </Button>
   );
 };

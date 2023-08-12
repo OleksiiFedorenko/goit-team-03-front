@@ -28,7 +28,7 @@ const Column = ({ column }) => {
         onClick={openModalHandler}
       >
         <Box sx={button.addAnotherCard}>
-          <Icon id={'plus'} sx={icon.svgAddCard} />
+          <Icon id={'plus'} sx={icon.plusAdd} />
         </Box>
         Add another card
       </Button>

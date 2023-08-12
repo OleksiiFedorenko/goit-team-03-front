@@ -24,6 +24,7 @@ import {
   FormIcon,
   Eye,
 } from './EditProfile.styled';
+import { icon } from 'styles';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -97,7 +98,7 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
                 </IconStyle>
               )}
               <IconPlus aria-label="add">
-                <Icon id={'plus'} />
+                <Icon id={'plus'} sx={icon.addProfileImg} />
               </IconPlus>
             </ImgWrapper>
           </Label>
@@ -142,11 +143,11 @@ const EditProfile = ({ avatarURL, onCloseModal }) => {
               <Eye type="button" onClick={handleClickShowPassword}>
                 {password ? (
                   <IconPlus>
-                    <Icon id={'eye'} />
+                    <Icon id={'eye'} sx={icon.eye} />
                   </IconPlus>
                 ) : (
                   <IconPlus>
-                    <Icon id={'eye-off'} />
+                    <Icon id={'eye-off'} sx={icon.eye} />
                   </IconPlus>
                 )}
               </Eye>
