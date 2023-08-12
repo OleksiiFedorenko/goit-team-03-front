@@ -155,7 +155,7 @@ export const columns = {
 export const columnsInner = {
   display: 'flex',
   gap: '34px',
-  height: '100%',
+  // height: '100%',
 };
 
 export const boardNav = {
