@@ -18,7 +18,7 @@ const TaskList = ({ cards }) => {
     >
       {filteredCards &&
         filteredCards.map(card => {
-          return (
+          return (         
             <Task
               key={card._id}
               taskId={card._id}
@@ -26,7 +26,7 @@ const TaskList = ({ cards }) => {
               description={card.description}
               priority={card.priority}
               deadline={card.deadline}
-            />
+            />         
           );
         })}
     </Stack>

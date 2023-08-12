@@ -8,6 +8,7 @@ import AddCardForm from 'components/AddCardForm';
 import { Stack, Button } from '@mui/material';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { card, button } from 'styles';
+import Scrollbar from 'components/Scroll/Scroll';
 
 const Column = ({ column }) => {
   const [showModal, setShowModal] = useState(false);
@@ -21,7 +22,9 @@ const Column = ({ column }) => {
   return (
     <Stack sx={card.column}>
       <ColumnHeader title={column.title} columnId={column._id} />
+      <Scrollbar>
       <TaskList cards={column.tasks} />
+      </Scrollbar>
       <Button
         variant="contained"
         sx={button.addCard}
