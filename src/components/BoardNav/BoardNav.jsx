@@ -10,6 +10,7 @@ import { selectBoards } from 'store/boards/selectors';
 
 import { Box, Typography, Button } from '@mui/material';
 import { container, text, button, icon } from 'styles';
+import Scrollbar from 'components/Scroll/Scroll';
 
 export const BoardNav = () => {
   const [showModal, setShowModal] = useState(false);
@@ -43,8 +44,9 @@ export const BoardNav = () => {
           </Box>
         </Button>
       </Box>
-
-      <BoardNavList boards={boards} />
+      <Scrollbar>
+        <BoardNavList boards={boards} />
+      </Scrollbar>
 
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <BoardForm

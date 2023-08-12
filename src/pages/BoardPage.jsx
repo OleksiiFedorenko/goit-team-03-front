@@ -6,12 +6,14 @@ import { selectBoard, selectColumns } from 'store/boards/selectors';
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 import { FilterBtn } from 'components/Filter';
+import Scrollbar from 'components/Scroll/Scroll';
 
 const BoardPage = () => {
   const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
 
   return (
+    <Scrollbar>
     <Box sx={container.board}>
       <Box sx={container.boardInner}>
         <Box sx={container.boardTopBar}>
@@ -32,6 +34,7 @@ const BoardPage = () => {
         </Box>
       </Box>
     </Box>
+    </Scrollbar>
   );
 };
 
