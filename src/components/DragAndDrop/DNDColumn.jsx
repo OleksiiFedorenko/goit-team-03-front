@@ -11,7 +11,6 @@ import { useState } from 'react';
 import { addTask } from 'store/boards/operations';
 
 export const DNDColumn = ({ column, tasks, index }) => {
-  // console.log('column inside Column: ', column);
   const [showModal, setShowModal] = useState(false);
   const openModalHandler = () => {
     setShowModal(true);

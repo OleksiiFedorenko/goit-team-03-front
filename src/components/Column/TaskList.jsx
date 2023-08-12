@@ -5,10 +5,15 @@ import { selectPrioFilter } from 'store/filters/selectors';
 import { ColumnInnerList } from 'components/DragAndDrop';
 
 const TaskList = ({ cards, placeholder }) => {
-  // console.log('TaskList ----------------------------------');
   const prio = useSelector(selectPrioFilter);
+
+  // console.log('cards: ', cards);
   const filteredCards =
-    prio === 'all' ? cards : cards.filter(card => card.priority === prio);
+    prio === 'all'
+      ? cards
+      : cards.filter(card => {
+          return card?.priority === prio;
+        });
 
   return (
     <Stack sx={{ gap: '8px' }}>
