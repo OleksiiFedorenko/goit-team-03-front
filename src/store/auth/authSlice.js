@@ -20,7 +20,6 @@ const authSlice = createSlice({
    extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
-
         state.user = {...state.user, ...action.payload};
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;        
