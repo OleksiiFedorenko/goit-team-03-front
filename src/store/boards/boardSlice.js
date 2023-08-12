@@ -104,8 +104,8 @@ const boardSlice = createSlice({
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split('');
-        const index = state.boards.findIndex(board => board._id === id[1]);
+        const id = action.payload.result._id;
+        const index = state.boards.findIndex(board => board._id === id);
         state.boards.splice(index, 1);
         state.board = {};
       })
@@ -144,7 +144,7 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split('');
+        const id = action.payload.message.split(' ');
         const index = state.columns.findIndex(column => column._id === id[1]);
         state.columns.splice(index, 1);
       })
@@ -156,7 +156,7 @@ const boardSlice = createSlice({
         state.error = null;
         state.columns.forEach(column => {
           if (column._id === action.payload.parentColumn) {
-            column.tasks.push(action.payload);
+            column.tasks = [...column.tasks, action.payload]
           }
         });
       })
@@ -184,12 +184,12 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split('');
+        const id = action.payload.message.split(' ');
         let columnId;
         let spliceIndex;
         state.columns.forEach(column => {
           column.tasks.forEach((task, index)=> {
-            if(task._id !== id[1]) {
+            if(task._id === id[1]) {
               columnId = task.parentColumn;
               spliceIndex = index;
             }

@@ -128,6 +128,12 @@ export const violetTheme = createTheme({
       side: '#FFFFFF1A',
       card: '#1616161A',
     },
+    icon: {
+      svgPlus: '#FFFFFF',
+      svgLogout: '#FFFFFF',
+      svgBoardList: '#FFFFFF50',
+      activeSvgLogout: '#B8BCFD',
+    },
     ...form,
   },
   ...standardParams,
@@ -174,6 +180,12 @@ export const lightTheme = createTheme({
       side: '#1616161A',
       card: '#1616161A',
     },
+    icon: {
+      svgPlus: '#121212',
+      svgLogout: '#BEDBB0',
+      svgBoardList: '#16161650',
+      activeSvgLogout: '#9DC888',
+    },
     ...form,
   },
   ...standardParams,
@@ -219,6 +231,12 @@ export const darkTheme = createTheme({
     divider: {
       side: '#FFFFFF1A',
       card: '#FFFFFF1A',
+    },
+    icon: {
+      svgPlus: '#121212',
+      svgLogout: '#BEDBB0',
+      svgBoardList: '#FFFFFF50',
+      activeSvgLogout: '#9DC888',
     },
     ...form,
   },

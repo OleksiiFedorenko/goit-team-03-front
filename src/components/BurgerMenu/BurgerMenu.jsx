@@ -3,7 +3,7 @@ import { SideBar } from 'components/SideBar';
 import { Icon } from 'components/Icons';
 
 import { Box, Button, Drawer } from '@mui/material';
-import { button, container } from 'styles';
+import { button, container, icon } from 'styles';
 
 export const BurgerMenu = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -34,7 +34,7 @@ export const BurgerMenu = () => {
     windowWidth <= 1440 && (
       <Box sx={{ mr: 'auto' }}>
         <Button onClick={toggleMenu} sx={button.burgerMenu}>
-          <Icon id={'burger-menu'}></Icon>
+          <Icon id={'burger-menu'} sx={icon.svgBurgerMenu}></Icon>
         </Button>
         <Drawer anchor="left" open={menuVisible} onClose={toggleMenu}>
           <SideBar contStyles={container.sideBar} />
