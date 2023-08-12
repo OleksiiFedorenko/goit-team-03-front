@@ -56,7 +56,6 @@ export const BoardNavList = ({ boards }) => {
               >
                 <Icon id={board.icon} />
                 <ListItemText primary={board.title} disableTypography />
-
                 {board._id === boardId && (
                   <>
                     <IconButton

@@ -180,6 +180,23 @@ export const boardListItem = {
   },
 };
 
+export const boardListBox = {
+  width: '4px',
+  height: '100%',
+  borderRadius: '4px 0px 0px 4px',
+};
+export const iconEl = {
+  width: '18px',
+  height: '18px',
+  fill: 'transparent',
+  color: 'icon.svgPlusCard',
+  stroke: 'currentColor',
+  '&hover, &:focus': {
+    color: 'text.primary',
+    stroke: 'currentColor',
+  },
+};
+
 export const logOut = {
   display: 'flex',
   justifyContent: 'start',
@@ -200,12 +217,19 @@ export const logOut = {
 export const svgIconPlus = {
   width: 14,
   height: 14,
-  ml: 0.05,
-  mt: 0.9,
   color: 'background.btnPlus',
 };
 
+export const svgIconPlusAnother = {
+  width: 14,
+  height: 14,
+  color: 'background.btnPlusAnother',
+};
+
 export const boxIconPlus = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: 28,
   height: 28,
   bgcolor: 'background.boxPlus',
@@ -213,6 +237,16 @@ export const boxIconPlus = {
   borderRadius: 0.75,
 };
 
+export const boxIconPlusAnother = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: 28,
+  height: 28,
+  bgcolor: 'background.boxPlusAnother',
+  mr: 1,
+  borderRadius: 0.75,
+};
 export const addColumnBtn = {
   height: 56,
   minWidth: {
@@ -255,6 +289,16 @@ export const addCard = {
   },
 };
 
+export const addAnotherCard = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
+};
 export const addCardIconBox = {
   width: 28,
   height: 28,
