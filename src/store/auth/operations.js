@@ -31,11 +31,10 @@ const setToken =(token) => {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    const originalRequest = error.config;
- 
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      // await refresh(); 
+    // const originalRequest = error.config;
+ //&& !originalRequest._retry  originalRequest._retry = true;    
+    if (error.response.status === 401 ) {
+      
       const refreshToken = localStorage.getItem('refreshToken');       
 
       try {
@@ -43,7 +42,8 @@ instance.interceptors.response.use(
         setToken(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
          
-      return instance(originalRequest);
+      return instance(error.config);
+      // return instance(originalRequest);
     } catch (error) {
       return Promise.reject(error);
     };
@@ -116,7 +116,8 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
-    const persistedToken = state.auth.token.accessToken;;
+    const persistedToken = state.auth.token;
+    console.log('токен из persist: ',persistedToken);
    
     if (!persistedToken) {
       return rejectWithValue('No valid token');
@@ -124,6 +125,7 @@ export const fetchCurrentUser = createAsyncThunk(
     setToken(persistedToken);
     try {
       const { data } = await instance.get('/auth/current');
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
