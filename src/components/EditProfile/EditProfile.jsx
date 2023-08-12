@@ -27,7 +27,6 @@ import {
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
-    .required('Name is required')
     .min(2, 'Name must be at least 2 characters')
     .max(32, 'Name must be at most 32 characters'),
   email: Yup.string().email('Invalid email'),
@@ -35,10 +34,7 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters'),
-  // .matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-  //   'Invalid password format'
-  // ),
+  
 });
 const initialValues = {
   name: '',

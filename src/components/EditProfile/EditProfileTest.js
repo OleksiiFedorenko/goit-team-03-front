@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
-// import { Icon } from 'components/Icons';
+import { Icon } from 'components/Icons';
 import {
   Typography,
   TextField,
@@ -20,10 +20,6 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { container, form } from 'styles';
 
-// import {
-//     EditWrapper, IconStyle, Title, FormWrapper, ErrorSection,
-//     FormSubmit, FormField,  Img, FieldAvatar, FormSection, ImgWrapper, IconPlus, Label, FormIcon, Eye
-// } from './EditProfile.styled';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,29 +30,26 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-      'Password must contain at least one uppercase letter, and one lowercase letter'
-    ),
+  
 });
 const initialValues = {
   name: '',
   email: '',
   password: '',
 };
-const EditProfileTest = ({ avatarURL, onCloseModal }) => {
+const EditProfileTest = ({ onCloseModal }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const { user, avatarURL, theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
   // const [currentImage, setCurrentImage] = useState(avatarURL);
 
   const handleClickShowPassword = () => setPassword(show => !show);
 
   const handleSubmit = (values, { resetForm }) => {
-    const { avatar, name, email, password } = values;
+    const { avatarURL, name, email, password } = values;
     const formData = new FormData();
-    if (avatar) {
-      formData.append('avatar', avatar);
+    if (avatarURL) {
+      formData.append('avatarURL', avatarURL);
     }
     formData.append('name', name);
     formData.append('email', email);
@@ -66,19 +59,33 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
     resetForm();
     onCloseModal();
   };
+//  let avatar = avatarURL;
+//   if (!avatar) {
+//     switch (theme) {
+//       case 'light':
+//         avatar = defaultAvatarLight;
+//         break;
+//       case 'dark':
+//         avatar = defaultAvatarDark;
+//         break;
+//       default:
+//         avatar = defaultAvatarViolet;
+//         break;
+//     }
+//   }
 
-  function handleFileChange(event) {
-    const file = event;
-    if (!file) {
-      return;
-    }
-    const reader = new FileReader();
+  // function handleFileChange(event) {
+  //   const file = event;
+  //   if (!file) {
+  //     return;
+  //   }
+  //   const reader = new FileReader();
 
-    reader.onload = function (e) {
-      // setCurrentImage(e.target.result);
-    };
-    reader.readAsDataURL(file);
-  }
+  //   reader.onload = function (e) {
+  //     setCurrentImage(e.target.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
   return (
     <Box sx={container.helpFormContainer}>
       <Typography variant="h2" mb={3}>
@@ -89,33 +96,30 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit, isSubmitting }) => (
-          <form onSubmit={handleSubmit}>
+        {({ isSubmitting }) => (
+          <form>
             <FormControl fullWidth>
-              {/* <Label htmlFor="avatar">
-                  <ImgWrapper>
-                    {currentImage ? (
+                    {/* {currentImage ? (
                       <Img src={currentImage} alt="User picture" />
                     ) : (
-                        <IconStyle>
-                         <Icon id={"user"} />
-                       </IconStyle>
+                        <Box
+          component="img"
+          sx={button.profileImg}
+          src={avatar}
+          alt="User avatar"
+        />
                     )}
                     <IconPlus aria-label="add">
                          <Icon id={"plus"} />
                     </IconPlus>
-                  </ImgWrapper>
-                </Label>
                 <FieldAvatar
                   id="avatar"
                   type="file"
                   name="avatar"
                   onChange={event => {
-                    setFieldValue('avatar', event.currentTarget.files[0]);
                     handleFileChange(event.currentTarget.files[0]);
                   }}
-                />
-                <ErrorSection name="name" component="div" /> */}
+                /> */}
 
               <ErrorMessage
                 name="name"
@@ -131,8 +135,6 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="name"
                 variant="outlined"
                 placeholder={user.name}
-                // value={values.name}
-                onChange={handleFileChange()}
                 fullWidth
                 color="input"
                 inputProps={{
@@ -154,8 +156,6 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="email"
                 variant="outlined"
                 placeholder={user.email}
-                // value={values.email}
-                onChange={handleFileChange()}
                 fullWidth
                 color="input"
                 inputProps={{
@@ -177,8 +177,6 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="password"
                 type={password ? 'text' : 'password'}
                 placeholder="Create a password"
-                // value={values.password}
-                onChange={handleFileChange}
                 fullWidth
                 color="input"
                 sx={form.input}
@@ -212,8 +210,8 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 Send
               </Button>
             </FormControl>
-          </form>
-        )}
+          </form> 
+         )}
       </Formik>
     </Box>
   );

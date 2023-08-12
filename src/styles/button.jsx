@@ -98,6 +98,16 @@ export const profileImg = { width: '32px', height: '32px', ml: '8px' };
 
 export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
 
+// export const profileIconPlus = {
+//  position:'absolute',
+//  top:'98%',
+//  left:'50%',
+//  transform:'translate(-50%, -50%)',
+//  transition:'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+//  width:'24px',
+//  height:'24px',
+//  color:'rgba(22, 22, 22, 1)'
+// }
 export const createBoardWrapper = {
   my: '8px',
   '&::before, &::after': {
