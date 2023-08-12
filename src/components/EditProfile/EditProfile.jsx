@@ -50,9 +50,10 @@ const EditProfile = ({ onCloseModal }) => {
   const user = useSelector(selectUser);
   const [password, setPassword] = useState('password');
   const [currentImage, setCurrentImage] = useState(user.avatarURL);
+  const [avatarURL, setAvatarURL] = useState('');
 
   const handleSubmit = (values, { resetForm }) => {
-    const { avatarURL, name, email, password } = values;
+    const { name, email, password } = values;
     const formData = new FormData();
     if (avatarURL) {
       formData.append('avatarURL', avatarURL);
@@ -71,6 +72,7 @@ const EditProfile = ({ onCloseModal }) => {
     if (!file) {
       return;
     }
+    setAvatarURL(file);
     const reader = new FileReader();
 
     reader.onload = function (e) {
@@ -87,75 +89,76 @@ const EditProfile = ({ onCloseModal }) => {
         onSubmit={handleSubmit}
       >
         <Form>
-        <FormSection>
-          <Label htmlFor="avatarURL">
-            <ImgWrapper>
-              {currentImage ? (
-                <Img src={currentImage} alt="User picture" />
-              ) : (
-                <IconStyle>
-                  <Icon id={'user'} />
-                </IconStyle>
-              )}
-              <IconPlus aria-label="add">
-                <Icon id={'plus'} />
-              </IconPlus>
-            </ImgWrapper>
-          </Label>
-          <FieldAvatar
-            id="avatarURL"
-            type="file"
-            name="avatarURL"
-            onChange={event => {
-              handleFileChange(event.currentTarget.files[0]);
-            }}
-          />
-          <ErrorSection name="name" component="div" />
-
-          <FormWrapper>
-            <ErrorSection name="name" component="div" />
-            <FormField
-              type="text"
-              id="name"
-              name="name"
-              placeholder={user.name}
-            />
-          </FormWrapper>
-          <FormWrapper>
-            <ErrorSection name="email" component="div" />
-            <FormField
-              type="email"
-              id="email"
-              name="email"
-              placeholder={user.email}
-            />
-          </FormWrapper>
-
-          <FormWrapper>
-            <FormIcon>
-              <ErrorSection name="password" component="div" />
-              <FormField
-                type={password}
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-              />
-              <Eye type="button" onClick={handleClickShowPassword}>
-                {password ? (
-                  <IconPlus>
-                    <Icon id={'eye'} />
-                  </IconPlus>
+          <FormSection>
+            <Label htmlFor="avatarURL">
+              <ImgWrapper>
+                {currentImage ? (
+                  <Img src={currentImage} alt="User picture" />
                 ) : (
-                  <IconPlus>
-                    <Icon id={'eye-off'} />
-                  </IconPlus>
+                  <IconStyle>
+                    <Icon id={'user'} />
+                  </IconStyle>
                 )}
-              </Eye>
-            </FormIcon>
-          </FormWrapper>
+                <IconPlus aria-label="add">
+                  <Icon id={'plus'} />
+                </IconPlus>
+              </ImgWrapper>
+            </Label>
+            <FieldAvatar
+              id="avatarURL"
+              type="file"
+              name="avatarURL"
+              accept="image/*,.png,.jpg,.gif,.web"
+              onChange={event => {
+                handleFileChange(event.currentTarget.files[0]);
+              }}
+            />
+            <ErrorSection name="name" component="div" />
 
-          <FormSubmit type="submit">Send</FormSubmit>
-        </FormSection>
+            <FormWrapper>
+              <ErrorSection name="name" component="div" />
+              <FormField
+                type="text"
+                id="name"
+                name="name"
+                placeholder={user.name}
+              />
+            </FormWrapper>
+            <FormWrapper>
+              <ErrorSection name="email" component="div" />
+              <FormField
+                type="email"
+                id="email"
+                name="email"
+                placeholder={user.email}
+              />
+            </FormWrapper>
+
+            <FormWrapper>
+              <FormIcon>
+                <ErrorSection name="password" component="div" />
+                <FormField
+                  type={password}
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                />
+                <Eye type="button" onClick={handleClickShowPassword}>
+                  {password ? (
+                    <IconPlus>
+                      <Icon id={'eye'} />
+                    </IconPlus>
+                  ) : (
+                    <IconPlus>
+                      <Icon id={'eye-off'} />
+                    </IconPlus>
+                  )}
+                </Eye>
+              </FormIcon>
+            </FormWrapper>
+
+            <FormSubmit type="submit">Send</FormSubmit>
+          </FormSection>
         </Form>
       </Formik>
     </EditWrapper>
