@@ -4,13 +4,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { TextField, useTheme } from '@mui/material';
-import { calendar } from 'styles';
+import { TextField } from '@mui/material';
 import { Icon } from 'components/Icons';
 
 export const Calendar = ({ parentState, initial }) => {
   dayjs().format();
-  const theme = useTheme();
 
   const [dateDeadline, setDateDeadline] = useState(initial ? initial : '');
 
@@ -19,8 +17,6 @@ export const Calendar = ({ parentState, initial }) => {
   const isPastDate = date => {
     return date < currentDate;
   };
-
-  console.log('Theme', theme);
 
   const isToday = date => {
     return (
@@ -54,7 +50,7 @@ export const Calendar = ({ parentState, initial }) => {
               sx: {
                 borderRadius: '8px',
                 color: 'text.primary',
-                backgroundColor: '#1F1F1F',
+                backgroundColor: 'background.calendar',
                 '& .MuiPickersCalendarHeader-labelContainer': {
                   position: 'absolute',
                   left: '50%',
@@ -135,11 +131,15 @@ export const Calendar = ({ parentState, initial }) => {
 
                 '&.MuiPickersDay-root.Mui-selected': {
                   backgroundColor: 'primary.main',
+                  color: 'text.hover',
+                },
+                '&.MuiPickersDay-root:hover': {
+                  backgroundColor: 'primary.main',
                   color: 'text.additional',
                 },
-
                 '&.Mui-selected:hover': {
                   backgroundColor: 'primary.main',
+                  color: 'text.hover',
                 },
                 '&.MuiPickersDay-today': {
                   borderWidth: 1,
