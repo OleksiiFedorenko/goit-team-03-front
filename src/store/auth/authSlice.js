@@ -56,7 +56,8 @@ const authSlice = createSlice({
       })
 
       .addCase(updateProfile.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
+        const {name, email, avatarURL, theme} = action.payload
+        state.user = { name, email, avatarURL, theme};
       });
   },
 });

@@ -15,6 +15,7 @@ export const header = {
   px: '20px',
   boxShadow: 'none',
   bgcolor: 'secondary.main',
+  backgroundImage: 'none',
 };
 
 export const headerContainer = {
@@ -28,6 +29,7 @@ export const task = {
   pl: '24px',
   pr: '20px',
   boxShadow: 'none',
+  backgroundImage: 'none',
 };
 
 export const taskMainBox = {

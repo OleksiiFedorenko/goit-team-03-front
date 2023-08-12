@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik';
 import { Container } from '@mui/material';
 import Textfield from '../FormsUI/TextField';
 import SubmitButton from 'components/FormsUI/SubmitButton';
+import { Calendar } from 'components/Calendar';
 import PriorityRadioBtn from 'components/FormsUI/RadioButtons/PriorityRadioBtn';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {
@@ -15,7 +16,9 @@ import {
   Box,
 } from '@mui/material';
 
-import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
+// import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
+import { formatDate } from 'helpers/formatDate';
+import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 
 const initialValues = {
   title: '',
@@ -39,7 +42,12 @@ const AddCardForm = ({
   initData,
 }) => {
   const dispatch = useDispatch();
+  const [deadline, setDeadline] = useState();
   const [priority, setPriority] = useState('without');
+
+  const setDateValue = value => {
+    setDeadline(value);
+  };
 
   const handleChangePriority = event => {
     setPriority(event.target.value);
@@ -47,7 +55,7 @@ const AddCardForm = ({
 
   const handleSubmit = values => {
     // changing the deadline to the needed format
-    const formattedDate = values.deadline.split('-').reverse().join('-');
+    // const formattedDate = values.deadline.split('-').reverse().join('-');
 
     dispatch(
       taskOperation({
@@ -55,7 +63,8 @@ const AddCardForm = ({
         parentColumn,
         priority,
         taskId,
-        deadline: formattedDate,
+        deadline: formatDate(deadline.$d),
+        // deadline: formattedDate,
       })
     );
     //setSubmitting(false);
@@ -141,14 +150,16 @@ const AddCardForm = ({
             <Typography variant="body2" component="h4" mb={0.5}>
               Deadline
             </Typography>
-            <DatePickerBtn
+            {/* <DatePickerBtn
               name="deadline"
               sx={{
                 marginBottom: '40px',
               }}
             >
               Today, March 8
-            </DatePickerBtn>
+            </DatePickerBtn> */}
+            <Box>{getDeadlineInfo(deadline)}</Box>
+            <Calendar parentState={setDateValue} />
           </Box>
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
