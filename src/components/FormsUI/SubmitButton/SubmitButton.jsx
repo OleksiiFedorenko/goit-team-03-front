@@ -21,7 +21,7 @@ const Testbutton = ({ children, ...otherProps }) => {
   };
 
   return (
-    <Button startIcon={<PlusIcon />} {...configButton}>
+    <Button type="submit" startIcon={<PlusIcon />} {...configButton}>
       <span {...typographyProps}>{children}</span>
     </Button>
   );

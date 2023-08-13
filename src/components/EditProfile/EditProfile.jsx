@@ -24,10 +24,10 @@ import {
   FormIcon,
   Eye,
 } from './EditProfile.styled';
+import { icon } from 'styles';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
-    .required('Name is required')
     .min(2, 'Name must be at least 2 characters')
     .max(32, 'Name must be at most 32 characters'),
   email: Yup.string().email('Invalid email'),
@@ -35,10 +35,7 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters'),
-  // .matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-  //   'Invalid password format'
-  // ),
+  
 });
 const initialValues = {
   name: '',
@@ -100,7 +97,7 @@ const EditProfile = ({ onCloseModal }) => {
                   </IconStyle>
                 )}
                 <IconPlus aria-label="add">
-                  <Icon id={'plus'} />
+                  <Icon id={'plus'} sx={icon.addProfileImg} />
                 </IconPlus>
               </ImgWrapper>
             </Label>
@@ -113,8 +110,6 @@ const EditProfile = ({ onCloseModal }) => {
                 handleFileChange(event.currentTarget.files[0]);
               }}
             />
-            <ErrorSection name="name" component="div" />
-
             <FormWrapper>
               <ErrorSection name="name" component="div" />
               <FormField
@@ -146,11 +141,11 @@ const EditProfile = ({ onCloseModal }) => {
                 <Eye type="button" onClick={handleClickShowPassword}>
                   {password ? (
                     <IconPlus>
-                      <Icon id={'eye'} />
+                      <Icon id={'eye'} sx={icon.eye} />
                     </IconPlus>
                   ) : (
                     <IconPlus>
-                      <Icon id={'eye-off'} />
+                      <Icon id={'eye-off'} sx={icon.eye} />
                     </IconPlus>
                   )}
                 </Eye>

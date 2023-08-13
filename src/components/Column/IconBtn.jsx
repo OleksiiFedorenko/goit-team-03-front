@@ -16,7 +16,7 @@ const IconBtnRoot = styled(ButtonBase)(({ theme }) => ({
 const IconBtn = ({ onClick, iconId }) => {
   return (
     <IconBtnRoot onClick={onClick}>
-      <Icon id={iconId} sx={icon.svgCardBtnList} />
+      <Icon id={iconId} sx={icon.taskItem} />
     </IconBtnRoot>
   );
 };

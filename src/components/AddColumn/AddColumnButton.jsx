@@ -18,11 +18,12 @@ const AddColumnButton = () => {
     <>
       <Button
         sx={button.addColumnBtn}
+        variant="contained"
         color="secondary"
         onClick={handleOpenModal}
       >
         <Box sx={button.boxIconPlusAnother}>
-          <Icon id={'plus'} sx={icon.svgAddColumn} />
+          <Icon id={'plus'} sx={icon.plusAddAnotherColumn} />
         </Box>
         <Typography variant="h3" component="span">
           Add another column

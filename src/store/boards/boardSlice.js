@@ -156,7 +156,7 @@ const boardSlice = createSlice({
         state.error = null;
         state.columns.forEach(column => {
           if (column._id === action.payload.parentColumn) {
-            column.tasks = [...column.tasks, action.payload]
+            column.tasks = [...column.tasks, action.payload];
           }
         });
       })
@@ -188,23 +188,58 @@ const boardSlice = createSlice({
         let columnId;
         let spliceIndex;
         state.columns.forEach(column => {
-          column.tasks.forEach((task, index)=> {
-            if(task._id === id[1]) {
+          column.tasks.forEach((task, index) => {
+            if (task._id === id[1]) {
               columnId = task.parentColumn;
               spliceIndex = index;
             }
-          })
           });
-          state.columns.forEach(column => {
-            if (column._id === columnId) {
-              column.tasks.splice(spliceIndex,1);
-            }
-          })
+        });
+        state.columns.forEach(column => {
+          if (column._id === columnId) {
+            column.tasks.splice(spliceIndex, 1);
+          }
+        });
+      })
 
-        })
-     
       .addCase(deleteTask.rejected, handleRejected);
+  },
+  reducers: {
+    updateColumnOrder(state, action) {
+      state.board.columnOrder = action.payload;
+    },
+    updateSingleTaskOrder(state, action) {
+      const { columnId, newTaskOrder } = action.payload;
+
+      const columnToUpdate = state.columns.find(item => item._id === columnId);
+      const indexToUpdate = state.columns.findIndex(
+        item => item._id === columnId
+      );
+      const newColumn = {
+        ...columnToUpdate,
+        taskOrder: newTaskOrder,
+      };
+
+      state.columns.splice(indexToUpdate, 1, newColumn);
+    },
+    updateComplexDND(state, action) {
+      const { updatedStartColumn, updatedFinishColumn } = action.payload;
+
+      const startIndex = state.columns.findIndex(
+        item => item._id === updatedStartColumn._id
+      );
+      const finishIndex = state.columns.findIndex(
+        item => item._id === updatedFinishColumn._id
+      );
+
+      state.columns.splice(startIndex, 1, updatedStartColumn);
+      state.columns.splice(finishIndex, 1, updatedFinishColumn);
+    },
   },
 });
 
 export const boardReducer = boardSlice.reducer;
+
+// TODO: --------------------------------------
+export const { updateColumnOrder, updateSingleTaskOrder, updateComplexDND } =
+  boardSlice.actions;

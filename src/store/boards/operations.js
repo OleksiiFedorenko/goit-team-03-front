@@ -27,7 +27,7 @@ export const getAllBoards = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/boards');
-      console.log(data)
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -40,7 +40,7 @@ export const getBoardById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/boards/${id}`);
-      console.log(data)
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -69,7 +69,7 @@ export const updateBoard = createAsyncThunk(
         icon,
         background,
       });
-      console.log(data)
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -170,7 +170,7 @@ export const updateTask = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log( { taskId, title, description, priority, deadline })
+      console.log({ taskId, title, description, priority, deadline });
       const { data } = await axios.put(`/tasks/${taskId}`, {
         title,
         description,
@@ -189,7 +189,7 @@ export const deleteTask = createAsyncThunk(
   async (_id, { rejectWithValue }) => {
     try {
       const { data } = await axios.delete(`/tasks/${_id}`);
-      console.log(data)
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
