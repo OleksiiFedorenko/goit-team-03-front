@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import {
   Box,
-  Button,
   FormControl,
   FormLabel,
   TextField,
@@ -13,7 +12,7 @@ import {
 import { Icon } from 'components/Icons';
 import { button, container, form, input, text } from 'styles';
 import { previews } from 'helpers/getBgPreviews';
-import PlusIcon from 'components/FormsUI/SubmitButton/PlusIcon';
+import SubmitButton from 'components/FormsUI/SubmitButton';
 import { iconLabel } from 'styles/icon';
 
 const iconNames = [
@@ -70,7 +69,7 @@ const BoardForm = ({
         onSubmit={handleSubmit}
         validationOnBlur={true}
       >
-        {({ isSubmitting, handleChange, dirty, values }) => (
+        {({ handleChange, values }) => (
           <Form>
             <Typography variant="h2" mb={'24px'}>
               {title}
@@ -139,18 +138,7 @@ const BoardForm = ({
                 <ErrorMessage name="background" component="div" />
               </FormLabel>
             </FormControl>
-            <Button
-              variant="contained"
-              type="submit"
-              disabled={isSubmitting || !dirty}
-              fullWidth
-              sx={form.button}
-              startIcon={<PlusIcon />}
-            >
-              <Typography variant="h3" component="span">
-                {type}
-              </Typography>
-            </Button>
+            <SubmitButton>{type}</SubmitButton>
           </Form>
         )}
       </Formik>
