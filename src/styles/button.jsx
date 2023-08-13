@@ -170,7 +170,7 @@ export const boardListGroup = {
   alignItems: 'flex-start',
   flexDirection: 'column',
   gap: '4px',
-  mt: '40px',
+  // mt: '40px',
   p: 0,
   width: '100%',
 };
@@ -327,9 +327,6 @@ export const addCardIcon = {
 };
 
 export const helpBannerBtn = {
-  display: 'flex',
-  justifyСontent: 'flex-start',
-  alignItems: 'flex-start',
   color: 'text.sideMain',
   '&:hover': {
     color: 'primary.main',

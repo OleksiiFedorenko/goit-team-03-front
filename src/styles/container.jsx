@@ -163,6 +163,16 @@ export const boardNav = {
   mt: '60px',
 };
 
+export const boardNavList = {
+  mt: '40px',
+  height: '150px',
+  scrollbarWidth: 'none',
+  overflow: 'scroll',
+  '&::-webkit-scrollbar': {
+    width: '0px',
+  }
+};
+
 export const modal = {
   position: 'absolute',
   top: '50%',
@@ -222,3 +232,71 @@ export const ImgWrapperContainer = {
 //     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
 //   }
 }
+
+export const taskListScroll = {
+  width: '350px',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  m: 0,
+  p: 0,
+  listStyle: 'none',
+  height: '100%',
+  '&::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    minHeight: '142px',
+    maxHeight: '142px',
+    borderRadius: '4px',
+    backgroundColor: 'scroll.verticalScrollbar',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '4px',
+    backgroundColor: 'scroll.verticalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.verticalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.verticalTrackActive',
+  },
+};
+
+export const taskList = {
+  width: '334px',
+  gap: '8px',
+  margin: 0,
+  padding: 0,
+  height: '100%',
+};
+
+// export const boardScroll = {
+//   width: '100%',
+//   overflowY: 'auto',
+//   overflowX: 'auto',
+//   margin: 0,
+//   padding: 0,
+//   listStyle: 'none',
+//   height: '12px',
+//   ml: '24px',
+//   mr: '24px',
+//   '&::-webkit-scrollbar': {
+//     width: '8px',
+//   },
+//   '&::-webkit-scrollbar-track': {
+//     minWidth: '179px',
+//     maxWidth: '637px',
+//     borderRadius: '4px',
+//     backgroundColor: 'scroll.horizontalScrollbar',
+//   },
+//   '&::-webkit-scrollbar-thumb': {
+//     borderRadius: '4px',
+//     backgroundColor: 'scroll.horizontalTrack',
+//   },
+//   '&::-webkit-scrollbar-thumb:hover': {
+//     backgroundColor: 'scroll.horizontalTrackHover',
+//   },
+//   '&::-webkit-scrollbar-thumb:active': {
+//     backgroundColor: 'scroll.horizontalTrackActive',
+//   },
+// };

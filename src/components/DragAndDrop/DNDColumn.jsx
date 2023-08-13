@@ -34,6 +34,7 @@ export const DNDColumn = ({ column, tasks, index }) => {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     isdraggingover={`${snapshot.isDraggingOver}`}
+                    style={{ minHeight: 20, maxHeight: 470 }}
                   >
                     <TaskList
                       cards={tasks}

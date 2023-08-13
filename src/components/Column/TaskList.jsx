@@ -1,8 +1,9 @@
-import { Stack } from '@mui/material';
+import { Stack, Box } from '@mui/material';
 // import Task from './Task';
 import { useSelector } from 'react-redux';
 import { selectPrioFilter } from 'store/filters/selectors';
 import { ColumnInnerList } from 'components/DragAndDrop';
+import { container } from 'styles';
 
 const TaskList = ({ cards, placeholder }) => {
   const prio = useSelector(selectPrioFilter);
@@ -15,11 +16,13 @@ const TaskList = ({ cards, placeholder }) => {
           return card?.priority === prio;
         });
 
-  return (
-    <Stack sx={{ gap: '8px' }}>
+  return ( 
+    <Box sx={container.taskListScroll}>
+    <Stack sx={container.taskList}>
       <ColumnInnerList tasks={filteredCards} />
       {placeholder}
     </Stack>
+    </Box>
   );
 };
 export default TaskList;
