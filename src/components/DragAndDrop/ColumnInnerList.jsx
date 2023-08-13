@@ -11,6 +11,7 @@ class ColumnInnerList extends Component {
 
   render() {
     return this.props.tasks.map((task, index) => {
+      //   if (!task) return null;
       const { _id, title, description, priority, deadline } = task;
       return (
         <Task

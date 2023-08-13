@@ -17,7 +17,7 @@ const TaskList = ({ cards, placeholder }) => {
 
   return (
     <Stack sx={{ gap: '8px' }}>
-      <ColumnInnerList tasks={filteredCards} />
+      <ColumnInnerList placeholder={placeholder} tasks={filteredCards} />
       {placeholder}
     </Stack>
   );
