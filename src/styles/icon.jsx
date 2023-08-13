@@ -124,7 +124,8 @@ export const iconLabel = {
     /* color: */
     opacity: '1',
     scale: '1.2',
-  };
+  },
+};
 
 export const alert = {
   width: '16px',
