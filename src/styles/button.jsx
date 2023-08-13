@@ -340,3 +340,13 @@ export const helpBannerBtn = {
     tablet: 212,
   },
 };
+export const boardFormIconWrapper = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
+};

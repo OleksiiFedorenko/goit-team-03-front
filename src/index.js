@@ -11,12 +11,12 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
         <BrowserRouter basename="/goit-team-03-front">
           <App />
         </BrowserRouter>
-      </PersistGate>
-    </Provider>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );

@@ -136,7 +136,6 @@ const BoardForm = ({
                     </Box>
                   ))}
                 </Box>
-
                 <ErrorMessage name="background" component="div" />
               </FormLabel>
             </FormControl>

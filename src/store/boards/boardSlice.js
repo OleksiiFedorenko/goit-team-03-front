@@ -73,9 +73,10 @@ const boardSlice = createSlice({
       .addCase(getBoardById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log('getBoardById PAYLOAD: ', action.payload);
         state.board = action.payload.board;
         state.columns = action.payload.columns;
-        state.bgrURL = action.payload.bgrURL;
+        state.bgrURL = action.payload.bgrURL; // ?
       })
       .addCase(getBoardById.rejected, handleRejected)
 
@@ -83,8 +84,10 @@ const boardSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards.push(action.payload);
-        state.board = action.payload;
+        state.boards = [...state.boards, action.payload];
+        // todo ---------------------------------------------------------------------------------------------
+        // no sense + triggers bugs
+        // state.board = action.payload;
       })
       .addCase(addBoard.rejected, handleRejected)
 
@@ -104,18 +107,43 @@ const boardSlice = createSlice({
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.result._id;
-        const index = state.boards.findIndex(board => board._id === id);
+        const index = state.boards.findIndex(
+          board => board._id === action.payload._id
+        );
         state.boards.splice(index, 1);
-        state.board = {};
+        // state.board = { ...state.board, _id: '', title: '' };
+        state.board = {
+          _id: '',
+          title: '',
+          icon: '',
+          background: '',
+          owner: '',
+          columnOrder: [],
+        };
+        state.columns = [];
       })
       .addCase(deleteBoard.rejected, handleRejected)
 
       .addCase(addColumn.pending, handlePending)
       .addCase(addColumn.fulfilled, (state, action) => {
+        console.log('addColumn PAYLOAD: ', action.payload);
         state.isLoading = false;
         state.error = null;
-        state.columns.push(action.payload);
+
+        const newColumn = action.payload;
+
+        if (!newColumn.tasks) {
+          newColumn.tasks = [];
+        }
+
+        state.columns.push(newColumn);
+
+        // In addition update board & boards fields:
+        state.board.columnOrder.push(action.payload._id);
+        const boardIndex = state.boards.findIndex(
+          ({ _id }) => _id === action.payload.parentBoard
+        );
+        state.boards[boardIndex].columnOrder.push(action.payload._id);
       })
       .addCase(addColumn.rejected, handleRejected)
       .addCase(needHelp.pending, state => {
@@ -133,10 +161,19 @@ const boardSlice = createSlice({
       .addCase(updateColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+
         const index = state.columns.findIndex(
           column => column._id === action.payload._id
         );
-        state.columns.splice(index, 1, action.payload);
+
+        // todo: -----------------------------------------------------------------
+        // Temporary... because if response without tasks array
+        const newColumn = {
+          ...state.columns[index],
+          title: action.payload.title,
+        };
+        // state.columns.splice(index, 1, action.payload);
+        state.columns.splice(index, 1, newColumn);
       })
       .addCase(updateColumn.rejected, handleRejected)
 
@@ -144,19 +181,38 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split(' ');
-        const index = state.columns.findIndex(column => column._id === id[1]);
-        state.columns.splice(index, 1);
+        console.log('deleteColumn PAYLOAD: ', action.payload);
+
+        const { _id: columnId, parentBoard } = action.payload;
+        const columnIndex = state.columns.findIndex(
+          ({ _id }) => _id === columnId
+        );
+        state.columns.splice(columnIndex, 1);
+
+        // In addition remove columnId from 'columnOrder' fields inside state.board and state.boards as well
+        const orderIndex1 = state.board.columnOrder.indexOf(columnId);
+        state.board.columnOrder.splice(orderIndex1, 1);
+
+        const boardIndex = state.boards.findIndex(
+          ({ _id }) => _id === parentBoard
+        );
+        const orderIndex2 =
+          state.boards[boardIndex].columnOrder.indexOf(columnId);
+        state.boards[boardIndex].columnOrder.splice(orderIndex2);
       })
       .addCase(deleteColumn.rejected, handleRejected)
 
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false;
         state.error = null;
+
         state.columns.forEach(column => {
           if (column._id === action.payload.parentColumn) {
-            column.tasks = [...column.tasks, action.payload];
+            column.tasks.push(action.payload);
+            // In addition update taskOrder:
+            column.taskOrder.push(action.payload._id);
           }
         });
       })
@@ -184,21 +240,18 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split(' ');
-        let columnId;
-        let spliceIndex;
+        console.log('deleteTask PAYLOAD: ', action.payload);
+
+        const { _id: taskId, parentColumn } = action.payload;
+
         state.columns.forEach(column => {
-          column.tasks.forEach((task, index) => {
-            if (task._id === id[1]) {
-              columnId = task.parentColumn;
-              spliceIndex = index;
-            }
-          });
-        });
-        state.columns.forEach(column => {
-          if (column._id === columnId) {
-            column.tasks.splice(spliceIndex, 1);
-          }
+          if (column._id !== parentColumn) return;
+
+          const taskIndex = column.tasks.findIndex(({ _id }) => _id === taskId);
+          column.tasks.splice(taskIndex, 1);
+
+          const orderIndex = column.taskOrder.indexOf(taskId);
+          column.taskOrder.splice(orderIndex, 1);
         });
       })
 

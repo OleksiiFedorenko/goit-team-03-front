@@ -1,29 +1,37 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import { useFormikContext } from 'formik';
+import { styled } from '@mui/system';
 import PlusIcon from './PlusIcon';
 
-const Testbutton = ({ children, ...otherProps }) => {
+const StyledButton = styled(Button)(({ theme }) => ({
+  boxShadow: 'none',
+  textTransform: 'none',
+  paddingTop: '11px',
+  paddingBottom: '11px',
+  '&:hover': {
+    boxShadow: 'none',
+  },
+}));
+
+const TestButton = ({ children, ...otherProps }) => {
   const { submitForm } = useFormikContext();
+
   const handleSubmit = () => {
     submitForm();
   };
-  const configButton = {
-    variant: 'contained',
-    color: 'primary',
-    fullWidth: true,
-    onClick: handleSubmit,
-  };
-  const typographyProps = {
-    style: {
-      textTransform: 'none',
-    },
-  };
 
   return (
-    <Button startIcon={<PlusIcon />} {...configButton}>
-      <span {...typographyProps}>{children}</span>
-    </Button>
+    <StyledButton
+      variant="contained"
+      color="primary"
+      fullWidth
+      onClick={handleSubmit}
+      startIcon={<PlusIcon />}
+    >
+      {children}
+    </StyledButton>
   );
 };
-export default Testbutton;
+
+export default TestButton;
