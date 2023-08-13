@@ -83,7 +83,7 @@ const boardSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards.push(action.payload);
+        state.boards = [...state.boards, action.payload];
         state.board = action.payload;
       })
       .addCase(addBoard.rejected, handleRejected)
@@ -104,10 +104,11 @@ const boardSlice = createSlice({
       .addCase(deleteBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.result._id;
-        const index = state.boards.findIndex(board => board._id === id);
+        const index = state.boards.findIndex(board => board._id === action.payload._id);
         state.boards.splice(index, 1);
-        state.board = {};
+        state.board = {...state.board, _id: '', title: ''};
+        state.columns = [];
+       
       })
       .addCase(deleteBoard.rejected, handleRejected)
 
@@ -115,7 +116,8 @@ const boardSlice = createSlice({
       .addCase(addColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.columns.push(action.payload);
+        state.columns = [...state.columns, action.payload];
+        // state.board.columnOrder = [...state.board.columnOrder, action.payload];
       })
       .addCase(addColumn.rejected, handleRejected)
       .addCase(needHelp.pending, state => {

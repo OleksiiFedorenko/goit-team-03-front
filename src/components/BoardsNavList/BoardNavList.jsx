@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useParams, Navigate } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
@@ -20,10 +20,14 @@ import {
 } from '@mui/material';
 import { button, icon } from 'styles';
 
+import { selectBoard } from 'store/boards/selectors';
+
 export const BoardNavList = ({ boards }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { boardId } = useParams();
+  const board = useSelector(selectBoard);
+  const [isDeleteBoard, setIsDeleteBoard] = useState(false);
 
   useEffect(() => {
     if (boardId) dispatch(getBoardById(boardId));
@@ -38,10 +42,14 @@ export const BoardNavList = ({ boards }) => {
   };
 
   const handleDeleteBoard = () => {
-    if (window.confirm('Do you really want to delete board?')) {
-      dispatch(deleteBoard(boardId));
+    if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
+      dispatch(deleteBoard(board._id));
+      setIsDeleteBoard(true);
     }
   };
+  useEffect(() => {
+    setIsDeleteBoard(false);
+  }, [isDeleteBoard]);
 
   return (
     <>
@@ -80,6 +88,7 @@ export const BoardNavList = ({ boards }) => {
                     >
                       <Icon id={'trash'} sx={icon.boardItem} />
                     </IconButton>
+                    {isDeleteBoard && <Navigate to={'/tasks'} />}
                   </>
                 )}
               </ListItemButton>
@@ -94,7 +103,12 @@ export const BoardNavList = ({ boards }) => {
           title="Edit board"
           type="Edit"
           boardOperation={updateBoard}
-          id={boardId}
+          id={board._id}
+          initData={{
+            title: board.title,
+            icon: board.icon,
+            background: board.background,
+          }}
         />
       </Modal>
     </>
