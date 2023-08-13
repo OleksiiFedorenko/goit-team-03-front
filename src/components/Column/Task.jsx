@@ -110,13 +110,7 @@ const Task = ({ name, description, priority, deadline, taskId }) => {
               alignItems="flex-end"
               spacing={1}
             >
-              {/* {isDeadline() && (
-                <Box>
-                  <Icon id="alert" sx={icon.svgAlert} />
-                </Box>
-              )} */}
-
-              <Alerticon />
+              {isDeadline() && <Alerticon />}
 
               <Box>
                 <IconBtn onClick={handleIconClick} iconId="move" />

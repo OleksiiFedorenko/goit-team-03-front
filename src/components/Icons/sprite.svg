@@ -66,6 +66,6 @@
     </symbol>
     <symbol id="icon-dropdown" viewBox="0 0 30 32">
     <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.3684" d="M7.579 12.211l7.579 7.579 7.579-7.579"></path>
-</symbol>
+    </symbol>    
   </defs>
 </svg>
