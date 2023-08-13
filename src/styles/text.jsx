@@ -53,3 +53,8 @@ export const boardTitle = {
     tablet: 18,
   },
 };
+
+export const label = {
+  marginBottom: '14px',
+  color: 'text.primary',
+};

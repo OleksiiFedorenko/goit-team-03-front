@@ -47,3 +47,10 @@ export const icon = {
   color: '#FFF',
   opacity: 0.4,
 };
+
+export const label = {
+  width: '100%',
+  position: 'relative',
+  display: 'block',
+  marginBottom: '24px',
+};
