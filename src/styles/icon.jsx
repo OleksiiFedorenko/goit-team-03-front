@@ -43,8 +43,8 @@ export const createNewBoard = {
 };
 
 export const plusAddAnotherColumn = {
-  width: '24px',
-  height: '24px',
+  width: '14px',
+  height: '14px',
   color: 'icon.addAnotherColumn',
   stroke: 'currentColor',
 };
@@ -106,6 +106,13 @@ export const filter = {
   width: '16px',
   height: '16px',
   color: 'icon.filter',
+  fill: 'transparent',
+  stroke: 'currentColor',
+};
+export const alert = {
+  width: '16px',
+  height: '16px',
+  color: 'icon.alert',
   fill: 'transparent',
   stroke: 'currentColor',
 };
