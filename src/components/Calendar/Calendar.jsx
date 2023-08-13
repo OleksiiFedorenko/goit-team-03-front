@@ -39,10 +39,11 @@ export const Calendar = ({ parentState, initial }) => {
             setDateDeadline(newValue);
             parentState(newValue);
           }}
-          renderInput={params => <TextField {...params} />}
+          // renderInput={params => <TextField {...params} />}
           shouldDisableDate={date => isPastDate(date) && !isToday(date)}
           slots={{
             openPickerIcon: () => <Icon id="dropdown" />,
+            textField: TextField,
           }}
           dayOfWeekFormatter={day => day.slice(0, 2)}
           slotProps={{
