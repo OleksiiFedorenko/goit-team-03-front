@@ -100,6 +100,9 @@ const authSlice = createSlice({
     setAccessToken(state, action) {
       state.accessToken = action.payload;
     },
+    setLoggedIn(state, action) {
+      state.isLoggedIn = action.payload;
+    },
   },
    extraReducers: builder => {
     builder
@@ -139,7 +142,8 @@ const authSlice = createSlice({
       })
       .addCase(fetchCurrentUser.rejected, state => {
         state.isRefreshing = false;
-        // state.accessToken = '';
+        state.isLoggedIn = false;
+        state.accessToken = '';
       })
 
       .addCase(updateTheme.fulfilled, (state, action) => {
@@ -152,5 +156,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setRefreshToken, setAccessToken } = authSlice.actions;
+export const { setRefreshToken, setAccessToken, setLoggedIn } = authSlice.actions;
 export const authReducer = authSlice.reducer;

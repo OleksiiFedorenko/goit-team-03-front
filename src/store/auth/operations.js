@@ -167,18 +167,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
 import {store} from '../index';
-import {setRefreshToken, setAccessToken} from './authSlice';
+import {setRefreshToken, setAccessToken, setLoggedIn } from './authSlice';
 // import { useSelector } from 'react-redux';
 // import { selectAccessToken, selectRefreshToken } from './selectors';
 
 
-export const instance =axios.create({baseURL: 'https://taskpro-m75b.onrender.com/api',});
-// http://localhost:3001/api
+export const instance =axios.create({baseURL: 'http://localhost:3001/api',});
+// https://taskpro-m75b.onrender.com/api
 
 const setToken =(token) => {
 
   if(token) {
-    console.log("token в headers", token);
     return instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   };
     instance.defaults.headers.common.Authorization = '';
@@ -192,12 +191,12 @@ instance.interceptors.response.use(
       // const refreshToken = localStorage.getItem('refreshToken');
       const refreshToken = store.getState().auth.refreshToken       
       // const refreshToken = useSelector(selectRefreshToken)       
-console.log('refresh interceptors: ', refreshToken);
+
       try {
         //  const dispatch = useDispatch();
         const { data } = await instance.post('/auth/refreshToken', { refreshToken });
 
-        console.log("data interceptors: ", data);
+       
         setToken(data.accessToken);
         // localStorage.setItem('refreshToken', data.refreshToken);
         store.dispatch(setRefreshToken(data.refreshToken));
@@ -207,14 +206,17 @@ console.log('refresh interceptors: ', refreshToken);
     } catch (error) {
       return Promise.reject(error);
     };
-  };
-  if(error.response.status === 500){
+  }else if(error.response.status === 500||error.response.status === 400){
     setToken();
     store.dispatch(setRefreshToken());
+    store.dispatch(setLoggedIn(false));
+    window.location.href = '/goit-team-03-front/login';
+  
   };
   return Promise.reject(error);
-  }
+}
 );
+
 
 
 export const getRegistration = createAsyncThunk(
