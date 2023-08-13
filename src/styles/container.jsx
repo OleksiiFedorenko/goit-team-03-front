@@ -158,6 +158,35 @@ export const columnsInner = {
   // height: '100%',
 };
 
+export const taskListScroll = {
+  width: '100%',
+  overflowY: 'auto',
+  // overflowX: 'visible',
+  margin: 0,
+  padding: 0,
+  listStyle: 'none',
+  height: '100%',
+  '&::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    borderRadius: '4px',
+    backgroundColor: 'secondary.main',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '4px',
+    backgroundColor: 'primary.main',
+  },
+};
+
+export const taskList = {
+  width: '334px',
+  gap: '8px',
+  margin: 0,
+  padding: 0,
+  height: '100%',
+};
+
 export const boardNav = {
   width: '100%',
   mt: '60px',
@@ -205,20 +234,19 @@ export const addColumnContainer = {
   },
 };
 export const ImgWrapperContainer = {
-   position: 'relative',
+  position: 'relative',
   width: '68px',
   height: '68px',
   borderRradius: '8px',
   // transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 'transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
- 
 
- ' &:hover': {
+  ' &:hover': {
     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
     transform: 'scale(1.1)',
-  }
+  },
 
-//  ' &:hover', 'svg' {
-//     top: '50%',
-//     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
-//   }
-}
+  //  ' &:hover', 'svg' {
+  //     top: '50%',
+  //     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
+  //   }
+};

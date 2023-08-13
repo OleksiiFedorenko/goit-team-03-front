@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://OleksiiFedorenko.github.io/goit-team-03-front/",
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.1.1",

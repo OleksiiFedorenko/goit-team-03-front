@@ -22,9 +22,9 @@ const Column = ({ column }) => {
   return (
     <Stack sx={card.column}>
       <ColumnHeader title={column.title} columnId={column._id} />
-      <Scrollbar>
-        <TaskList cards={column.tasks} />
-      </Scrollbar>
+      {/* <Scrollbar> */}
+      <TaskList cards={column.tasks} />
+      {/* </Scrollbar> */}
       <Button
         variant="contained"
         sx={button.addCard}

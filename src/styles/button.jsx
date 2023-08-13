@@ -290,7 +290,7 @@ export const addColumnIcon = {
 };
 
 export const addCard = {
-  width: '100%',
+  width: '334px',
   height: '56px',
   lineHeight: 1.5,
   textTransform: 'none',

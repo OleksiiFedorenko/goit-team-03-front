@@ -42,72 +42,72 @@ const BoardPage = () => {
   // } // ----- triggers bug on empty board
 
   return (
-    <Scrollbar>
-      <Box sx={container.board}>
-        <Box sx={container.boardInner}>
-          <Box sx={container.boardTopBar}>
-            <Typography component="h2" variant="h3" sx={text.boardTitle}>
-              {board.title}
-            </Typography>
+    // <Scrollbar>
+    <Box sx={container.board}>
+      <Box sx={container.boardInner}>
+        <Box sx={container.boardTopBar}>
+          <Typography component="h2" variant="h3" sx={text.boardTitle}>
+            {board.title}
+          </Typography>
 
-            <FilterBtn />
-          </Box>
-
-          <Box
-            // style={{ outline: '2px dashed tomato' }}
-            sx={container.columns}
-          >
-            <Box>
-              {/* ---------------------------------------------------------------- */}
-              <DragDropContext
-                onDragStart={() => {}}
-                onDragUpdate={() => {}}
-                onDragEnd={onDragEnd}
-              >
-                <StrictModeDroppable
-                  droppableId={'all-columns'}
-                  direction="horizontal"
-                  type="column"
-                >
-                  {provided => (
-                    <Box
-                      // style={{ outline: '1px dashed teal', display: 'flex' }}
-                      sx={container.columnsInner}
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}
-                    >
-                      {board.columnOrder.map((columnId, index) => {
-                        const column = columns.find(
-                          item => item._id === columnId
-                        );
-
-                        // console.log('COLUMN: ', column);
-
-                        // todo ///////////////////
-                        if (!column) return null;
-                        return (
-                          <BoardInnerList
-                            key={column._id}
-                            column={column}
-                            tasksArr={column.tasks}
-                            index={index}
-                          />
-                        );
-                      })}
-
-                      {provided.placeholder}
-                    </Box>
-                  )}
-                </StrictModeDroppable>
-              </DragDropContext>
-              {/* ---------------------------------------------------------------- */}
-            </Box>
-            <AddColumnButton />
-          </Box>
+          <FilterBtn />
         </Box>
-        <ToastContainer autoClose={3000} />
+
+        <Box
+          // style={{ outline: '2px dashed tomato' }}
+          sx={container.columns}
+        >
+          <Box>
+            {/* ---------------------------------------------------------------- */}
+            <DragDropContext
+              onDragStart={() => {}}
+              onDragUpdate={() => {}}
+              onDragEnd={onDragEnd}
+            >
+              <StrictModeDroppable
+                droppableId={'all-columns'}
+                direction="horizontal"
+                type="column"
+              >
+                {provided => (
+                  <Box
+                    // style={{ outline: '1px dashed teal', display: 'flex' }}
+                    sx={container.columnsInner}
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {board.columnOrder.map((columnId, index) => {
+                      const column = columns.find(
+                        item => item._id === columnId
+                      );
+
+                      // console.log('COLUMN: ', column);
+
+                      // todo ///////////////////
+                      if (!column) return null;
+                      return (
+                        <BoardInnerList
+                          key={column._id}
+                          column={column}
+                          tasksArr={column.tasks}
+                          index={index}
+                        />
+                      );
+                    })}
+
+                    {provided.placeholder}
+                  </Box>
+                )}
+              </StrictModeDroppable>
+            </DragDropContext>
+            {/* ---------------------------------------------------------------- */}
+          </Box>
+          <AddColumnButton />
+        </Box>
       </Box>
-    </Scrollbar>
+      <ToastContainer autoClose={3000} />
+    </Box>
+    // </Scrollbar>
   );
 };
 

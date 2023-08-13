@@ -3,13 +3,13 @@ export const column = {
   width: {
     zeroUp: '90vw',
     mobileFixed: '335px',
-    tablet: '334px',
+    tablet: '350px',
   },
   height: '100%',
 };
 
 export const header = {
-  width: '100%',
+  width: '334px',
   height: '56px',
   py: '18px',
   px: '20px',
