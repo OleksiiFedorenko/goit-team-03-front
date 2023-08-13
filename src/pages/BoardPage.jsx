@@ -81,6 +81,10 @@ const BoardPage = () => {
                           item => item._id === columnId
                         );
 
+                        // console.log('COLUMN: ', column);
+
+                        // todo ///////////////////
+                        if (!column) return null;
                         return (
                           <BoardInnerList
                             key={column._id}
