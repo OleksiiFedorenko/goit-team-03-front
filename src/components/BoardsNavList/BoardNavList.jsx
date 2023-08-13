@@ -82,7 +82,7 @@ export const BoardNavList = ({ boards }) => {
                     >
                       <Icon id={'trash'} sx={icon.boardItem} />
                     </Box>
-                    {isDeleteBoard && <Navigate to={'/tasks'} />}
+                    {isDeleteBoard && <Navigate to={'/home'} />}
                   </>
                 )}
               </ListItemButton>

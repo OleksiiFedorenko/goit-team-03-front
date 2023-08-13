@@ -52,23 +52,32 @@ export const App = () => {
               index
               element={
                 <PublicRoute>
+                  <Navigate to="welcome" />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="welcome"
+              element={
+                <PublicRoute>
                   <WelcomePage />
                 </PublicRoute>
               }
             />
             <Route
-              path="/auth"
+              path="auth"
               element={
                 <PublicRoute>
                   <AuthPage />
                 </PublicRoute>
               }
             >
+              <Route index element={<Navigate to="register" />} />
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
             </Route>
             <Route
-              path="/tasks"
+              path="home"
               element={
                 <PrivateRoute>
                   <TasksPage />
