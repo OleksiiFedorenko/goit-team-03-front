@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams, Navigate } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
@@ -59,7 +59,7 @@ export const BoardNavList = ({ boards }) => {
             <ListItem key={board._id} disablePadding>
               <ListItemButton
                 component={NavLink}
-                to={board._id}
+                to={isDeleteBoard ? '/home' : board._id}
                 sx={button.boardListItem}
               >
                 <Icon id={board.icon} sx={icon.board} />
@@ -82,7 +82,6 @@ export const BoardNavList = ({ boards }) => {
                     >
                       <Icon id={'trash'} sx={icon.boardItem} />
                     </Box>
-                    {isDeleteBoard && <Navigate to={'/home'} />}
                   </>
                 )}
               </ListItemButton>
