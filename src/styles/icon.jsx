@@ -109,6 +109,24 @@ export const filter = {
   fill: 'transparent',
   stroke: 'currentColor',
 };
+
+export const iconLabel = {
+  display: 'inline-block',
+  width: '18px',
+  height: '18px',
+  borderRadius: '50%',
+  backgroundColor: 'transparent',
+  textAlign: 'center',
+  /* color:  */
+  opacity: '0.5',
+
+  '&:hover, &:focus': {
+    /* color: */
+    opacity: '1',
+    scale: '1.2',
+  },
+};
+
 export const alert = {
   width: '16px',
   height: '16px',
