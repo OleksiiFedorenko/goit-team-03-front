@@ -146,8 +146,7 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split(' ');
-        const index = state.columns.findIndex(column => column._id === id[1]);
+        const index = state.columns.findIndex(column => column._id === action.payload._id);
         state.columns.splice(index, 1);
       })
       .addCase(deleteColumn.rejected, handleRejected)
