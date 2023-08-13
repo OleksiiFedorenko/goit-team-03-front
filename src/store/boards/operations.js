@@ -43,7 +43,7 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get(`boatds/${id}`);
+      const { data } = await instance.get(`boards/${id}`);
       console.log(data)
 
       return data;
