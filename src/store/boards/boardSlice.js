@@ -185,12 +185,11 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        const id = action.payload.message.split(' ');
         let columnId;
         let spliceIndex;
         state.columns.forEach(column => {
           column.tasks.forEach((task, index) => {
-            if (task._id === id[1]) {
+            if (task._id === action.payload._id) {
               columnId = task.parentColumn;
               spliceIndex = index;
             }
