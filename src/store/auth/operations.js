@@ -199,7 +199,9 @@ instance.interceptors.response.use(
        
         setToken(data.accessToken);
         // localStorage.setItem('refreshToken', data.refreshToken);
+        store.dispatch(setAccessToken(data.accessToken));
         store.dispatch(setRefreshToken(data.refreshToken));
+        error.config.headers.Authorization = `Bearer ${data.accessToken}`;
          
       return instance(error.config);
       // return instance(originalRequest);
@@ -208,7 +210,8 @@ instance.interceptors.response.use(
     };
   }else if(error.response.status === 500||error.response.status === 400){
     setToken();
-    store.dispatch(setRefreshToken());
+    store.dispatch(setAccessToken(''));
+    store.dispatch(setRefreshToken(''));
     store.dispatch(setLoggedIn(false));
     window.location.href = '/goit-team-03-front/login';
   
