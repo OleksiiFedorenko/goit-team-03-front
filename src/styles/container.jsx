@@ -246,3 +246,13 @@ export const imageWrap = {
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
 };
+
+export const boardBg = {
+  input: {
+    display: 'none',
+  },
+
+  'input:checked + label': {
+    opacity: '0.4',
+  },
+};
