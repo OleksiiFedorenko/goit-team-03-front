@@ -5,7 +5,7 @@ import { icon } from 'styles';
 const AlertIcon = () => {
   const iconStyles = {
     svgAlert: {
-      ...icon.svgAlert,
+      ...icon.alert,
       filter: 'drop-shadow(0px 2px 4px currentColor)',
     },
   };

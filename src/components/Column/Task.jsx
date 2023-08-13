@@ -9,6 +9,8 @@ import { Card, Typography, Stack, Box } from '@mui/material';
 import { card } from 'styles';
 
 import { Draggable } from 'react-beautiful-dnd';
+import Alerticon from './AlertIcon';
+import { formatDate } from 'helpers/formatDate';
 
 const Task = ({ name, description, priority, deadline, taskId, index }) => {
   const dispatch = useDispatch();
@@ -37,6 +39,9 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
     },
   };
   const handleIconClick = () => {};
+  const isDeadline = () => {
+    return deadline === formatDate(new Date());
+  };
 
   return (
     <Draggable draggableId={taskId} index={index}>
@@ -113,9 +118,7 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
                     alignItems="flex-end"
                     spacing={1}
                   >
-                    <Box>
-                      <IconBtn onClick={handleIconClick} iconId="alert" />
-                    </Box>
+                    {isDeadline() && <Alerticon />}
                     <Box>
                       <IconBtn onClick={handleIconClick} iconId="move" />
                     </Box>
