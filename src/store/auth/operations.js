@@ -228,7 +228,7 @@ export const getRegistration = createAsyncThunk(
       });
       const { data } = await instance.post('/auth/login', { email, password });
 
-      setToken(data.accessToken);
+      setToken(data.token);
       // localStorage.setItem('refreshToken', data.refreshToken);
       store.dispatch(setRefreshToken(data.refreshToken));
       return data;
@@ -250,10 +250,10 @@ export const getLogin = createAsyncThunk(
     try {
       const { data } = await instance.post('/auth/login', { email, password });
      
-      setToken(data.accessToken);
+      setToken(data.token);
       // localStorage.setItem('refreshToken', data.refreshToken);
       store.dispatch(setRefreshToken(data.refreshToken));
-      store.dispatch(setAccessToken(data.accessToken));
+      store.dispatch(setAccessToken(data.token));
       return data;
     } catch (error) {
       toast.error(
