@@ -14,7 +14,7 @@ export const LogOut = () => {
       variant="text"
       sx={button.logOut}
     >
-      <Icon id={'login'} sx={icon.svgLogOut} />
+      <Icon id={'login'} sx={icon.LogOut} />
       Log out
     </Button>
   );

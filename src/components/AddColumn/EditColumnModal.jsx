@@ -58,7 +58,7 @@ const EditColumnModal = ({ title, columnId, onCloseModal }) => {
               type="submit"
             >
               <Box sx={button.boxIconPlus}>
-                <Icon id={'plus'} sx={icon.svgEditColumnAdd} />
+                <Icon id={'plus'} sx={icon.plusAdd} />
               </Box>
               Add
             </Button>

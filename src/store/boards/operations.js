@@ -30,8 +30,10 @@ export const getAllBoards = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
 
+
       const { data } = await instance.get('/boards');      
  console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,6 +45,7 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
+
       const { data } = await instance.get(`boards/${id}`);
       console.log(data)
 
@@ -77,7 +80,8 @@ export const updateBoard = createAsyncThunk(
         icon,
         background,
       });
-      console.log(data)
+
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -102,7 +106,11 @@ export const addColumn = createAsyncThunk(
   'boards/addColumn',
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
+
       const { data } = await instance.post('/columns', { title, parentBoard });
+
+      console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -179,8 +187,10 @@ export const updateTask = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
+
       console.log( { taskId, title, description, priority, deadline })
       const { data } = await instance.put(`/tasks/${taskId}`, {
+
         title,
         description,
         priority,
@@ -197,8 +207,10 @@ export const deleteTask = createAsyncThunk(
   'boards/deleteTask',
   async (_id, { rejectWithValue }) => {
     try {
+
       const { data } = await instance.delete(`/tasks/${_id}`);
       console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

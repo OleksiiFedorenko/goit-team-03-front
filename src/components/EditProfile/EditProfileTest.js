@@ -11,19 +11,25 @@ import {
   TextField,
   Button,
   OutlinedInput,
-  InputAdornment,
   IconButton,
   FormControl,
   Box,
+  // Stack,
+  // Avatar,
+  InputAdornment,
+//  InputLabel,
 } from '@mui/material';
+// import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+// import defaultAvatarLight from '../../images/default-avatar-light.png';
+// import defaultAvatarDark from '../../images/default-avatar-dark.png';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import { container, form } from 'styles';
+import {
+  container,
+  form,
+  // button
+} from 'styles';
 
-// import {
-//     EditWrapper, IconStyle, Title, FormWrapper, ErrorSection,
-//     FormSubmit, FormField,  Img, FieldAvatar, FormSection, ImgWrapper, IconPlus, Label, FormIcon, Eye
-// } from './EditProfile.styled';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,29 +40,27 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$!%*?&]+$/,
-      'Password must contain at least one uppercase letter, and one lowercase letter'
-    ),
+  
 });
 const initialValues = {
   name: '',
   email: '',
   password: '',
 };
-const EditProfileTest = ({ avatarURL, onCloseModal }) => {
+const EditProfileTest = ({ onCloseModal }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+    const user = useSelector(selectUser);
+  // const { user, avatarURL, theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
-  // const [currentImage, setCurrentImage] = useState(avatarURL);
+  // const [currentImage, setCurrentImage] = useState(user.avatarURL);
 
   const handleClickShowPassword = () => setPassword(show => !show);
 
   const handleSubmit = (values, { resetForm }) => {
-    const { avatar, name, email, password } = values;
+    const { avatarURL, name, email, password } = values;
     const formData = new FormData();
-    if (avatar) {
-      formData.append('avatar', avatar);
+    if (avatarURL) {
+      formData.append('avatarURL', avatarURL);
     }
     formData.append('name', name);
     formData.append('email', email);
@@ -66,19 +70,33 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
     resetForm();
     onCloseModal();
   };
+//  let avatar = user.avatarURL;
+//   if (!avatar) {
+//     switch (theme) {
+//       case 'light':
+//         avatar = defaultAvatarLight;
+//         break;
+//       case 'dark':
+//         avatar = defaultAvatarDark;
+//         break;
+//       default:
+//         avatar = defaultAvatarViolet;
+//         break;
+//     }
+//   }
 
-  function handleFileChange(event) {
-    const file = event;
-    if (!file) {
-      return;
-    }
-    const reader = new FileReader();
+  // function handleFileChange(event) {
+  //   const file = event;
+  //   if (!file) {
+  //     return;
+  //   }
+  //   const reader = new FileReader();
 
-    reader.onload = function (e) {
-      // setCurrentImage(e.target.result);
-    };
-    reader.readAsDataURL(file);
-  }
+  //   reader.onload = function (e) {
+  //     setCurrentImage(e.target.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
   return (
     <Box sx={container.helpFormContainer}>
       <Typography variant="h2" mb={3}>
@@ -89,33 +107,37 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleSubmit, isSubmitting }) => (
+        {({ handleChange, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <FormControl fullWidth>
-              {/* <Label htmlFor="avatar">
-                  <ImgWrapper>
-                    {currentImage ? (
-                      <Img src={currentImage} alt="User picture" />
+              {/* <Stack sx={container.ImgWrapperContainer}>
+              {currentImage ? (
+                 <Avatar
+          sx={button.profileImgForm}
+          src={currentImage}
+          alt="User picture"
+        />
+                     
                     ) : (
-                        <IconStyle>
-                         <Icon id={"user"} />
-                       </IconStyle>
+                        <Avatar
+          sx={button.profileImgForm}
+          src={defaultAvatarViolet}
+          alt="User avatar"
+        />
                     )}
-                    <IconPlus aria-label="add">
+                    <Box sx={button.profileIconPlus}>
                          <Icon id={"plus"} />
-                    </IconPlus>
-                  </ImgWrapper>
-                </Label>
-                <FieldAvatar
+                </Box>
+                </Stack>
+                <InputLabel
                   id="avatar"
                   type="file"
-                  name="avatar"
+                name="avatar"
+                sx={{display:'none'}}
                   onChange={event => {
-                    setFieldValue('avatar', event.currentTarget.files[0]);
                     handleFileChange(event.currentTarget.files[0]);
                   }}
-                />
-                <ErrorSection name="name" component="div" /> */}
+                /> */}
 
               <ErrorMessage
                 name="name"
@@ -131,14 +153,12 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="name"
                 variant="outlined"
                 placeholder={user.name}
-                // value={values.name}
-                onChange={handleFileChange()}
                 fullWidth
-                color="input"
+                onChange={handleChange}
+                 sx={form.input}
                 inputProps={{
                   style: { color: '#FFF' },
                 }}
-                sx={form.input}
               />
               <ErrorMessage
                 name="email"
@@ -154,14 +174,12 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="email"
                 variant="outlined"
                 placeholder={user.email}
-                // value={values.email}
-                onChange={handleFileChange()}
                 fullWidth
-                color="input"
+                onChange={handleChange}
+                 sx={form.input}
                 inputProps={{
                   style: { color: '#FFF' },
                 }}
-                sx={form.input}
               />
               <ErrorMessage
                 name="text"
@@ -177,11 +195,9 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 name="password"
                 type={password ? 'text' : 'password'}
                 placeholder="Create a password"
-                // value={values.password}
-                onChange={handleFileChange}
                 fullWidth
-                color="input"
-                sx={form.input}
+                 sx={form.input}
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -212,8 +228,8 @@ const EditProfileTest = ({ avatarURL, onCloseModal }) => {
                 Send
               </Button>
             </FormControl>
-          </form>
-        )}
+          </form> 
+         )}
       </Formik>
     </Box>
   );

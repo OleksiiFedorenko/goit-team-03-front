@@ -102,8 +102,22 @@ export const profileImg = {
   objectFit: 'cover',
 };
 
-export const profileImgForm = { width: '68px', height: '68px', ml: '8px' };
+export const profileImgForm = {
+  width: '68px',
+  height: '68px',
+  ml: '8px',
+};
 
+export const profileIconPlus = {
+  position: 'absolute',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  transition: 'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+  width: '24px',
+  height: '24px',
+  color: 'rgba(22, 22, 22, 1)',
+};
 export const createBoardWrapper = {
   my: '8px',
   '&::before, &::after': {
@@ -167,13 +181,16 @@ export const boardListItem = {
   p: 0,
   pl: { zeroUp: '14px', tablet: '24px' },
   color: 'text.sideSecond',
+  stroke: 'currentColor',
   fontWeight: 500,
   '&:hover, &:focus': {
     color: 'text.sideMain',
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
   },
   '&.active': {
     color: 'text.sideMain',
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
     '&::after': {
       content: '""',
@@ -191,16 +208,13 @@ export const boardListBox = {
   height: '100%',
   borderRadius: '4px 0px 0px 4px',
 };
-export const iconEl = {
+
+export const boardEdit = {
   width: '18px',
   height: '18px',
   fill: 'transparent',
-  color: 'icon.svgPlusCard',
+  color: 'icon.boardEdit',
   stroke: 'currentColor',
-  '&hover, &:focus': {
-    color: 'text.primary',
-    stroke: 'currentColor',
-  },
 };
 
 export const logOut = {
@@ -212,24 +226,14 @@ export const logOut = {
   mt: '10px',
   mb: { zeroUp: 0, tablet: '10px' },
   color: 'text.sideMain',
+  stroke: 'currentColor',
   textAlign: 'start',
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
+    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
   },
-};
-
-export const svgIconPlus = {
-  width: 14,
-  height: 14,
-  color: 'background.btnPlus',
-};
-
-export const svgIconPlusAnother = {
-  width: 14,
-  height: 14,
-  color: 'background.btnPlusAnother',
 };
 
 export const boxIconPlus = {
@@ -320,4 +324,29 @@ export const addCardIcon = {
   ml: 0.05,
   mt: 0.9,
   color: 'background.btnPlusCard',
+};
+
+export const helpBannerBtn = {
+  display: 'flex',
+  justifyСontent: 'flex-start',
+  alignItems: 'flex-start',
+  color: 'text.sideMain',
+  '&:hover': {
+    color: 'primary.main',
+  },
+  p: 0,
+  width: {
+    zeroUp: 197,
+    tablet: 212,
+  },
+};
+export const boardFormIconWrapper = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
 };

@@ -8,7 +8,7 @@ const ModalWindow = ({ isOpenModal, onCloseModal, children }) => {
     <Modal open={isOpenModal} onClose={onCloseModal}>
       <Box sx={container.modal}>
         <Box onClick={onCloseModal} sx={button.closeBtn}>
-          <Icon id={'x-close'} sx={icon.svgClose} />
+          <Icon id={'x-close'} sx={icon.close} />
         </Box>
         {children}
       </Box>
