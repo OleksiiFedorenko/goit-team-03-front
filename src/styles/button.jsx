@@ -105,19 +105,19 @@ export const profileImg = {
 export const profileImgForm = {
   width: '68px',
   height: '68px',
-  ml: '8px'
+  ml: '8px',
 };
 
 export const profileIconPlus = {
- position:'absolute',
- top:'98%',
- left:'50%',
- transform:'translate(-50%, -50%)',
- transition:'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
- width:'24px',
- height:'24px',
- color:'rgba(22, 22, 22, 1)'
-}
+  position: 'absolute',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  transition: 'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+  width: '24px',
+  height: '24px',
+  color: 'rgba(22, 22, 22, 1)',
+};
 export const createBoardWrapper = {
   my: '8px',
   '&::before, &::after': {
@@ -339,4 +339,14 @@ export const helpBannerBtn = {
     zeroUp: 197,
     tablet: 212,
   },
+};
+export const boardFormIconWrapper = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
 };
