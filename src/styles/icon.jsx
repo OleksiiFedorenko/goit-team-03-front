@@ -117,11 +117,11 @@ export const iconLabel = {
   borderRadius: '50%',
   backgroundColor: 'transparent',
   textAlign: 'center',
-  /* color:  */
+  color: 'text.secondary',
   opacity: '0.5',
 
   '&:hover, &:focus': {
-    /* color: */
+    color: 'primary.main',
     opacity: '1',
     scale: '1.2',
   },
