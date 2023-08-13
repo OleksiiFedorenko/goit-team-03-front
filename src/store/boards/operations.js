@@ -94,6 +94,7 @@ export const addColumn = createAsyncThunk(
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/columns', { title, parentBoard });
+      console.log(data)
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
