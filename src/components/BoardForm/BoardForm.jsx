@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Icon } from 'components/Icons';
 import { button, icon } from 'styles';
 import {
@@ -14,7 +14,6 @@ import {
   FormEl,
   IconLabel,
   Icontainer,
-  IconWrap,
   ImageWrap,
   Input,
   Label,
@@ -135,9 +134,9 @@ const BoardForm = ({
             type="submit"
             disabled={isSubmitting || !dirty}
           >
-            <IconWrap>
+            <Box sx={button.boardFormIconWrapper}>
               <Icon id={'plus'} sx={icon.plusAdd} />
-            </IconWrap>
+            </Box>
             <span>{type}</span>
           </Btn>
         </FormEl>
