@@ -4,6 +4,7 @@ import { NavLink, useParams, Navigate } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
+import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
 import {
   getBoardById,
@@ -28,6 +29,7 @@ export const BoardNavList = ({ boards }) => {
   const { boardId } = useParams();
   const board = useSelector(selectBoard);
   const [isDeleteBoard, setIsDeleteBoard] = useState(false);
+  const [ShowDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
 
   useEffect(() => {
     if (boardId) dispatch(getBoardById(boardId));
@@ -39,17 +41,23 @@ export const BoardNavList = ({ boards }) => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setShowDeleteConfirmModal(false);
   };
 
   const handleDeleteBoard = () => {
-    if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
-      dispatch(deleteBoard(board._id));
-      setIsDeleteBoard(true);
-    }
+    // if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
+    dispatch(deleteBoard(board._id));
+    setIsDeleteBoard(true);
+    setShowDeleteConfirmModal(false);
+    // }
   };
   useEffect(() => {
     setIsDeleteBoard(false);
   }, [isDeleteBoard]);
+
+  const openDeleteConfirmModal = () => {
+    setShowDeleteConfirmModal(true);
+  };
 
   return (
     <>
@@ -75,7 +83,7 @@ export const BoardNavList = ({ boards }) => {
                       <Icon id={'pencil'} sx={icon.boardItem} />
                     </Box>
                     <Box
-                      onClick={handleDeleteBoard}
+                      onClick={openDeleteConfirmModal}
                       size="small"
                       color="inherit"
                       sx={{ mr: '20px', display: 'flex' }}
@@ -105,6 +113,12 @@ export const BoardNavList = ({ boards }) => {
           }}
         />
       </Modal>
+
+      <DeleteConfirmModal
+        isOpenModal={ShowDeleteConfirmModal}
+        onCloseModal={handleCloseModal}
+        onConfirm={handleDeleteBoard}
+      />
     </>
   );
 };
