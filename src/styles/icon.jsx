@@ -109,3 +109,10 @@ export const filter = {
   fill: 'transparent',
   stroke: 'currentColor',
 };
+export const alert = {
+  width: '16px',
+  height: '16px',
+  color: 'icon.alert',
+  fill: 'transparent',
+  stroke: 'currentColor',
+};
