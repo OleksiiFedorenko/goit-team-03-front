@@ -91,6 +91,7 @@ export const auth = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+  maxHeight: 470,
   width: {
     zeroUp: '90%',
     mobileFixed: 335,
