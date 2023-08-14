@@ -97,9 +97,7 @@ export const auth = {
     tablet: 424,
   },
   bgcolor: '#151515',
-  border: '1px solid rgba(190, 219, 176, 0.5)',
   borderRadius: '8px',
-  boxShadow: 24,
   p: {
     zeroUp: '24px',
     tablet: '40px',
