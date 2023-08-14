@@ -351,3 +351,14 @@ export const boardFormIconWrapper = {
   bgcolor: 'background.boxPlus',
   borderRadius: 0.75,
 };
+export const editUserEye = {
+  position: 'absolute',
+  minWidth: '18px',
+  bottom: '-5px',
+  right: '15px',
+  p: '0',
+  transform: 'translateY(-50%)',
+  backgroundColor: 'transparent',
+  border: 'none',
+  opacity: '0.4000000059604645',
+};

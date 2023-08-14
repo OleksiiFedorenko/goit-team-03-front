@@ -341,3 +341,43 @@ export const cardForm = {
     tablet: 302,
   },
 };
+export const editUserWrapper = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+  justifyContent: 'baseline',
+  width: {
+    zeroUp: '285px',
+    mobileFixed: '285px',
+    tablet: '350px',
+  },
+};
+
+export const editUserImgWrapper = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '68px',
+  height: '68px',
+  borderRadius: '8px',
+  transition:
+    'all 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
+};
+
+export const editUserPlusWrapper = {
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '24px',
+  height: '24px',
+  bgcolor: 'background.btnPlusAvatar',
+  borderRadius: '8px',
+};
