@@ -30,7 +30,6 @@ export const error = {
 export const form = {
   display: 'flex',
   flexDirection: 'column',
-  bgcolor: '#1F1F1F',
 
   width: {
     zeroUp: '100%',

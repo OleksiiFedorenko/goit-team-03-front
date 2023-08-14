@@ -58,7 +58,7 @@ export const AuthFormRegister = () => {
         inputProps={{
           style: { color: 'white' },
         }}
-    />
+      />
 
       {formik.touched.email && formik.errors.email ? (
         <Box component='div' sx={form.error}>{formik.errors.email}</Box>
@@ -78,7 +78,7 @@ export const AuthFormRegister = () => {
         }}
         color='input'
         sx={form.input}
-    />
+      />
 
       {formik.touched.password && formik.errors.password ? (
         <Box component='div' sx={form.error}>{formik.errors.password}</Box>
@@ -113,4 +113,4 @@ export const AuthFormRegister = () => {
       </Button>
     </FormControl>
   );
-}
+} 
