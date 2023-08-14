@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
 // import Column from 'components/Column/Column';
 import AddColumnButton from 'components/AddColumn/AddColumnButton';
-import { selectBoard, selectColumns } from 'store/boards/selectors';
+import {
+  selectBoard,
+  selectColumns,
+  selectError,
+} from 'store/boards/selectors';
 
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
@@ -19,6 +23,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const BoardPage = () => {
   const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
+  const error = useSelector(selectError);
+
+  if (error) {
+    toast.error(error, {
+      position: 'bottom-right',
+    });
+  }
+
   // console.log('BOARD: ', board);
   // console.log('COLUMNS: ', columns);
 
@@ -53,10 +65,7 @@ const BoardPage = () => {
             <FilterBtn />
           </Box>
 
-          <Box
-            // style={{ outline: '2px dashed tomato' }}
-            sx={container.columns}
-          >
+          <Box sx={container.columns}>
             <Box>
               {/* ---------------------------------------------------------------- */}
               <DragDropContext
@@ -104,8 +113,8 @@ const BoardPage = () => {
             </Box>
             <AddColumnButton />
           </Box>
+          <ToastContainer autoClose={3000} />
         </Box>
-        <ToastContainer autoClose={3000} />
       </Box>
     </Scrollbar>
   );
