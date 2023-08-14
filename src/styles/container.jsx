@@ -157,18 +157,8 @@ export const boardInner = {
   },
 };
 
-export const boardTopBar = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-};
-
 export const dndContainerColumn = {
   minHeight: '20px',
-  // for some f**king unbelievable reason only fixed styling is working
-  // maxHeight: 'calc(100vh - 68px)',
-  // maxHeight: '100%',
-  // maxHeight: '470px',
 };
 
 export const columns = {
