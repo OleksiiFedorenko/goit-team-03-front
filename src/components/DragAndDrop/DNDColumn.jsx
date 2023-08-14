@@ -29,6 +29,7 @@ export const DNDColumn = ({ column, tasks, index }) => {
               bgcolor: snapshot.draggingOver
                 ? 'background.alphaDND'
                 : 'transparent',
+              borderRadius: snapshot.draggingOver ? '8px' : '0',
             }}
           >
             <div {...provided.dragHandleProps}>
