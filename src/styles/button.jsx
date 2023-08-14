@@ -41,10 +41,11 @@ export const closeBtn = {
   width: '24px',
   height: '24px',
   borderRadius: '50%',
-
+  cursor: 'pointer',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+
   '&:hover, &:focus': {
     bgcolor: 'primary.main',
   },
@@ -105,19 +106,19 @@ export const profileImg = {
 export const profileImgForm = {
   width: '68px',
   height: '68px',
-  ml: '8px'
+  ml: '8px',
 };
 
 export const profileIconPlus = {
- position:'absolute',
- top:'98%',
- left:'50%',
- transform:'translate(-50%, -50%)',
- transition:'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
- width:'24px',
- height:'24px',
- color:'rgba(22, 22, 22, 1)'
-}
+  position: 'absolute',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  transition: 'all 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+  width: '24px',
+  height: '24px',
+  color: 'rgba(22, 22, 22, 1)',
+};
 export const createBoardWrapper = {
   my: '8px',
   '&::before, &::after': {
@@ -170,7 +171,7 @@ export const boardListGroup = {
   alignItems: 'flex-start',
   flexDirection: 'column',
   gap: '4px',
-  mt: '40px',
+  // mt: '40px',
   p: 0,
   width: '100%',
 };
@@ -290,7 +291,10 @@ export const addColumnIcon = {
 };
 
 export const addCard = {
-  width: '100%',
+  width: {
+    zeroUp: 'calc(100vw - 40px)',
+    mobileFixed: '100%',
+  },
   height: '56px',
   lineHeight: 1.5,
   textTransform: 'none',
@@ -327,9 +331,6 @@ export const addCardIcon = {
 };
 
 export const helpBannerBtn = {
-  display: 'flex',
-  justifyСontent: 'flex-start',
-  alignItems: 'flex-start',
   color: 'text.sideMain',
   '&:hover': {
     color: 'primary.main',
@@ -339,4 +340,14 @@ export const helpBannerBtn = {
     zeroUp: 197,
     tablet: 212,
   },
+};
+export const boardFormIconWrapper = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  mr: '8px',
+  width: '28px',
+  height: '28px',
+  bgcolor: 'background.boxPlus',
+  borderRadius: 0.75,
 };

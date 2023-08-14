@@ -1,26 +1,19 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { Typography } from '@mui/material';
-import { Icon } from 'components/Icons';
-import { button, icon } from 'styles';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
 import {
-  BgLabel,
-  BoardBg,
-  BoardIcon,
-  Btn,
-  Error,
-  FormEl,
-  IconLabel,
-  Icontainer,
-  IconWrap,
-  ImageWrap,
-  Input,
-  Label,
-  Text,
-} from './BoardForm.styled';
+  Box,
+  FormControl,
+  FormLabel,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { Icon } from 'components/Icons';
+import { button, container, form, input, text } from 'styles';
 import { previews } from 'helpers/getBgPreviews';
+import SubmitButton from 'components/FormsUI/SubmitButton';
+import { iconLabel } from 'styles/icon';
 
 const iconNames = [
   'project',
@@ -50,7 +43,6 @@ const initialValues = {
 };
 
 const BoardForm = ({
-  onSubmitForm,
   onCloseModal,
   initData,
   title,
@@ -61,7 +53,6 @@ const BoardForm = ({
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    // onSubmitForm(values);
     const submitvalues = !id ? values : { ...values, id };
     dispatch(boardOperation(submitvalues));
 
@@ -71,85 +62,97 @@ const BoardForm = ({
   };
 
   return (
-    <Formik
-      initialValues={initData ? initData : initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-      validationOnBlur={true}
-    >
-      {({ isSubmitting, dirty, values }) => (
-        <FormEl>
-          <Typography variant="h2" mb={2}>
-            {title}
-          </Typography>
-          <Label>
-            <Input type="text" name="title" placeholder="Title" autoFocus />
-            <Error name="title" component="div" />
-          </Label>
+    <Box sx={container.addColumnContainer}>
+      <Formik
+        initialValues={initData ? initData : initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+        validationOnBlur={true}
+      >
+        {({ handleChange, values }) => (
+          <Form>
+            <Typography variant="h2" mb={'24px'}>
+              {title}
+            </Typography>
+            <FormLabel>
+              <TextField
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={values.title}
+                onChange={handleChange}
+                sx={input.boardForm}
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                style={form.errorMessage}
+              />
+            </FormLabel>
+            <FormControl>
+              <FormLabel sx={form.label}>
+                <Typography variant="h3" sx={text.label}>
+                  Icons
+                </Typography>
+                <Box role="group" sx={container.iconBox}>
+                  {iconNames.map((icon, index) => (
+                    <Box key={index} sx={container.boardIcon}>
+                      <Field
+                        type="radio"
+                        id={index}
+                        name="icon"
+                        value={icon}
+                        checked={values.icon === icon}
+                      />
+                      <FormLabel htmlFor={index} sx={iconLabel}>
+                        <Icon id={icon} sx={button.boardEdit}></Icon>
+                      </FormLabel>
+                    </Box>
+                  ))}
+                </Box>
+                <ErrorMessage name="icon" component="div" />
+              </FormLabel>
 
-          <Label>
-            <Text>Icons</Text>
-            <Icontainer role="group">
-              {iconNames.map((icon, index) => (
-                <BoardIcon key={index}>
-                  <Input
-                    type="radio"
-                    id={index}
-                    name="icon"
-                    value={icon}
-                    checked={values.icon === icon}
-                  />
-                  <IconLabel htmlFor={index}>
-                    <Icon id={icon} sx={button.boardEdit}></Icon>
-                  </IconLabel>
-                </BoardIcon>
-              ))}
-            </Icontainer>
-            <Error name="icon" component="div" />
-          </Label>
-
-          <Label>
-            <Text>Background</Text>
-            <ImageWrap>
-              {previews.map((preview, index) => (
-                <BoardBg key={index}>
-                  <Input
-                    type="radio"
-                    id={`back${index}`}
-                    name="background"
-                    value={index}
-                    checked={Number(values.background) === index}
-                  />
-                  <BgLabel
-                    htmlFor={`back${index}`}
-                    style={{ backgroundImage: `url(${preview})` }}
-                  />
-                </BoardBg>
-              ))}
-            </ImageWrap>
-
-            <Error name="background" component="div" />
-          </Label>
-          <Btn
-            variant="contained"
-            type="submit"
-            disabled={isSubmitting || !dirty}
-          >
-            <IconWrap>
-              <Icon id={'plus'} sx={icon.plusAdd} />
-            </IconWrap>
-            <span>{type}</span>
-          </Btn>
-        </FormEl>
-      )}
-    </Formik>
+              <FormLabel sx={form.label} style={{ marginBottom: '40px' }}>
+                <Typography variant="h3" sx={text.label}>
+                  Background
+                </Typography>
+                <Box sx={container.imageWrap}>
+                  {previews.map((preview, index) => (
+                    <Box key={index} sx={container.boardBg}>
+                      <Field
+                        type="radio"
+                        id={`back${index}`}
+                        name="background"
+                        value={index}
+                        checked={Number(values.background) === index}
+                      />
+                      <FormLabel
+                        htmlFor={`back${index}`}
+                        sx={form.bgLabel}
+                        style={{ backgroundImage: `url(${preview})` }}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+                <ErrorMessage name="background" component="div" />
+              </FormLabel>
+            </FormControl>
+            <SubmitButton>{type}</SubmitButton>
+          </Form>
+        )}
+      </Formik>
+    </Box>
   );
 };
 
 BoardForm.propTypes = {
   onCloseModal: PropTypes.func.isRequired,
+  initData: PropTypes.object,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  boardOperation: PropTypes.func.isRequired,
+  id: PropTypes.string,
 };
 
 export default BoardForm;

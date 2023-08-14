@@ -1,7 +1,7 @@
 import { Box, Button, Stack, SvgIcon } from '@mui/material';
 import ColumnHeader from 'components/Column/ColumnHeader';
 import { Draggable } from 'react-beautiful-dnd';
-import { button, card } from 'styles';
+import { container, button, card } from 'styles';
 import { StrictModeDroppable } from './StrictModeDroppable';
 import TaskList from 'components/Column/TaskList';
 import sprite from 'components/Icons/sprite.svg';
@@ -30,16 +30,25 @@ export const DNDColumn = ({ column, tasks, index }) => {
             <StrictModeDroppable droppableId={column._id} type="task">
               {(provided, snapshot) => (
                 <>
-                  <div
+                  {/* Adding Box for scrolls and for styling */}
+                  <Box
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     isdraggingover={`${snapshot.isDraggingOver}`}
+                    sx={container.dndContainerColumn}
                   >
+                    {/* <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      isdraggingover={`${snapshot.isDraggingOver}`}
+                      style={{ minHeight: 20, maxHeight: 470 }}
+                    > */}
                     <TaskList
                       cards={tasks}
                       placeholder={provided.placeholder}
                     />
-                  </div>
+                    {/* </div> */}
+                  </Box>
                   <Button
                     variant="contained"
                     sx={button.addCard}

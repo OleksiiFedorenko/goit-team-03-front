@@ -9,7 +9,10 @@ export const column = {
 };
 
 export const header = {
-  width: '100%',
+  width: {
+    zeroUp: 'calc(100vw - 40px)',
+    mobileFixed: '100%',
+  },
   height: '56px',
   py: '18px',
   px: '20px',
