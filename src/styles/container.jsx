@@ -354,10 +354,8 @@ export const boardBg = {
 
 export const cardForm = {
   p: 0,
-  maxWidth: '250px',
   width: {
-    // zeroUp: '250px',
-    mobileFixed: '287px',
-    tablet: '302px',
+    zeroUp: 287,
+    tablet: 302,
   },
 };
