@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getLogin } from 'store/auth/operations';
-import { Button, TextField, OutlinedInput, InputAdornment, IconButton, FormControl, Box, Link  } from '@mui/material';
+import { Button, TextField, OutlinedInput, InputAdornment, IconButton, FormControl, Box } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { useFormik } from 'formik';
@@ -34,10 +34,6 @@ export const AuthFormLogin = () => {
     validationSchema,
     onSubmit,
   });
-
-  // const hendelLoginForEmail = async() => {
-  //   await axios.get('https://taskpro-m75b.onrender.com/api/auth/google');
-  // }
 
   return (
     <FormControl 
@@ -99,10 +95,6 @@ export const AuthFormLogin = () => {
       >
         Log In Now
       </Button>
-
-      <Link href='https://taskpro-m75b.onrender.com/api/auth/google'>
-        Log In for Google
-      </Link>
 
     </FormControl>
   );

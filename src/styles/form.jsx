@@ -89,3 +89,16 @@ export const errorMessage = {
   opacity: '0.9',
   color: '#e66666',
 };
+
+export const link = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
+  backgroundColor: '#FFF',
+  borderRadius: "8px",
+  height: '49px',
+  color: '#000',
+  fontFamily: 'Poppins',
+  fontWeight: 500,
+}

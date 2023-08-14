@@ -14,7 +14,7 @@ const form = {
   button: {
     main: '#BEDBB0',
     contrastText: '#161616',
-  },
+  }, 
 };
 
 const standardParams = {

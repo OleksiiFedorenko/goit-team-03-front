@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { getRegistration } from 'store/auth/operations';
-import { Button, TextField, OutlinedInput, InputAdornment, IconButton, Box, FormControl } from '@mui/material';
+import { Button, TextField, OutlinedInput, InputAdornment, IconButton, Box, FormControl, Link } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { useFormik } from 'formik';
@@ -103,6 +103,13 @@ export const AuthFormRegister = () => {
           </InputAdornment>
         }
       />
+      <Link
+          sx={form.link} 
+          href='https://taskpro-m75b.onrender.com/api/auth/google'
+        >
+          Login with Google
+        </Link>
+      
       <Button 
         color="button" 
         variant="contained"
