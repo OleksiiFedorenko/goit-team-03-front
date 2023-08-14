@@ -11,6 +11,8 @@ import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 import { FilterBtn } from 'components/Filter';
 
+import bgImg from 'images/backgrounds.json';
+
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardInnerList, StrictModeDroppable } from 'components/DragAndDrop';
 import { useDispatch } from 'react-redux';
@@ -20,6 +22,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const BoardPage = () => {
+  const dispatch = useDispatch();
   const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
   const error = useSelector(selectError);
@@ -34,8 +37,6 @@ const BoardPage = () => {
   // console.log('COLUMNS: ', columns);
 
   const filter = useSelector(selectPrioFilter);
-
-  const dispatch = useDispatch();
 
   const onDragEnd = result => {
     if (filter !== 'all') {
@@ -52,70 +53,77 @@ const BoardPage = () => {
   //   return <div>Loading...</div>;
   // } // ----- triggers bug on empty board
 
+  const bgURL =
+    board.background === 0 ? '' : bgImg.find(bg => bg.id === board.background);
+  const bgImage = {
+    background: {
+      zeroUp: `url("${bgURL?.retina_m}") no-repeat 50% 50%`,
+      tablet: `url("${bgURL?.retina_t}") no-repeat 50% 50%`,
+      desktop: `url("${bgURL?.retina_d}") no-repeat 50% 50%`,
+    },
+    backgroundSize: 'cover',
+  };
+
   return (
     <>
-        <Box sx={container.board}>
-          <Box sx={container.boardInner}>
-            <Box sx={container.boardTopBar}>
-              <Typography component="h2" variant="h3" sx={text.boardTitle}>
-                {board.title}
-              </Typography>
+      <Box sx={{ ...container.board, ...bgImage }}>
+        <Box sx={container.boardInner}>
+          <Typography component="h2" variant="h3" sx={text.boardTitle}>
+            {board.title}
+          </Typography>
+          <FilterBtn />
 
-              {/* <FilterBtn /> */}
-            </Box>
-
-            <Box sx={container.columns}>
-              <Box>
-                {/* ---------------------------------------------------------------- */}
-                <DragDropContext
-                  onDragStart={() => {}}
-                  onDragUpdate={() => {}}
-                  onDragEnd={onDragEnd}
+          <Box sx={container.columns}>
+            <Box>
+              {/* ---------------------------------------------------------------- */}
+              <DragDropContext
+                onDragStart={() => {}}
+                onDragUpdate={() => {}}
+                onDragEnd={onDragEnd}
+              >
+                <StrictModeDroppable
+                  droppableId={'all-columns'}
+                  direction="horizontal"
+                  type="column"
                 >
-                  <StrictModeDroppable
-                    droppableId={'all-columns'}
-                    direction="horizontal"
-                    type="column"
-                  >
-                    {provided => (
-                      <Box
-                        // style={{ outline: '1px dashed teal', display: 'flex' }}
-                        sx={container.columnsInner}
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                      >
-                        {board.columnOrder.map((columnId, index) => {
-                          const column = columns.find(
-                            item => item._id === columnId
-                          );
+                  {provided => (
+                    <Box
+                      // style={{ outline: '1px dashed teal', display: 'flex' }}
+                      sx={container.columnsInner}
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      {board.columnOrder.map((columnId, index) => {
+                        const column = columns.find(
+                          item => item._id === columnId
+                        );
 
-                          // console.log('COLUMN: ', column);
+                        // console.log('COLUMN: ', column);
 
-                          // todo ///////////////////
-                          // if (!column) return null;
-                          return (
-                            <BoardInnerList
-                              key={column._id}
-                              column={column}
-                              tasksArr={column.tasks}
-                              index={index}
-                            />
-                          );
-                        })}
+                        // todo ///////////////////
+                        // if (!column) return null;
+                        return (
+                          <BoardInnerList
+                            key={column._id}
+                            column={column}
+                            tasksArr={column.tasks}
+                            index={index}
+                          />
+                        );
+                      })}
 
-                        {provided.placeholder}
-                      </Box>
-                    )}
-                  </StrictModeDroppable>
-                </DragDropContext>
-                {/* ---------------------------------------------------------------- */}
-              </Box>
-              <AddColumnButton />
+                      {provided.placeholder}
+                    </Box>
+                  )}
+                </StrictModeDroppable>
+              </DragDropContext>
+              {/* ---------------------------------------------------------------- */}
             </Box>
-            <ToastContainer autoClose={3000} />
+            <AddColumnButton />
           </Box>
+          <ToastContainer autoClose={3000} />
         </Box>
-      <FilterBtn />
+      </Box>
     </>
   );
 };
