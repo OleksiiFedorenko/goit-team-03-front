@@ -12,7 +12,6 @@ import defaultAvatarDark from '../../images/default-avatar-dark.png';
 
 import {
   EditWrapper,
-  IconStyle,
   Title,
   FormWrapper,
   ErrorSection,
