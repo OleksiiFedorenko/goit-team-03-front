@@ -171,6 +171,9 @@ export const violetTheme = createTheme({
       horizontalTrackActive: 'rgba(184, 188, 253, 0.6)',
     },
     loader: '#5255BC',
+    modalForm: {
+      inputBorder: 'rgba(82, 85, 188, 0.4)',
+    },
     ...form,
   },
   ...standardParams,
@@ -249,6 +252,9 @@ export const lightTheme = createTheme({
       horizontalTrackActive: 'rgba(22, 22, 22, 0.3)',
     },
     loader: '#BEDBB0',
+    modalForm: {
+      inputBorder: 'rgba(190, 219, 176, 0.4)',
+    },
     ...form,
   },
   ...standardParams,
@@ -327,6 +333,9 @@ export const darkTheme = createTheme({
       horizontalTrackActive: 'rgba(255, 255, 255, 0.6',
     },
     loader: '#FFFFFF80',
+    modalForm: {
+      inputBorder: 'rgba(190, 219, 176, 0.4)',
+    },
     ...form,
   },
   ...standardParams,

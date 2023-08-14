@@ -249,7 +249,6 @@ export const ImgWrapperContainer = {
   //     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
   //   }
 };
-
 export const taskListScroll = {
   width: {
     zeroUp: '100%',
@@ -353,5 +352,13 @@ export const boardBg = {
 
   'input:checked + label': {
     opacity: '0.4',
+  },
+};
+
+export const cardForm = {
+  p: 0,
+  width: {
+    zeroUp: 287,
+    tablet: 302,
   },
 };
