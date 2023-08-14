@@ -65,7 +65,7 @@ const WelcomePage = () => {
               sx={form.link}
             >
               <Icon id={'google'} sx={{width: '20px'}}/>
-              Login with Google
+              Log in with Google
             </ListItemButton>
           </ListItem>
         </List>
