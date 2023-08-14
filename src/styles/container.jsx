@@ -75,7 +75,7 @@ export const board = {
   overflowY: 'hidden',
   overflowX: 'auto',
   '&::-webkit-scrollbar': {
-    height: '12px',   
+    height: '12px',
   },
   '&::-webkit-scrollbar-track': {
     minWidth: '179px',
@@ -227,12 +227,6 @@ export const modal = {
   p: '24px',
 };
 
-// export const modalContent = {
-//   width: {
-//     mobileFixed: '95%',
-//   },
-// };
-
 export const helpBannerContainer = {
   m: 'auto',
   bgcolor: 'background.helpBanner',
@@ -253,10 +247,11 @@ export const helpFormContainer = {
 
 export const addColumnContainer = {
   width: {
-    zeroUp: 287,
+    mobileFixed: 287,
     tablet: 302,
   },
 };
+
 export const ImgWrapperContainer = {
   position: 'relative',
   width: '68px',
@@ -308,11 +303,14 @@ export const taskListScroll = {
 };
 
 export const taskList = {
-  width: '334px',
   gap: '8px',
   margin: 0,
   padding: 0,
   height: '100%',
+  width: {
+    zeroUp: 'calc(100vw - 40px)',
+    mobileFixed: '334px',
+  },
 };
 
 export const iconBox = {
