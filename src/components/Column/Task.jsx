@@ -63,7 +63,16 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
           <Card
             sx={{
               ...card.task,
-              borderLeft: `4px solid ${priorityColor}`,
+              position: 'relative',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '4px',
+                height: '100%',
+                background: priorityColor,
+              },
             }}
           >
             <Box>

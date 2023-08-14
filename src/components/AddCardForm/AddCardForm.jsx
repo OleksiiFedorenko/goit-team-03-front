@@ -16,7 +16,6 @@ import {
   Box,
 } from '@mui/material';
 
-// import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
 import { formatDate } from 'helpers/formatDate';
 import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 import { container } from 'styles';
@@ -152,14 +151,7 @@ const AddCardForm = ({
             <Typography variant="body2" component="h4" mb={0.5}>
               Deadline
             </Typography>
-            {/* <DatePickerBtn
-              name="deadline"
-              sx={{
-                marginBottom: '40px',
-              }}
-            >
-              Today, March 8
-            </DatePickerBtn> */}
+
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box>{getDeadlineInfo(deadline)}</Box>
               <Calendar parentState={setDateValue} />
