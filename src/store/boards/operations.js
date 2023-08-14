@@ -1,14 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://taskpro-m75b.onrender.com/api';
+import { instance } from '../auth/operations';
 
 export const needHelp = createAsyncThunk(
   'help',
   async ({ email, text }, thunkAPI) => {
     try {
-      const { data } = await axios.post('/help', {
+
+const { data } =  await instance.post('/help', {
+
         email,
         message: text,
       });
@@ -26,8 +27,11 @@ export const getAllBoards = createAsyncThunk(
   'boards/getAllBoards',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/boards');
-      console.log(data);
+
+
+      const { data } = await instance.get('/boards');      
+ console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -39,8 +43,10 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/boards/${id}`);
-      console.log(data);
+
+      const { data } = await instance.get(`boards/${id}`);
+      console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -52,7 +58,9 @@ export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async ({ title, icon, background }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/boards', { title, icon, background });
+
+      const { data } = await instance.post('boards', { title, icon, background });
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -64,12 +72,15 @@ export const updateBoard = createAsyncThunk(
   'board/updateBoard',
   async ({ id, title, icon, background }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`/boards/${id}`, {
+
+      const { data } = await instance.put(`/boards/${id}`, {
         title,
         icon,
         background,
       });
+
       console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -81,7 +92,7 @@ export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/boards/${id}`);
+      const { data } = await instance.delete(`/boards/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -93,7 +104,7 @@ export const addColumn = createAsyncThunk(
   'boards/addColumn',
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/columns', { title, parentBoard });
+      const { data } = await instance.post('/columns', { title, parentBoard });
       console.log(data);
       return data;
     } catch (error) {
@@ -106,7 +117,7 @@ export const getColumnById = createAsyncThunk(
   'boards/getColumnById',
   async (columnId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/columns/${columnId}`);
+      const { data } = await instance.get(`/columns/${columnId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -118,7 +129,7 @@ export const updateColumn = createAsyncThunk(
   'boards/updateColumn',
   async ({ columnId, title }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`/columns/${columnId}`, { title });
+      const { data } = await instance.put(`/columns/${columnId}`, { title });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -130,7 +141,7 @@ export const deleteColumn = createAsyncThunk(
   'boards/deleteColumn',
   async (columnId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/columns/${columnId}`);
+      const { data } = await instance.delete(`/columns/${columnId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -143,7 +154,7 @@ export const addTask = createAsyncThunk(
   async (values, { rejectWithValue }) => {
     try {
       console.log(values);
-      const { data } = await axios.post('/tasks', values);
+      const { data } = await instance.post('/tasks', values);
       console.log(data);
       return data;
     } catch (error) {
@@ -156,7 +167,7 @@ export const getTaskById = createAsyncThunk(
   'boards/getTaskById',
   async (taskId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/tasks/${taskId}`);
+      const { data } = await instance.get(`/tasks/${taskId}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -171,8 +182,10 @@ export const updateTask = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log({ taskId, title, description, priority, deadline });
-      const { data } = await axios.put(`/tasks/${taskId}`, {
+
+      console.log( { taskId, title, description, priority, deadline })
+      const { data } = await instance.put(`/tasks/${taskId}`, {
+
         title,
         description,
         priority,
@@ -189,8 +202,10 @@ export const deleteTask = createAsyncThunk(
   'boards/deleteTask',
   async (_id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/tasks/${_id}`);
-      console.log(data);
+
+      const { data } = await instance.delete(`/tasks/${_id}`);
+      console.log(data)
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -202,9 +217,10 @@ export const changeColumn = createAsyncThunk(
   'boards/changeColumn',
   async ({ taskId, columnId, parentColumn }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/tasks/${taskId}/owner/${columnId}`, {
+      const { data } = await instance.patch(`/tasks/${taskId}/owner/${columnId}`, {
         parentColumn,
       });
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -216,7 +232,7 @@ export const updateColumnOrderAsync = createAsyncThunk(
   'boards/updateColumnOrderAsync',
   async ({ boardId, newColumnOrder }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`/boards/${boardId}`, {
+      const { data } = await instance.put(`/boards/${boardId}`, {
         columnOrder: newColumnOrder,
       });
       return data;
@@ -230,7 +246,7 @@ export const updateSingleTaskOrderAsync = createAsyncThunk(
   'boards/updateSingleTaskOrderAsync',
   async ({ taskId, columnId, newTaskOrder }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/tasks/${taskId}`, {
+      const { data } = await instance.patch(`/tasks/${taskId}`, {
         parentColumn: columnId,
         orderForCurrentColumn: newTaskOrder,
       });
@@ -248,7 +264,7 @@ export const updateComplexDNDAsync = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const { data } = await axios.patch(`/tasks/${taskId}`, {
+      const { data } = await instance.patch(`/tasks/${taskId}`, {
         parentColumn: finishId,
         orderForCurrentColumn: startTaskOrder,
         orderForNewColumn: finishTaskOrder,

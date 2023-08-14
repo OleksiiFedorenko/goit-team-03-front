@@ -12,20 +12,32 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     user: { name: null, email: null, avatarURL: '', theme: 'violet' },
-    token: '',
+    accessToken: '',
+    refreshToken: '',
     isLoggedIn: false,
     isRefreshing: false,
   },
-  extraReducers: builder => {
+   reducers: {
+    setRefreshToken(state, action) {
+      state.refreshToken = action.payload;
+    },
+    setAccessToken(state, action) {
+      state.accessToken = action.payload;
+    },   
+  },
+   extraReducers: builder => {
     builder
       .addCase(getRegistration.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
-        state.token = action.payload.token;
+        state.user = {...state.user, ...action.payload};
+        state.accessToken = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;        
         state.isLoggedIn = true;
       })
       .addCase(getLogin.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
-        state.token = action.payload.token;
+        state.user = {...state.user, ...action.payload};
+        state.accessToken = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;       
+
         state.isLoggedIn = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
@@ -35,7 +47,8 @@ const authSlice = createSlice({
           theme: 'violet',
           avatarURL: '',
         };
-        state.token = '';
+        state.accessToken = '';
+        state.refreshToken = '';
         state.isLoggedIn = false;
       })
       .addCase(fetchCurrentUser.pending, state => {
@@ -49,6 +62,8 @@ const authSlice = createSlice({
       })
       .addCase(fetchCurrentUser.rejected, state => {
         state.isRefreshing = false;
+        state.isLoggedIn = false;
+        state.accessToken = '';
       })
 
       .addCase(updateTheme.fulfilled, (state, action) => {
@@ -61,5 +76,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setRefreshToken, setAccessToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;
