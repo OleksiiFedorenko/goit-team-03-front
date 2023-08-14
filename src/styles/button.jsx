@@ -232,8 +232,10 @@ export const logOut = {
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
-    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
+    '& .icon': {
+      color: 'icon.logOutHover',
+    },
   },
 };
 

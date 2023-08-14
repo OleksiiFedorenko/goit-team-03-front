@@ -4,7 +4,7 @@ import { SvgIcon } from '@mui/material';
 
 export const Icon = ({ id, sx }) => {
   return (
-    <SvgIcon component="svg" sx={sx}>
+    <SvgIcon component="svg" sx={sx} className="icon">
       <use href={Icons + '#icon-' + id}></use>
     </SvgIcon>
   );
