@@ -75,16 +75,18 @@ export const board = {
   overflowY: 'hidden',
   overflowX: 'auto',
   '&::-webkit-scrollbar': {
-    width: '8px',
+    height: '12px',   
   },
   '&::-webkit-scrollbar-track': {
     minWidth: '179px',
     maxWidth: '637px',
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.horizontalScrollbar',
+    ml: '24px',
+    mr: '24px',
   },
   '&::-webkit-scrollbar-thumb': {
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.horizontalTrack',
   },
   '&::-webkit-scrollbar-thumb:hover': {
@@ -202,10 +204,23 @@ export const boardNav = {
 export const boardNavList = {
   mt: '40px',
   height: '150px',
-  scrollbarWidth: 'none',
-  overflow: 'scroll',
+  overflowY: 'scroll',
   '&::-webkit-scrollbar': {
-    width: '0px',
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.verticalScrollbar',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.verticalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.verticalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.verticalTrackActive',
   },
 };
 
@@ -287,11 +302,11 @@ export const taskListScroll = {
   '&::-webkit-scrollbar-track': {
     minHeight: '142px',
     maxHeight: '142px',
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalScrollbar',
   },
   '&::-webkit-scrollbar-thumb': {
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalTrack',
   },
   '&::-webkit-scrollbar-thumb:hover': {

@@ -134,3 +134,11 @@ export const alert = {
   fill: 'transparent',
   stroke: 'currentColor',
 };
+
+export const themeFilter = {
+  width: '16px',
+  height: '16px',
+  color: 'icon.filter',
+  fill: 'transparent',
+  stroke: 'currentColor',
+};
