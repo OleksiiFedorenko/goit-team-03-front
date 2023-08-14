@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
 import { instance } from '../auth/operations';
-// axios.defaults.baseURL = 'http://localhost:3001/api';
-
 
 export const needHelp = createAsyncThunk(
   'help',

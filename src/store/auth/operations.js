@@ -5,8 +5,7 @@ import { toast } from 'react-toastify';
 import {store} from '../index';
 import {setRefreshToken, setAccessToken } from './authSlice';
 
-export const instance =axios.create({baseURL: 'http://localhost:3001/api',});
-// https://taskpro-m75b.onrender.com/api
+export const instance =axios.create({baseURL: 'https://taskpro-m75b.onrender.com/api',});
 
 const setToken =(token) => {
   if(token) {
