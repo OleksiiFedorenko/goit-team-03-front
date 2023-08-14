@@ -245,13 +245,6 @@ export const helpFormContainer = {
   },
 };
 
-export const addColumnContainer = {
-  width: {
-    mobileFixed: 287,
-    tablet: 302,
-  },
-};
-
 export const ImgWrapperContainer = {
   position: 'relative',
   width: '68px',

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { addColumn } from 'store/boards/operations';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Box, FormControl, Typography } from '@mui/material';
+import { Container, FormControl, Typography } from '@mui/material';
 import { container } from 'styles';
 import Textfield from '../FormsUI/TextField';
 import SubmitButton from 'components/FormsUI/SubmitButton';
@@ -28,7 +28,7 @@ const AddColumnModal = ({ onCloseModal }) => {
     onCloseModal();
   };
   return (
-    <Box sx={container.addColumnContainer}>
+    <Container sx={container.cardForm}>
       <Typography variant="h2" mb={3}>
         Add column
       </Typography>
@@ -46,7 +46,7 @@ const AddColumnModal = ({ onCloseModal }) => {
           </Form>
         )}
       </Formik>
-    </Box>
+    </Container>
   );
 };
 
