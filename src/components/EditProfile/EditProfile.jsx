@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
 import { Icon } from 'components/Icons';
+import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+import defaultAvatarLight from '../../images/default-avatar-light.png';
+import defaultAvatarDark from '../../images/default-avatar-dark.png';
 
 import {
   EditWrapper,
@@ -35,16 +38,16 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters'),
-  
 });
 const initialValues = {
   name: '',
   email: '',
   password: '',
 };
-const EditProfile = ({ onCloseModal }) => {
+export const EditProfile = ({ onCloseModal }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const { theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
   const [currentImage, setCurrentImage] = useState(user.avatarURL);
   const [avatarURL, setAvatarURL] = useState('');
@@ -63,6 +66,22 @@ const EditProfile = ({ onCloseModal }) => {
     resetForm();
     onCloseModal();
   };
+
+  let avatar = avatarURL;
+  if (!avatar) {
+    switch (theme) {
+      case 'light':
+        avatar = defaultAvatarLight;
+        break;
+      case 'dark':
+        avatar = defaultAvatarDark;
+        break;
+      default:
+        avatar = defaultAvatarViolet;
+        break;
+    }
+  }
+
   const handleClickShowPassword = () => setPassword(show => !show);
   function handleFileChange(event) {
     const file = event;
@@ -89,13 +108,7 @@ const EditProfile = ({ onCloseModal }) => {
           <FormSection>
             <Label htmlFor="avatarURL">
               <ImgWrapper>
-                {currentImage ? (
-                  <Img src={currentImage} alt="User picture" />
-                ) : (
-                  <IconStyle>
-                    <Icon id={'user'} />
-                  </IconStyle>
-                )}
+                <Img src={currentImage || avatar} alt="User picture" />
                 <IconPlus aria-label="add">
                   <Icon id={'plus'} sx={icon.addProfileImg} />
                 </IconPlus>
@@ -159,5 +172,3 @@ const EditProfile = ({ onCloseModal }) => {
     </EditWrapper>
   );
 };
-
-export default EditProfile;
