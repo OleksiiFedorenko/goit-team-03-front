@@ -94,7 +94,7 @@ export const addColumn = createAsyncThunk(
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/columns', { title, parentBoard });
-      console.log(data)
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -204,6 +204,54 @@ export const changeColumn = createAsyncThunk(
     try {
       const { data } = await axios.patch(`/tasks/${taskId}/owner/${columnId}`, {
         parentColumn,
+      });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateColumnOrderAsync = createAsyncThunk(
+  'boards/updateColumnOrderAsync',
+  async ({ boardId, newColumnOrder }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`/boards/${boardId}`, {
+        columnOrder: newColumnOrder,
+      });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateSingleTaskOrderAsync = createAsyncThunk(
+  'boards/updateSingleTaskOrderAsync',
+  async ({ taskId, columnId, newTaskOrder }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/tasks/${taskId}`, {
+        parentColumn: columnId,
+        orderForCurrentColumn: newTaskOrder,
+      });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateComplexDNDAsync = createAsyncThunk(
+  'boards/updateComplexDNDAsync',
+  async (
+    { taskId, finishId, startTaskOrder, finishTaskOrder },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios.patch(`/tasks/${taskId}`, {
+        parentColumn: finishId,
+        orderForCurrentColumn: startTaskOrder,
+        orderForNewColumn: finishTaskOrder,
       });
       return data;
     } catch (error) {
