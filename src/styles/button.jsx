@@ -170,7 +170,7 @@ export const boardListGroup = {
   alignItems: 'flex-start',
   flexDirection: 'column',
   gap: '4px',
-  mt: '40px',
+  // mt: '40px',
   p: 0,
   width: '100%',
 };
@@ -290,7 +290,10 @@ export const addColumnIcon = {
 };
 
 export const addCard = {
-  width: '100%',
+  width: {
+    zeroUp: 'calc(100vw - 40px)',
+    mobileFixed: '100%',
+  },
   height: '56px',
   lineHeight: 1.5,
   textTransform: 'none',
@@ -327,9 +330,6 @@ export const addCardIcon = {
 };
 
 export const helpBannerBtn = {
-  display: 'flex',
-  justifyСontent: 'flex-start',
-  alignItems: 'flex-start',
   color: 'text.sideMain',
   '&:hover': {
     color: 'primary.main',
