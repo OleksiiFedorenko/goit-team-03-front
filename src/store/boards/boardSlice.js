@@ -87,7 +87,7 @@ const boardSlice = createSlice({
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards = [...state.boards, action.payload];
+        state.boards = [action.payload, ...state.boards];
         // todo ---------------------------------------------------------------------------------------------
         // no sense + triggers bugs
         // state.board = action.payload;
