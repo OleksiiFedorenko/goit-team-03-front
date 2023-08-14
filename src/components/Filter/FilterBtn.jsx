@@ -17,47 +17,63 @@ export const FilterBtn = () => {
 
   return (
     <>
-      <Button
+      <Box
         sx={{
-          textTransform: 'none',
-          display: 'flex',
-          gap: '8px',
-          alignItems: 'center',
+          position: 'absolute',
+          top: {
+            zeroUp: '74px',
+            tablet: '88px',
+            desktop: '82px',
+          },
+          right: {
+            zeroUp: '20px',
+            tablet: '32px',
+            desktop: '24px',
+          },
         }}
-        type="button"
-        onClick={handleOpenModal}
       >
-        <Box
+        <Button
           sx={{
+            textTransform: 'none',
             display: 'flex',
-            justifyContent: 'center',
+            gap: '8px',
             alignItems: 'center',
-            borderRadius: '8px',
-            transition: 'all 250ms linear',
-            cursor: 'pointer',
-            '&:hover': {
-              transform: 'scale(1.1)',
-            },
           }}
+          type="button"
+          onClick={handleOpenModal}
         >
-          <SvgIcon
+          <Box
             sx={{
-              width: '14px',
-              height: '14px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: '8px',
+              transition: 'all 250ms linear',
+              cursor: 'pointer',
+              '&:hover': {
+                transform: 'scale(1.1)',
+              },
+            }}
+          >
+            <SvgIcon
+              sx={{
+                width: '14px',
+                height: '14px',
+                color: 'text.primary',
+              }}
+            >
+              <Icon id={'filter'} sx={icon.filter} />
+            </SvgIcon>
+          </Box>
+          <Typography
+            sx={{
               color: 'text.primary',
             }}
           >
-            <Icon id={'filter'} sx={icon.filter} />
-          </SvgIcon>
-        </Box>
-        <Typography
-          sx={{
-            color: 'text.primary',
-          }}
-        >
-          Filters
-        </Typography>
-      </Button>
+            Filters
+          </Typography>
+        </Button>
+      </Box>
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>
         <FilterBar />
       </Modal>

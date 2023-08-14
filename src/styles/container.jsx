@@ -15,6 +15,8 @@ export const layout = {
 };
 
 export const main = {
+  position: 'relative',
+
   display: {
     desktop: 'flex',
   },
@@ -117,6 +119,7 @@ export const noBoardInner = {
 export const boardInner = {
   width: '100%',
   height: '100%',
+
   pt: {
     zeroUp: '14px',
     tablet: '20px',
