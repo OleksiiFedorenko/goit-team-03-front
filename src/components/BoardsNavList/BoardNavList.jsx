@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams, Navigate } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
@@ -21,15 +21,27 @@ import {
 } from '@mui/material';
 import { button, icon } from 'styles';
 
-import { selectBoard } from 'store/boards/selectors';
+import { selectBoard, selectBoards } from 'store/boards/selectors';
+import { selectNavIndex } from 'store/nav/selectors';
+import { setNavIndex } from 'store/nav/navSlice';
 
-export const BoardNavList = ({ boards }) => {
+export const BoardNavList = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const board = useSelector(selectBoard);
-  const [isDeleteBoard, setIsDeleteBoard] = useState(false);
   const [ShowDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
+  const navigate = useNavigate();
+  const boards = useSelector(selectBoards);
+  const navIndex = useSelector(selectNavIndex);
+
+  useEffect(() => {
+    if (!boards.length) {
+      navigate('/home');
+    } else {
+      navigate(boards[navIndex]._id);
+    }
+  }, [boards, navIndex, navigate]);
 
   useEffect(() => {
     if (boardId) dispatch(getBoardById(boardId));
@@ -45,15 +57,10 @@ export const BoardNavList = ({ boards }) => {
   };
 
   const handleDeleteBoard = () => {
-    // if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
     dispatch(deleteBoard(board._id));
-    setIsDeleteBoard(true);
     setShowDeleteConfirmModal(false);
-    // }
+    dispatch(setNavIndex(0));
   };
-  useEffect(() => {
-    setIsDeleteBoard(false);
-  }, [isDeleteBoard]);
 
   const openDeleteConfirmModal = () => {
     setShowDeleteConfirmModal(true);
@@ -62,13 +69,16 @@ export const BoardNavList = ({ boards }) => {
   return (
     <>
       <List sx={button.boardListGroup}>
-        {boards.map(board => {
+        {boards.map((board, index) => {
           return (
             <ListItem key={board._id} disablePadding>
               <ListItemButton
                 component={NavLink}
                 to={board._id}
                 sx={button.boardListItem}
+                onClick={() => {
+                  dispatch(setNavIndex(index));
+                }}
               >
                 <Icon id={board.icon} sx={icon.board} />
                 <ListItemText primary={board.title} disableTypography />
@@ -90,7 +100,6 @@ export const BoardNavList = ({ boards }) => {
                     >
                       <Icon id={'trash'} sx={icon.boardItem} />
                     </Box>
-                    {isDeleteBoard && <Navigate to={'/home'} />}
                   </>
                 )}
               </ListItemButton>

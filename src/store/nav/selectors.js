@@ -1,0 +1,1 @@
+export const selectNavIndex = state => state.nav.navIndex;

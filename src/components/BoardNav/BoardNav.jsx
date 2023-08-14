@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { BoardNavList } from 'components/BoardsNavList';
 import { Icon } from 'components/Icons';
 import { addBoard } from 'store/boards/operations';
-import { selectBoards } from 'store/boards/selectors';
 
 import { Box, Typography, Button } from '@mui/material';
 import { container, text, button, icon } from 'styles';
@@ -21,8 +19,6 @@ export const BoardNav = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  const boards = useSelector(selectBoards);
 
   return (
     <Box sx={container.boardNav}>
@@ -44,7 +40,7 @@ export const BoardNav = () => {
         </Button>
       </Box>
       <Box sx={container.boardNavList}>
-        <BoardNavList boards={boards} />
+        <BoardNavList />
       </Box>
 
       <Modal isOpenModal={showModal} onCloseModal={handleCloseModal}>

@@ -3,6 +3,11 @@ import {
   updateComplexDND,
   updateSingleTaskOrder,
 } from 'store/boards/boardSlice';
+import {
+  updateColumnOrderAsync,
+  updateComplexDNDAsync,
+  updateSingleTaskOrderAsync,
+} from 'store/boards/operations';
 
 export const handleDragEnd = ({ result, board, columns, dispatch }) => {
   const { destination, source, draggableId, type } = result;
@@ -22,7 +27,11 @@ export const handleDragEnd = ({ result, board, columns, dispatch }) => {
     newColumnOrder.splice(destination.index, 0, draggableId);
 
     // TODO: ---------- on Redux :::
-    dispatch(updateColumnOrder(newColumnOrder));
+    dispatch(updateColumnOrder({ boardId: board._id, newColumnOrder }));
+
+    dispatch(updateColumnOrderAsync({ boardId: board._id, newColumnOrder }));
+    //!   To imitate server response error:
+    // dispatch(updateColumnOrderAsync({ boardId: '123456', newColumnOrder }));
     return;
   }
 
@@ -41,6 +50,22 @@ export const handleDragEnd = ({ result, board, columns, dispatch }) => {
 
     // TODO: ---------- on Redux :::
     dispatch(updateSingleTaskOrder({ columnId: start._id, newTaskOrder }));
+
+    dispatch(
+      updateSingleTaskOrderAsync({
+        taskId: draggableId,
+        columnId: start._id,
+        newTaskOrder,
+      })
+    );
+    //!   To imitate server response error:
+    // dispatch(
+    //   updateSingleTaskOrderAsync({
+    //     taskId: '12345657',
+    //     columnId: start._id,
+    //     newTaskOrder,
+    //   })
+    // );
     return;
   }
 
@@ -89,5 +114,23 @@ export const handleDragEnd = ({ result, board, columns, dispatch }) => {
       updatedFinishColumn: newFinish,
     })
   );
+
+  dispatch(
+    updateComplexDNDAsync({
+      taskId: draggableId,
+      finishId: finish._id,
+      startTaskOrder,
+      finishTaskOrder,
+    })
+  );
+  //!   To imitate server response error:
+  //   dispatch(
+  //     updateComplexDNDAsync({
+  //       taskId: '12345678',
+  //       finishId: finish._id,
+  //       startTaskOrder,
+  //       finishTaskOrder,
+  //     })
+  //   );
   return;
 };

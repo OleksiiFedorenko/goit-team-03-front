@@ -12,6 +12,9 @@ import {
   addTask,
   updateTask,
   deleteTask,
+  updateColumnOrderAsync,
+  updateSingleTaskOrderAsync,
+  updateComplexDNDAsync,
 } from './operations';
 
 const handlePending = state => {
@@ -254,12 +257,55 @@ const boardSlice = createSlice({
           column.taskOrder.splice(orderIndex, 1);
         });
       })
+      .addCase(deleteTask.rejected, handleRejected)
 
-      .addCase(deleteTask.rejected, handleRejected);
+      .addCase(updateColumnOrderAsync.pending, handlePending)
+      .addCase(updateColumnOrderAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log('updateColumnOrderAsync PAYLOAD: ', action.payload);
+      })
+      .addCase(updateColumnOrderAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        console.log('updateColumnOrderAsync ERROR: \n', action.payload);
+        state.error =
+          'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
+      })
+
+      .addCase(updateSingleTaskOrderAsync.pending, handlePending)
+      .addCase(updateSingleTaskOrderAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log('updateSingleTaskOrderAsync PAYLOAD: ', action.payload);
+      })
+      .addCase(updateSingleTaskOrderAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        console.log('updateSingleTaskOrderAsync ERROR: \n', action.payload);
+        state.error =
+          'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
+      })
+
+      .addCase(updateComplexDNDAsync.pending, handlePending)
+      .addCase(updateComplexDNDAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        console.log('updateComplexDNDAsync PAYLOAD: ', action.payload);
+      })
+      .addCase(updateComplexDNDAsync.rejected, (state, action) => {
+        state.isLoading = false;
+        console.log('updateComplexDNDAsync ERROR: \n', action.payload);
+        state.error =
+          'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
+      });
   },
   reducers: {
     updateColumnOrder(state, action) {
-      state.board.columnOrder = action.payload;
+      const { newColumnOrder, boardId } = action.payload;
+      state.board.columnOrder = newColumnOrder;
+
+      const boardIndex = state.boards.findIndex(({ _id }) => _id === boardId);
+      // console.log('boardIndex: ', boardIndex);
+      state.boards[boardIndex].columnOrder = newColumnOrder;
     },
     updateSingleTaskOrder(state, action) {
       const { columnId, newTaskOrder } = action.payload;
