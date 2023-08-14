@@ -34,12 +34,10 @@ export const Calendar = ({ parentState, initial }) => {
           value={dateDeadline}
           desktopModeMediaQuery=""
           showDaysOutsideCurrentMonth
-          fixedWeekNumber={5}
           onChange={newValue => {
             setDateDeadline(newValue);
             parentState(newValue);
           }}
-          // renderInput={params => <TextField {...params} />}
           shouldDisableDate={date => isPastDate(date) && !isToday(date)}
           slots={{
             openPickerIcon: () => <Icon id="dropdown" />,
@@ -136,7 +134,7 @@ export const Calendar = ({ parentState, initial }) => {
                 },
                 '&.MuiPickersDay-root:hover': {
                   backgroundColor: 'primary.main',
-                  color: 'text.additional',
+                  color: 'text.hover',
                 },
                 '&.Mui-selected:hover': {
                   backgroundColor: 'primary.main',
@@ -146,6 +144,9 @@ export const Calendar = ({ parentState, initial }) => {
                   borderWidth: 1,
                   borderColor: 'primary.main',
                   color: 'text.primary',
+                },
+                '&.MuiPickersDay-dayOutsideMonth': {
+                  opacity: '0.3',
                 },
               },
             },
