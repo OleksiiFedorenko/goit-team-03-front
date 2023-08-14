@@ -1,15 +1,7 @@
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectBoards } from 'store/boards/selectors';
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 
 export const NoBoardPage = () => {
-  const boards = useSelector(selectBoards);
-  const haveBoards = boards.length > 0;
-
-  if (haveBoards) return <Navigate to={boards[0]._id} />;
-
   return (
     <Box sx={container.board}>
       <Box sx={container.noBoardInner}>
