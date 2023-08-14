@@ -99,3 +99,8 @@ a {
   clip-path: inset(50%);
   margin: -1px;
 }
+
+::-webkit-scrollbar { 
+  width: 0px; 
+  background: transparent;  
+}

@@ -86,6 +86,7 @@ const boardSlice = createSlice({
         state.error = null;
         state.boards = [...state.boards, action.payload];
         // todo ---------------------------------------------------------------------------------------------
+        // no sense + triggers bugs
         // state.board = action.payload;
       })
       .addCase(addBoard.rejected, handleRejected)
@@ -110,7 +111,15 @@ const boardSlice = createSlice({
           board => board._id === action.payload._id
         );
         state.boards.splice(index, 1);
-        state.board = { ...state.board, _id: '', title: '' };
+        // state.board = { ...state.board, _id: '', title: '' };
+        state.board = {
+          _id: '',
+          title: '',
+          icon: '',
+          background: '',
+          owner: '',
+          columnOrder: [],
+        };
         state.columns = [];
       })
       .addCase(deleteBoard.rejected, handleRejected)
@@ -127,7 +136,6 @@ const boardSlice = createSlice({
           newColumn.tasks = [];
         }
 
-        // state.columns.push(action.payload);
         state.columns.push(newColumn);
 
         // In addition update board & boards fields:
@@ -153,10 +161,19 @@ const boardSlice = createSlice({
       .addCase(updateColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+
         const index = state.columns.findIndex(
           column => column._id === action.payload._id
         );
-        state.columns.splice(index, 1, action.payload);
+
+        // todo: -----------------------------------------------------------------
+        // Temporary... because if response without tasks array
+        const newColumn = {
+          ...state.columns[index],
+          title: action.payload.title,
+        };
+        // state.columns.splice(index, 1, action.payload);
+        state.columns.splice(index, 1, newColumn);
       })
       .addCase(updateColumn.rejected, handleRejected)
 
@@ -164,7 +181,7 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // console.log(action.payload)
+        console.log('deleteColumn PAYLOAD: ', action.payload);
 
         const { _id: columnId, parentBoard } = action.payload;
         const columnIndex = state.columns.findIndex(
@@ -190,14 +207,11 @@ const boardSlice = createSlice({
         console.log(action.payload);
         state.isLoading = false;
         state.error = null;
-        // console.log(state.columns);
+
         state.columns.forEach(column => {
           if (column._id === action.payload.parentColumn) {
-            // console.log(column);
-            // column.tasks = [...column.tasks, action.payload];
             column.tasks.push(action.payload);
             // In addition update taskOrder:
-            // column.taskOrder = [...column.taskOrder, action.payload._id];
             column.taskOrder.push(action.payload._id);
           }
         });
@@ -226,24 +240,7 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
-        console.log(action.payload);
-        // const id = action.payload.message.split(' ');
-        // let columnId;
-        // let spliceIndex;
-        // state.columns.forEach(column => {
-        //   column.tasks.forEach((task, index) => {
-        //     if (task._id === id[1]) {
-        //       columnId = task.parentColumn;
-        //       spliceIndex = index;
-        //     }
-        //   });
-        // });
-        // state.columns.forEach(column => {
-        //   if (column._id === columnId) {
-        //     column.tasks.splice(spliceIndex, 1);
-        //   }
-        // });
+        console.log('deleteTask PAYLOAD: ', action.payload);
 
         const { _id: taskId, parentColumn } = action.payload;
 

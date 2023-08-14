@@ -3,7 +3,7 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import 'overlayscrollbars/overlayscrollbars.css';
 import './scroll.css';
 
-const Scrollbar = ({ children, width="100%", height='100%' }) => {
+const Scrollbar = ({ children, width="100%", height="100%" }) => {
     const scrollRef = useRef(null);
     useEffect(() => {
       const scrollbarRef = scrollRef.current;
@@ -20,7 +20,7 @@ const Scrollbar = ({ children, width="100%", height='100%' }) => {
     return (
       <OverlayScrollbarsComponent
         ref={scrollRef}
-        style={{ width, height }}
+        style={{width, height}}
       >
           {children}
       </OverlayScrollbarsComponent>
@@ -28,6 +28,7 @@ const Scrollbar = ({ children, width="100%", height='100%' }) => {
 };
   
 export default Scrollbar;
+
 
 
 
