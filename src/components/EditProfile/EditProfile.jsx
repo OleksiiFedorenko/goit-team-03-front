@@ -164,6 +164,7 @@ export const EditProfile = ({ onCloseModal }) => {
                 style={form.errorMessageEditUser}
               />
               <Field
+                autoComplete="off"
                 type={password ? 'password' : 'text'}
                 id="password"
                 name="password"
