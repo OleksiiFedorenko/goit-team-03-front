@@ -43,8 +43,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 0;
 }
 
 body {
@@ -98,7 +99,7 @@ a {
   margin: -1px;
 }
 
-::-webkit-scrollbar { 
-  width: 0px; 
-  background: transparent;  
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

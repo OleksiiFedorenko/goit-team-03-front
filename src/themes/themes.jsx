@@ -122,6 +122,7 @@ export const violetTheme = createTheme({
       btnPlusAnother: '#FFF',
       boxPlusCard: '#FFF',
       btnPlusCard: '#161616',
+      btnPlusAvatar: '#ECEDFD',
     },
     text: {
       primary: '#161616',
@@ -143,6 +144,9 @@ export const violetTheme = createTheme({
     divider: {
       side: '#FFFFFF1A',
       card: '#1616161A',
+    },
+    border: {
+      input: '#5255BC',
     },
     icon: {
       filter: '#16161680',
@@ -203,6 +207,7 @@ export const lightTheme = createTheme({
       btnPlusAnother: '#FFF',
       boxPlusCard: '#161616',
       btnPlusCard: '#FFF',
+      btnPlusAvatar: '#BEDBB0',
     },
     text: {
       primary: '#161616',
@@ -224,6 +229,9 @@ export const lightTheme = createTheme({
     divider: {
       side: '#1616161A',
       card: '#1616161A',
+    },
+    border: {
+      input: '#BEDBB0',
     },
     icon: {
       filter: '#16161680',
@@ -284,6 +292,7 @@ export const darkTheme = createTheme({
       btnPlusAnother: '#161616',
       boxPlusCard: '#161616',
       btnPlusCard: '#FFF',
+      btnPlusAvatar: '#BEDBB0',
     },
     text: {
       primary: '#FFF',
@@ -305,6 +314,9 @@ export const darkTheme = createTheme({
     divider: {
       side: '#FFFFFF1A',
       card: '#FFFFFF1A',
+    },
+    border: {
+      input: '#BEDBB0',
     },
     icon: {
       filter: '#FFFFFF80',
@@ -328,9 +340,9 @@ export const darkTheme = createTheme({
       verticalTrackHover: 'rgba(18, 18, 18, 0.8)',
       verticalTrackActive: 'rgba(18, 18, 18, 0.6)',
       horizontalScrollbar: 'rgba(22, 22, 22, 1)',
-      horizontalTrack: 'rgba(255, 255, 255, 0.2)',
-      horizontalTrackHover: 'rgba(255, 255, 255, 0.4)',
-      horizontalTrackActive: 'rgba(255, 255, 255, 0.6',
+      horizontalTrack: 'rgba(255, 255, 255, 0.4)',
+      horizontalTrackHover: 'rgba(255, 255, 255, 0.6)',
+      horizontalTrackActive: 'rgba(255, 255, 255, 0.8',
     },
     loader: '#FFFFFF80',
     modalForm: {

@@ -72,6 +72,29 @@ export const board = {
     zeroUp: '60px',
     tablet: '68px',
   },
+  overflowY: 'hidden',
+  overflowX: 'auto',
+  '&::-webkit-scrollbar': {
+    height: '12px',   
+  },
+  '&::-webkit-scrollbar-track': {
+    minWidth: '179px',
+    maxWidth: '637px',
+    borderRadius: '12px',
+    backgroundColor: 'scroll.horizontalScrollbar',
+    ml: '24px',
+    mr: '24px',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.horizontalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.horizontalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.horizontalTrackActive',
+  },
 };
 
 //// inner containers
@@ -136,18 +159,8 @@ export const boardInner = {
   },
 };
 
-export const boardTopBar = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-};
-
 export const dndContainerColumn = {
   minHeight: '20px',
-  // for some f**king unbelievable reason only fixed styling is working
-  // maxHeight: 'calc(100vh - 68px)',
-  // maxHeight: '100%',
-  // maxHeight: '470px',
 };
 
 export const columns = {
@@ -181,10 +194,23 @@ export const boardNav = {
 export const boardNavList = {
   mt: '40px',
   height: '150px',
-  scrollbarWidth: 'none',
-  overflow: 'scroll',
+  overflowY: 'scroll',
   '&::-webkit-scrollbar': {
-    width: '0px',
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.verticalScrollbar',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.verticalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.verticalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.verticalTrackActive',
   },
 };
 
@@ -266,11 +292,11 @@ export const taskListScroll = {
   '&::-webkit-scrollbar-track': {
     minHeight: '142px',
     maxHeight: '142px',
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalScrollbar',
   },
   '&::-webkit-scrollbar-thumb': {
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalTrack',
   },
   '&::-webkit-scrollbar-thumb:hover': {
@@ -288,37 +314,6 @@ export const taskList = {
   padding: 0,
   height: '100%',
 };
-
-// export const boardScroll = {
-//   width: '100%',
-//   overflowY: 'auto',
-//   overflowX: 'auto',
-//   margin: 0,
-//   padding: 0,
-//   listStyle: 'none',
-//   height: '12px',
-//   ml: '24px',
-//   mr: '24px',
-//   '&::-webkit-scrollbar': {
-//     width: '8px',
-//   },
-//   '&::-webkit-scrollbar-track': {
-//     minWidth: '179px',
-//     maxWidth: '637px',
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalScrollbar',
-//   },
-//   '&::-webkit-scrollbar-thumb': {
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalTrack',
-//   },
-//   '&::-webkit-scrollbar-thumb:hover': {
-//     backgroundColor: 'scroll.horizontalTrackHover',
-//   },
-//   '&::-webkit-scrollbar-thumb:active': {
-//     backgroundColor: 'scroll.horizontalTrackActive',
-//   },
-// };
 
 export const iconBox = {
   display: 'flex',
@@ -360,4 +355,44 @@ export const cardForm = {
     zeroUp: 287,
     tablet: 302,
   },
+};
+export const editUserWrapper = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+  justifyContent: 'baseline',
+  width: {
+    zeroUp: '285px',
+    mobileFixed: '285px',
+    tablet: '350px',
+  },
+};
+
+export const editUserImgWrapper = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '68px',
+  height: '68px',
+  borderRadius: '8px',
+  transition:
+    'all 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
+
+  '&:hover': {
+    transform: 'scale(1.1)',
+  },
+};
+
+export const editUserPlusWrapper = {
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '24px',
+  height: '24px',
+  bgcolor: 'background.btnPlusAvatar',
+  borderRadius: '8px',
 };

@@ -1,30 +1,24 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
 import { Icon } from 'components/Icons';
+import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+import defaultAvatarLight from '../../images/default-avatar-light.png';
+import defaultAvatarDark from '../../images/default-avatar-dark.png';
 
+import { icon, form, container, button } from 'styles';
 import {
-  EditWrapper,
-  IconStyle,
-  Title,
-  FormWrapper,
-  ErrorSection,
-  FormSubmit,
-  FormField,
-  Img,
-  FieldAvatar,
-  FormSection,
-  ImgWrapper,
-  IconPlus,
-  Label,
-  FormIcon,
-  Eye,
-} from './EditProfile.styled';
-import { icon } from 'styles';
+  Box,
+  FormLabel,
+  Typography,
+  Input,
+  TextField,
+  Button,
+} from '@mui/material';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -35,16 +29,16 @@ const UserSchema = Yup.object().shape({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password must be at most 64 characters'),
-  
 });
 const initialValues = {
   name: '',
   email: '',
   password: '',
 };
-const EditProfile = ({ onCloseModal }) => {
+export const EditProfile = ({ onCloseModal }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const { theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
   const [currentImage, setCurrentImage] = useState(user.avatarURL);
   const [avatarURL, setAvatarURL] = useState('');
@@ -63,6 +57,22 @@ const EditProfile = ({ onCloseModal }) => {
     resetForm();
     onCloseModal();
   };
+
+  let avatar = avatarURL;
+  if (!avatar) {
+    switch (theme) {
+      case 'light':
+        avatar = defaultAvatarLight;
+        break;
+      case 'dark':
+        avatar = defaultAvatarDark;
+        break;
+      default:
+        avatar = defaultAvatarViolet;
+        break;
+    }
+  }
+
   const handleClickShowPassword = () => setPassword(show => !show);
   function handleFileChange(event) {
     const file = event;
@@ -78,30 +88,30 @@ const EditProfile = ({ onCloseModal }) => {
     reader.readAsDataURL(file);
   }
   return (
-    <EditWrapper>
-      <Title>Edit profile</Title>
+    <Box sx={container.editUserWrapper}>
+      <Typography variant={'h2'} mb={'24px'}>
+        Edit profile
+      </Typography>
       <Formik
         initialValues={initialValues}
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
         <Form>
-          <FormSection>
-            <Label htmlFor="avatarURL">
-              <ImgWrapper>
-                {currentImage ? (
-                  <Img src={currentImage} alt="User picture" />
-                ) : (
-                  <IconStyle>
-                    <Icon id={'user'} />
-                  </IconStyle>
-                )}
-                <IconPlus aria-label="add">
+          <Box sx={form.editUserForm}>
+            <FormLabel htmlFor="avatarURL" sx={form.editUserLabel}>
+              <Box sx={container.editUserImgWrapper}>
+                <Box
+                  component="img"
+                  src={currentImage || avatar}
+                  alt="User picture"
+                />
+                <Box aria-label="add" sx={container.editUserPlusWrapper}>
                   <Icon id={'plus'} sx={icon.addProfileImg} />
-                </IconPlus>
-              </ImgWrapper>
-            </Label>
-            <FieldAvatar
+                </Box>
+              </Box>
+            </FormLabel>
+            <Input
               id="avatarURL"
               type="file"
               name="avatarURL"
@@ -109,55 +119,92 @@ const EditProfile = ({ onCloseModal }) => {
               onChange={event => {
                 handleFileChange(event.currentTarget.files[0]);
               }}
+              sx={{ display: 'none' }}
             />
-            <FormWrapper>
-              <ErrorSection name="name" component="div" />
-              <FormField
+            <FormLabel sx={{ mb: '14px' }}>
+              <ErrorMessage
+                name="name"
+                component="div"
+                style={form.errorMessageEditUser}
+              />
+              <Field
+                autoComplete="off"
                 type="text"
                 id="name"
                 name="name"
+                as={TextField}
+                variant="outlined"
                 placeholder={user.name}
+                sx={form.editUserFielld}
               />
-            </FormWrapper>
-            <FormWrapper>
-              <ErrorSection name="email" component="div" />
-              <FormField
+            </FormLabel>
+
+            <FormLabel sx={{ mb: '14px' }}>
+              <ErrorMessage
+                name="email"
+                component="div"
+                style={form.errorMessageEditUser}
+              />
+              <Field
+                autoComplete="off"
                 type="email"
                 id="email"
                 name="email"
+                as={TextField}
+                variant="outlined"
                 placeholder={user.email}
+                sx={form.editUserFielld}
               />
-            </FormWrapper>
+            </FormLabel>
 
-            <FormWrapper>
-              <FormIcon>
-                <ErrorSection name="password" component="div" />
-                <FormField
-                  type={password}
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                />
-                <Eye type="button" onClick={handleClickShowPassword}>
-                  {password ? (
-                    <IconPlus>
-                      <Icon id={'eye'} sx={icon.eye} />
-                    </IconPlus>
-                  ) : (
-                    <IconPlus>
-                      <Icon id={'eye-off'} sx={icon.eye} />
-                    </IconPlus>
-                  )}
-                </Eye>
-              </FormIcon>
-            </FormWrapper>
+            <FormLabel sx={{ mb: '24px' }}>
+              <ErrorMessage
+                name="password"
+                component="div"
+                style={form.errorMessageEditUser}
+              />
+              <Field
+                autoComplete="off"
+                type={password ? 'password' : 'text'}
+                id="password"
+                name="password"
+                as={TextField}
+                variant="outlined"
+                placeholder="Enter your password"
+                sx={form.editUserFielld}
+              />
+              <Button
+                type="button"
+                onClick={handleClickShowPassword}
+                sx={button.editUserEye}
+              >
+                {password ? (
+                  <Box>
+                    <Icon id={'eye'} sx={icon.eye} />
+                  </Box>
+                ) : (
+                  <Box>
+                    <Icon id={'eye-off'} sx={icon.eye} />
+                  </Box>
+                )}
+              </Button>
+            </FormLabel>
 
-            <FormSubmit type="submit">Send</FormSubmit>
-          </FormSection>
+            <Button
+              color="primary"
+              variant="contained"
+              fullWidth
+              sx={{
+                height: 49,
+                textTransform: 'none',
+              }}
+              type="submit"
+            >
+              Send
+            </Button>
+          </Box>
         </Form>
       </Formik>
-    </EditWrapper>
+    </Box>
   );
 };
-
-export default EditProfile;

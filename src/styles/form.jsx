@@ -90,15 +90,58 @@ export const errorMessage = {
   color: '#e66666',
 };
 
-export const link = {
+export const editUser = {
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'start',
+  justifyContent: 'baseline',
+  width: '350px',
+};
+
+export const editUserForm = {
+  display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
-  textDecoration: 'none',
-  backgroundColor: '#FFF',
-  borderRadius: "8px",
-  height: '49px',
-  color: '#000',
+  justifyContent: 'center',
+};
+
+export const editUserLabel = {
+  display: 'inline-block',
+  width: '68px',
+  height: '79px',
+  cursor: 'pointer',
+  mb: '14px',
+};
+
+export const errorMessageEditUser = {
+  pl: '14px',
+  color: '#c04d4d',
+  fontSize: '14px',
   fontFamily: 'Poppins',
-  fontWeight: 500,
-}
+  fontWeight: '500',
+  letterSpacing: '-0.28px',
+};
+
+export const editUserFielld = {
+  width: {
+    zeroUp: '285px',
+    mobileFixed: '285px',
+    tablet: '352px',
+  },
+  height: '49px',
+  '& .MuiOutlinedInput-input': {
+    p: '14px 18px',
+  },
+  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'border.input',
+  },
+  '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'border.input',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'border.input',
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'border.input',
+  },
+};

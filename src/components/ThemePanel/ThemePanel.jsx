@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTheme } from 'store/auth/selectors';
 import { updateTheme } from 'store/auth/operations';
+import { Icon } from 'components/Icons';
 
-import { Box, Button, Menu, MenuItem } from '@mui/material';
-import { button } from 'styles';
+import { Box, Button, Menu, MenuItem, SvgIcon } from '@mui/material';
+import { button, icon } from 'styles';
 
 export const ThemePanel = () => {
   const dispatch = useDispatch();
@@ -31,9 +32,15 @@ export const ThemePanel = () => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleOpen}
-        // endIcon={<put icon component here />}
       >
         Theme
+        <SvgIcon  sx={{
+          width: '16px',
+          height: '16px',
+          ml: '4px',
+          color: 'text.primary'}}>
+            <Icon id={'chevron-down'} sx={icon.themeFilter}/>
+        </SvgIcon>
       </Button>
       <Menu
         sx={button.themeMenu}
