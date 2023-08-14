@@ -41,10 +41,11 @@ export const closeBtn = {
   width: '24px',
   height: '24px',
   borderRadius: '50%',
-
+  cursor: 'pointer',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+
   '&:hover, &:focus': {
     bgcolor: 'primary.main',
   },
