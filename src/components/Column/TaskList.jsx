@@ -1,5 +1,4 @@
 import { Stack, Box } from '@mui/material';
-// import Task from './Task';
 import { useSelector } from 'react-redux';
 import { selectPrioFilter } from 'store/filters/selectors';
 import { ColumnInnerList } from 'components/DragAndDrop';
@@ -8,7 +7,6 @@ import { container } from 'styles';
 const TaskList = ({ cards, placeholder }) => {
   const prio = useSelector(selectPrioFilter);
 
-  // console.log('cards: ', cards);
   const filteredCards =
     prio === 'all'
       ? cards

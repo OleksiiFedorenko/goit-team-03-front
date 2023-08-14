@@ -21,9 +21,16 @@ export const DNDColumn = ({ column, tasks, index }) => {
 
   return (
     <Draggable draggableId={column._id} index={index}>
-      {provided => (
+      {(provided, snapshot) => (
         <div {...provided.draggableProps} ref={provided.innerRef}>
-          <Stack sx={card.column}>
+          <Stack
+            sx={{
+              ...card.column,
+              bgcolor: snapshot.draggingOver
+                ? 'background.alphaDND'
+                : 'transparent',
+            }}
+          >
             <div {...provided.dragHandleProps}>
               <ColumnHeader title={column.title} columnId={column._id} />
             </div>
@@ -34,8 +41,13 @@ export const DNDColumn = ({ column, tasks, index }) => {
                   <Box
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    isdraggingover={`${snapshot.isDraggingOver}`}
-                    sx={container.dndContainerColumn}
+                    // sx={container.dndContainerColumn}
+                    sx={{
+                      ...container.dndContainerColumn,
+                      bgcolor: snapshot.isDraggingOver
+                        ? 'background.alphaDND'
+                        : 'transparent',
+                    }}
                   >
                     {/* <div
                       ref={provided.innerRef}
