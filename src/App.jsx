@@ -12,7 +12,7 @@ import { fetchCurrentUser } from 'store/auth/operations';
 import { PublicRoute } from 'services/PublicRoute';
 import { PrivateRoute } from 'services/PrivateRoute';
 
-import { Container } from 'components/Container';
+import { MainContainer} from 'components/MainContainer';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage'));
 const Register = lazy(() => import('pages/RegisterPage'));
@@ -47,7 +47,7 @@ export const App = () => {
       <ThemeProvider theme={currentTheme}>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<Container />}>
+          <Route path="/" element={<MainContainer />}>
             <Route
               index
               element={
