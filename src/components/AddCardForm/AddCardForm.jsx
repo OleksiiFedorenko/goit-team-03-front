@@ -19,6 +19,7 @@ import {
 // import DatePickerBtn from 'components/FormsUI/DatePickerBtn/DatePickerBtn';
 import { formatDate } from 'helpers/formatDate';
 import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
+import { container } from 'styles';
 
 const initialValues = {
   title: '',
@@ -73,7 +74,7 @@ const AddCardForm = ({
   };
 
   return (
-    <Container sx={{ maxWidth: '302px', p: 0 }}>
+    <Container sx={container.cardForm}>
       <Formik
         initialValues={initData ? initData : initialValues}
         validationSchema={validationSchema}
