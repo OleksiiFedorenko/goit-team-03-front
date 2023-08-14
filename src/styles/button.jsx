@@ -21,7 +21,7 @@ export const google = {
   textDecoration: 'none',
   borderRadius: '8px',
   height: '49px',
-  color: '#000',
+  // color: '#000',
   fontFamily: 'Poppins',
   fontWeight: 500,
   '&:hover, &:focus': {
