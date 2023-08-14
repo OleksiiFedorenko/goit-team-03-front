@@ -14,6 +14,22 @@ export const authItem = {
   },
 };
 
+export const google = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
+  borderRadius: '8px',
+  height: '49px',
+  color: '#000',
+  fontFamily: 'Poppins',
+  fontWeight: 500,
+  '&:hover, &:focus': {
+    color: 'text.white',
+    bgcolor: 'text.primary',
+  },
+};
+
 export const authTabList = {
   width: '100%',
   display: 'flex',

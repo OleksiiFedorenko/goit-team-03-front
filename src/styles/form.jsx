@@ -89,6 +89,7 @@ export const errorMessage = {
   opacity: '0.9',
   color: '#e66666',
 };
+
 export const editUser = {
   display: 'flex',
   flexDirection: 'column',
