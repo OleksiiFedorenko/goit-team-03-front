@@ -10,7 +10,6 @@ import {
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
 import { FilterBtn } from 'components/Filter';
-import Scrollbar from 'components/Scroll/Scroll';
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { BoardInnerList, StrictModeDroppable } from 'components/DragAndDrop';
@@ -55,7 +54,6 @@ const BoardPage = () => {
 
   return (
     <>
-      <Scrollbar>
         <Box sx={container.board}>
           <Box sx={container.boardInner}>
             <Box sx={container.boardTopBar}>
@@ -117,7 +115,6 @@ const BoardPage = () => {
             <ToastContainer autoClose={3000} />
           </Box>
         </Box>
-      </Scrollbar>
       <FilterBtn />
     </>
   );

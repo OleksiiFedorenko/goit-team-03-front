@@ -72,6 +72,27 @@ export const board = {
     zeroUp: '60px',
     tablet: '68px',
   },
+  overflowY: 'hidden',
+  overflowX: 'auto',
+  '&::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    minWidth: '179px',
+    maxWidth: '637px',
+    borderRadius: '4px',
+    backgroundColor: 'scroll.horizontalScrollbar',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '4px',
+    backgroundColor: 'scroll.horizontalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.horizontalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.horizontalTrackActive',
+  },
 };
 
 //// inner containers
@@ -288,37 +309,6 @@ export const taskList = {
   padding: 0,
   height: '100%',
 };
-
-// export const boardScroll = {
-//   width: '100%',
-//   overflowY: 'auto',
-//   overflowX: 'auto',
-//   margin: 0,
-//   padding: 0,
-//   listStyle: 'none',
-//   height: '12px',
-//   ml: '24px',
-//   mr: '24px',
-//   '&::-webkit-scrollbar': {
-//     width: '8px',
-//   },
-//   '&::-webkit-scrollbar-track': {
-//     minWidth: '179px',
-//     maxWidth: '637px',
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalScrollbar',
-//   },
-//   '&::-webkit-scrollbar-thumb': {
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalTrack',
-//   },
-//   '&::-webkit-scrollbar-thumb:hover': {
-//     backgroundColor: 'scroll.horizontalTrackHover',
-//   },
-//   '&::-webkit-scrollbar-thumb:active': {
-//     backgroundColor: 'scroll.horizontalTrackActive',
-//   },
-// };
 
 export const iconBox = {
   display: 'flex',

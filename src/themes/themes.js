@@ -328,9 +328,9 @@ export const darkTheme = createTheme({
       verticalTrackHover: 'rgba(18, 18, 18, 0.8)',
       verticalTrackActive: 'rgba(18, 18, 18, 0.6)',
       horizontalScrollbar: 'rgba(22, 22, 22, 1)',
-      horizontalTrack: 'rgba(255, 255, 255, 0.2)',
-      horizontalTrackHover: 'rgba(255, 255, 255, 0.4)',
-      horizontalTrackActive: 'rgba(255, 255, 255, 0.6',
+      horizontalTrack: 'rgba(255, 255, 255, 0.4)',
+      horizontalTrackHover: 'rgba(255, 255, 255, 0.6)',
+      horizontalTrackActive: 'rgba(255, 255, 255, 0.8',
     },
     loader: '#FFFFFF80',
     modalForm: {
