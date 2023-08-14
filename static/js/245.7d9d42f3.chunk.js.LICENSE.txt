@@ -7,3 +7,5 @@
  *
  * Released under the MIT license.
  */
+
+//! moment.js
