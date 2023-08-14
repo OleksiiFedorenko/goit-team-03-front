@@ -7,4 +7,3 @@ export * as text from './text';
 export * as form from './form';
 export * as input from './input';
 export * as icon from './icon';
-export * as calendar from './calendar';
