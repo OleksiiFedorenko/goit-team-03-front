@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -13,19 +13,25 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { boardReducer } from './boards/boardSlice';
 import { filtersReducer } from './filters/filtersSlice';
+import { navReducer } from './nav/navSlice';
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  boards: boardReducer,
+  filters: filtersReducer,
+  nav: navReducer,
+});
 
 const persistConfig = {
-  key: 'auth',
+  key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['auth', 'nav'],
 };
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(persistConfig, authReducer),
-    boards: boardReducer,
-    filters: filtersReducer,
-  },
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
