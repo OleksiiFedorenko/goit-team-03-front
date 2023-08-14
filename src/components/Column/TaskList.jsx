@@ -16,12 +16,12 @@ const TaskList = ({ cards, placeholder }) => {
           return card?.priority === prio;
         });
 
-  return ( 
+  return (
     <Box sx={container.taskListScroll}>
-    <Stack sx={container.taskList}>
-      <ColumnInnerList tasks={filteredCards} />
-      {placeholder}
-    </Stack>
+      <Stack sx={container.taskList}>
+        <ColumnInnerList placeholder={placeholder} tasks={filteredCards} />
+        {placeholder}
+      </Stack>
     </Box>
   );
 };

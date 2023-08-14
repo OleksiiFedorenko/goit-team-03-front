@@ -4,6 +4,7 @@ import { NavLink, useParams, Navigate } from 'react-router-dom';
 import Modal from 'components/Modal/Modal';
 import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
+import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
 import {
   getBoardById,
@@ -16,7 +17,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  IconButton,
+  Box,
 } from '@mui/material';
 import { button, icon } from 'styles';
 
@@ -28,6 +29,7 @@ export const BoardNavList = ({ boards }) => {
   const { boardId } = useParams();
   const board = useSelector(selectBoard);
   const [isDeleteBoard, setIsDeleteBoard] = useState(false);
+  const [ShowDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
 
   useEffect(() => {
     if (boardId) dispatch(getBoardById(boardId));
@@ -39,17 +41,23 @@ export const BoardNavList = ({ boards }) => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setShowDeleteConfirmModal(false);
   };
 
   const handleDeleteBoard = () => {
-    if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
-      dispatch(deleteBoard(board._id));
-      setIsDeleteBoard(true);
-    }
+    // if (window.confirm(`Do you really want to delete board ${board.title}?`)) {
+    dispatch(deleteBoard(board._id));
+    setIsDeleteBoard(true);
+    setShowDeleteConfirmModal(false);
+    // }
   };
   useEffect(() => {
     setIsDeleteBoard(false);
   }, [isDeleteBoard]);
+
+  const openDeleteConfirmModal = () => {
+    setShowDeleteConfirmModal(true);
+  };
 
   return (
     <>
@@ -66,29 +74,23 @@ export const BoardNavList = ({ boards }) => {
                 <ListItemText primary={board.title} disableTypography />
                 {board._id === boardId && (
                   <>
-                    <IconButton
+                    <Box
                       onClick={handleOpenModal}
                       color="inherit"
                       size="small"
-                      sx={[
-                        {
-                          '&:focus': {
-                            color: 'secondary',
-                            bgcolor: 'background.sideSecond',
-                          },
-                        },
-                      ]}
+                      sx={{ mr: '8px', display: 'flex' }}
                     >
                       <Icon id={'pencil'} sx={icon.boardItem} />
-                    </IconButton>
-                    <IconButton
-                      onClick={handleDeleteBoard}
+                    </Box>
+                    <Box
+                      onClick={openDeleteConfirmModal}
                       size="small"
                       color="inherit"
+                      sx={{ mr: '20px', display: 'flex' }}
                     >
                       <Icon id={'trash'} sx={icon.boardItem} />
-                    </IconButton>
-                    {isDeleteBoard && <Navigate to={'/tasks'} />}
+                    </Box>
+                    {isDeleteBoard && <Navigate to={'/home'} />}
                   </>
                 )}
               </ListItemButton>
@@ -111,6 +113,12 @@ export const BoardNavList = ({ boards }) => {
           }}
         />
       </Modal>
+
+      <DeleteConfirmModal
+        isOpenModal={ShowDeleteConfirmModal}
+        onCloseModal={handleCloseModal}
+        onConfirm={handleDeleteBoard}
+      />
     </>
   );
 };

@@ -140,11 +140,24 @@ export const boardTopBar = {
   justifyContent: 'space-between',
 };
 
+export const dndContainerColumn = {
+  minHeight: '20px',
+  // for some f**king unbelievable reason only fixed styling is working
+  // maxHeight: 'calc(100vh - 68px)',
+  // maxHeight: '100%',
+  // maxHeight: '470px',
+};
+
 export const columns = {
   display: 'flex',
   gap: '34px',
   width: '100%',
-  maxHeight: '100%',
+  height: {
+    // !!!!!!!!!!!!!do not change this
+    zeroUp: 'calc(100vh - 170px)', // this one is not exactly same as on the figma for some reason
+    tablet: 'calc(100vh - 192px)',
+    desktop: 'calc(100vh - 142px)',
+  },
   mt: {
     zeroUp: '40px',
     tablet: '26px',
@@ -155,7 +168,7 @@ export const columns = {
 export const columnsInner = {
   display: 'flex',
   gap: '34px',
-  // height: '100%',
+  height: '100%',
 };
 
 export const boardNav = {
@@ -170,7 +183,7 @@ export const boardNavList = {
   overflow: 'scroll',
   '&::-webkit-scrollbar': {
     width: '0px',
-  }
+  },
 };
 
 export const modal = {
@@ -178,6 +191,7 @@ export const modal = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  boxSizing: 'border-box',
   bgcolor: 'background.header',
   border: '1px solid rgba(190, 219, 176, 0.5)',
   borderRadius: '8px',
@@ -203,38 +217,42 @@ export const helpBannerContainer = {
 
 export const helpFormContainer = {
   width: {
-    zeroUp: 335,
-    tablet: 400,
+    zeroUp: '90vw',
+    mobileFixed: '335px',
+    tablet: '400px',
   },
 };
 
 export const addColumnContainer = {
   width: {
-    zeroUp: 335,
-    tablet: 350,
+    zeroUp: 287,
+    tablet: 302,
   },
 };
 export const ImgWrapperContainer = {
-   position: 'relative',
+  position: 'relative',
   width: '68px',
   height: '68px',
   borderRradius: '8px',
   // transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 'transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
- 
 
- ' &:hover': {
+  ' &:hover': {
     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
     transform: 'scale(1.1)',
-  }
+  },
 
-//  ' &:hover', 'svg' {
-//     top: '50%',
-//     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
-//   }
-}
+  //  ' &:hover', 'svg' {
+  //     top: '50%',
+  //     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
+  //   }
+};
 
 export const taskListScroll = {
-  width: '350px',
+  width: {
+    zeroUp: '100%',
+    mobileFixed: '351px',
+    tablet: '350px',
+  },
   overflowY: 'auto',
   overflowX: 'hidden',
   m: 0,
@@ -300,3 +318,37 @@ export const taskList = {
 //     backgroundColor: 'scroll.horizontalTrackActive',
 //   },
 // };
+
+export const iconBox = {
+  display: 'flex',
+  gap: '8px',
+};
+
+export const boardIcon = {
+  input: {
+    display: 'none',
+  },
+
+  'input:checked + label': {
+    opacity: '1',
+  },
+};
+
+export const imageWrap = {
+  display: 'grid',
+  width: 'fit-content',
+  gridTemplateColumns: 'repeat(8, 1fr)',
+  gridGap: '4px',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+};
+
+export const boardBg = {
+  input: {
+    display: 'none',
+  },
+
+  'input:checked + label': {
+    opacity: '0.4',
+  },
+};

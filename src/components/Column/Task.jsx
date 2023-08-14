@@ -7,6 +7,7 @@ import Modal from 'components/Modal/Modal';
 import AddCardForm from 'components/AddCardForm';
 import { Card, Typography, Stack, Box } from '@mui/material';
 import { card } from 'styles';
+import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
 import { Draggable } from 'react-beautiful-dnd';
 import Alerticon from './AlertIcon';
@@ -15,6 +16,7 @@ import { formatDate } from 'helpers/formatDate';
 const Task = ({ name, description, priority, deadline, taskId, index }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [ShowDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
 
   const openModalHandler = () => {
     setShowModal(true);
@@ -22,12 +24,18 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
 
   const closeModalHandler = () => {
     setShowModal(false);
+    setShowDeleteConfirmModal(false);
   };
 
   const handleDeleteTask = () => {
-    if (window.confirm(`Do you really want to delete task ${name}?`)) {
-      dispatch(deleteTask(taskId));
-    }
+    // if (window.confirm(`Do you really want to delete task ${name}?`)) {
+    dispatch(deleteTask(taskId));
+    setShowDeleteConfirmModal(false);
+    // }
+  };
+
+  const openDeleteConfirmModal = () => {
+    setShowDeleteConfirmModal(true);
   };
 
   const priorityColor = priorityColorSwitcher(priority);
@@ -128,7 +136,10 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
                     </Box>
 
                     <Box>
-                      <IconBtn onClick={handleDeleteTask} iconId="trash" />
+                      <IconBtn
+                        onClick={openDeleteConfirmModal}
+                        iconId="trash"
+                      />
                     </Box>
                   </Stack>
                 </Stack>
@@ -145,6 +156,12 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
               />
             </Modal>
           </Card>
+
+          <DeleteConfirmModal
+            isOpenModal={ShowDeleteConfirmModal}
+            onCloseModal={closeModalHandler}
+            onConfirm={handleDeleteTask}
+          />
         </div>
       )}
     </Draggable>
