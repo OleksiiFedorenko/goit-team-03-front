@@ -10,7 +10,9 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { container, image, logo, text, button } from 'styles';
+import { container, image, logo, text, button, form } from 'styles';
+import { Link as MaterialLink } from '@mui/material';
+import { Icon } from 'components/Icons';
 
 const WelcomePage = () => {
   return (
@@ -54,6 +56,16 @@ const WelcomePage = () => {
               sx={button.authItem}
             >
               <ListItemText primary="Log in" disableTypography />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={MaterialLink}
+              to="https://taskpro-m75b.onrender.com/api/auth/google"
+              sx={form.link}
+            >
+              <Icon id={'google'} sx={{width: '20px'}}/>
+              Login with Google
             </ListItemButton>
           </ListItem>
         </List>

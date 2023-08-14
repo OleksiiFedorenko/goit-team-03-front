@@ -144,3 +144,16 @@ export const editUserFielld = {
     borderColor: 'border.input',
   },
 };
+export const link = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
+  backgroundColor: '#FFF',
+  borderRadius: "8px",
+  height: '49px',
+  color: '#000',
+  fontFamily: 'Poppins',
+  fontWeight: 500,
+  gap: '8px',
+}
