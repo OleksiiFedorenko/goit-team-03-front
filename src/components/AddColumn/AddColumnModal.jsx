@@ -2,12 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addColumn } from 'store/boards/operations';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Icon } from 'components/Icons';
-import { Box, FormControl, Typography, Button, TextField } from '@mui/material';
-import { container, button, form, icon } from 'styles';
-
+import { Box, FormControl, Typography } from '@mui/material';
+import { container } from 'styles';
+import Textfield from '../FormsUI/TextField';
+import SubmitButton from 'components/FormsUI/SubmitButton';
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
@@ -40,34 +40,9 @@ const AddColumnModal = ({ onCloseModal }) => {
         {({ values, handleChange, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <FormControl fullWidth>
-              <TextField
-                label="Title"
-                variant="outlined"
-                type="text"
-                id="text"
-                name="title"
-                sx={{ mb: 3 }}
-                value={values.title}
-                onChange={handleChange}
-              />
-              <ErrorMessage
-                name="Title"
-                component="div"
-                style={{ color: 'red', fontSize: 12 }}
-              />
+              <Textfield name="title" label="Title" sx={{ mb: 3 }} />
             </FormControl>
-            <Button
-              color="primary"
-              variant="contained"
-              fullWidth
-              sx={form.button}
-              type="submit"
-            >
-              <Box sx={button.boxIconPlus}>
-                <Icon id={'plus'} sx={icon.plusAdd} />
-              </Box>
-              Add
-            </Button>
+            <SubmitButton>{'Add'}</SubmitButton>
           </Form>
         )}
       </Formik>
