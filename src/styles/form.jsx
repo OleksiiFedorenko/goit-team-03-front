@@ -44,6 +44,7 @@ export const button = {
   fontFamily: 'Poppins',
   fontWeight: 500,
   fontFize: '14px',
+  mb: '5px',
 
   '&:hover': {
     opacity: '0.8',
