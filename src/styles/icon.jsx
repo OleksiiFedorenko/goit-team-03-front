@@ -85,10 +85,6 @@ export const LogOut = {
   height: '32px',
   color: 'icon.logOut',
   stroke: 'currentColor',
-  '&:hover, &:focus': {
-    color: 'icon.logOutHover',
-    stroke: 'currentColor',
-  },
 };
 
 export const close = {
