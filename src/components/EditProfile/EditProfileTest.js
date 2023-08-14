@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/auth/selectors';
 import { updateProfile } from 'store/auth/operations';
-// import { Icon } from 'components/Icons';
+import { Icon } from 'components/Icons';
 import {
   Typography,
   TextField,
@@ -15,11 +15,11 @@ import {
   FormControl,
   Box,
   // Stack,
-  // Avatar,
   InputAdornment,
+  Avatar,
 //  InputLabel,
 } from '@mui/material';
-// import defaultAvatarViolet from '../../images/default-avatar-violet.png';
+import defaultAvatarViolet from '../../images/default-avatar-violet.png';
 // import defaultAvatarLight from '../../images/default-avatar-light.png';
 // import defaultAvatarDark from '../../images/default-avatar-dark.png';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
@@ -27,9 +27,10 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import {
   container,
   form,
-  // button
+  button
 } from 'styles';
 
+import { icon } from 'styles';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -52,7 +53,7 @@ const EditProfileTest = ({ onCloseModal }) => {
     const user = useSelector(selectUser);
   // const { user, avatarURL, theme } = useSelector(selectUser);
   const [password, setPassword] = useState('password');
-  // const [currentImage, setCurrentImage] = useState(user.avatarURL);
+  const [currentImage, setCurrentImage] = useState(user.avatarURL);
 
   const handleClickShowPassword = () => setPassword(show => !show);
 
@@ -85,18 +86,18 @@ const EditProfileTest = ({ onCloseModal }) => {
 //     }
 //   }
 
-  // function handleFileChange(event) {
-  //   const file = event;
-  //   if (!file) {
-  //     return;
-  //   }
-  //   const reader = new FileReader();
+  function handleFileChange(event) {
+    const file = event;
+    if (!file) {
+      return;
+    }
+    const reader = new FileReader();
 
-  //   reader.onload = function (e) {
-  //     setCurrentImage(e.target.result);
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
+    reader.onload = function (e) {
+      setCurrentImage(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
   return (
     <Box sx={container.helpFormContainer}>
       <Typography variant="h2" mb={3}>
@@ -107,37 +108,45 @@ const EditProfileTest = ({ onCloseModal }) => {
         validationSchema={UserSchema}
         onSubmit={handleSubmit}
       >
-        {({ handleChange, handleSubmit, isSubmitting }) => (
+        {({values, handleChange, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <FormControl fullWidth>
-              {/* <Stack sx={container.ImgWrapperContainer}>
+              <lable style={{
+                width: '68px',
+                height: '79px',
+                margin: '25px auto 0 auto',
+                cursor: 'pointer'}}>
+        <Box sx={container.ImgWrapperContainer}>
               {currentImage ? (
                  <Avatar
           sx={button.profileImgForm}
           src={currentImage}
           alt="User picture"
-        />
+        ></Avatar>
                      
                     ) : (
-                        <Avatar
+                        <Box
           sx={button.profileImgForm}
           src={defaultAvatarViolet}
           alt="User avatar"
-        />
-                    )}
-                    <Box sx={button.profileIconPlus}>
-                         <Icon id={"plus"} />
-                </Box>
-                </Stack>
-                <InputLabel
-                  id="avatar"
-                  type="file"
-                name="avatar"
-                sx={{display:'none'}}
+        ></Box>
+            
+                    )} 
+                <IconButton sx={button.profileIconPlus}>
+                         <Icon sx={icon.iconPlusUser} id={"plus"} />
+                </IconButton>
+              </Box>
+              </lable>
+           <input
+                id="avatarUrl"
+                type="file"
+                name="avatarUrl"
+                accept="image/*,.png,.jpg,.gif,.web"
+                style={{display:'none'}}
                   onChange={event => {
                     handleFileChange(event.currentTarget.files[0]);
                   }}
-                /> */}
+                />
 
               <ErrorMessage
                 name="name"
@@ -152,6 +161,7 @@ const EditProfileTest = ({ onCloseModal }) => {
               <TextField
                 name="name"
                 variant="outlined"
+                value={values.name}
                 placeholder={user.name}
                 fullWidth
                 onChange={handleChange}
@@ -173,6 +183,7 @@ const EditProfileTest = ({ onCloseModal }) => {
               <TextField
                 name="email"
                 variant="outlined"
+                value={values.email}
                 placeholder={user.email}
                 fullWidth
                 onChange={handleChange}
@@ -195,8 +206,9 @@ const EditProfileTest = ({ onCloseModal }) => {
                 name="password"
                 type={password ? 'text' : 'password'}
                 placeholder="Create a password"
+                value={values.password}
                 fullWidth
-                 sx={form.input}
+                sx={form.input}
                 onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">

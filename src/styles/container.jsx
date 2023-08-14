@@ -205,20 +205,14 @@ export const addColumnContainer = {
   },
 };
 export const ImgWrapperContainer = {
-   position: 'relative',
+  position: 'relative',
   width: '68px',
   height: '68px',
-  borderRradius: '8px',
-  // transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 'transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
- 
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 
  ' &:hover': {
     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
     transform: 'scale(1.1)',
   }
 
-//  ' &:hover', 'svg' {
-//     top: '50%',
-//     boxShadow: '0px 0px 11px 0px rgba(82, 85, 188, 1)',
-//   }
 }

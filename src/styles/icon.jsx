@@ -116,3 +116,8 @@ export const alert = {
   fill: 'transparent',
   stroke: 'currentColor',
 };
+export const iconPlusUser = {
+   width: '18px',
+  height: '18px',
+  color:' #161616'
+}
