@@ -69,7 +69,7 @@ export const BoardNavList = () => {
   return (
     <>
       <List sx={container.boardListGroup}>
-        {boards.map((board, index) => {
+        {boards?.map((board, index) => {
           return (
             <ListItem key={board._id} disablePadding>
               <ListItemButton
