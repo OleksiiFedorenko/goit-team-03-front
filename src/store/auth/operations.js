@@ -129,7 +129,7 @@ export const updateProfile = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const { data } = await instance.put(`/auth`, formData);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       toast.error(

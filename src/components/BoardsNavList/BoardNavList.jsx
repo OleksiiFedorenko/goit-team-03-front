@@ -6,10 +6,7 @@ import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
 import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
-import {
-  updateBoard,
-  deleteBoard,
-} from 'store/boards/operations';
+import { updateBoard, deleteBoard } from 'store/boards/operations';
 
 import {
   List,
@@ -35,15 +32,14 @@ export const BoardNavList = () => {
   const navIndex = useSelector(selectNavIndex);
 
   useEffect(() => {
-    console.log('boards', boards);
-    console.log('navIndex', navIndex);
+    // console.log('boards', boards);
+    // console.log('navIndex', navIndex);
     if (!boards.length) {
       navigate('/home');
     } else {
       navigate(boards[navIndex]?._id);
     }
   }, [boards, navIndex, navigate]);
-
 
   const handleOpenModal = () => {
     setShowModal(true);
