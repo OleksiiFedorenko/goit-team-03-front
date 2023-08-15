@@ -53,128 +53,136 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
 
   return (
     <Draggable draggableId={taskId} index={index}>
-      {(provided, snapshot) => (
-        <div
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-          isdragging={`${snapshot.isDragging}`} // lowercase & 'true' or 'false' string (bool triggers a warning)
-        >
-          <Card
-            sx={{
-              ...card.task,
-              position: 'relative',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '4px',
-                height: '100%',
-                background: priorityColor,
-              },
-            }}
+      {(provided, snapshot) => {
+        const isDragging = snapshot.isDragging;
+
+        return (
+          <div
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
           >
-            <Box>
-              <Box sx={card.taskMainBox}>
-                <Typography variant="h5" component="h3" mb={1}>
-                  {name}
-                </Typography>
-                <Typography variant="body2" sx={card.taskDescription}>
-                  {description}
-                </Typography>
-              </Box>
+            <Box
+              sx={{
+                transform: isDragging ? 'rotate(5deg)' : 'rotate(0deg)',
+              }}
+            >
+              <Card
+                sx={{
+                  ...card.task,
+                  position: 'relative',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '4px',
+                    height: '100%',
+                    background: priorityColor,
+                  },
+                }}
+              >
+                <Box>
+                  <Box sx={card.taskMainBox}>
+                    <Typography variant="h5" component="h3" mb={1}>
+                      {name}
+                    </Typography>
+                    <Typography variant="body2" sx={card.taskDescription}>
+                      {description}
+                    </Typography>
+                  </Box>
 
-              {/* components below devider       */}
+                  {/* components below devider       */}
 
-              <Box>
-                <Stack direction="row">
-                  {/* priority container      */}
-                  <Stack
-                    justifyContent="flex-end"
-                    alignItems="flex-start"
-                    spacing={0}
-                    sx={{ marginRight: '14px' }}
-                  >
-                    <Box>
-                      <Typography variant="caption" color="text.sideSecond">
-                        Priority
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h6" sx={priorityStyles}>
-                        {priority}
-                      </Typography>
-                    </Box>
-                  </Stack>
+                  <Box>
+                    <Stack direction="row">
+                      {/* priority container      */}
+                      <Stack
+                        justifyContent="flex-end"
+                        alignItems="flex-start"
+                        spacing={0}
+                        sx={{ marginRight: '14px' }}
+                      >
+                        <Box>
+                          <Typography variant="caption" color="text.sideSecond">
+                            Priority
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="h6" sx={priorityStyles}>
+                            {priority}
+                          </Typography>
+                        </Box>
+                      </Stack>
 
-                  {/* deadline container     */}
-                  <Stack
-                    flexGrow={1}
-                    justifyContent="flex-end"
-                    alignItems="flex-start"
-                    spacing={0}
-                  >
-                    <Box>
-                      <Typography variant="caption" color="text.sideSecond">
-                        Deadline
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h6" color="text.primary">
-                        {deadline}
-                      </Typography>
-                    </Box>
-                  </Stack>
+                      {/* deadline container     */}
+                      <Stack
+                        flexGrow={1}
+                        justifyContent="flex-end"
+                        alignItems="flex-start"
+                        spacing={0}
+                      >
+                        <Box>
+                          <Typography variant="caption" color="text.sideSecond">
+                            Deadline
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="h6" color="text.primary">
+                            {deadline}
+                          </Typography>
+                        </Box>
+                      </Stack>
 
-                  {/* icons container     */}
+                      {/* icons container     */}
 
-                  <Stack
-                    direction="row"
-                    justifyContent="flex-end"
-                    alignItems="flex-end"
-                    spacing={1}
-                  >
-                    {isDeadline() && <Alerticon />}
-                    <Box>
-                      <IconBtn onClick={handleIconClick} iconId="move" />
-                    </Box>
+                      <Stack
+                        direction="row"
+                        justifyContent="flex-end"
+                        alignItems="flex-end"
+                        spacing={1}
+                      >
+                        {isDeadline() && <Alerticon />}
+                        <Box>
+                          <IconBtn onClick={handleIconClick} iconId="move" />
+                        </Box>
 
-                    <Box>
-                      <IconBtn onClick={openModalHandler} iconId="pencil" />
-                    </Box>
+                        <Box>
+                          <IconBtn onClick={openModalHandler} iconId="pencil" />
+                        </Box>
 
-                    <Box>
-                      <IconBtn
-                        onClick={openDeleteConfirmModal}
-                        iconId="trash"
-                      />
-                    </Box>
-                  </Stack>
-                </Stack>
-              </Box>
+                        <Box>
+                          <IconBtn
+                            onClick={openDeleteConfirmModal}
+                            iconId="trash"
+                          />
+                        </Box>
+                      </Stack>
+                    </Stack>
+                  </Box>
+                </Box>
+                <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
+                  <AddCardForm
+                    onCloseModal={closeModalHandler}
+                    taskId={taskId}
+                    formTitle={'Edit card'}
+                    buttonTitle={'Edit'}
+                    taskOperation={updateTask}
+                    initData={{ title: name, description, priority, deadline }}
+                  />
+                </Modal>
+                <DeleteConfirmModal
+                  isOpenModal={ShowDeleteConfirmModal}
+                  onCloseModal={closeModalHandler}
+                  onConfirm={handleDeleteTask}
+                  message="Are you sure you want to delete this task?"
+                  title="This action is irreversible."
+                />
+              </Card>
             </Box>
-            <Modal isOpenModal={showModal} onCloseModal={closeModalHandler}>
-              <AddCardForm
-                onCloseModal={closeModalHandler}
-                taskId={taskId}
-                formTitle={'Edit card'}
-                buttonTitle={'Edit'}
-                taskOperation={updateTask}
-                initData={{ title: name, description, priority, deadline }}
-              />
-            </Modal>
-          </Card>
-
-          <DeleteConfirmModal
-            isOpenModal={ShowDeleteConfirmModal}
-            onCloseModal={closeModalHandler}
-            onConfirm={handleDeleteTask}
-            message="Are you sure you want to delete this task?"
-            title="This action is irreversible."
-          />
-        </div>
-      )}
+          </div>
+        );
+      }}
     </Draggable>
   );
 };
