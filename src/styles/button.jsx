@@ -180,18 +180,6 @@ export const createBoardBox = {
   borderRadius: '6px',
 };
 
-export const createBoardIcon = {};
-
-export const boardListGroup = {
-  display: 'flex',
-  alignItems: 'flex-start',
-  flexDirection: 'column',
-  gap: '4px',
-  // mt: '40px',
-  p: 0,
-  width: '100%',
-};
-
 export const boardListItem = {
   display: 'flex',
   height: '61px',

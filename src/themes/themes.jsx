@@ -14,7 +14,7 @@ const form = {
   button: {
     main: '#BEDBB0',
     contrastText: '#161616',
-  }, 
+  },
 };
 
 const standardParams = {
@@ -256,7 +256,7 @@ export const lightTheme = createTheme({
       verticalTrackActive: 'rgba(22, 22, 22, 0.5)',
       horizontalScrollbar: 'rgba(255, 255, 255, 1)',
       horizontalTrack: 'rgba(232, 232, 232, 1)',
-      horizontalTrackHover: 'rgba(232, 232, 232, 0.8)',
+      horizontalTrackHover: 'rgba(22, 22, 22, 0.2)',
       horizontalTrackActive: 'rgba(22, 22, 22, 0.3)',
     },
     loader: '#BEDBB0',
@@ -340,9 +340,9 @@ export const darkTheme = createTheme({
       verticalTrackHover: 'rgba(18, 18, 18, 0.8)',
       verticalTrackActive: 'rgba(18, 18, 18, 0.6)',
       horizontalScrollbar: 'rgba(22, 22, 22, 1)',
-      horizontalTrack: 'rgba(255, 255, 255, 0.4)',
-      horizontalTrackHover: 'rgba(255, 255, 255, 0.6)',
-      horizontalTrackActive: 'rgba(255, 255, 255, 0.8',
+      horizontalTrack: 'rgba(255, 255, 255, 0.1)',
+      horizontalTrackHover: 'rgba(255, 255, 255, 0.2)',
+      horizontalTrackActive: 'rgba(255, 255, 255, 0.3)',
     },
     loader: '#FFFFFF80',
     modalForm: {
