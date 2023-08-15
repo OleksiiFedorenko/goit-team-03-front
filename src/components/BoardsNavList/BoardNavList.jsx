@@ -7,7 +7,6 @@ import { Icon } from 'components/Icons';
 import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
 import {
-  getBoardById,
   updateBoard,
   deleteBoard,
 } from 'store/boards/operations';
@@ -45,9 +44,6 @@ export const BoardNavList = () => {
     }
   }, [boards, navIndex, navigate]);
 
-  useEffect(() => {
-    if (boardId) dispatch(getBoardById(boardId));
-  }, [dispatch, boardId]);
 
   const handleOpenModal = () => {
     setShowModal(true);
