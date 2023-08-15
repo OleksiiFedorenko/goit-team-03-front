@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import * as Yup from 'yup';
@@ -19,7 +20,7 @@ import {
 import { formatDate } from 'helpers/formatDate';
 import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 import { container } from 'styles';
-
+import { convertDate } from 'helpers/convertDate';
 const initialValues = {
   title: '',
   description: '',
@@ -65,7 +66,8 @@ const AddCardForm = ({
     );
     onCloseModal();
   };
-
+  console.log(deadline);
+  console.log(initData.deadline);
   return (
     <Container sx={container.cardForm}>
       <Formik
@@ -148,7 +150,10 @@ const AddCardForm = ({
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box>{getDeadlineInfo(deadline)}</Box>
-              <Calendar parentState={setDateValue} />
+              <Calendar
+                parentState={setDateValue}
+                initial={dayjs(initData.deadline, 'DD-MM-YYYY')}
+              />
             </Box>
           </Box>
           <SubmitButton>{buttonTitle}</SubmitButton>
