@@ -56,10 +56,7 @@ export const getRegistration = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(
-        'Something went wrong! Please check the correctness of the entered data',
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        }
+        'Something went wrong! Please check the correctness of the entered data'
       );
       return rejectWithValue(error.message);
     }
@@ -75,10 +72,7 @@ export const getLogin = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(
-        'Something went wrong! Please check the correctness of the entered data',
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        }
+        'Something went wrong! Please check the correctness of the entered data'
       );
       return rejectWithValue(error.message);
     }
@@ -124,9 +118,7 @@ export const updateTheme = createAsyncThunk(
       const { data } = await instance.patch('/auth', { theme });
       return data;
     } catch (error) {
-      toast.error('Something went wrong! Please, try again.', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error('Something went wrong! Please, try again.');
       return rejectWithValue(error.message);
     }
   }
@@ -141,10 +133,7 @@ export const updateProfile = createAsyncThunk(
       return data;
     } catch (error) {
       toast.error(
-        'Something went wrong! Please check the correctness of the entered data',
-        {
-          position: toast.POSITION.TOP_RIGHT,
-        }
+        'Something went wrong! Please check the correctness of the entered data'
       );
       return rejectWithValue(error.message);
     }
