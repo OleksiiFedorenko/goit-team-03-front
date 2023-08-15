@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import {
   Box,
+  Container,
   FormControl,
   FormLabel,
   TextField,
@@ -62,7 +63,7 @@ const BoardForm = ({
   };
 
   return (
-    <Box sx={container.addColumnContainer}>
+    <Container sx={container.cardForm}>
       <Formik
         initialValues={initData ? initData : initialValues}
         validationSchema={validationSchema}
@@ -142,7 +143,7 @@ const BoardForm = ({
           </Form>
         )}
       </Formik>
-    </Box>
+    </Container>
   );
 };
 

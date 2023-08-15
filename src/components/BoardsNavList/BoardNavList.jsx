@@ -127,6 +127,8 @@ export const BoardNavList = () => {
         isOpenModal={ShowDeleteConfirmModal}
         onCloseModal={handleCloseModal}
         onConfirm={handleDeleteBoard}
+        message="Are you sure you want to delete this board?"
+        title="All your columns and tasks in this board will be deleted too."
       />
     </>
   );
