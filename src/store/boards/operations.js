@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Notiflix from 'notiflix';
+import { toast } from 'react-toastify';
 
 import { instance } from '../auth/operations';
 
@@ -7,16 +7,16 @@ export const needHelp = createAsyncThunk(
   'help',
   async ({ email, text }, thunkAPI) => {
     try {
-
-const { data } =  await instance.post('/auth/help', {
-
+      const { data } = await instance.post('/auth/help', {
         email,
         message: text,
       });
-      Notiflix.Notify.success(data.message);
+      toast.info(
+        'Thank you for your request, we will answer you as soon as possible.'
+      );
       return data;
     } catch (e) {
-      Notiflix.Notify.failure('Something going wrong!');
+      toast.error('Something going wrong!');
       console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -27,10 +27,8 @@ export const getAllBoards = createAsyncThunk(
   'boards/getAllBoards',
   async (_, { rejectWithValue }) => {
     try {
-
-
-      const { data } = await instance.get('/boards');      
- console.log(data)
+      const { data } = await instance.get('/boards');
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -43,9 +41,8 @@ export const getBoardById = createAsyncThunk(
   'boards/getBoardById',
   async (id, { rejectWithValue }) => {
     try {
-
       const { data } = await instance.get(`boards/${id}`);
-      console.log(data)
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -58,8 +55,11 @@ export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async ({ title, icon, background }, { rejectWithValue }) => {
     try {
-
-      const { data } = await instance.post('boards', { title, icon, background });
+      const { data } = await instance.post('boards', {
+        title,
+        icon,
+        background,
+      });
       console.log(data);
       return data;
     } catch (error) {
@@ -72,7 +72,6 @@ export const updateBoard = createAsyncThunk(
   'board/updateBoard',
   async ({ id, title, icon, background }, { rejectWithValue }) => {
     try {
-
       const { data } = await instance.put(`/boards/${id}`, {
         title,
         icon,
@@ -182,10 +181,8 @@ export const updateTask = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-
-      console.log( { taskId, title, description, priority, deadline })
+      console.log({ taskId, title, description, priority, deadline });
       const { data } = await instance.put(`/tasks/${taskId}`, {
-
         title,
         description,
         priority,
@@ -202,9 +199,8 @@ export const deleteTask = createAsyncThunk(
   'boards/deleteTask',
   async (_id, { rejectWithValue }) => {
     try {
-
       const { data } = await instance.delete(`/tasks/${_id}`);
-      console.log(data)
+      console.log(data);
 
       return data;
     } catch (error) {
@@ -217,9 +213,12 @@ export const changeColumn = createAsyncThunk(
   'boards/changeColumn',
   async ({ taskId, columnId, parentColumn }, { rejectWithValue }) => {
     try {
-      const { data } = await instance.patch(`/tasks/${taskId}/owner/${columnId}`, {
-        parentColumn,
-      });
+      const { data } = await instance.patch(
+        `/tasks/${taskId}/owner/${columnId}`,
+        {
+          parentColumn,
+        }
+      );
 
       return data;
     } catch (error) {

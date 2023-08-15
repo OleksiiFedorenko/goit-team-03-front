@@ -30,7 +30,6 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required('Required'),
   description: Yup.string().required('Required'),
   deadline: Yup.mixed(),
-  // deadline: Yup.date().required(), - ця перевірка блокувала відправку форми
 });
 
 const AddCardForm = ({
@@ -55,8 +54,6 @@ const AddCardForm = ({
   };
 
   const handleSubmit = values => {
-    // changing the deadline to the needed format
-    // const formattedDate = values.deadline.split('-').reverse().join('-');
     dispatch(
       taskOperation({
         ...values,
@@ -64,11 +61,8 @@ const AddCardForm = ({
         priority,
         taskId,
         deadline: formatDate(deadline.$d),
-        // deadline: formattedDate,
       })
     );
-    //setSubmitting(false);
-    // resetForm();
     onCloseModal();
   };
 
@@ -157,18 +151,6 @@ const AddCardForm = ({
               <Calendar parentState={setDateValue} />
             </Box>
           </Box>
-          {/* <Button
-            color="primary"
-            variant="contained"
-            fullWidth
-            sx={form.button}
-            type="submit"
-          >
-            <Box sx={button.boxIconPlus}>
-              <Icon id={'plus'} sx={icon.plusAdd} />
-            </Box>
-            Add
-          </Button> */}
           <SubmitButton>{buttonTitle}</SubmitButton>
         </Form>
       </Formik>

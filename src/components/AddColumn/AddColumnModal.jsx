@@ -37,7 +37,7 @@ const AddColumnModal = ({ onCloseModal }) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <FormControl fullWidth>
               <Textfield name="title" label="Title" sx={{ mb: 3 }} />

@@ -18,8 +18,7 @@ import { BoardInnerList, StrictModeDroppable } from 'components/DragAndDrop';
 import { useDispatch } from 'react-redux';
 import { handleDragEnd } from 'helpers';
 import { selectPrioFilter } from 'store/filters/selectors';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const BoardPage = () => {
   const dispatch = useDispatch();
@@ -28,9 +27,7 @@ const BoardPage = () => {
   const error = useSelector(selectError);
 
   if (error) {
-    toast.error(error, {
-      position: 'bottom-right',
-    });
+    toast.error(error);
   }
 
   const filter = useSelector(selectPrioFilter);
@@ -127,7 +124,6 @@ const BoardPage = () => {
             </Box>
             <AddColumnButton />
           </Box>
-          <ToastContainer autoClose={3000} />
         </Box>
       </Box>
     </>
