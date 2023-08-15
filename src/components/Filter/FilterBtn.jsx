@@ -4,6 +4,8 @@ import { FilterBar } from './FilterBar';
 import { Box, Button, SvgIcon, Typography } from '@mui/material';
 import { Icon } from 'components/Icons';
 import { icon } from 'styles';
+import { useSelector } from 'react-redux';
+import { selectBoard } from 'store/boards/selectors';
 
 export const FilterBtn = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +16,8 @@ export const FilterBtn = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  const currentBoard = useSelector(selectBoard);
 
   return (
     <>
@@ -33,11 +37,21 @@ export const FilterBtn = () => {
         }}
       >
         <Button
+          variant="contained"
+          color="secondary"
           sx={{
             textTransform: 'none',
             display: 'flex',
             gap: '8px',
             alignItems: 'center',
+            borderRadius: currentBoard.background !== 0 ? '8px' : 0,
+            paddingRight: currentBoard.background !== 0 ? '4px' : 0,
+            paddingLeft: currentBoard.background !== 0 ? '4px' : 0,
+            backgroundColor: 'background.default',
+            boxShadow: 'none',
+            '&:hover, &focus': {
+              backgroundColor: 'background.alphaDND',
+            },
           }}
           type="button"
           onClick={handleOpenModal}
