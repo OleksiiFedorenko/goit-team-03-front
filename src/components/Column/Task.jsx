@@ -28,10 +28,8 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
   };
 
   const handleDeleteTask = () => {
-    // if (window.confirm(`Do you really want to delete task ${name}?`)) {
     dispatch(deleteTask(taskId));
     setShowDeleteConfirmModal(false);
-    // }
   };
 
   const openDeleteConfirmModal = () => {
