@@ -103,6 +103,7 @@ export const AuthFormRegister = () => {
           </InputAdornment>
         }
       />
+      
       <Button 
         color="button" 
         variant="contained"

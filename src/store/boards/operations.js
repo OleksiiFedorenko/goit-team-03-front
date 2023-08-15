@@ -8,7 +8,7 @@ export const needHelp = createAsyncThunk(
   async ({ email, text }, thunkAPI) => {
     try {
 
-const { data } =  await instance.post('/help', {
+const { data } =  await instance.post('/auth/help', {
 
         email,
         message: text,

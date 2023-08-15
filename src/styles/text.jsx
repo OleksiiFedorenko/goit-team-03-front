@@ -31,6 +31,7 @@ export const helpBannerButton = {
 export const helpBannerIcon = {
   ml: 2.5,
   mb: 2.5,
+  width: '20px',
 };
 
 export const noBoard = {

@@ -85,10 +85,6 @@ export const LogOut = {
   height: '32px',
   color: 'icon.logOut',
   stroke: 'currentColor',
-  '&:hover, &:focus': {
-    color: 'icon.logOutHover',
-    stroke: 'currentColor',
-  },
 };
 
 export const close = {
@@ -131,6 +127,14 @@ export const alert = {
   width: '16px',
   height: '16px',
   color: 'icon.alert',
+  fill: 'transparent',
+  stroke: 'currentColor',
+};
+
+export const themeFilter = {
+  width: '16px',
+  height: '16px',
+  color: 'icon.filter',
   fill: 'transparent',
   stroke: 'currentColor',
 };

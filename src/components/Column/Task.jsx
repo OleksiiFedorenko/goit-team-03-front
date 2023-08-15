@@ -175,6 +175,8 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
                   isOpenModal={ShowDeleteConfirmModal}
                   onCloseModal={closeModalHandler}
                   onConfirm={handleDeleteTask}
+                  message="Are you sure you want to delete this task?"
+                  title="This action is irreversible."
                 />
               </Card>
             </Box>

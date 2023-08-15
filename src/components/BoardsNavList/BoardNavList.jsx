@@ -19,7 +19,7 @@ import {
   ListItemText,
   Box,
 } from '@mui/material';
-import { button, icon } from 'styles';
+import { container, button, icon } from 'styles';
 
 import { selectBoard, selectBoards } from 'store/boards/selectors';
 import { selectNavIndex } from 'store/nav/selectors';
@@ -68,7 +68,7 @@ export const BoardNavList = () => {
 
   return (
     <>
-      <List sx={button.boardListGroup}>
+      <List sx={container.boardListGroup}>
         {boards.map((board, index) => {
           return (
             <ListItem key={board._id} disablePadding>
@@ -127,6 +127,8 @@ export const BoardNavList = () => {
         isOpenModal={ShowDeleteConfirmModal}
         onCloseModal={handleCloseModal}
         onConfirm={handleDeleteBoard}
+        message="Are you sure you want to delete this board?"
+        title="All your columns and tasks in this board will be deleted too."
       />
     </>
   );

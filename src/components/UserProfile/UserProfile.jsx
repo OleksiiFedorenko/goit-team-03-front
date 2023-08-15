@@ -6,7 +6,7 @@ import Modal from 'components/Modal/Modal';
 import defaultAvatarViolet from '../../images/default-avatar-violet.png';
 import defaultAvatarLight from '../../images/default-avatar-light.png';
 import defaultAvatarDark from '../../images/default-avatar-dark.png';
-import { EditProfile } from 'components/EditProfile';
+import { EditProfile } from '../EditProfile';
 
 import { Button, Box } from '@mui/material';
 import { button } from 'styles';

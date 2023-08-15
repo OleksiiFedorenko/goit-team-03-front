@@ -54,6 +54,28 @@ export const sideBar = {
   },
   height: '100%',
   bgcolor: 'background.side',
+  overflowY: 'auto',
+  '&::-webkit-scrollbar': {
+    width: '8px',
+  },
+  '&::-webkit-scrollbar-track': {
+    borderRadius: '12px',
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    backgroundColor: 'side.activeBtn',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    backgroundColor: 'side.activeBoardBox',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'side.plusBackgroundHov',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'side.plusBackgroundHov',
+  },
 };
 
 export const sideBarDesktop = {
@@ -107,6 +129,10 @@ export const auth = {
   },
 };
 
+export const sideBarTop = {
+  flexGrow: 1,
+};
+
 export const noBoardInner = {
   display: 'flex',
   justifyContent: 'center',
@@ -117,37 +143,54 @@ export const noBoardInner = {
 
 export const boardInner = {
   width: '100%',
-  height: '100%',
+  height: {
+    zeroUp: 'calc(100% - 10px)',
+    tablet: 'calc(100% - 16px)',
+    desktop: 'calc(100% - 8px)',
+  },
 
   pt: {
     zeroUp: '14px',
     tablet: '20px',
     desktop: '10px',
   },
-  pb: {
-    zeroUp: '24px',
-    tablet: '32px',
-    desktop: '8px',
-  },
+  // pb: {
+  //   zeroUp: '24px',
+  //   tablet: '32px',
+  //   desktop: '8px',
+  // },
   px: {
     zeroUp: '20px',
     tablet: '32px',
     desktop: '24px',
   },
-};
-
-export const boardTopBar = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+  overflowY: 'hidden',
+  overflowX: 'auto',
+  '&::-webkit-scrollbar': {
+    height: '12px',
+  },
+  '&::-webkit-scrollbar-track': {
+    minWidth: '179px',
+    maxWidth: '637px',
+    borderRadius: '12px',
+    backgroundColor: 'scroll.horizontalScrollbar',
+    ml: '24px',
+    mr: '24px',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    backgroundColor: 'scroll.horizontalTrack',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'scroll.horizontalTrackHover',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'scroll.horizontalTrackActive',
+  },
 };
 
 export const dndContainerColumn = {
   minHeight: '20px',
-  // for some f**king unbelievable reason only fixed styling is working
-  // maxHeight: 'calc(100vh - 68px)',
-  // maxHeight: '100%',
-  // maxHeight: '470px',
 };
 
 export const columns = {
@@ -157,8 +200,8 @@ export const columns = {
   height: {
     // !!!!!!!!!!!!!do not change this
     zeroUp: 'calc(100vh - 170px)', // this one is not exactly same as on the figma for some reason
-    tablet: 'calc(100vh - 192px)',
-    desktop: 'calc(100vh - 142px)',
+    tablet: 'calc(100vh - 184px)',
+    desktop: 'calc(100vh - 152px)',
   },
   mt: {
     zeroUp: '40px',
@@ -174,18 +217,48 @@ export const columnsInner = {
 };
 
 export const boardNav = {
+  flexGrow: 1,
   width: '100%',
   mt: '60px',
 };
 
 export const boardNavList = {
-  mt: '40px',
-  height: '150px',
-  scrollbarWidth: 'none',
-  overflow: 'scroll',
+  direction: 'rtl',
+  flexGrow: 1,
+  height: '130px',
+  overflowY: 'auto',
   '&::-webkit-scrollbar': {
-    width: '0px',
+    width: '8px',
   },
+  '&::-webkit-scrollbar-track': {
+    borderRadius: '12px',
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    backgroundColor: 'side.activeBtn',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    borderRadius: '12px',
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    backgroundColor: 'side.activeBoardBox',
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    backgroundColor: 'side.plusBackgroundHov',
+  },
+  '&::-webkit-scrollbar-thumb:active': {
+    backgroundColor: 'side.plusBackgroundHov',
+  },
+};
+
+export const boardListGroup = {
+  direction: 'ltr',
+  display: 'flex',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  gap: '4px',
+  // mt: '40px',
+  p: 0,
+  width: '100%',
 };
 
 export const modal = {
@@ -200,12 +273,6 @@ export const modal = {
   boxShadow: 24,
   p: '24px',
 };
-
-// export const modalContent = {
-//   width: {
-//     mobileFixed: '95%',
-//   },
-// };
 
 export const helpBannerContainer = {
   m: 'auto',
@@ -225,12 +292,6 @@ export const helpFormContainer = {
   },
 };
 
-export const addColumnContainer = {
-  width: {
-    zeroUp: 287,
-    tablet: 302,
-  },
-};
 export const ImgWrapperContainer = {
   position: 'relative',
   width: '68px',
@@ -266,11 +327,11 @@ export const taskListScroll = {
   '&::-webkit-scrollbar-track': {
     minHeight: '142px',
     maxHeight: '142px',
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalScrollbar',
   },
   '&::-webkit-scrollbar-thumb': {
-    borderRadius: '4px',
+    borderRadius: '12px',
     backgroundColor: 'scroll.verticalTrack',
   },
   '&::-webkit-scrollbar-thumb:hover': {
@@ -282,43 +343,15 @@ export const taskListScroll = {
 };
 
 export const taskList = {
-  width: '334px',
   gap: '8px',
   margin: 0,
   padding: 0,
   height: '100%',
+  width: {
+    zeroUp: 'calc(100vw - 40px)',
+    mobileFixed: '334px',
+  },
 };
-
-// export const boardScroll = {
-//   width: '100%',
-//   overflowY: 'auto',
-//   overflowX: 'auto',
-//   margin: 0,
-//   padding: 0,
-//   listStyle: 'none',
-//   height: '12px',
-//   ml: '24px',
-//   mr: '24px',
-//   '&::-webkit-scrollbar': {
-//     width: '8px',
-//   },
-//   '&::-webkit-scrollbar-track': {
-//     minWidth: '179px',
-//     maxWidth: '637px',
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalScrollbar',
-//   },
-//   '&::-webkit-scrollbar-thumb': {
-//     borderRadius: '4px',
-//     backgroundColor: 'scroll.horizontalTrack',
-//   },
-//   '&::-webkit-scrollbar-thumb:hover': {
-//     backgroundColor: 'scroll.horizontalTrackHover',
-//   },
-//   '&::-webkit-scrollbar-thumb:active': {
-//     backgroundColor: 'scroll.horizontalTrackActive',
-//   },
-// };
 
 export const iconBox = {
   display: 'flex',
@@ -360,4 +393,49 @@ export const cardForm = {
     zeroUp: 287,
     tablet: 302,
   },
+};
+export const editUserWrapper = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+  justifyContent: 'baseline',
+  width: {
+    zeroUp: '285px',
+    mobileFixed: '285px',
+    tablet: '350px',
+  },
+};
+
+export const editUserImgWrapper = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '68px',
+  height: '68px',
+  borderRadius: '8px',
+
+  '&:hover, &:focus': {
+    '& .avatar': {
+      transform: 'scale(1.1)',
+    },
+    '& .plus': {
+      transform: 'translate(-50%, -180%)',
+    },
+  },
+};
+
+export const editUserPlusWrapper = {
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  top: '98%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '24px',
+  height: '24px',
+  bgcolor: 'background.btnPlusAvatar',
+  borderRadius: '8px',
+  transition:
+    'all 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 550ms cubic-bezier(0.4, 0, 0.2, 1)',
 };

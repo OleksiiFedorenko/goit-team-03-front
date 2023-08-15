@@ -14,6 +14,22 @@ export const authItem = {
   },
 };
 
+export const google = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
+  borderRadius: '8px',
+  height: '49px',
+  // color: '#000',
+  fontFamily: 'Poppins',
+  fontWeight: 500,
+  '&:hover, &:focus': {
+    color: 'text.white',
+    bgcolor: 'text.primary',
+  },
+};
+
 export const authTabList = {
   width: '100%',
   display: 'flex',
@@ -164,18 +180,6 @@ export const createBoardBox = {
   borderRadius: '6px',
 };
 
-export const createBoardIcon = {};
-
-export const boardListGroup = {
-  display: 'flex',
-  alignItems: 'flex-start',
-  flexDirection: 'column',
-  gap: '4px',
-  // mt: '40px',
-  p: 0,
-  width: '100%',
-};
-
 export const boardListItem = {
   display: 'flex',
   height: '61px',
@@ -232,8 +236,10 @@ export const logOut = {
   textTransform: 'none',
   borderRadius: 0,
   '&:hover, &:focus': {
-    stroke: 'currentColor',
     bgcolor: 'side.activeBtn',
+    '& .icon': {
+      color: 'icon.logOutHover',
+    },
   },
 };
 
@@ -350,4 +356,15 @@ export const boardFormIconWrapper = {
   height: '28px',
   bgcolor: 'background.boxPlus',
   borderRadius: 0.75,
+};
+export const editUserEye = {
+  position: 'absolute',
+  minWidth: '18px',
+  bottom: '-5px',
+  right: '15px',
+  p: '0',
+  transform: 'translateY(-50%)',
+  backgroundColor: 'transparent',
+  border: 'none',
+  opacity: '0.4000000059604645',
 };

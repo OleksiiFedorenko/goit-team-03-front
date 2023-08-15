@@ -61,6 +61,8 @@ const ColumnHeader = ({ title, columnId }) => {
         isOpenModal={ShowDeleteConfirmModal}
         onCloseModal={handleCloseModal}
         onConfirm={handleDeleteColumn}
+        message="Are you sure you want to delete this column?"
+        title="All your tasks in this column will be deleted too."
       />
     </>
   );

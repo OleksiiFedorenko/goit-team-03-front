@@ -2,7 +2,14 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { updateColumn } from 'store/boards/operations';
-import { Box, FormControl, Typography, Button, TextField } from '@mui/material';
+import {
+  Box,
+  Container,
+  FormControl,
+  Typography,
+  Button,
+  TextField,
+} from '@mui/material';
 import { Icon } from 'components/Icons';
 import { container, button, form, icon } from 'styles';
 
@@ -20,7 +27,7 @@ const EditColumnModal = ({ title, columnId, onCloseModal }) => {
   };
 
   return (
-    <Box sx={container.addColumnContainer}>
+    <Container sx={container.cardForm}>
       <Typography variant="h2" mb={3}>
         Edit column
       </Typography>
@@ -65,7 +72,7 @@ const EditColumnModal = ({ title, columnId, onCloseModal }) => {
           </Form>
         )}
       </Formik>
-    </Box>
+    </Container>
   );
 };
 
