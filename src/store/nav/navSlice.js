@@ -7,6 +7,7 @@ const navSlice = createSlice({
   },
   reducers: {
     setNavIndex(state, action) {
+      console.log('new nav index', state);
       state.navIndex = action.payload;
     },
   },
