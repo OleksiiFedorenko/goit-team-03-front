@@ -36,12 +36,13 @@ export const BoardNavList = () => {
   const navIndex = useSelector(selectNavIndex);
 
   useEffect(() => {
+    console.log('boards', boards);
+    console.log('navIndex', navIndex);
     if (!boards.length) {
       navigate('/home');
+    } else {
+      navigate(boards[navIndex]?._id);
     }
-
-    if (navIndex) navigate(boards[navIndex]._id);
-    else navigate(boards[0]._id);
   }, [boards, navIndex, navigate]);
 
   useEffect(() => {
