@@ -302,6 +302,7 @@ export const addCard = {
     mobileFixed: '100%',
   },
   height: '56px',
+  minHeight: '56px',
   lineHeight: 1.5,
   textTransform: 'none',
   boxShadow: 'none',
