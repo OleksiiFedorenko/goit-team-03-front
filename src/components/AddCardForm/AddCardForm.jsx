@@ -18,9 +18,10 @@ import {
 } from '@mui/material';
 
 import { formatDate } from 'helpers/formatDate';
-import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
+//import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 import { container } from 'styles';
-import { convertDate } from 'helpers/convertDate';
+import { convertToUnixTime } from 'helpers/convertToUnixTime';
+import { convertFromUnixTime } from 'helpers/convertFromUnixTime';
 const initialValues = {
   title: '',
   description: '',
@@ -43,8 +44,13 @@ const AddCardForm = ({
   initData,
 }) => {
   const dispatch = useDispatch();
-  const [deadline, setDeadline] = useState(Date.now());
-  const [priority, setPriority] = useState('without');
+  const [deadline, setDeadline] = useState(
+    initData ? convertToUnixTime(initData.deadline) : Date.now()
+  );
+
+  const [priority, setPriority] = useState(
+    initData ? initData.priority : 'without'
+  );
 
   const setDateValue = value => {
     setDeadline(value);
@@ -66,8 +72,7 @@ const AddCardForm = ({
     );
     onCloseModal();
   };
-  console.log(deadline);
-  console.log(initData.deadline);
+
   return (
     <Container sx={container.cardForm}>
       <Formik
@@ -149,10 +154,10 @@ const AddCardForm = ({
             </Typography>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box>{getDeadlineInfo(deadline)}</Box>
+              <Box>{convertFromUnixTime(deadline)}</Box>
               <Calendar
                 parentState={setDateValue}
-                initial={dayjs(initData.deadline, 'DD-MM-YYYY')}
+                initial={dayjs(deadline, 'DD-MM-YYYY')}
               />
             </Box>
           </Box>
