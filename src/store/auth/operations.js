@@ -52,7 +52,7 @@ export const getRegistration = createAsyncThunk(
         password,
       });
       const { data } = await instance.post('/auth/login', { email, password });
-      setToken(data.token);
+      setToken(data.accessToken);
       return data;
     } catch (error) {
       toast.error(
@@ -68,7 +68,7 @@ export const getLogin = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const { data } = await instance.post('/auth/login', { email, password });
-      setToken(data.token);
+      setToken(data.accessToken);
       return data;
     } catch (error) {
       toast.error(
