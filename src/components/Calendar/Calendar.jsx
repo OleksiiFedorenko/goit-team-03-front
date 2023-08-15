@@ -166,5 +166,5 @@ export const Calendar = ({ parentState, initial }) => {
 
 Calendar.propTypes = {
   parentState: PropTypes.func.isRequired,
-  initial: PropTypes.string,
+  initial: PropTypes.object,
 };
