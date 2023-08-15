@@ -1,11 +1,13 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import Column from 'components/Column/Column';
+import { useParams } from 'react-router-dom';
 import AddColumnButton from 'components/AddColumn/AddColumnButton';
 import {
   selectBoard,
   selectColumns,
   selectError,
 } from 'store/boards/selectors';
+import { getBoardById } from 'store/boards/operations';
 
 import { Box, Typography } from '@mui/material';
 import { container, text } from 'styles';
@@ -22,9 +24,14 @@ import { toast } from 'react-toastify';
 
 const BoardPage = () => {
   const dispatch = useDispatch();
+  const { boardId } = useParams();
   const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
   const error = useSelector(selectError);
+
+  useEffect(() => {
+    if (boardId) dispatch(getBoardById(boardId));
+  }, [dispatch, boardId]);
 
   if (error) {
     toast.error(error);
