@@ -168,6 +168,8 @@ const Task = ({ name, description, priority, deadline, taskId, index }) => {
                     formTitle={'Edit card'}
                     buttonTitle={'Edit'}
                     taskOperation={updateTask}
+                    priority={priority}
+                    deadline={deadline}
                     initData={{ title: name, description, priority, deadline }}
                   />
                 </Modal>

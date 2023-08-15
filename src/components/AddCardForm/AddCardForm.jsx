@@ -15,7 +15,7 @@ import {
   FormControl,
   Box,
 } from '@mui/material';
-
+import { convertDate } from 'helpers/convertDate';
 import { formatDate } from 'helpers/formatDate';
 import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 import { container } from 'styles';
@@ -39,6 +39,8 @@ const AddCardForm = ({
   formTitle,
   buttonTitle,
   taskOperation,
+  priority: currentPriority,
+  deadline: currentDeadline,
   taskId,
   initData,
 }) => {
@@ -120,7 +122,7 @@ const AddCardForm = ({
               defaultValue="low"
               aria-labelledby="priority-radios"
               name="priority"
-              value={priority}
+              value={currentPriority}
               onChange={handleChangePriority}
             >
               <FormControlLabel
@@ -153,7 +155,12 @@ const AddCardForm = ({
             </Typography>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box>{getDeadlineInfo(deadline)}</Box>
+              {initData ? (
+                <Box>{convertDate(currentDeadline)}</Box>
+              ) : (
+                <Box>{getDeadlineInfo(deadline)}</Box>
+              )}
+
               <Calendar parentState={setDateValue} />
             </Box>
           </Box>
