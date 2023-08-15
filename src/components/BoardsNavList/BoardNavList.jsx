@@ -38,9 +38,10 @@ export const BoardNavList = () => {
   useEffect(() => {
     if (!boards.length) {
       navigate('/home');
-    } else {
-      navigate(boards[navIndex]._id);
     }
+
+    if (navIndex) navigate(boards[navIndex]._id);
+    else navigate(boards[0]._id);
   }, [boards, navIndex, navigate]);
 
   useEffect(() => {
