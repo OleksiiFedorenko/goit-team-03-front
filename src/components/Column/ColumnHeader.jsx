@@ -24,10 +24,8 @@ const ColumnHeader = ({ title, columnId }) => {
   };
 
   const handleDeleteColumn = () => {
-    // if (window.confirm(`Do you really want to delete column ${title}?`)) {
     dispatch(deleteColumn(columnId));
     setShowDeleteConfirmModal(false);
-    // }
   };
 
   const openDeleteConfirmModal = () => {

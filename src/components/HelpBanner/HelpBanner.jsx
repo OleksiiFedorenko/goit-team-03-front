@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
-import TaskProImg from '../../images/taskPro-img.png';
+import TaskProImg from '../../images/taskPro-img@1x.png';
+import TaskProImg2x from '../../images/taskPro-img@2x.png';
+import TaskProImg3x from '../../images/taskPro-img@3x.png';
 import { NeedHelpForm } from './NeedHelpForm';
 import { Box, Typography, Button, SvgIcon } from '@mui/material';
 import { text, container, button } from 'styles';
@@ -20,6 +22,7 @@ export const HelpBanner = () => {
       <Box
         component="img"
         src={TaskProImg}
+        srcSet={`${TaskProImg} 1x, ${TaskProImg2x} 2x, ${TaskProImg3x} 3x`}
         alt="TaskProHelperImg"
         sx={{
           width: 54,

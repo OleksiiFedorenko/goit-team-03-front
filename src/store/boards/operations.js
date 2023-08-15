@@ -17,7 +17,7 @@ export const needHelp = createAsyncThunk(
       return data;
     } catch (e) {
       toast.error('Something going wrong!');
-      console.log(e.message);
+      // console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -28,7 +28,9 @@ export const getAllBoards = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get('/boards');
-    
+
+      // console.log(data);
+
 
       return data;
     } catch (error) {
@@ -42,7 +44,9 @@ export const getBoardById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(`boards/${id}`);
-    
+
+      // console.log(data);
+
 
       return data;
     } catch (error) {
@@ -60,7 +64,10 @@ export const addBoard = createAsyncThunk(
         icon,
         background,
       });
-    
+  
+
+      // console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -78,7 +85,8 @@ export const updateBoard = createAsyncThunk(
         background,
       });
 
-    
+      // console.log(data);
+
 
       return data;
     } catch (error) {
@@ -104,7 +112,9 @@ export const addColumn = createAsyncThunk(
   async ({ title, parentBoard }, { rejectWithValue }) => {
     try {
       const { data } = await instance.post('/columns', { title, parentBoard });
-    
+
+      // console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -152,9 +162,11 @@ export const addTask = createAsyncThunk(
   'boards/addTask',
   async (values, { rejectWithValue }) => {
     try {
-      console.log(values);
+      // console.log(values);
       const { data } = await instance.post('/tasks', values);
-    
+
+      // console.log(data);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -181,7 +193,7 @@ export const updateTask = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log({ taskId, title, description, priority, deadline });
+      // console.log({ taskId, title, description, priority, deadline });
       const { data } = await instance.put(`/tasks/${taskId}`, {
         title,
         description,
@@ -200,7 +212,9 @@ export const deleteTask = createAsyncThunk(
   async (_id, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/tasks/${_id}`);
-    
+
+      // console.log(data);
+
 
       return data;
     } catch (error) {

@@ -6,11 +6,7 @@ import BoardForm from 'components/BoardForm/BoardForm';
 import { Icon } from 'components/Icons';
 import DeleteConfirmModal from 'components/DeleteConfirmModal/DeleteConfirmModal';
 
-import {
-  getBoardById,
-  updateBoard,
-  deleteBoard,
-} from 'store/boards/operations';
+import { updateBoard, deleteBoard } from 'store/boards/operations';
 
 import {
   List,
@@ -36,16 +32,14 @@ export const BoardNavList = () => {
   const navIndex = useSelector(selectNavIndex);
 
   useEffect(() => {
+    // console.log('boards', boards);
+    // console.log('navIndex', navIndex);
     if (!boards.length) {
       navigate('/home');
     } else {
-      navigate(boards[navIndex]._id);
+      navigate(boards[navIndex]?._id);
     }
   }, [boards, navIndex, navigate]);
-
-  useEffect(() => {
-    if (boardId) dispatch(getBoardById(boardId));
-  }, [dispatch, boardId]);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -69,7 +63,7 @@ export const BoardNavList = () => {
   return (
     <>
       <List sx={container.boardListGroup}>
-        {boards.map((board, index) => {
+        {boards?.map((board, index) => {
           return (
             <ListItem key={board._id} disablePadding>
               <ListItemButton

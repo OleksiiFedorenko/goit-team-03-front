@@ -43,7 +43,7 @@ export const AuthFormLogin = () => {
   }
 
   const onSubmit = (values, { setSubmitting }) => {
-    console.log(JSON.stringify(values, null, 2));
+    // console.log(JSON.stringify(values, null, 2));
     dispatch(getLogin(values));
     setSubmitting(false);
   };

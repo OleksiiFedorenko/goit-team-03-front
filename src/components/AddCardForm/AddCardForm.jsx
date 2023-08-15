@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import * as Yup from 'yup';
@@ -17,9 +18,10 @@ import {
 } from '@mui/material';
 
 import { formatDate } from 'helpers/formatDate';
-import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
+//import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 import { container } from 'styles';
-
+import { convertToUnixTime } from 'helpers/convertToUnixTime';
+import { convertFromUnixTime } from 'helpers/convertFromUnixTime';
 const initialValues = {
   title: '',
   description: '',
@@ -42,8 +44,13 @@ const AddCardForm = ({
   initData,
 }) => {
   const dispatch = useDispatch();
-  const [deadline, setDeadline] = useState(Date.now());
-  const [priority, setPriority] = useState('without');
+  const [deadline, setDeadline] = useState(
+    initData ? convertToUnixTime(initData.deadline) : Date.now()
+  );
+
+  const [priority, setPriority] = useState(
+    initData ? initData.priority : 'without'
+  );
 
   const setDateValue = value => {
     setDeadline(value);
@@ -79,18 +86,42 @@ const AddCardForm = ({
           </Typography>
           <Textfield
             name="title"
-            label="Title"
+            placeholder="Title"
+            style={{marginBottom: '14px'}}
             sx={{
-              marginBottom: '14px',
+              '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
             }}
           />
           <Textfield
             name="description"
-            label="Description"
+            placeholder="Description"
             multiline={true}
             rows={6}
+            style={{marginBottom: '24px'}}
             sx={{
-              marginBottom: '24px',
+              '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
             }}
           />
 
@@ -147,8 +178,11 @@ const AddCardForm = ({
             </Typography>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box>{getDeadlineInfo(deadline)}</Box>
-              <Calendar parentState={setDateValue} />
+              <Box>{convertFromUnixTime(deadline)}</Box>
+              <Calendar
+                parentState={setDateValue}
+                initial={dayjs(deadline, 'DD-MM-YYYY')}
+              />
             </Box>
           </Box>
           <SubmitButton>{buttonTitle}</SubmitButton>

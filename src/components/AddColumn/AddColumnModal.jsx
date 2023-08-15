@@ -22,7 +22,7 @@ const AddColumnModal = ({ onCloseModal }) => {
   const parentBoard = boardId;
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log({ ...values, parentBoard });
+    // console.log({ ...values, parentBoard });
     dispatch(addColumn({ ...values, parentBoard }));
     resetForm();
     onCloseModal();
@@ -40,7 +40,26 @@ const AddColumnModal = ({ onCloseModal }) => {
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <FormControl fullWidth>
-              <Textfield name="title" label="Title" sx={{ mb: 3 }} />
+              <Textfield
+                name="title"
+                placeholder="Title"
+                sx={{
+                  mb: 3,
+                  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                  '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline':
+                    {
+                      borderColor: 'border.input',
+                    },
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                }}
+              />
             </FormControl>
             <SubmitButton>{'Add'}</SubmitButton>
           </Form>

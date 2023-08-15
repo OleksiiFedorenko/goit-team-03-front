@@ -128,7 +128,7 @@ const boardSlice = createSlice({
 
       .addCase(addColumn.pending, handlePending)
       .addCase(addColumn.fulfilled, (state, action) => {
-        console.log('addColumn PAYLOAD: ', action.payload);
+        // console.log('addColumn PAYLOAD: ', action.payload);
         state.isLoading = false;
         state.error = null;
 
@@ -183,7 +183,7 @@ const boardSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log('deleteColumn PAYLOAD: ', action.payload);
+        // console.log('deleteColumn PAYLOAD: ', action.payload);
 
         const { _id: columnId, parentBoard } = action.payload;
         const columnIndex = state.columns.findIndex(
@@ -206,7 +206,7 @@ const boardSlice = createSlice({
 
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, action) => {
-        console.log(action.payload);
+        // console.log(action.payload);
         state.isLoading = false;
         state.error = null;
 
@@ -242,7 +242,7 @@ const boardSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log('deleteTask PAYLOAD: ', action.payload);
+        // console.log('deleteTask PAYLOAD: ', action.payload);
 
         const { _id: taskId, parentColumn } = action.payload;
 
@@ -262,11 +262,11 @@ const boardSlice = createSlice({
       .addCase(updateColumnOrderAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log('updateColumnOrderAsync PAYLOAD: ', action.payload);
+        // console.log('updateColumnOrderAsync PAYLOAD: ', action.payload);
       })
       .addCase(updateColumnOrderAsync.rejected, (state, action) => {
         state.isLoading = false;
-        console.log('updateColumnOrderAsync ERROR: \n', action.payload);
+        // console.log('updateColumnOrderAsync ERROR: \n', action.payload);
         state.error =
           'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
       })
@@ -275,11 +275,11 @@ const boardSlice = createSlice({
       .addCase(updateSingleTaskOrderAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log('updateSingleTaskOrderAsync PAYLOAD: ', action.payload);
+        // console.log('updateSingleTaskOrderAsync PAYLOAD: ', action.payload);
       })
       .addCase(updateSingleTaskOrderAsync.rejected, (state, action) => {
         state.isLoading = false;
-        console.log('updateSingleTaskOrderAsync ERROR: \n', action.payload);
+        // console.log('updateSingleTaskOrderAsync ERROR: \n', action.payload);
         state.error =
           'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
       })
@@ -288,11 +288,11 @@ const boardSlice = createSlice({
       .addCase(updateComplexDNDAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log('updateComplexDNDAsync PAYLOAD: ', action.payload);
+        // console.log('updateComplexDNDAsync PAYLOAD: ', action.payload);
       })
       .addCase(updateComplexDNDAsync.rejected, (state, action) => {
         state.isLoading = false;
-        console.log('updateComplexDNDAsync ERROR: \n', action.payload);
+        // console.log('updateComplexDNDAsync ERROR: \n', action.payload);
         state.error =
           'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
       });
