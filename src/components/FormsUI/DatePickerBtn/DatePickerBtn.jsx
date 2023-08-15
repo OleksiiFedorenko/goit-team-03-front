@@ -6,15 +6,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 const DatePickerBtn = ({ children }) => {
   const [openDatePicker, setOpenDatePicker] = useState(false);
-  console.log('picker state:', openDatePicker);
+  // console.log('picker state:', openDatePicker);
   const theme = useTheme();
 
   const openDatePickerHandler = () => {
-    console.log('open');
+    // console.log('open');
     setOpenDatePicker(true);
   };
   const closeDatePickerHandler = () => {
-    console.log('close');
+    // console.log('close');
     setOpenDatePicker(false);
   };
 
