@@ -41,14 +41,28 @@ const EditColumnModal = ({ title, columnId, onCloseModal }) => {
           <Form onSubmit={handleSubmit}>
             <FormControl fullWidth>
               <TextField
-                label="Title"
+                placeholder="Title"
                 variant="outlined"
                 type="text"
                 id="text"
                 name="title"
-                sx={{ mb: 3 }}
                 value={values.title}
                 onChange={handleChange}
+                sx={{ 
+                  mb: 3,
+                  '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                  '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'border.input',
+                  }, 
+                }}
               />
               <ErrorMessage
                 name="Text"
