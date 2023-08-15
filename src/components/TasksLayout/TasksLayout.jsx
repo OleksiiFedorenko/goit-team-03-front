@@ -5,6 +5,8 @@ import { SideBar } from 'components/SideBar';
 import { Container, Box } from '@mui/material';
 import { container } from 'styles';
 import { Loader } from 'components/Loader/Loader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const TasksLayout = () => {
   return (
@@ -18,6 +20,11 @@ export const TasksLayout = () => {
         sx={container.main}
       >
         <SideBar contStyles={container.sideBarDesktop} />
+        <ToastContainer
+          position="top-center"
+          theme="colored"
+          autoClose={3000}
+        />
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
