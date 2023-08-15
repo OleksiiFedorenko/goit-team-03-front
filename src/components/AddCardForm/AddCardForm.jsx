@@ -79,18 +79,42 @@ const AddCardForm = ({
           </Typography>
           <Textfield
             name="title"
-            label="Title"
+            placeholder="Title"
+            style={{marginBottom: '14px'}}
             sx={{
-              marginBottom: '14px',
+              '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
             }}
           />
           <Textfield
             name="description"
-            label="Description"
+            placeholder="Description"
             multiline={true}
             rows={6}
+            style={{marginBottom: '24px'}}
             sx={{
-              marginBottom: '24px',
+              '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'border.input',
+              },
             }}
           />
 
