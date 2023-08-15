@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { TiFlash } from 'react-icons/ti';
-import user from 'images/start-img.png';
+import user from 'images/start-img@1x.png';
+import user2x from 'images/start-img@2x.png';
+import user3x from 'images/start-img@3x.png';
 import {
   Container,
   Box,
@@ -24,6 +26,7 @@ const WelcomePage = () => {
           component="img"
           sx={image.welcome}
           src={user}
+          srcSet={`${user} 1x, ${user2x} 2x, ${user3x} 3x`}
           alt="User greeting avatar"
         />
         <Box sx={logo.welcomeContainer}>
