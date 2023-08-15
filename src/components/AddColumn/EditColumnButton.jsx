@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import EditColumnModal from './EditColumnModal';
 import { Column, IconStyle, IconWrapper } from './EditColumnButton.styled';
-// import {
-//   Column,
-//   IconStyle,
-//   IconWrapper,
-//   Text,
-// } from './EditColumnButton.styled';
 import { Icon } from 'components/Icons';
 
 
@@ -23,7 +17,6 @@ const EditColumnButton = () => {
   return (
     <Column>
       <IconWrapper>
-        {/* <Text>In progress</Text> */}
         <IconStyle onClick={handleOpenModal}>
           <Icon id={'pencil'} />
         </IconStyle>
