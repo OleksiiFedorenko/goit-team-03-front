@@ -18,7 +18,9 @@ export const ThemePanel = () => {
   };
 
   const handleClick = theme => {
-    dispatch(updateTheme(theme));
+    if (theme === 'light' || theme === 'dark' || theme === 'violet') {
+      dispatch(updateTheme(theme));
+    }
     setAnchorEl(null);
   };
 
@@ -34,12 +36,15 @@ export const ThemePanel = () => {
         onClick={handleOpen}
       >
         Theme
-        <SvgIcon  sx={{
-          width: '16px',
-          height: '16px',
-          ml: '4px',
-          color: 'text.primary'}}>
-            <Icon id={'chevron-down'} sx={icon.themeFilter}/>
+        <SvgIcon
+          sx={{
+            width: '16px',
+            height: '16px',
+            ml: '4px',
+            color: 'text.primary',
+          }}
+        >
+          <Icon id={'chevron-down'} sx={icon.themeFilter} />
         </SvgIcon>
       </Button>
       <Menu

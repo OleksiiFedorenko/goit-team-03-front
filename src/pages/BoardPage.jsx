@@ -33,9 +33,6 @@ const BoardPage = () => {
     });
   }
 
-  // console.log('BOARD: ', board);
-  // console.log('COLUMNS: ', columns);
-
   const filter = useSelector(selectPrioFilter);
 
   const onDragEnd = result => {
@@ -48,10 +45,6 @@ const BoardPage = () => {
 
     handleDragEnd({ result, board, columns, dispatch });
   };
-
-  // if (board._id === '' || columns[0]._id === '') {
-  //   return <div>Loading...</div>;
-  // } // ----- triggers bug on empty board
 
   const bgURL =
     board.background === 0 ? '' : bgImg.find(bg => bg.id === board.background);
@@ -68,12 +61,28 @@ const BoardPage = () => {
     <>
       <Box sx={{ ...container.board, ...bgImage }}>
         <Box sx={container.boardInner}>
-          <Typography component="h2" variant="h3" sx={text.boardTitle}>
+          <Typography
+            component="h2"
+            variant="h3"
+            sx={{
+              ...text.boardTitle,
+              display: 'inline-block',
+              borderRadius: board.background !== 0 ? '8px' : 0,
+              paddingRight: board.background !== 0 ? '4px' : 0,
+              paddingLeft: board.background !== 0 ? '4px' : 0,
+              backgroundColor: 'background.default',
+            }}
+          >
             {board.title}
           </Typography>
           <FilterBtn />
 
-          <Box sx={container.columns}>
+          <Box
+            sx={{
+              ...container.columns,
+              gap: board.columnOrder.length === 0 ? 0 : '34px',
+            }}
+          >
             <Box>
               {/* ---------------------------------------------------------------- */}
               <DragDropContext
@@ -88,7 +97,6 @@ const BoardPage = () => {
                 >
                   {provided => (
                     <Box
-                      // style={{ outline: '1px dashed teal', display: 'flex' }}
                       sx={container.columnsInner}
                       {...provided.droppableProps}
                       ref={provided.innerRef}
@@ -97,8 +105,6 @@ const BoardPage = () => {
                         const column = columns.find(
                           item => item._id === columnId
                         );
-
-                        // console.log('COLUMN: ', column);
 
                         // todo ///////////////////
                         // if (!column) return null;
