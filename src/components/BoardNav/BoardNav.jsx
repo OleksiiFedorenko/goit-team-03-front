@@ -6,7 +6,7 @@ import { BoardNavList } from 'components/BoardsNavList';
 import { Icon } from 'components/Icons';
 import { addBoard } from 'store/boards/operations';
 
-import { Box, Typography, Button } from '@mui/material';
+import { Stack, Box, Typography, Button } from '@mui/material';
 import { container, text, button, icon } from 'styles';
 
 export const BoardNav = () => {
@@ -21,7 +21,7 @@ export const BoardNav = () => {
   };
 
   return (
-    <Box sx={container.boardNav}>
+    <Stack sx={container.boardNav}>
       <Typography component="h2" variant="h4" sx={text.boardNavTitle}>
         My boards
       </Typography>
@@ -51,6 +51,6 @@ export const BoardNav = () => {
           boardOperation={addBoard}
         />
       </Modal>
-    </Box>
+    </Stack>
   );
 };

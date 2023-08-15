@@ -10,7 +10,7 @@ import defaultAvatarViolet from '../../images/default-avatar-violet.png';
 import defaultAvatarLight from '../../images/default-avatar-light.png';
 import defaultAvatarDark from '../../images/default-avatar-dark.png';
 
-import { icon, form, container, button } from 'styles';
+import { icon, form, container, button, image } from 'styles';
 import {
   Box,
   FormLabel,
@@ -105,8 +105,14 @@ export const EditProfile = ({ onCloseModal }) => {
                   component="img"
                   src={currentImage || avatar}
                   alt="User picture"
+                  sx={image.changeAvatar}
+                  className="avatar"
                 />
-                <Box aria-label="add" sx={container.editUserPlusWrapper}>
+                <Box
+                  aria-label="add"
+                  sx={container.editUserPlusWrapper}
+                  className="plus"
+                >
                   <Icon id={'plus'} sx={icon.addProfileImg} />
                 </Box>
               </Box>
