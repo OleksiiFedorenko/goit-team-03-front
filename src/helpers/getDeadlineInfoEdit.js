@@ -1,12 +1,13 @@
 import moment from 'moment';
 import { determineRemainDays } from './determineRemainDays';
+import { toast } from 'react-toastify';
 
 export const getDeadlineInfoEdit = date => {
   let printDeadline = 'Today, ' + moment().format('MMMM D');
   if (date) {
-    // if (date.diff(moment()) < 0) {
-    //   Notify.failure('Select a date');
-    // }
+    if (date.diff(moment()) < 0) {
+      toast.error('Select a date');
+    }
     if (date) {
       printDeadline =
         determineRemainDays(date.$d) + ', ' + moment(date.$d).format('MMMM D');

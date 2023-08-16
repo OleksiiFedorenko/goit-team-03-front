@@ -21,7 +21,6 @@ import { formatDate } from 'helpers/formatDate';
 import { getDeadlineInfo } from 'helpers/getDeadlineInfo';
 
 import { container } from 'styles';
-import { convertToUnixTime } from 'helpers/convertToUnixTime';
 
 const initialValues = {
   title: '',
@@ -46,7 +45,7 @@ const AddCardForm = ({
 }) => {
   const dispatch = useDispatch();
   const [deadline, setDeadline] = useState(
-    initData ? convertToUnixTime(initData.deadline) : Date.now()
+    initData ? dayjs(initData.deadline, 'DD-MM-YYYY') : Date.now()
   );
 
   const [priority, setPriority] = useState(
