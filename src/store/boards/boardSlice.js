@@ -76,7 +76,6 @@ const boardSlice = createSlice({
       .addCase(getBoardById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // console.log('getBoardById PAYLOAD: ', action.payload);
         state.board = action.payload.board;
         state.columns = action.payload.columns;
         state.bgrURL = action.payload.bgrURL; // ?
