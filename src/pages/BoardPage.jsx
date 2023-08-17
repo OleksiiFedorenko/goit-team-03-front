@@ -6,6 +6,7 @@ import {
   selectBoard,
   selectColumns,
   selectError,
+  selectIsLoading,
 } from 'store/boards/selectors';
 import { getBoardById } from 'store/boards/operations';
 
@@ -21,6 +22,7 @@ import { useDispatch } from 'react-redux';
 import { handleDragEnd } from 'helpers';
 import { selectPrioFilter } from 'store/filters/selectors';
 import { toast } from 'react-toastify';
+import { Loader } from 'components/Loader';
 
 const BoardPage = () => {
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const BoardPage = () => {
   const board = useSelector(selectBoard);
   const columns = useSelector(selectColumns);
   const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     if (boardId) dispatch(getBoardById(boardId));
@@ -63,76 +66,82 @@ const BoardPage = () => {
 
   return (
     <>
-      <Box sx={{ ...container.board, ...bgImage }}>
-        <Box sx={container.boardInner}>
-          <Typography
-            component="h2"
-            variant="h3"
-            sx={{
-              ...text.boardTitle,
-              display: 'inline-block',
-              borderRadius: board.background !== 0 ? '8px' : 0,
-              paddingRight: board.background !== 0 ? '4px' : 0,
-              paddingLeft: board.background !== 0 ? '4px' : 0,
-              backgroundColor: 'background.default',
-            }}
-          >
-            {board.title}
-          </Typography>
-          <FilterBtn />
-
-          <Box
-            sx={{
-              ...container.columns,
-              gap: board.columnOrder.length === 0 ? 0 : '34px',
-            }}
-          >
-            <Box>
-              {/* ---------------------------------------------------------------- */}
-              <DragDropContext
-                onDragStart={() => {}}
-                onDragUpdate={() => {}}
-                onDragEnd={onDragEnd}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Box sx={{ ...container.board, ...bgImage }}>
+            <Box sx={container.boardInner}>
+              <Typography
+                component="h2"
+                variant="h3"
+                sx={{
+                  ...text.boardTitle,
+                  display: 'inline-block',
+                  borderRadius: board.background !== 0 ? '8px' : 0,
+                  paddingRight: board.background !== 0 ? '4px' : 0,
+                  paddingLeft: board.background !== 0 ? '4px' : 0,
+                  backgroundColor: 'background.default',
+                }}
               >
-                <StrictModeDroppable
-                  droppableId={'all-columns'}
-                  direction="horizontal"
-                  type="column"
-                >
-                  {provided => (
-                    <Box
-                      sx={container.columnsInner}
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}
+                {board.title}
+              </Typography>
+              <FilterBtn />
+
+              <Box
+                sx={{
+                  ...container.columns,
+                  gap: board.columnOrder.length === 0 ? 0 : '34px',
+                }}
+              >
+                <Box>
+                  {/* ---------------------------------------------------------------- */}
+                  <DragDropContext
+                    onDragStart={() => {}}
+                    onDragUpdate={() => {}}
+                    onDragEnd={onDragEnd}
+                  >
+                    <StrictModeDroppable
+                      droppableId={'all-columns'}
+                      direction="horizontal"
+                      type="column"
                     >
-                      {board.columnOrder.map((columnId, index) => {
-                        const column = columns.find(
-                          item => item._id === columnId
-                        );
+                      {provided => (
+                        <Box
+                          sx={container.columnsInner}
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                        >
+                          {board.columnOrder.map((columnId, index) => {
+                            const column = columns.find(
+                              item => item._id === columnId
+                            );
 
-                        // todo ///////////////////
-                        // if (!column) return null;
-                        return (
-                          <BoardInnerList
-                            key={column._id}
-                            column={column}
-                            tasksArr={column.tasks}
-                            index={index}
-                          />
-                        );
-                      })}
+                            // todo ///////////////////
+                            // if (!column) return null;
+                            return (
+                              <BoardInnerList
+                                key={column._id}
+                                column={column}
+                                tasksArr={column.tasks}
+                                index={index}
+                              />
+                            );
+                          })}
 
-                      {provided.placeholder}
-                    </Box>
-                  )}
-                </StrictModeDroppable>
-              </DragDropContext>
-              {/* ---------------------------------------------------------------- */}
+                          {provided.placeholder}
+                        </Box>
+                      )}
+                    </StrictModeDroppable>
+                  </DragDropContext>
+                  {/* ---------------------------------------------------------------- */}
+                </Box>
+                <AddColumnButton />
+              </Box>
             </Box>
-            <AddColumnButton />
           </Box>
-        </Box>
-      </Box>
+        </>
+      )}
     </>
   );
 };
