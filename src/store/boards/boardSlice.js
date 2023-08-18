@@ -82,14 +82,11 @@ const boardSlice = createSlice({
       })
       .addCase(getBoardById.rejected, handleRejected)
 
-      .addCase(addBoard.pending, handlePending)
+      // .addCase(addBoard.pending, handlePending)
       .addCase(addBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards = [...state.boards, action.payload];
-        // todo ---------------------------------------------------------------------------------------------
-        // no sense + triggers bugs
-        // state.board = action.payload;
       })
       .addCase(addBoard.rejected, handleRejected)
 
@@ -113,7 +110,6 @@ const boardSlice = createSlice({
           board => board._id === action.payload._id
         );
         state.boards.splice(index, 1);
-        // state.board = { ...state.board, _id: '', title: '' };
         state.board = {
           _id: '',
           title: '',
@@ -126,7 +122,7 @@ const boardSlice = createSlice({
       })
       .addCase(deleteBoard.rejected, handleRejected)
 
-      .addCase(addColumn.pending, handlePending)
+      // .addCase(addColumn.pending, handlePending)
       .addCase(addColumn.fulfilled, (state, action) => {
         // console.log('addColumn PAYLOAD: ', action.payload);
         state.isLoading = false;
@@ -140,7 +136,6 @@ const boardSlice = createSlice({
 
         state.columns.push(newColumn);
 
-        // In addition update board & boards fields:
         state.board.columnOrder.push(action.payload._id);
         const boardIndex = state.boards.findIndex(
           ({ _id }) => _id === action.payload.parentBoard
@@ -159,7 +154,7 @@ const boardSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(updateColumn.pending, handlePending)
+      // .addCase(updateColumn.pending, handlePending)
       .addCase(updateColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -168,18 +163,15 @@ const boardSlice = createSlice({
           column => column._id === action.payload._id
         );
 
-        // todo: -----------------------------------------------------------------
-        // Temporary... because if response without tasks array
         const newColumn = {
           ...state.columns[index],
           title: action.payload.title,
         };
-        // state.columns.splice(index, 1, action.payload);
         state.columns.splice(index, 1, newColumn);
       })
       .addCase(updateColumn.rejected, handleRejected)
 
-      .addCase(deleteColumn.pending, handlePending)
+      // .addCase(deleteColumn.pending, handlePending)
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -191,7 +183,6 @@ const boardSlice = createSlice({
         );
         state.columns.splice(columnIndex, 1);
 
-        // In addition remove columnId from 'columnOrder' fields inside state.board and state.boards as well
         const orderIndex1 = state.board.columnOrder.indexOf(columnId);
         state.board.columnOrder.splice(orderIndex1, 1);
 
@@ -204,7 +195,7 @@ const boardSlice = createSlice({
       })
       .addCase(deleteColumn.rejected, handleRejected)
 
-      .addCase(addTask.pending, handlePending)
+      // .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state, action) => {
         // console.log(action.payload);
         state.isLoading = false;
@@ -213,14 +204,13 @@ const boardSlice = createSlice({
         state.columns.forEach(column => {
           if (column._id === action.payload.parentColumn) {
             column.tasks.push(action.payload);
-            // In addition update taskOrder:
             column.taskOrder.push(action.payload._id);
           }
         });
       })
       .addCase(addTask.rejected, handleRejected)
 
-      .addCase(updateTask.pending, handlePending)
+      // .addCase(updateTask.pending, handlePending)
       .addCase(updateTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -238,7 +228,7 @@ const boardSlice = createSlice({
       })
       .addCase(updateTask.rejected, handleRejected)
 
-      .addCase(deleteTask.pending, handlePending)
+      // .addCase(deleteTask.pending, handlePending)
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -258,7 +248,7 @@ const boardSlice = createSlice({
       })
       .addCase(deleteTask.rejected, handleRejected)
 
-      .addCase(updateColumnOrderAsync.pending, handlePending)
+      // .addCase(updateColumnOrderAsync.pending, handlePending)
       .addCase(updateColumnOrderAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -271,7 +261,7 @@ const boardSlice = createSlice({
           'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
       })
 
-      .addCase(updateSingleTaskOrderAsync.pending, handlePending)
+      // .addCase(updateSingleTaskOrderAsync.pending, handlePending)
       .addCase(updateSingleTaskOrderAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -284,7 +274,7 @@ const boardSlice = createSlice({
           'Something went wrong when you tried to drag and drop elements on your board... Please reload page to see actual information and try again later.';
       })
 
-      .addCase(updateComplexDNDAsync.pending, handlePending)
+      // .addCase(updateComplexDNDAsync.pending, handlePending)
       .addCase(updateComplexDNDAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;

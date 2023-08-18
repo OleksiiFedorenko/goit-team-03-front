@@ -31,7 +31,6 @@ export const getAllBoards = createAsyncThunk(
 
       // console.log(data);
 
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -44,11 +43,32 @@ export const getBoardById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(`boards/${id}`);
+      // ! Temporary code because of a problem on backend side:
+      // console.log('getBoardById BACKEND RES: ', data);
 
-      // console.log(data);
+      const correctColumnOrder = [];
 
+      data.board.columnOrder.forEach(orderId => {
+        const index = data.columns.findIndex(({ _id }) => _id === orderId);
+        // console.log('index: ', index);
 
-      return data;
+        if (index !== -1) {
+          correctColumnOrder.push(orderId);
+        }
+      });
+
+      // console.log('correctColumnOrder: ', correctColumnOrder);
+
+      const correctData = {
+        ...data,
+        board: {
+          ...data.board,
+          columnOrder: correctColumnOrder,
+        },
+      };
+
+      // return data;
+      return correctData;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -64,7 +84,6 @@ export const addBoard = createAsyncThunk(
         icon,
         background,
       });
-  
 
       // console.log(data);
 
@@ -86,7 +105,6 @@ export const updateBoard = createAsyncThunk(
       });
 
       // console.log(data);
-
 
       return data;
     } catch (error) {
@@ -214,7 +232,6 @@ export const deleteTask = createAsyncThunk(
       const { data } = await instance.delete(`/tasks/${_id}`);
 
       // console.log(data);
-
 
       return data;
     } catch (error) {
